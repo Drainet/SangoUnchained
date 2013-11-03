@@ -14,7 +14,7 @@ function scene:createScene( event )
     --buttonHandler
     local buttonHandler = function( event )
         if event.target.id == "Play" then
-            storyboard.gotoScene( "kalacool.sango.Scene.scene1-3", "fade", 200  )
+            storyboard.gotoScene( "kalacool.sango.Scene.LevelSelect", "fade", 200  )
         elseif event.target.id == "Achievement" then
             --storyboard.gotoScene( "kalacool.sango.Scene.Achievement", "fade", 200  )
         elseif event.target.id == "Option" then

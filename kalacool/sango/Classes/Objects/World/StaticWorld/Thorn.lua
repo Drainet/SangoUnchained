@@ -12,7 +12,7 @@ StaticWorldClass = require('kalacool.sango.Classes.Objects.World.StaticWorld')
 function new(config)
 
     local Thorn = StaticWorldClass.new()
-    Thorn.setImage('kalacool/sango/image/World/staticWorld/thorn.png')
+    Thorn.setImage('kalacool/sango/image/world/staticWorld/thorn.png')
     Thorn.image.type="fatal"
     Thorn.show(config)
     physics.removeBody(Thorn.image)

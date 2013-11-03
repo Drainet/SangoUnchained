@@ -9,7 +9,7 @@ function scene:createScene( event )
     require( "tilebg" )
     local bg = tileBG()
 
-    levelDirector = require "kalacool.sango.level.lv1-1"
+    levelDirector = require "kalacool.sango.level.lv1-5"
 
     local physics = require("physics")
     physics.start()
@@ -20,7 +20,7 @@ function scene:createScene( event )
 
     require "kalacool.sango.Set.PlayerSet"
 
-    dog=PlayerSet.newDoggy({x=100,y=100})
+    dog=PlayerSet.newDoggy({x=100,y=1300})
 
     camera:insert(bg)
     camera:insert(myLevel)

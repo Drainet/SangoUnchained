@@ -9,7 +9,7 @@ StaticWorldClass = require('kalacool.sango.Classes.Objects.World.StaticWorld')
 function new(config)
 
     local leftTop_floor = StaticWorldClass.new()
-    leftTop_floor.setImage('kalacool/sango/image/World/staticWorld/leftTop_floor.png')
+    leftTop_floor.setImage('kalacool/sango/image/world/staticWorld/leftTop_floor.png')
     leftTop_floor.image.type="safe"
     leftTop_floor.show(config)
     --local Shape= { -250, -130, 250, 150, 260, 130, -240, -150 }
