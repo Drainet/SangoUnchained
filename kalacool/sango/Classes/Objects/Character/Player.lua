@@ -108,8 +108,10 @@ function new(config)
 
 	end
 
-	
-	
+	-- Send message to All monster to trace player's path
+	function Player:setPlayerShow()
+    	scene:dispatchEvent( {name='onPlayerShow',target = Player} )
+    end
 
 	Runtime:addEventListener( "touch", Player.shoot)
 	Runtime:addEventListener( "enterFrame", Player.norotate)

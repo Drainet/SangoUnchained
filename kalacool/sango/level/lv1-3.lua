@@ -2,6 +2,7 @@
 
 module(..., package.seeall)
 require("kalacool.sango.Set.WorldSet")
+require("kalacool.sango.Set.EnemySet")
 function CreateLevel(physics)
 
     display.setDefault( 'background', 0, 0, 0 )
@@ -144,6 +145,18 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["DynamicWorld"]:insert(level.layers["DynamicWorld"].objects["object60"].image)
  level.layers["InteractiveWorld"].objects["object61"] = WorldSet.newSpinningCog({x=2734,y=1708})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object61"].image)
+
+
+ 
+ -- create monster 
+ level.layers["InteractiveWorld"].objects["object62"] = EnemySet.new_Monster_Fireball({x=4500,y=1764})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object62"].image)
+ level.layers["InteractiveWorld"].objects["object63"] = EnemySet.new_Monster_Fireball({x=4600,y=1764})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object63"].image)
+ -- monster END
+
+
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])

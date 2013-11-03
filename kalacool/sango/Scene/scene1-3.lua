@@ -21,6 +21,11 @@ function scene:createScene( event )
     require "kalacool.sango.Set.PlayerSet"
 
     dog=PlayerSet.newDoggy({x=5222,y=1764})
+    
+    -- Set player Show , then monster will start to move
+    dog:setPlayerShow()
+
+
 
     camera:insert(bg)
     camera:insert(myLevel)
