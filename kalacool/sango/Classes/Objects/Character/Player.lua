@@ -71,7 +71,7 @@ function new(config)
 				end
 				camera:insert(bulletgroup)
 								
-				Player.image:setLinearVelocity( -400*(coolX)/ratio, -400*(coolY)/ratio )
+				Player.image:setLinearVelocity( -450*(coolX)/ratio, -450*(coolY)/ratio )
 				--Player.image:applyLinearImpulse( -6000*(coolX)/ratio, -6000*(coolY)/ratio,Player.image.x,Player.image.y )
 
 			end
