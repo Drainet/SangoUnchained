@@ -1,5 +1,4 @@
 Animation = {}
-
 function Animation:newFadeImage(image,startX,startY)
 end
 
