@@ -12,7 +12,7 @@ StaticWorldClass = require('kalacool.sango.Classes.Objects.World.StaticWorld')
 function new(config)
 
 	local Floor = StaticWorldClass.new()
-	Floor.setImage('kalacool/sango/image/World/staticWorld/floor.png')
+	Floor.setImage('kalacool/sango/image/world/staticWorld/floor.png')
 	Floor.show(config)
     physics.addBody( Floor.image, "static", { density=1, friction=0.3, bounce=0} )
     

@@ -43,10 +43,20 @@ function new(num,x,y,vx,vy)
         
         oneshot.rotation=dangle
 		
-        oneshot:setLinearVelocity(3000*Cos(dangle*Pi/180), 3000*Sin(dangle*Pi/180) )
+        oneshot:setLinearVelocity(2000*Cos(dangle*Pi/180), 2000*Sin(dangle*Pi/180) )
 
         bullet:insert(oneshot)
     end
+
+
+
+    function bullet.timeout( event )
+	
+		display.remove(bullet)
+	
+	end
+	
+	timer.performWithDelay( 1000,bullet.timeout,1 )
 	
 	
 	

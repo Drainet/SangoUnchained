@@ -29,10 +29,6 @@ function scene:createScene( event )
 
     dog=PlayerSet.newDoggy({x=200,y=123})
 
-    
-
-    
-    
 
     camera:insert(bg)
     camera:insert(myLevel)
@@ -42,8 +38,10 @@ function scene:createScene( event )
     local function onEveryFrame()
             movex = myLevel.x - dog.image.x
             movey = myLevel.y - dog.image.y
-            camera.x = 800 + movex
+            camera.x = 600 + movex
             camera.y = 400 + movey
+            print(collectgarbage("count"))
+            print(system.getInfo("textureMemoryUsed")/ (1024 * 1024))
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )
 
