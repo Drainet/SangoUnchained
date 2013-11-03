@@ -1,6 +1,5 @@
 require("Class")
 
-require("kalacool.sango.character.enemy.enemy")
 
 
 
