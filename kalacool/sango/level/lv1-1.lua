@@ -72,6 +72,10 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object24"].image)
  level.layers["InteractiveWorld"].objects["object25"] = WorldSet.newWoodenDoor({x=10098,y=708})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object25"].image)
+
+ level.layers["InteractiveWorld"].objects["object26"] = WorldSet.newFloatingFloor({x=800,y=672})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object26"].image)
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])

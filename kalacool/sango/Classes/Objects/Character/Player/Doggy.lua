@@ -22,6 +22,8 @@ function new(config)
 				Doggy.body:play()
 				Doggy.Magazine.reloadable=true
 				Doggy.Magazine.startReload()
+				local vx, vy = event.object2:getLinearVelocity()
+				Doggy.image:setLinearVelocity( vx, vy )
 
 
 			elseif(event.object2.type=="player" and event.object1.type=="safe")then
@@ -30,6 +32,8 @@ function new(config)
 				Doggy.body:play()
 				Doggy.Magazine.reloadable=true
 				Doggy.Magazine.startReload()
+				local vx, vy = event.object1:getLinearVelocity()
+				Doggy.image:setLinearVelocity( vx, vy )
 				
 			end
 
