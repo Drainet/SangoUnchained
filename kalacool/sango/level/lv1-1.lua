@@ -2,6 +2,8 @@
 
 module(..., package.seeall)
 require("kalacool.sango.Set.WorldSet")
+
+Supply =  require('kalacool.sango.Classes.Objects.Supplements.Buff.ShootFaster')
 function CreateLevel(physics)
 
     display.setDefault( 'background', 0, 0, 0 )
@@ -72,6 +74,12 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object24"].image)
  level.layers["InteractiveWorld"].objects["object25"] = WorldSet.newWoodenDoor({x=10098,y=708})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object25"].image)
+
+ --set supplements in game
+ level.layers["InteractiveWorld"].objects["object26"] = Supply.new({x=324,y=600})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object26"].image)
+
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])
