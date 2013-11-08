@@ -131,6 +131,8 @@ function new(config)
 	
 	Doggy.image.x= config.x
 	Doggy.image.y= config.y
+
+	Doggy.image.isFixedRotation = true
 	
 	Doggy.body:setSequence( "jump" )
 	Doggy.body:play()

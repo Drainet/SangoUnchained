@@ -40,8 +40,17 @@ function new(num,x,y,vx,vy)
         oneshot.isBullet = true
         oneshot.gravityScale = 0
 
+        --[[function oneshot.norotate( event )
+	
+			
+		
+		end]]
+        oneshot.rotation=oneshot.angle
+
+        oneshot.isFixedRotation = true
         
-        oneshot.rotation=dangle
+
+        --Runtime:addEventListener( "enterFrame", oneshot.norotate )
 		
         oneshot:setLinearVelocity(2000*Cos(dangle*Pi/180), 2000*Sin(dangle*Pi/180) )
 

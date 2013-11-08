@@ -83,12 +83,7 @@ function new(config)
 	end
 		
 	
-	function Player:norotate( event )
 
-		Player.image.rotation = 0
-		
-
-	end
 	
 	function Player:switchWeapon( event )
 
@@ -119,11 +114,11 @@ function new(config)
    
 
 	Runtime:addEventListener( "touch", Player.shoot)
-	Runtime:addEventListener( "enterFrame", Player.norotate)
+
     
 
 	Player.listeners[1] = {event="touch",listener=Player.shoot}
-	Player.listeners[2] = {event="enterFrame",listener=Player.norotate}
+
 
 	
  

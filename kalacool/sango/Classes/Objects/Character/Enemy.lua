@@ -34,6 +34,7 @@ function new()
         if (event.phase == "began") then
             if (event.other.type == "bullet") then
                 if(Enemy.HP > 1) then
+                    print( Enemy.HP )
                     Enemy:hurt(1)
                 else
                     Enemy.AI:stop()
@@ -45,9 +46,6 @@ function new()
     end
 
 
-    function Enemy.norotate()
-    	Enemy.image.rotation = 0
-    end
     function Enemy:dead()
         Enemy.alive = false
         Enemy.hide()
@@ -59,7 +57,6 @@ function new()
 
     Enemy.collision = Enemy.onCollision
     Enemy.image:addEventListener("collision", Enemy)
-    Runtime:addEventListener( "enterFrame", Enemy.norotate )
     scene:addEventListener( 'onPlayerShow', Enemy )
     scene:addEventListener( 'onPlayerHide', Enemy )
     
@@ -67,7 +64,6 @@ function new()
 
     Enemy.listeners[1] = {event='onPlayerShow' , listener = Enemy}
     Enemy.listeners[2] = {event='onPlayerHide' , listener = Enemy}
-    Enemy.listeners[3] = {enent="enterFrame" , listener = Enemy.norotate}
-    Enemy.listeners[4] = {event="collision", listener = Enemy}
+    Enemy.listeners[3] = {event="collision", listener = Enemy}
     return Enemy
 end

@@ -24,7 +24,7 @@ local fireball = Monster.new()
     -- add physics attribute
     local Filter = { categoryBits = 1, maskBits = 2 } 
     physics.addBody(fireball.image,"dynamic",{density = 3,filter = Filter})
-
+    fireball.image.isFixedRotation = true
     -- set monster float
     fireball.image.gravityScale = 0
 
