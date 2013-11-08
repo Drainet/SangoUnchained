@@ -9,7 +9,7 @@ function new(config)
 local fireball = Monster.new()
     
     -- set monster's attribute
-    fireball.HP = 3
+    fireball.HP = 10
     fireball.moveSpeed = 300
     -- set monster's body
     fireball.name ="monster"
