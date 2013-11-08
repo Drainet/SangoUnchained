@@ -4,11 +4,11 @@ module(..., package.seeall)
 
 
 
-function new(num)
+function new(HP)
     
 	local Heart = {}
 	Heart.num = 0
-	Heart.max = num
+	Heart.max = HP
 	
     
 	
