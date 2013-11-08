@@ -9,7 +9,7 @@ function new()
     local scene = scene
 
     Enemy.image = display.newGroup( )
-    Enemy.image.type = "fatal"
+    Enemy.image.damage = "fatal"
     Enemy.alive = true
     --event to recive player's message, and set attack target
     function Enemy:onPlayerShow(event)

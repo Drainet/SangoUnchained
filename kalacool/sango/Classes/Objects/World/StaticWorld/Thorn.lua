@@ -13,7 +13,8 @@ function new(config)
 
     local Thorn = StaticWorldClass.new()
     Thorn.setImage('kalacool/sango/image/world/staticWorld/thorn.png')
-    Thorn.image.type="fatal"
+    Thorn.image.damage = "fatal"
+
     Thorn.show(config)
     physics.removeBody(Thorn.image)
     physics.addBody( Thorn.image, "static", { density=1, friction=0.3, bounce=0} )

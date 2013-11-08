@@ -13,8 +13,8 @@ function new(config)
     FireBall.show(config)
     FireBall.configX = config.x
     FireBall.configY = config.y
-    FireBall.image.type = "fatal"
-    Shape = {-103,51,-60,32,-21,45,0,88,-25,134,-69,142,-102,120,-115,88}
+    FireBall.image.damage = "fatal"
+    Shape = {-35,-1,-13,-10,14,-2,25,26,6,54,-24,54,-43,42,-49,22}
     physics.addBody( FireBall.image,  "kinematic", { density=10, friction=99, bounce=0, shape=Shape} )
 
 

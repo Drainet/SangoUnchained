@@ -10,63 +10,57 @@ function new(config)
 
 
     local Doggy = PlayerClass.new(config)
+
+
+    function Doggy.image:preCollision(event )
+
+    	
+    	if(event.other.damage=="safe" and event.other.surface=="rough" and (self.y+self.height/2-10)<(event.other.y-event.other.height/2) ) then
+    		--print( self.y+self.height/2)
+    		--print( event.other.y-event.other.height/2)
+    		local vx, vy = event.other:getLinearVelocity()
+    		Doggy.image:setLinearVelocity( vx, vy )
+
+    	end
+
+	end
+	function Doggy.image:postCollision(event )
+    	
+
+    	
 	
+	end
 	
-	
-	function Doggy.crash( event )
+	function Doggy.image:collision(event )
 	
 		if ( event.phase == "began" ) then
-			if(event.object1.type=="player"and event.object2.type=="safe") then
-			
+			if(event.other.damage=="safe") then
 				Doggy.body:setSequence( "normal" )
 				Doggy.body:play()
 				Doggy.Magazine.reloadable=true
 				Doggy.Magazine.startReload()
-				local vx, vy = event.object2:getLinearVelocity()
-				Doggy.image:setLinearVelocity( vx, vy )
-
-
-			elseif(event.object2.type=="player" and event.object1.type=="safe")then
-				
-				Doggy.body:setSequence( "normal" )
-				Doggy.body:play()
-				Doggy.Magazine.reloadable=true
-				Doggy.Magazine.startReload()
-				local vx, vy = event.object1:getLinearVelocity()
-				Doggy.image:setLinearVelocity( vx, vy )
 				
 			end
 
-			if(event.object1.type=="player"and event.object2.type=="fatal") then
+			if( event.other.damage=="fatal") then
 			
 				Doggy.body:setSequence( "dead" )
 				Doggy.body:play()
 				timer.performWithDelay( 100, Doggy.dead,1 )
-				
 
-
-			elseif(event.object2.type=="player" and event.object1.type=="fatal")then
-				
-				Doggy.body:setSequence( "dead" )
-				Doggy.body:play()
-				timer.performWithDelay( 100, Doggy.dead,1 )
 
 			end
+
+			
 			
 
 		elseif ( event.phase == "ended" ) then
-			if(event.object1.type=="player"and event.object2.type=="safe") then
-			
-				Doggy.body:setSequence( "jump" )
-				Doggy.body:play()
-				Doggy.Magazine.reloadable=false
-
-			elseif(event.object2.type=="player" and event.object1.type=="safe")then
-				
+			if(event.other.damage=="safe") then
 				Doggy.body:setSequence( "jump" )
 				Doggy.body:play()
 				Doggy.Magazine.reloadable=false
 			end
+			
 
 
 		end
@@ -143,10 +137,12 @@ function new(config)
 	
 	
 	
-    Runtime:addEventListener( "collision", Doggy.crash)
+    Doggy.image:addEventListener( "collision")
+   	Doggy.image:addEventListener( "preCollision")
+   	--Doggy.image:addEventListener( "postCollision")
 
 
-    Doggy.listeners[table.maxn(Doggy.listeners)+1]= {event="collision",listener=Doggy.crash}
+    --Doggy.listeners[table.maxn(Doggy.listeners)+1]= {event="collision",listener=Doggy.crash}
 
 
 	

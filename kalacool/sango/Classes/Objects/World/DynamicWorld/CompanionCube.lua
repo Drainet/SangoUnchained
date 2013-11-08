@@ -10,6 +10,8 @@ function new(config)
 
     local CompanionCube = DynamicWorldClass.new()
     CompanionCube.setImage('kalacool/sango/image/world/dynamicWorld/companionCube.png')
+    CompanionCube.image.damage = "safe"
+    CompanionCube.image.surface = "smooth"
     CompanionCube.show(config)
     physics.addBody( CompanionCube.image, "dynamic", { density=30, friction=0.2, bounce=0.99} )
 

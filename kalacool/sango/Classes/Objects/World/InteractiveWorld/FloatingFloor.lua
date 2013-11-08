@@ -12,7 +12,8 @@ function new(config)
     FloatingFloor.setImage('kalacool/sango/image/world/interactiveWorld/floor.png')
     FloatingFloor.image.width = 300
     FloatingFloor.image.height = 40
-    FloatingFloor.type = "safe"
+    FloatingFloor.image.damage = "safe"
+    FloatingFloor.image.surface = "rough"
     FloatingFloor.show(config)
     physics.addBody( FloatingFloor.image,  "kinematic", { density=10, friction=99, bounce=0} )
     FloatingFloor.count=0

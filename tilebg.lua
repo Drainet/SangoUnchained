@@ -48,7 +48,7 @@
 
 function tileBG(bgImageFile,bgWidth,bgHeight)
    
-   print ("TileBG started.")
+   --print ("TileBG started.")
    
 	--Set the defaults, for rapid calls and just in case
 	bgImageFile = bgImageFile or "kalacool/sango/image/test/the_Grid_1280x720.jpg"
@@ -61,13 +61,13 @@ function tileBG(bgImageFile,bgWidth,bgHeight)
 	local bgCount = bgRepeatX*bgRepeatY --total bg images placed
    
 	--Useful debug info
-	print ("TileBG: display.contentWidth: " .. display.contentWidth)
-	print ("TileBG: display.contentHeight: " .. display.contentHeight)
-	print ("TileBG: bgImageFile: " .. bgImageFile)
-	print ("TileBG: bgWidth: " .. bgWidth)
-	print ("TileBG: bgHeight: " .. bgHeight)
-	print ("TileBG: bgRepeatX: " .. bgRepeatX .. "(number of times to repeat bg on X axis)")
-	print ("TileBG: bgRepeatY: " .. bgRepeatY .. "(number of times to repeat bg on Y axis)")
+		--print ("TileBG: display.contentWidth: " .. display.contentWidth)
+		--print ("TileBG: display.contentHeight: " .. display.contentHeight)
+		--print ("TileBG: bgImageFile: " .. bgImageFile)
+		--print ("TileBG: bgWidth: " .. bgWidth)
+		--print ("TileBG: bgHeight: " .. bgHeight)
+		--print ("TileBG: bgRepeatX: " .. bgRepeatX .. "(number of times to repeat bg on X axis)")
+		--print ("TileBG: bgRepeatY: " .. bgRepeatY .. "(number of times to repeat bg on Y axis)")
 	
 	--Loop through and place the bg image
 	local bgImages = {} --images table
@@ -80,7 +80,7 @@ function tileBG(bgImageFile,bgWidth,bgHeight)
 		local bgLocationX = 0 --reset x position each time we go to next row
 		for bgX=1,bgRepeatX do
 			tiledBG:insert(display.newImage( bgImageFile, bgLocationX, bgLocationY ))
-			print ("TileBG: Placed tile at x,y: " .. bgLocationX .. "," .. bgLocationY)
+				--print ("TileBG: Placed tile at x,y: " .. bgLocationX .. "," .. bgLocationY)
 			bgLocationX=bgLocationX+bgWidth
 		end
 		bgLocationY=bgLocationY+bgHeight
@@ -88,19 +88,19 @@ function tileBG(bgImageFile,bgWidth,bgHeight)
 
 	tiledBG:toBack() --make sure its on the background
 	
-   print ("TileBG: Placed " .. bgCount .. " images on background.")
-   print ( "textureMemoryUsed: " .. system.getInfo( "textureMemoryUsed" ) )
+	   --print ("TileBG: Placed " .. bgCount .. " images on background.")
+	   --print ( "textureMemoryUsed: " .. system.getInfo( "textureMemoryUsed" ) )
    
    	--a function to cleanup the bg
 	function tiledBG.removeBG ()
 		if tiledBG.numChildren then
-			 print ("TileBG: Removing " .. tiledBG.numChildren .. " images from background.")
+			 --print ("TileBG: Removing " .. tiledBG.numChildren .. " images from background.")
 			while tiledBG.numChildren > 0 do   -- we have have tiles left in the tiledbg group, so first clean them out		
 					tiledBG:remove(tiledBG.numChildren) -- clean out the last member of the group (work from the top down!)
 			end
 		end	
 		tiledBG:removeSelf() --whats left is now an empty group. remove it.
-	    print ("TileBG: Removed background.")
+	    	--print ("TileBG: Removed background.")
 		return
 	end
  

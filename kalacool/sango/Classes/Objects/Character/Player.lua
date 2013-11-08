@@ -40,14 +40,17 @@ function new(config)
 	
 	end
 	
-	
+	function Player.setpreCollision()
+    	Player.image:addEventListener( "preCollision")
+    end
 	
 	function Player.shoot( event )
 
 		
 		local phase = event.phase
 		if "began" == phase then
-			
+			Player.image:removeEventListener( "preCollision" )
+			timer.performWithDelay( 50, Player.setpreCollision ,1 )
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true)then
 				Player.Magazine.pop()	
 				local coolX= -camera.x+event.x-Player.image.x
@@ -112,6 +115,8 @@ function new(config)
 	function Player:setPlayerShow()
     	scene:dispatchEvent( {name='onPlayerShow',target = Player} )
     end
+
+   
 
 	Runtime:addEventListener( "touch", Player.shoot)
 	Runtime:addEventListener( "enterFrame", Player.norotate)
