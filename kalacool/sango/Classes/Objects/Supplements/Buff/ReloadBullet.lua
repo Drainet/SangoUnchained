@@ -6,7 +6,7 @@ function new(config)
 	local scene = scene
 
 	-- set attribute of Item
-	Item.body = display.newImage("kalacool/sango/image/Supplement/shootFaster.jpg")
+	Item.body = display.newImage("kalacool/sango/image/Supplement/reloadBullet.png")
 	Item.image:insert(Item.body)
 	Item.body.x = Item.image.x
 	Item.body.y = Item.image.y
@@ -17,7 +17,6 @@ function new(config)
 	physics.addBody(Item.image,"static", {Filter = Item.Filter})
 
 	-- buff effect   -> attack speed up
-	Item.newRate = 0.5
 	Item.buffTime = 5000
 	
 	-- buff icon collision 
@@ -27,18 +26,16 @@ function new(config)
 		
 		--set icon cooldown
 		timer.performWithDelay(0, Item.coolDown)
-
-		Item.oldRate = event.other.Magazine.rate
-		event.other.Magazine.rate = Item.newRate
 		Item.effectTarget = event.other
-
+		event.other.Magazine.specialReload = true
+		print( "reload!!!!!" )
 		timer.performWithDelay( Item.buffTime, Item.effectCallback)
 		end
 	end	
 
 	-- buff effect turn down
 	function Item.effectCallback()
-		Item.effectTarget.Magazine.rate = Item.oldRate
+		Item.effectTarget.Magazine.specialReload = false
 		timer.performWithDelay(Item.buffTime , Item.renew)
 	end
 

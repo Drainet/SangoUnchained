@@ -3,7 +3,7 @@
 module(..., package.seeall)
 require("kalacool.sango.Set.WorldSet")
 
-Supply =  require('kalacool.sango.Classes.Objects.Supplements.Buff.ShootFaster')
+require('kalacool.sango.set.SupplementSet')
 function CreateLevel(physics)
 
     display.setDefault( 'background', 0, 0, 0 )
@@ -76,8 +76,10 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object25"].image)
 
  --set supplements in game
- level.layers["InteractiveWorld"].objects["object26"] = Supply.new({x=324,y=600})
+ level.layers["InteractiveWorld"].objects["object26"] = SupplementSet.new_Sup_ShootFaster({x=324,y=600})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object26"].image)
+ level.layers["InteractiveWorld"].objects["object27"] = SupplementSet.new_Sup_MoreLife({x=390,y=600})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object27"].image)
 
 
     level:insert(level.layers["StaticWorld"])

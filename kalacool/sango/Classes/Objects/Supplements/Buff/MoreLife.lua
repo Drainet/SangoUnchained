@@ -6,42 +6,33 @@ function new(config)
 	local scene = scene
 
 	-- set attribute of Item
-	Item.body = display.newImage("kalacool/sango/image/Supplement/shootFaster.jpg")
+	Item.body = display.newImage("kalacool/sango/image/Supplement/moreLife.png")
 	Item.image:insert(Item.body)
 	Item.body.x = Item.image.x
 	Item.body.y = Item.image.y
 	Item.image.x = config.x
 	Item.image.y = config.y
-	
 
 	physics.addBody(Item.image,"static", {Filter = Item.Filter})
 
-	-- buff effect   -> attack speed up
-	Item.newRate = 0.5
-	Item.buffTime = 5000
-	
+	-- buff effect  -> add one more life to player
+	Item.addLifeNum = 1
+
 	-- buff icon collision 
 	function Item.image.preCollision(self, event)
 		if(event.other.type == "player") then
+		-- set icon not collision with Player
 		event.contact.isEnabled = false
-		
-		--set icon cooldown
+
+		-- set icon cooldown 
 		timer.performWithDelay(0, Item.coolDown)
 
-		Item.oldRate = event.other.Magazine.rate
-		event.other.Magazine.rate = Item.newRate
-		Item.effectTarget = event.other
-
-		timer.performWithDelay( Item.buffTime, Item.effectCallback)
+		event.other.heart.max = event.other.heart.max + Item.addLifeNum
+		Item.addLifeNum = Item.addLifeNum - 1
+		event.other.heart.full()
+		timer.performWithDelay(20000, Item.renew)
 		end
 	end	
-
-	-- buff effect turn down
-	function Item.effectCallback()
-		Item.effectTarget.Magazine.rate = Item.oldRate
-		timer.performWithDelay(Item.buffTime , Item.renew)
-	end
-
 
 	Item.image:addEventListener( "preCollision")
 
