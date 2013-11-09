@@ -29,15 +29,16 @@ function new(config)
 	Player.image.type="player"
 	Player.alive=true
 	Player.heart=heartClass.new(3)
-	Player.lastCheckPoint=config
-
+	Player.lastCheckPoint=config	
+	Player.image.heart = Player.heart
 	
 	function Player.setgun(name,num,rate,reload)
 		Player.Weapon=Weapon.newgun(name,num,rate,reload)
 		Player.bullet=Player.Weapon.bullet
 		Player.Magazine = Player.Weapon.magazine
+		Player.image.Magazine = Player.Weapon.magazine
 		Player.Magazine.start()
-	
+
 	end
 	
 	function Player.setpreCollision()

@@ -23,7 +23,7 @@ local cannon = Monster.new()
     cannon.image.y = config.y
 
     -- add physics attribute
-    local Filter = { categoryBits = 1, maskBits = 3 } 
+    local Filter = { categoryBits = 4, maskBits = 3 } 
     physics.addBody(cannon.image,"static",{density = 3,filter = Filter})
 
 function cannon:newAI()

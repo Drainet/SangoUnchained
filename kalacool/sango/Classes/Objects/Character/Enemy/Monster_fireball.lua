@@ -22,7 +22,7 @@ local fireball = Monster.new()
     fireball.image.y = config.y
 
     -- add physics attribute
-    local Filter = { categoryBits = 1, maskBits = 2 } 
+    local Filter = { categoryBits = 4, maskBits = 2 }   -- collision with {Player , ENV object}
     physics.addBody(fireball.image,"dynamic",{density = 3,filter = Filter})
     fireball.image.isFixedRotation = true
     -- set monster float

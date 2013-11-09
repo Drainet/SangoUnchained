@@ -2,6 +2,8 @@
 
 module(..., package.seeall)
 require("kalacool.sango.Set.WorldSet")
+
+require('kalacool.sango.set.SupplementSet')
 function CreateLevel(physics)
 
     display.setDefault( 'background', 0, 0, 0 )
@@ -75,6 +77,12 @@ level.layers["InteractiveWorld"].objects = {}
 
  level.layers["InteractiveWorld"].objects["object26"] = WorldSet.newFloatingFloor({x=800,y=672})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object26"].image)
+ --set supplements in game
+ level.layers["InteractiveWorld"].objects["object28"] = SupplementSet.new_Sup_ShootFaster({x=324,y=600})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object28"].image)
+ level.layers["InteractiveWorld"].objects["object27"] = SupplementSet.new_Sup_MoreLife({x=390,y=600})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object27"].image)
+
 
     level:insert(level.layers["StaticWorld"])
 
