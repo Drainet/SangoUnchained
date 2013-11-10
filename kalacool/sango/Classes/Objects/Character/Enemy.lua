@@ -36,7 +36,6 @@ function new()
                 if(Enemy.HP > 1) then
                     Enemy:hurt(1)
                 else
-                    Enemy.AI:stop()
                     Enemy:dead()
                 end
 
@@ -44,13 +43,14 @@ function new()
         end
     end
 
-
-    function Enemy.norotate()
-    	Enemy.image.rotation = 0
+    function Enemy:removeAllEvent()
+        Enemy:dead()
     end
+
     function Enemy:dead()
         Enemy.alive = false
         Enemy.hide()
+        Enemy.AI:stop()
         Enemy.dispose()
     end
     
@@ -58,13 +58,14 @@ function new()
 
     Enemy.collision = Enemy.onCollision
     Enemy.image:addEventListener("collision", Enemy)
-    Runtime:addEventListener( "enterFrame", Enemy.norotate )
+
     scene:addEventListener( 'onPlayerShow', Enemy )
     scene:addEventListener( 'onPlayerHide', Enemy )
+    scene:addEventListener('removeAllEvent',Enemy)
 
     Enemy.listeners[1] = {event='onPlayerShow' , listener = Enemy}
     Enemy.listeners[2] = {event='onPlayerHide' , listener = Enemy}
-    Enemy.listeners[3] = {enent="enterFrame" , listener = Enemy.norotate}
-    Enemy.listeners[4] = {event="collision", listener = Enemy}
+    Enemy.listeners[3] = {event="collision", listener = Enemy}
+    Enemy.listeners[4] = {event='removeAllEvent', listener = Enemy}
     return Enemy
 end

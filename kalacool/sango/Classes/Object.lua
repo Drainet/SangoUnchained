@@ -31,6 +31,7 @@ function new()
 		--hide this object
 		for i = 1,table.maxn( Object.listeners) do
 			--print(Object.listeners[i].event)
+			scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
 			Runtime:removeEventListener(Object.listeners[i].event, Object.listeners[i].listener)
 		end
 		display.remove( Object.image )
