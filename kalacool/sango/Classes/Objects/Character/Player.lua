@@ -31,26 +31,99 @@ function new(config)
 	Player.heart=heartClass.new(3)
 	Player.lastCheckPoint=config
 
-	
-	function Player.setgun(name,num,rate,reload)
-		Player.Weapon=Weapon.newgun(name,num,rate,reload)
+-------設定槍 start---
+	function Player.setgun(name)
+		if(Player.Weapon~=nil)then
+			display.remove( Player.Weapon.magazine.image )
+			
+		end
+		
+		Player.Weapon=Weapon.newgun(name)
 		Player.bullet=Player.Weapon.bullet
 		Player.Magazine = Player.Weapon.magazine
 		Player.Magazine.start()
 	
 	end
+-------設定槍 end---
+
+--------碰撞 start---
 	
 	function Player.setpreCollision()
     	Player.image:addEventListener( "preCollision")
+    	
+    	Player.stickTimer=nil
     end
+
+    function Player.image:preCollision(event )
+
+    	---腳快撞到粗糙安全物體表面----
+    	if(event.other.damage=="safe" and event.other.surface=="rough" and (self.y+self.height/2-20)<(event.other.y-event.other.height/2) ) then
+    		--print( self.y+self.height/2)
+    		--print( event.other.y-event.other.height/2)
+    		local vx, vy = event.other:getLinearVelocity()
+    		self:setLinearVelocity( vx, vy )
+
+    	end
+
+
+	end
+
+
+
+	function Player.image:collision(event )
 	
+		if ( event.phase == "began" ) then
+			---腳撞到安全物體表面----
+			if(event.other.damage=="safe" and (self.y+self.height/2-20)<(event.other.y-event.other.height/2) ) then
+				Player.body:setSequence( "normal" )
+				Player.body:play()
+				Player.Magazine.onGround()
+
+				--timer.resume( Player.Magazine.reloadTimer )
+			end
+			
+	    	
+			
+			---撞到致命物體表面----
+			if( event.other.damage=="fatal") then
+
+				timer.performWithDelay( 0, Player.dead,1 )
+
+			end
+
+
+		elseif ( event.phase == "ended" ) then
+
+			---腳離開安全物體表面----
+			if(event.other.damage=="safe"  and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)) then
+				Player.body:setSequence( "jump" )
+				Player.body:play()
+				Player.Magazine.onAir()
+
+			end
+
+		end
+	
+	end
+--------碰撞 end---
+
+--------開槍 start---
 	function Player.shoot( event )
 
 		
 		local phase = event.phase
 		if "began" == phase then
 			Player.image:removeEventListener( "preCollision" )
-			timer.performWithDelay( 50, Player.setpreCollision ,1 )
+
+			if(Player.stickTimer~=nil)then
+				timer.cancel( Player.stickTimer )
+				Player.stickTimer=nil
+			end
+
+			if(Player.stickTimer==nil)then
+				Player.stickTimer=timer.performWithDelay( 10, Player.setpreCollision ,1 )
+			end
+
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true)then
 				Player.Magazine.pop()	
 				local coolX= -camera.x+event.x-Player.image.x
@@ -73,23 +146,38 @@ function new(config)
 					Player.hang.rotation=  angle*-1
 				end
 				camera:insert(bulletgroup)
+
+				local vx, vy = Player.image:getLinearVelocity()
+
+				local limit=750
+				local standard=550
+
+				if(vx-standard*(coolX)/ratio>limit)then
+
+					Player.image:setLinearVelocity( limit, -standard*(coolY)/ratio )
+
+				elseif(vx-standard*(coolX)/ratio<-limit)then
+					Player.image:setLinearVelocity( -limit, -standard*(coolY)/ratio )
+				else 
+					
+					Player.image:setLinearVelocity( vx-standard*(coolX)/ratio, -standard*(coolY)/ratio )
+				end
 								
-				Player.image:setLinearVelocity( -600*(coolX)/ratio, -600*(coolY)/ratio )
-				--Player.image:applyLinearImpulse( -6000*(coolX)/ratio, -6000*(coolY)/ratio,Player.image.x,Player.image.y )
+				
+
+				--Player.image:applyLinearImpulse( -6500*(coolX)/ratio, -6500*(coolY)/ratio,Player.image.x,Player.image.y )
 
 			end
 		end
 
 	end
 		
-	
+--------開槍 end---
 
 	
-	function Player:switchWeapon( event )
 
-		
 
-	end
+-------復活 死亡 start---
 
 	function Player:respawn( event )
 		Player.show(Player.lastCheckPoint)
@@ -101,15 +189,22 @@ function new(config)
 
 		Player.alive=false
 		Player.heart.zero()
-		Player.image.bodyType="static"	
-		timer.performWithDelay( 500, Player.respawn,1 )
+		physics.removeBody( Player.image )
+		Player.Magazine:cancelReload()
+		Player.body:setSequence( "dead" )
+		Player.body:play()
+		timer.performWithDelay( 1000, Player.respawn,1 )
 
 	end
+
+-------復活 死亡 end---
 
 	-- Send message to All monster to trace player's path
 	function Player:setPlayerShow()
     	scene:dispatchEvent( {name='onPlayerShow',target = Player} )
     end
+
+
 
    
 

@@ -40,11 +40,7 @@ function new(num,x,y,vx,vy)
         oneshot.isBullet = true
         oneshot.gravityScale = 0
 
-        --[[function oneshot.norotate( event )
-	
-			
-		
-		end]]
+
         oneshot.rotation=oneshot.angle
 
         oneshot.isFixedRotation = true
@@ -82,18 +78,18 @@ local function crash( event )
 			local x= 100*Cos(event.object1.angle*Pi/180)+event.object1.x
 			local y= 100*Sin(event.object1.angle*Pi/180)+event.object1.y
 			Animation:newSpark(x,y)
-			-- Animation:newFire(event.object1.x,event.object1.y)
+			
 			display.remove( event.object1 )
 		elseif(event.object2.name=="oneshot")then
 			local x= 80*Cos(event.object2.angle*Pi/180)+event.object2.x
 			local y= 80*Sin(event.object2.angle*Pi/180)+event.object2.y
 			Animation:newSpark(x,y)
-			--Animation:newFire(event.object2.x,event.object2.y)
+			
 			display.remove( event.object2 )
 		end
 
 	elseif ( event.phase == "ended" ) then
-		-- print( "ended: " .. event.object1.myName .. " & " .. event.object2.myName )
+
 
 	end
 

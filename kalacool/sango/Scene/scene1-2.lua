@@ -27,7 +27,7 @@ function scene:createScene( event )
 
     require "kalacool.sango.Set.PlayerSet"
 
-    dog=PlayerSet.newDoggy({x=200,y=123})
+    dog=PlayerSet.newCat({x=200,y=123})
 
 
     camera:insert(bg)

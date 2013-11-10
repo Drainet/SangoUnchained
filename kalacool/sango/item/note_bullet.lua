@@ -30,7 +30,7 @@ function new(num,x,y,vx,vy)
         oneshot.y = 50*Sin(dangle*Pi/180)+y+math.random(-5,5)
 		oneshot.angle=dangle
 		
-
+        
         --oneshot.name="oneshot"
 
         oneshot:setStrokeColor(0,0,0)
@@ -38,7 +38,8 @@ function new(num,x,y,vx,vy)
         physics.addBody( oneshot,{ density=20.0, friction=0, bounce=0.8,  radius=12 , filter=Filter} )
         --"kinematic",
         oneshot.isBullet = true
-        
+        oneshot.name="oneshot"
+        oneshot.type="bullet"
         
         --oneshot.rotation=dangle
 		

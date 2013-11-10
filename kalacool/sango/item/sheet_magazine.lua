@@ -5,18 +5,24 @@ local magazineClass = require "kalacool.sango.item.magazine"
 
 
 
-function new(num,rate,reload)
+function new(num,rate,reloadCool,reloadSpeed)
     
-	local Magazine = magazineClass.new(num,rate,reload)
+	local Magazine = magazineClass.new(num,rate,reloadCool,reloadSpeed)
 	Magazine.shellImage="kalacool/sango/image/UI/note_shell.png"
 	
 	
+	--[[function Magazine.startReload( )
+		
+		for i = Magazine.ammo+1,Magazine.ammoMax do
+			Magazine.reload( )
+		end
 	
+	end]]
 	
 	
 
 
-	function Magazine:pop()
+	--[[function Magazine:pop()
 		Magazine.reloadable=true
 		if(Magazine.ammo>0)then
 			display.remove(Magazine[Magazine.ammo])
@@ -32,7 +38,7 @@ function new(num,rate,reload)
 		end
 		
 		
-	end
+	end]]
 	
 	return Magazine
 
