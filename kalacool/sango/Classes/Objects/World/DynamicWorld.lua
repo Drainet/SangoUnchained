@@ -11,6 +11,5 @@ function new()
 
     DynamicWorld = WorldClass.new()
 
-
     return DynamicWorld
 end

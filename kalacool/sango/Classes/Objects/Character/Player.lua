@@ -73,8 +73,7 @@ function new(config)
 				elseif(Player.image.xScale == -1)then
 					Player.hang.rotation=  angle*-1
 				end
-				camera:insert(bulletgroup)
-								
+				camera:insert(bulletgroup)			
 				Player.image:setLinearVelocity( -600*(coolX)/ratio, -600*(coolY)/ratio )
 				--Player.image:applyLinearImpulse( -6000*(coolX)/ratio, -6000*(coolY)/ratio,Player.image.x,Player.image.y )
 

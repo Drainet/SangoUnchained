@@ -13,8 +13,7 @@ function new(config)
     Box.image.damage = "safe"
     Box.image.surface = "smooth"
     Box.show(config)
-    physics.addBody( Box.image, "dynamic", { density=5, friction=1, bounce=0.9} )
-
+    physics.addBody( Box.image, "dynamic", { density=5, friction=1, bounce=0.9 } )
 
     return Box
 end

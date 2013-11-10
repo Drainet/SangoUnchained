@@ -75,7 +75,7 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["InteractiveWorld"].objects["object25"] = WorldSet.newWoodenDoor({x=10098,y=708})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object25"].image)
 
- level.layers["InteractiveWorld"].objects["object26"] = WorldSet.newFloatingFloor({x=800,y=672})
+ level.layers["InteractiveWorld"].objects["object26"] = WorldSet.newfloatingFloor({x=800,y=672})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object26"].image)
  --set supplements in game
  level.layers["InteractiveWorld"].objects["object28"] = SupplementSet.new_Sup_ShootFaster({x=324,y=600})

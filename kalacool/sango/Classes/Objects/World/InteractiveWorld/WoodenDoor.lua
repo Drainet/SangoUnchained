@@ -15,5 +15,6 @@ function new(config)
     WoodenDoor.show(config)
     physics.addBody( WoodenDoor.image,  "kinematic", { density=1, friction=0.3, bounce=0} )
 
+    
     return WoodenDoor
 end

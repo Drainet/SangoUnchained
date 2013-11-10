@@ -10,8 +10,6 @@ ObjectClass = require('kalacool.sango.Classes.Object')
 function new()
 
 	Character = ObjectClass.new()
-    
+        
 	return Character
 end
-
-
