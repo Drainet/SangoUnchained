@@ -3,7 +3,7 @@
 module(..., package.seeall)
 
 local scene = scene
-WorldClass = require('kalacool.sango.Classes.Objects.World')
+local WorldClass = require('kalacool.sango.Classes.Objects.World')
 
 --INSTANCE FUNCTIONS
 function new()

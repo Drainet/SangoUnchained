@@ -1,17 +1,17 @@
 local storyboard = require( "storyboard" )
-local scene = storyboard.newScene()
-
+local widget = require( "widget" )
+scene = storyboard.newScene()
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
-
     local screenGroup = self.view
+    
+----------------- Background Start -------------
+    local background = display.newImage( "kalacool/sango/image/UI/Menu/menu_background.png" )
+    screenGroup:insert( background )
+----------------- Background End -------------
 
-    image = display.newImage( "kalacool/sango/image/UI/Menu/menu_background.png" )
-    screenGroup:insert( image )
 
-    local widget = require( "widget" )
-
-    --buttonHandler
+----------------- buttonHandler Start -------------
     local buttonHandler = function( event )
         if event.target.id == "Play" then
             storyboard.gotoScene( "kalacool.sango.Scene.LevelSelect", "fade", 200  )
@@ -20,12 +20,14 @@ function scene:createScene( event )
         elseif event.target.id == "Option" then
             storyboard.gotoScene( "kalacool.sango.Scene.Option", "fade", 200  )
         elseif event.target.id == "Exit" then
-            --Exit  Game
+            os.exit()
         end
-
     end
+----------------- buttonHandler End -------------
 
-    buttonPlay = widget.newButton
+
+----------------- Menu Buttion Start -------------
+    local buttonPlay = widget.newButton
         {
             id = "Play",
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
@@ -33,10 +35,10 @@ function scene:createScene( event )
             label = "Play",
             fontSize = 28,
             emboss = true,
-            onEvent = buttonHandler,
+            onPress = buttonHandler,
         }
 
-    buttonAchievement = widget.newButton
+    local buttonAchievement = widget.newButton
         {
             id = "Achievement",
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
@@ -44,10 +46,10 @@ function scene:createScene( event )
             label = "Achievement",
             fontSize = 28,
             emboss = true,
-            onEvent = buttonHandler,
+            onPress = buttonHandler,
         }
 
-    buttonOption = widget.newButton
+    local buttonOption = widget.newButton
         {
             id = "Option",
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
@@ -55,10 +57,10 @@ function scene:createScene( event )
             label = "Option",
             fontSize = 28,
             emboss = true,
-            onEvent = buttonHandler,
+            onPress = buttonHandler,
         }
 
-    buttonExit = widget.newButton
+    local buttonExit = widget.newButton
         {
             id = "Exit",
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
@@ -66,43 +68,38 @@ function scene:createScene( event )
             label = "Exit",
             fontSize = 28,
             emboss = true,
-            onEvent = buttonHandler,
+            onPress = buttonHandler,
         }
 
-    buttonPlay.x =display.contentWidth/2; buttonPlay.y = display.contentHeight/2-100
-    buttonAchievement.x =display.contentWidth/2; buttonAchievement.y = display.contentHeight/2
-    buttonOption.x =display.contentWidth/2; buttonOption.y = display.contentHeight/2+100
-    buttonExit.x =display.contentWidth/2; buttonExit.y = display.contentHeight/2+200
+    buttonPlay.x =display.contentWidth/2        ; buttonPlay.y = display.contentHeight/2        -100
+    buttonAchievement.x =display.contentWidth/2 ; buttonAchievement.y = display.contentHeight/2
+    buttonOption.x =display.contentWidth/2      ; buttonOption.y = display.contentHeight/2      +100
+    buttonExit.x =display.contentWidth/2        ; buttonExit.y = display.contentHeight/2        +200
 
     screenGroup:insert( buttonPlay )
     screenGroup:insert( buttonAchievement )
     screenGroup:insert( buttonOption )
     screenGroup:insert( buttonExit )
-
+----------------- Menu Buttion End -------------
 end
 
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
 
-
 end
 
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
     local group = self.view
-
-
+    storyboard.removeScene("kalacool.sango.Scene.Menu")
 end
 
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroyScene( event )
     local group = self.view
 
-
 end
-
-
 
 -- "createScene" event is dispatched if scene's view does not exist
 scene:addEventListener( "createScene", scene )

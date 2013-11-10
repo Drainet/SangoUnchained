@@ -56,14 +56,11 @@ function new()
     
 
 
-
     Enemy.collision = Enemy.onCollision
     Enemy.image:addEventListener("collision", Enemy)
     Runtime:addEventListener( "enterFrame", Enemy.norotate )
     scene:addEventListener( 'onPlayerShow', Enemy )
     scene:addEventListener( 'onPlayerHide', Enemy )
-    
-   
 
     Enemy.listeners[1] = {event='onPlayerShow' , listener = Enemy}
     Enemy.listeners[2] = {event='onPlayerHide' , listener = Enemy}

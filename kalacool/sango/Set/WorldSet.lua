@@ -1,4 +1,3 @@
-
 local FloorClass = require ("kalacool.sango.Classes.Objects.World.StaticWorld.Floor")
 local Thorn = require ("kalacool.sango.Classes.Objects.World.StaticWorld.Thorn")
 local Box = require ("kalacool.sango.Classes.Objects.World.DynamicWorld.Box")
@@ -15,7 +14,6 @@ local par_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.par
 WorldSet={}
 
 --******************* Static World *******************
-
 function WorldSet.newFloorClass(config)
     return FloorClass.new(config)
 end
@@ -56,7 +54,7 @@ function WorldSet.newSpinningCog(config)
     return SpinningCog.new(config)
 end
 
-function WorldSet.newFloatingFloor(config)
+function WorldSet.newfloatingFloor(config)
     return FloatingFloor.new(config)
 end
 
