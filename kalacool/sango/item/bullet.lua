@@ -12,13 +12,13 @@ local Cos   = math.cos
 local Ceil  = math.ceil
 local Atan2 = math.atan2
 
-function new(num,x,y,vx,vy)
+function new(x,y,vx,vy)
     Filter = { categoryBits = 2, maskBits = 1 }
     local bullet=display.newGroup()
 	local angle= (Atan2( vy,vx)*180/Pi)
 	
-	Animation:newSpark(70*Cos(angle*Pi/180)+x,70*Sin(angle*Pi/180)+y)
-    for i = 1,num do
+	--Animation:newSpark(70*Cos(angle*Pi/180)+x,70*Sin(angle*Pi/180)+y)
+    for i = 1,6 do
         local oneshot = display.newImageRect( "kalacool/sango/image/item/bullet.png",200,20 )
 		
 		
@@ -51,6 +51,34 @@ function new(num,x,y,vx,vy)
         oneshot:setLinearVelocity(2000*Cos(dangle*Pi/180), 2000*Sin(dangle*Pi/180) )
 
         bullet:insert(oneshot)
+
+        function oneshot:collision( event )
+
+			if ( event.phase == "began" ) then
+				--if(event.object1.name=="oneshot") then
+				
+					local x= 100*Cos(self.angle*Pi/180)+self.x
+					local y= 100*Sin(self.angle*Pi/180)+self.y
+					Animation:newSpark(x,y)
+					
+					display.remove( self )
+				--[[elseif(event.object2.name=="oneshot")then
+					local x= 80*Cos(event.object2.angle*Pi/180)+event.object2.x
+					local y= 80*Sin(event.object2.angle*Pi/180)+event.object2.y
+					Animation:newSpark(x,y)
+					
+					display.remove( event.object2 )
+				end]]
+
+			elseif ( event.phase == "ended" ) then
+
+
+			end
+
+		end
+
+		oneshot:addEventListener( "collision")
+
     end
 
 
@@ -70,31 +98,7 @@ function new(num,x,y,vx,vy)
     return bullet
 end
 
-local function crash( event )
 
-	if ( event.phase == "began" ) then
-		if(event.object1.name=="oneshot") then
-		
-			local x= 100*Cos(event.object1.angle*Pi/180)+event.object1.x
-			local y= 100*Sin(event.object1.angle*Pi/180)+event.object1.y
-			Animation:newSpark(x,y)
-			
-			display.remove( event.object1 )
-		elseif(event.object2.name=="oneshot")then
-			local x= 80*Cos(event.object2.angle*Pi/180)+event.object2.x
-			local y= 80*Sin(event.object2.angle*Pi/180)+event.object2.y
-			Animation:newSpark(x,y)
-			
-			display.remove( event.object2 )
-		end
-
-	elseif ( event.phase == "ended" ) then
-
-
-	end
-
-end
-Runtime:addEventListener( "collision", crash)
 
 
 

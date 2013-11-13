@@ -12,7 +12,9 @@ function new(config)
 		Cat.body:play()
 		
 		Cat.setgun("notegun")
-		physics.addBody( Cat.image,{ density=40.0, friction=1, bounce=0,shape=Cat.Shape,filter=Cat.Filter} )
+		physics.addBody( Cat.image
+			,{ density=40.0, friction=1, bounce=0,shape=Cat.Shape,filter=Cat.Filter} 
+			,{ density=40.0, friction=1, bounce=0,shape=Cat.foot,filter=Cat.Filter} )
 		Cat.image.isFixedRotation = true
 		Cat.alive=true
 		Cat.heart.full()
@@ -55,7 +57,9 @@ function new(config)
 	local shapew=38
 	local shapeh=72
 
-	Cat.Shape= { -shapew,-shapeh, shapew,-shapeh, shapew,shapeh, -shapew,shapeh }
+	Cat.Shape= { -shapew,-shapeh, shapew,-shapeh, shapew,66, -shapew,66 }
+	Cat.foot= { -shapew+2,66, shapew-2,66, shapew-2,shapeh, -shapew+2,shapeh }
+	--physics.setDrawMode( "hybrid" )
     
 	
 	hang.x=Cat.image.x+27

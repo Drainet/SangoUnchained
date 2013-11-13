@@ -27,13 +27,13 @@ function scene:createScene( event )
 
     require "kalacool.sango.Set.PlayerSet"
 
-    dog=PlayerSet.newCat({x=200,y=123})
-
+    dog=PlayerSet.newDoggy({x=250,y=123})
+    --cat=PlayerSet.newCat({x=200,y=123})
 
     camera:insert(bg)
     camera:insert(myLevel)
     camera:insert(dog.image)
-
+    --camera:insert(cat.image)
 
     local function onEveryFrame()
             movex = myLevel.x - dog.image.x

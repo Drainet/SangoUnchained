@@ -4,7 +4,7 @@ CharacterClass = require('kalacool.sango.Classes.Objects.Character')
 require "kalacool.sango.Set.Weapon"
 
 local heartClass = require "kalacool.sango.HUD.Heart"
-
+local switchClass = require "kalacool.sango.HUD.Switch"
 
 local Pi    = math.pi
 local Sqr   = math.sqrt
@@ -26,15 +26,20 @@ function new(config)
 
     local Player = CharacterClass.new()
 	Player.image=display.newGroup()
+	--Player.HUD=display.newGroup()
 	Player.image.type="player"
 	Player.alive=true
 	Player.heart=heartClass.new(3)
+	Player.switch=switchClass.new()
 	Player.lastCheckPoint=config
+	Player.isSticky=true
 
 -------設定槍 start---
 	function Player.setgun(name)
 		if(Player.Weapon~=nil)then
+			Player.Weapon.magazine.cancelReload()
 			display.remove( Player.Weapon.magazine.image )
+			display.remove( Player.Weapon.sprite )
 			
 		end
 		
@@ -42,6 +47,16 @@ function new(config)
 		Player.bullet=Player.Weapon.bullet
 		Player.Magazine = Player.Weapon.magazine
 		Player.Magazine.start()
+
+		Player.hang = Player.Weapon.sprite
+
+    	Player.hang.xReference=25
+    	Player.hang.yReference=-11
+
+    	Player.image:insert(Player.hang)
+
+    	--Player.hang.x=Player.image.x+25-config.x
+    	--Player.hang.y=Player.image.y-11-config.y
 	
 	end
 -------設定槍 end---
@@ -49,7 +64,7 @@ function new(config)
 --------碰撞 start---
 	
 	function Player.setpreCollision()
-    	Player.image:addEventListener( "preCollision")
+    	Player.isSticky=true
     	
     	Player.stickTimer=nil
     end
@@ -57,7 +72,8 @@ function new(config)
     function Player.image:preCollision(event )
 
     	---腳快撞到粗糙安全物體表面----
-    	if(event.other.damage=="safe" and event.other.surface=="rough" and (self.y+self.height/2-20)<(event.other.y-event.other.height/2) ) then
+    	if( Player.isSticky == true and event.other.damage=="safe" and event.other.surface=="rough" and event.selfElement == 2) then
+    		--and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)
     		--print( self.y+self.height/2)
     		--print( event.other.y-event.other.height/2)
     		local vx, vy = event.other:getLinearVelocity()
@@ -74,7 +90,7 @@ function new(config)
 	
 		if ( event.phase == "began" ) then
 			---腳撞到安全物體表面----
-			if(event.other.damage=="safe" and (self.y+self.height/2-20)<(event.other.y-event.other.height/2) ) then
+			if(event.other.damage=="safe" and event.selfElement == 2 ) then
 				Player.body:setSequence( "normal" )
 				Player.body:play()
 				Player.Magazine.onGround()
@@ -95,7 +111,7 @@ function new(config)
 		elseif ( event.phase == "ended" ) then
 
 			---腳離開安全物體表面----
-			if(event.other.damage=="safe"  and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)) then
+			if(event.other.damage=="safe" and event.selfElement == 2) then
 				Player.body:setSequence( "jump" )
 				Player.body:play()
 				Player.Magazine.onAir()
@@ -113,7 +129,9 @@ function new(config)
 		
 		local phase = event.phase
 		if "began" == phase then
-			Player.image:removeEventListener( "preCollision" )
+
+			Player.isSticky=false
+			--Player.image:removeEventListener( "preCollision" )
 
 			if(Player.stickTimer~=nil)then
 				timer.cancel( Player.stickTimer )
@@ -121,15 +139,17 @@ function new(config)
 			end
 
 			if(Player.stickTimer==nil)then
-				Player.stickTimer=timer.performWithDelay( 10, Player.setpreCollision ,1 )
+				Player.stickTimer=timer.performWithDelay( 150, Player.setpreCollision ,1 )
 			end
 
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true)then
+				Player.hang:setSequence( "shoot" )
+				Player.hang:play()
 				Player.Magazine.pop()	
 				local coolX= -camera.x+event.x-Player.image.x
 				local coolY= -camera.y+event.y-Player.image.y
 				local ratio = math.sqrt((coolX)^2+(coolY)^2)
-				local bulletgroup=Player.bullet.new(6,Player.image.x,Player.image.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
+				local bulletgroup=Player.bullet.new(Player.image.x , Player.image.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
 
 				local angle= (Atan2( coolY,coolX)*180/Pi)
 
@@ -149,8 +169,8 @@ function new(config)
 
 				local vx, vy = Player.image:getLinearVelocity()
 
-				local limit=750
-				local standard=550
+				local limit=Player.Weapon.recoil+200
+				local standard=Player.Weapon.recoil
 
 				if(vx-standard*(coolX)/ratio>limit)then
 
@@ -204,16 +224,18 @@ function new(config)
     	scene:dispatchEvent( {name='onPlayerShow',target = Player} )
     end
 
+    function Player:onSwitchTouch(event)
+    	Player.setgun( Player.pack[Player.switch.state] )
+    end
 
-
+   
    
 
 	Runtime:addEventListener( "touch", Player.shoot)
-
-    
+	scene:addEventListener( 'onSwitchTouch', Player )
 
 	Player.listeners[1] = {event="touch",listener=Player.shoot}
-
+	Player.listeners[2] = {event='onSwitchTouch',listener=Player}
 
 	
  
