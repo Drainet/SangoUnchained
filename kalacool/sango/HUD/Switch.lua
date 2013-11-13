@@ -31,7 +31,7 @@ function new(Player)
 	        Player.pack[switch.state].isonAir=Player.Weapon.magazine.isonAir
 	        Player.setgun()
 	    end
-	    
+	    return true
 	end 
 	switch:addEventListener( "touch",switch)	
 	return switch
