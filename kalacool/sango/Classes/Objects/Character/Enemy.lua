@@ -34,7 +34,7 @@ function new()
         if (event.phase == "began") then
             if (event.other.type == "bullet") then
                 if(Enemy.HP > 1) then
-                    print( Enemy.HP )
+                    
                     Enemy:hurt(1)
                 else
                   

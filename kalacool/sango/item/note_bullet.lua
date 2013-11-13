@@ -12,13 +12,13 @@ local Cos   = math.cos
 local Ceil  = math.ceil
 local Atan2 = math.atan2
 
-function new(num,x,y,vx,vy)
+function new(x,y,vx,vy)
     Filter = { categoryBits = 2, maskBits = 1 }
     local bullet=display.newGroup()
 	local angle= (Atan2( vy,vx)*180/Pi)
 	
 	Animation:newSpark(70*Cos(angle*Pi/180)+x,70*Sin(angle*Pi/180)+y)
-    for i = 1,num do
+    for i = 1,5 do
         local oneshot = display.newImage( "kalacool/sango/image/item/note.png" )
 		
 		
@@ -30,15 +30,16 @@ function new(num,x,y,vx,vy)
         oneshot.y = 50*Sin(dangle*Pi/180)+y+math.random(-5,5)
 		oneshot.angle=dangle
 		
-
+        
         --oneshot.name="oneshot"
 
         oneshot:setStrokeColor(0,0,0)
         
-        physics.addBody( oneshot,{ density=20.0, friction=0, bounce=0.8,  radius=12 , filter=Filter} )
+        physics.addBody( oneshot,{ density=80.0, friction=0, bounce=0.8,  radius=12 , filter=Filter} )
         --"kinematic",
         oneshot.isBullet = true
-        
+        oneshot.name="oneshot"
+        oneshot.type="bullet"
         
         --oneshot.rotation=dangle
 		
