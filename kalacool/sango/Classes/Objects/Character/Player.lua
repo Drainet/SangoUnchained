@@ -30,12 +30,12 @@ function new(config)
 	Player.image.type="player"
 	Player.alive=true
 	Player.heart=heartClass.new(3)
-	Player.switch=switchClass.new()
+	Player.switch=switchClass.new(Player)
 	Player.lastCheckPoint=config
 	Player.isSticky=true
 
 -------設定槍 start---
-	function Player.setgun(name)
+	function Player.setgun()
 		if(Player.Weapon~=nil)then
 			Player.Weapon.magazine.cancelReload()
 			display.remove( Player.Weapon.magazine.image )
@@ -43,10 +43,20 @@ function new(config)
 			
 		end
 		
-		Player.Weapon=Weapon.newgun(name)
+		Player.Weapon=Weapon.newgun( Player.pack[Player.switch.state].name)
 		Player.bullet=Player.Weapon.bullet
 		Player.Magazine = Player.Weapon.magazine
+		Player.Magazine.isonAir= Player.pack[Player.switch.state].isonAir
+
+		local temp = Player.Magazine.ammoMax
+
+		if(Player.pack[Player.switch.state].nowNum ~= nil)then
+			Player.Magazine.ammoMax = Player.pack[Player.switch.state].nowNum
+		end
+		
+		Player.Magazine.isonAir= Player.pack[Player.switch.state].isonAir
 		Player.Magazine.start()
+		Player.Magazine.ammoMax = temp
 
 		Player.hang = Player.Weapon.sprite
 
@@ -232,10 +242,10 @@ function new(config)
    
 
 	Runtime:addEventListener( "touch", Player.shoot)
-	scene:addEventListener( 'onSwitchTouch', Player )
+	--scene:addEventListener( 'onSwitchTouch', Player )
 
 	Player.listeners[1] = {event="touch",listener=Player.shoot}
-	Player.listeners[2] = {event='onSwitchTouch',listener=Player}
+	--Player.listeners[2] = {event='onSwitchTouch',listener=Player}
 
 	
  

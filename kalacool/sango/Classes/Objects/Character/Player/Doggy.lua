@@ -11,9 +11,12 @@ function new(config)
 
     local Doggy = PlayerClass.new(config)
 
-    Doggy.pack={"shotgun","rifle"}
+    Doggy.pack = {}
     
 
+    
+    --Doggy.pack[1].isonAir=true
+    --Doggy.pack[2].isonAir=true
 	
 	
     
@@ -22,8 +25,11 @@ function new(config)
 		Doggy.body:setSequence( "jump" )
 		Doggy.body:play()
 
+		Doggy.pack[1]={name="shotgun",isonAir=true,nowNum=nil}
+    	Doggy.pack[2]={name="rifle",isonAir=true,nowNum=nil}
 
-		Doggy.setgun( Doggy.pack[Doggy.switch.state] )
+
+		Doggy.setgun( Doggy.pack[Doggy.switch.state].name )
 		--Doggy.setgun("rifle")
 		physics.addBody( Doggy.image
 			,{ density=40.0, friction=1, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}

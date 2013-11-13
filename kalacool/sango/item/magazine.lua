@@ -116,11 +116,11 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 	
 	function Magazine.start()
 		
-		for i = 1,num do
+		for i = 1,Magazine.ammoMax do
 			Magazine.reload( )
 		end
 		
-		
+		Magazine.reloadCoolTimer=timer.performWithDelay( Magazine.reloadCool, Magazine.reloadCoolDown,1 )
 	end
 		
 	return Magazine

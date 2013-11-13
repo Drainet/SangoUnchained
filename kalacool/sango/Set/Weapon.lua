@@ -56,7 +56,7 @@ function Weapon.newRifle()
 	gun.sprite = sprite
 	gun.magazine=magazineClass.new(1,600,1000,0,"kalacool/sango/image/UI/rifleShell.png")
 	gun.bullet= require "kalacool.sango.item.rifle_bullet"
-	gun.recoil=2000
+	gun.recoil=1200
 	return gun
 end
 
