@@ -150,7 +150,7 @@ function new(config)
 			if(Player.stickTimer==nil)then
 				Player.stickTimer=timer.performWithDelay( 150, Player.setpreCollision ,1 )
 			end
-			print(event.y)
+			-- print(event.y)
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
 				Player.hang:setSequence( "shoot" )
 				Player.hang:play()

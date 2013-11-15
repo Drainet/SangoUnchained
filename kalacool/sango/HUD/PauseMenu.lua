@@ -5,7 +5,7 @@ function new()
     local widget = require( "widget" )
     local storyboard = require( "storyboard" )
 	
-	local Content = display.newGroup()
+	Content = display.newGroup()
 
 ------------------- buttonHandler Start ---------------
 	local buttonHandler = function( event )
@@ -25,17 +25,16 @@ function new()
 
 
 ------------------- pauseButton Start ---------------
-        buttonPause = widget.newButton
-            {
-                id = "Pause",
-                defaultFile = "kalacool/sango/image/UI/pauseMenu/pauseButton.png",
-                onPress = buttonHandler,
-            }
+    buttonPause = widget.newButton
+        {
+            id = "Pause",
+            defaultFile = "kalacool/sango/image/UI/pauseMenu/pauseButton.png",
+            onPress = buttonHandler,
+        }
 
         buttonPause.x =display.contentWidth-40; buttonPause.y = 40
 
     Content:insert( buttonPause )
-
 ------------------- pauseButton End ---------------
 
 
@@ -122,7 +121,81 @@ function new()
 	end
 
     function Content.FreeView()      
-        
+        pauseMenu.isVisible   = false
+        ----------------- FreeView Start ---------------------
+            local freeView = display.newGroup()
+
+            Runtime:removeEventListener( "enterFrame", onEveryFrame ) -- 解除camera 固定觀看角色
+            ------------------- Swipe Function Start ---------------
+                local newX, newY  
+                local oldX, oldY   
+                 
+                local xDistance  
+                local yDistance  
+                 
+                function checkSwipeDirection()
+                 
+                        xDistance =  oldX - newX -- X 移動量
+                        yDistance =  oldY - newY -- Y 移動量
+                        
+                        camera.x = camera.x + xDistance
+                        camera.y = camera.y + yDistance     
+                end
+                 
+                function swipe(event)
+                        if event.phase == "began" then
+                            newX = event.x
+                            newY = event.y
+                        end
+                        
+                        if event.phase == "moved" then
+                            oldX = event.x 
+                            oldY = event.y
+                            checkSwipeDirection();
+                            newX = event.x
+                            newY = event.y
+                        end
+                end
+
+                Runtime:addEventListener("touch", swipe)
+            ------------------- Swipe Function End ---------------
+
+
+            ------------------- buttonHandler Start ---------------
+                local buttonHandler = function( event )
+                    if event.target.id == "freeViewBack" then
+                        freeView.freeViewBack()
+                    end
+                end
+            ------------------- buttonHandler End ---------------
+
+
+            ------------------- pauseButton Start ---------------
+                buttonBack = widget.newButton
+                {
+                    id = "freeViewBack",
+                    defaultFile = "kalacool/sango/image/UI/FreeView/buttonBlue.png",
+                    onPress = buttonHandler,
+                    label = "Resume",
+                    fontSize = 28,
+                    emboss = true,
+                }
+
+                buttonBack.x =display.contentWidth/2; buttonBack.y = display.contentHeight - 100
+
+                freeView:insert( buttonBack )
+            ------------------- pauseButton End ---------------
+
+
+            ------------------- Button Function Start -------------------
+                function freeView.freeViewBack()
+                    freeView:removeSelf()
+                    Runtime:removeEventListener( "touch", swipe )      -- 解除freeView 自由觀看
+                    Runtime:addEventListener( "enterFrame", onEveryFrame )  -- 還原camera 固定觀看角色
+                    Content.Resume()
+                end    
+            ------------------- Button Function End -------------------
+        ----------------- FreeView End   ----------------------
     end
 
     function Content.MainMenu()      
@@ -130,7 +203,6 @@ function new()
         storyboard.removeAll()
     end
 ------------------- Button Function End -------------------
-	
 		
 	return Content
 
