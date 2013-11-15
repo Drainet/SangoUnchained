@@ -6,7 +6,8 @@ module(..., package.seeall)
 
 function new(HP)
     
-	local Heart = {}
+	local Heart =  {}
+	Heart.image = display.newGroup( )
 	Heart.num = 0
 	Heart.max = HP
 	
@@ -18,6 +19,7 @@ function new(HP)
 		
 			Heart.num = Heart.num + 1
 			Heart[Heart.num] = display.newImage("kalacool/sango/image/UI/heart.png",60*(Heart.num)-40,110)
+			Heart.image:insert(Heart[Heart.num])
 		
 		end
 		

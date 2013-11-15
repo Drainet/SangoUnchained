@@ -26,13 +26,16 @@ function new(config)
 
     local Player = CharacterClass.new()
 	Player.image=display.newGroup()
-	--Player.HUD=display.newGroup()
+	Player.HUD=display.newGroup()
 	Player.image.type="player"
 	Player.alive=true
 	Player.heart=heartClass.new(3)
 	Player.switch=switchClass.new(Player)
 	Player.lastCheckPoint=config	
 	Player.image.heart = Player.heart
+	Player.HUD:insert(Player.heart.image)
+	Player.HUD:insert(Player.switch)
+
 	Player.isSticky=true		
 -------è¨­åæ§start---
 	function Player.setgun()
@@ -46,7 +49,7 @@ function new(config)
 		Player.Magazine = Player.Weapon.magazine
 		Player.image.Magazine = Player.Weapon.magazine
 		Player.Magazine.isonAir= Player.pack[Player.switch.state].isonAir
-
+		Player.HUD:insert(Player.Weapon.magazine.image)
 		local temp = Player.Magazine.ammoMax
 
 		if(Player.pack[Player.switch.state].nowNum ~= nil)then
@@ -89,6 +92,14 @@ function new(config)
     		self:setLinearVelocity( vx, vy )
 
     	end
+
+    	if(event.other.damage=="safe" and event.selfElement == 2 ) then
+			Player.body:setSequence( "normal" )
+			Player.body:play()
+			Player.Magazine.onGround()
+
+				--timer.resume( Player.Magazine.reloadTimer )
+		end
 
 
 	end
@@ -150,7 +161,7 @@ function new(config)
 			if(Player.stickTimer==nil)then
 				Player.stickTimer=timer.performWithDelay( 150, Player.setpreCollision ,1 )
 			end
-			print(event.y)
+			--print(event.y)
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
 				Player.hang:setSequence( "shoot" )
 				Player.hang:play()
