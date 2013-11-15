@@ -94,11 +94,26 @@ function new(config)
     	end
 
     	if(event.other.damage=="safe" and event.selfElement == 2 ) then
-			Player.body:setSequence( "normal" )
-			Player.body:play()
+    		if(Player.body.sequence ~= "normal")then
+				Player.body:setSequence( "normal" )
+				Player.body:play()
+			end
 			Player.Magazine.onGround()
 
 				--timer.resume( Player.Magazine.reloadTimer )
+		end
+
+		if( event.other.damage=="fatal" and Player.isInvincible==true) then
+
+			if(event.contact~=nil)then
+				event.contact.isEnabled=false
+			end
+		end
+
+		if( event.other.damage=="fatal"and Player.isInvincible==false) then
+
+			timer.performWithDelay( 0, Player.dead,1 )
+
 		end
 
 
@@ -121,11 +136,7 @@ function new(config)
 	    	
 			
 			---žåˆ°´å‘½©éè¡¨é¢----
-			if( event.other.damage=="fatal") then
-
-				timer.performWithDelay( 0, Player.dead,1 )
-
-			end
+			
 
 
 		elseif ( event.phase == "ended" ) then
@@ -139,6 +150,9 @@ function new(config)
 			end
 
 		end
+
+
+
 	
 	end
 --------ç¢°æ end---
@@ -159,7 +173,7 @@ function new(config)
 			end
 
 			if(Player.stickTimer==nil)then
-				Player.stickTimer=timer.performWithDelay( 150, Player.setpreCollision ,1 )
+				Player.stickTimer=timer.performWithDelay( 500, Player.setpreCollision ,1 )
 			end
 			--print(event.y)
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
@@ -232,6 +246,29 @@ function new(config)
 		Player.body:setSequence( "dead" )
 		Player.body:play()
 		timer.performWithDelay( 1000, Player.respawn,1 )
+
+	end
+
+	function Player.invincible(  )
+
+		local function shine( event )
+			if(math.fmod(event.count,2)==1)then
+				Player.image.alpha = 0.7
+			else
+				Player.image.alpha = 0.2
+			end
+
+			if(event.count==15)then
+				Player.image.alpha = 1
+				Player.isInvincible=false
+				Player.image.isAwake=true
+			end
+			-- body
+		end
+
+		timer.performWithDelay( 100, shine,15 )
+		
+		Player.isInvincible=true
 
 	end
 

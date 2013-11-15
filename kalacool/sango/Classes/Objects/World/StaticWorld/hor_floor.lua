@@ -13,7 +13,7 @@ function new(config)
     hor_floor.image.damage = "safe"
     hor_floor.image.surface = "rough"
     hor_floor.show(config)
-    physics.addBody( hor_floor.image, "static", { density=1, friction=0.3, bounce=0} )
+    physics.addBody( hor_floor.image, "static", { density=1, friction=0.2, bounce=0} )
 
     return hor_floor
 end
