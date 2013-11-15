@@ -2,6 +2,7 @@ module (..., package.seeall)
 
 local physics = require "physics"
 require "kalacool.sango.animation.Animation"
+physics.setReportCollisionsInContentCoordinates( true )
 
 
 local Pi    = math.pi
@@ -13,7 +14,7 @@ local Ceil  = math.ceil
 local Atan2 = math.atan2
 
 function new(x,y,vx,vy)
-    Filter = { categoryBits = 2, maskBits = 1 }
+    local Filter = { categoryBits = 2, maskBits = 5 }
     local bullet=display.newGroup()
 	local angle= (Atan2( vy,vx)*180/Pi)
 	
@@ -57,9 +58,11 @@ function new(x,y,vx,vy)
 			if ( event.phase == "began" ) then
 				--if(event.object1.name=="oneshot") then
 				
-					local x= 100*Cos(self.angle*Pi/180)+self.x
-					local y= 100*Sin(self.angle*Pi/180)+self.y
-					Animation:newSpark(x,y)
+					--local x= 100*Cos(self.angle*Pi/180)+self.x
+					--local y= 100*Sin(self.angle*Pi/180)+self.y
+					--print(event.x)
+					--print(event.y)
+					Animation:newSpark(event.x,event.y)
 					
 					display.remove( self )
 				--[[elseif(event.object2.name=="oneshot")then

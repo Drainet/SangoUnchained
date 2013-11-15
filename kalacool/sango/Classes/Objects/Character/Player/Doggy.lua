@@ -36,7 +36,9 @@ function new(config)
 			,{ density=40.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} )
 		Doggy.image.isFixedRotation = true
 		Doggy.alive=true
+
 		Doggy.heart.full()
+		Doggy.invincible()
 
 	end
 	
@@ -66,7 +68,7 @@ function new(config)
     Doggy.image:insert(body)
     
 
-    Doggy.Filter = { categoryBits = 2, maskBits = 1 }
+    Doggy.Filter = { categoryBits = 2, maskBits = 5 }
 	
 	local shapew=38
 	local shapeh=72

@@ -102,6 +102,11 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 	function Magazine.onAir()
 		
 		Magazine.isonAir=true
+		if(Magazine.reloadTimer~=nil)then
+			
+			timer.pause( Magazine.reloadTimer )
+		end
+
 	end
 	function Magazine.onGround()
 		

@@ -26,15 +26,18 @@ function new(config)
 
     local Player = CharacterClass.new()
 	Player.image=display.newGroup()
-	--Player.HUD=display.newGroup()
+	Player.HUD=display.newGroup()
 	Player.image.type="player"
 	Player.alive=true
 	Player.heart=heartClass.new(3)
 	Player.switch=switchClass.new(Player)
 	Player.lastCheckPoint=config	
 	Player.image.heart = Player.heart
+	Player.HUD:insert(Player.heart.image)
+	Player.HUD:insert(Player.switch)
+
 	Player.isSticky=true		
--------è¨­åæ§start---
+-------設��start---
 	function Player.setgun()
 		if(Player.Weapon~=nil)then
 			Player.Weapon.magazine.cancelReload()
@@ -46,7 +49,7 @@ function new(config)
 		Player.Magazine = Player.Weapon.magazine
 		Player.image.Magazine = Player.Weapon.magazine
 		Player.Magazine.isonAir= Player.pack[Player.switch.state].isonAir
-
+		Player.HUD:insert(Player.Weapon.magazine.image)
 		local temp = Player.Magazine.ammoMax
 
 		if(Player.pack[Player.switch.state].nowNum ~= nil)then
@@ -68,9 +71,9 @@ function new(config)
     	--Player.hang.y=Player.image.y-11-config.y
 
 	end
--------è¨­åæ§end---
+-------設��end---
 
---------ç¢°æ start---
+--------碰� start---
 	
 	function Player.setpreCollision()
     	Player.isSticky=true
@@ -80,7 +83,7 @@ function new(config)
 
     function Player.image:preCollision(event )
 
-    	---³å¿«žåˆ°ç²—çå®‰å…¨©éè¡¨é¢----
+    	---�快�到粗�安全��表面----
     	if( Player.isSticky == true and event.other.damage=="safe" and event.other.surface=="rough" and event.selfElement == 2) then
     		--and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)
     		--print( self.y+self.height/2)
@@ -90,6 +93,29 @@ function new(config)
 
     	end
 
+    	if(event.other.damage=="safe" and event.selfElement == 2 ) then
+    		if(Player.body.sequence ~= "normal")then
+				Player.body:setSequence( "normal" )
+				Player.body:play()
+			end
+			Player.Magazine.onGround()
+
+				--timer.resume( Player.Magazine.reloadTimer )
+		end
+
+		if( event.other.damage=="fatal" and Player.isInvincible==true) then
+
+			if(event.contact~=nil)then
+				event.contact.isEnabled=false
+			end
+		end
+
+		if( event.other.damage=="fatal"and Player.isInvincible==false) then
+
+			timer.performWithDelay( 0, Player.dead,1 )
+
+		end
+
 
 	end
 
@@ -98,7 +124,7 @@ function new(config)
 	function Player.image:collision(event )
 	
 		if ( event.phase == "began" ) then
-			---³æ°å¨ç‰©é«”è¡¨---
+			---���物體表---
 			if(event.other.damage=="safe" and event.selfElement == 2 ) then
 				Player.body:setSequence( "normal" )
 				Player.body:play()
@@ -109,17 +135,13 @@ function new(config)
 			
 	    	
 			
-			---žåˆ°´å‘½©éè¡¨é¢----
-			if( event.other.damage=="fatal") then
-
-				timer.performWithDelay( 0, Player.dead,1 )
-
-			end
+			---�到�命��表面----
+			
 
 
 		elseif ( event.phase == "ended" ) then
 
-			---³é›¢‹å¨ç‰©é«”è¡¨---
+			---�離��物體表---
 			if(event.other.damage=="safe" and event.selfElement == 2) then
 				Player.body:setSequence( "jump" )
 				Player.body:play()
@@ -128,11 +150,14 @@ function new(config)
 			end
 
 		end
+
+
+
 	
 	end
---------ç¢°æ end---
+--------碰� end---
 
---------‹æ start---
+--------�� start---
 	function Player.shoot( event )
 
 		
@@ -148,9 +173,9 @@ function new(config)
 			end
 
 			if(Player.stickTimer==nil)then
-				Player.stickTimer=timer.performWithDelay( 150, Player.setpreCollision ,1 )
+				Player.stickTimer=timer.performWithDelay( 500, Player.setpreCollision ,1 )
 			end
-			-- print(event.y)
+			--print(event.y)
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
 				Player.hang:setSequence( "shoot" )
 				Player.hang:play()
@@ -199,12 +224,12 @@ function new(config)
 
 	end
 		
---------‹æ end---
+--------�� end---
 
 	
 
 
--------å¾©æ´» æ­»äº¡ start---
+-------復活 死亡 start---
 
 	function Player:respawn( event )
 		Player.show(Player.lastCheckPoint)
@@ -224,7 +249,30 @@ function new(config)
 
 	end
 
--------å¾©æ´» æ­»äº¡ end---
+	function Player.invincible(  )
+
+		local function shine( event )
+			if(math.fmod(event.count,2)==1)then
+				Player.image.alpha = 0.7
+			else
+				Player.image.alpha = 0.2
+			end
+
+			if(event.count==15)then
+				Player.image.alpha = 1
+				Player.isInvincible=false
+				Player.image.isAwake=true
+			end
+			-- body
+		end
+
+		timer.performWithDelay( 100, shine,15 )
+		
+		Player.isInvincible=true
+
+	end
+
+-------復活 死亡 end---
 
 	-- Send message to All monster to trace player's path
 	function Player:setPlayerShow()

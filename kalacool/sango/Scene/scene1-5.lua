@@ -35,7 +35,7 @@ function scene:createScene( event )
     camera:insert(myLevel)
     camera:insert(dog.image)
     HUD:insert(pauseMenu)
-
+    HUD:insert(dog.HUD )
     group:insert( camera )
     group:insert( HUD )
 

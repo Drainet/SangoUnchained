@@ -36,10 +36,19 @@ function new(config)
         scene:removeEventListener( 'floatingFloorMoving', FloatingFloor )
         scene:removeEventListener( 'removeAllEvent', FloatingFloor )
     end
+
+    function FloatingFloor.image:preCollision(event)
+        
+        if(event.other.y>self.y)then
+            
+            event.contact.isEnabled=false
+        end
+    end
     
     scene:addEventListener( 'floatingFloorMoving', FloatingFloor )
     scene:addEventListener( 'removeAllEvent', FloatingFloor )
 
+    FloatingFloor.image:addEventListener( "preCollision")
     return FloatingFloor
 end
 
