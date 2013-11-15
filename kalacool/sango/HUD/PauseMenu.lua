@@ -125,7 +125,7 @@ function new()
         ----------------- FreeView Start ---------------------
             local freeView = display.newGroup()
 
-            Runtime:removeEventListener( "enterFrame", onEveryFrame ) -- 解除camera 固定觀看角色
+            Runtime:removeEventListener( "enterFrame", onEveryFrame ) -- Remove camera 
             ------------------- Swipe Function Start ---------------
                 local newX, newY  
                 local oldX, oldY   
@@ -135,8 +135,8 @@ function new()
                  
                 function checkSwipeDirection()
                  
-                        xDistance =  oldX - newX -- X 移動量
-                        yDistance =  oldY - newY -- Y 移動量
+                        xDistance =  oldX - newX -- X Movement
+                        yDistance =  oldY - newY -- Y Movement
                         
                         camera.x = camera.x + xDistance
                         camera.y = camera.y + yDistance     
@@ -190,8 +190,8 @@ function new()
             ------------------- Button Function Start -------------------
                 function freeView.freeViewBack()
                     freeView:removeSelf()
-                    Runtime:removeEventListener( "touch", swipe )      -- 解除freeView 自由觀看
-                    Runtime:addEventListener( "enterFrame", onEveryFrame )  -- 還原camera 固定觀看角色
+                    Runtime:removeEventListener( "touch", swipe )      -- Remove freeView 
+                    Runtime:addEventListener( "enterFrame", onEveryFrame )  -- Recover camera 
                     Content.Resume()
                 end    
             ------------------- Button Function End -------------------
