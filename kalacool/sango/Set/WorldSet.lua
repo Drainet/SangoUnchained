@@ -4,6 +4,7 @@ local Box = require ("kalacool.sango.Classes.Objects.World.DynamicWorld.Box")
 local CompanionCube = require ("kalacool.sango.Classes.Objects.World.DynamicWorld.CompanionCube")
 local WoodenDoor = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.WoodenDoor")
 local SpinningCog = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.SpinningCog")
+local SpinningTire = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.SpinningTire")
 local FloatingFloor = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.FloatingFloor")
 local FireBall = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.FireBall")
 
@@ -48,6 +49,10 @@ end
 
 function WorldSet.newWoodenDoor(config)
     return WoodenDoor.new(config)
+end
+
+function WorldSet.newSpinningTire(config)
+    return SpinningTire.new(config)
 end
 
 function WorldSet.newSpinningCog(config)

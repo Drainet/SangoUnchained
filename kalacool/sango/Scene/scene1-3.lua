@@ -15,8 +15,6 @@ function scene:createScene( event )
     --require( "tilebg" )
     --local bg = tileBG()
 
-
-
     local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
 
@@ -30,7 +28,7 @@ function scene:createScene( event )
       
     require "kalacool.sango.Set.PlayerSet"
 
-    dog=PlayerSet.newDoggy({x=5300,y=2000})
+    dog=PlayerSet.newDoggy({x=640,y=100})
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
@@ -38,9 +36,6 @@ function scene:createScene( event )
         {{imgPath = "kalacool/sango/image/test/back.png",x = 40,y = 10}
         ,{imgPath = "kalacool/sango/image/test/backgrass.png",x = 30,y = 10}
         ,{imgPath = "kalacool/sango/image/test/backitem.png",x = 20,y = 10}})
-
-
-
 
     --camera:insert(bg)
     camera:insert(myLevel)
@@ -54,8 +49,8 @@ function scene:createScene( event )
     function onEveryFrame()     
         local movex = myLevel.x - dog.image.x
         local movey = myLevel.y - dog.image.y
-        camera.x = 800 + movex
-        camera.y = 400 + movey 
+        camera.x = 640 + movex
+        camera.y = 360 + movey 
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )
 

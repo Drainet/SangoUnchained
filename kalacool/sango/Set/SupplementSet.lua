@@ -3,12 +3,12 @@ SupplementSet = {}
 local shootFaster = require('kalacool.sango.Classes.Objects.Supplements.Buff.ShootFaster')
 local moreLife = require('kalacool.sango.Classes.Objects.Supplements.Buff.MoreLife')
 local reloadBullet = require('kalacool.sango.Classes.Objects.Supplements.Buff.ReloadBullet')
-function SupplementSet.new_Sup_ShootFaster(config)
+function SupplementSet.newSupShootFaster(config)
 	local buffItem = shootFaster.new(config)
 	return buffItem
 end
 
-function SupplementSet.new_Sup_MoreLife(config)
+function SupplementSet.newSupMoreLife(config)
 	local buffItem = moreLife.new(config)
 	return buffItem
 end

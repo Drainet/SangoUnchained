@@ -21,7 +21,7 @@ function new(config)
 
 
     function FireBall.moving()
-        timer.performWithDelay(3000 + math.random(0, 3)*1000, FireBall.reset)
+        timer.performWithDelay(2000 + math.random(0, 3)*500, FireBall.reset)
     end
 
     --math.random(70, 80)  ---> an integer between 70 and 80 (inclusive)

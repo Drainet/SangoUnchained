@@ -21,10 +21,11 @@ function new()
 ------------------- niceText Start ---------------
     niceText = display.newText("GOOD JOB !!", 0, 0, native.systemFont, 180)
     niceText.x = display.contentWidth/2; niceText.y = display.contentHeight/2 - 300
+    niceText:setTextColor( 110, 20, 0 )
 
     transition.to( niceText, { time=1, alpha=0 } )
     transition.to( niceText, { time=100, alpha=1, delay=100, x=display.contentWidth/2, y=display.contentHeight/2 - 100 } )
-
+    
     Content:insert( niceText )
 ------------------- niceText End ---------------
 

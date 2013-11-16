@@ -33,7 +33,7 @@ function new()
 
     -- find if player is in Patrol Range
     function ROBOT:isPlayerInPatrolRange()
-        if (ROBOT.target.image.x > ROBOT.monster.config.x and ROBOT.target.image.x < ROBOT.monster.config.xR) then
+        if (ROBOT.target.image.x > ROBOT.monster.config.xL and ROBOT.target.image.x < ROBOT.monster.config.xR) then
             return true
         else 
             return false

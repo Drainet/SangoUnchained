@@ -12,9 +12,9 @@ local cannon = Monster.new()
     cannon.name ="monster"
     cannon.HP = 10
     cannon.moveSpeed = 0
-    cannon.attackSpeed = 3000
-    cannon.bulletSpeed = 300
-    cannon.visibleDistance = 500
+    cannon.attackSpeed = 2000
+    cannon.bulletSpeed = 600
+    cannon.visibleDistance = 1280
     
     --set Cannon's head
     cannon.head = display.newImage( "kalacool/sango/image/monster/Cannon/cannon_head.png" )
@@ -25,7 +25,7 @@ local cannon = Monster.new()
     -- set Cannon's body
     local sheet = graphics.newImageSheet( "kalacool/sango/image/monster/Cannon/cannon_body_animation.png", { width=82, height=98, numFrames=10 } )
     local sequenceData = {
-        { name="loading", start=1, count=10, time= 3000 , loopCount = 1}
+        { name="loading", start=1, count=10, time= cannon.attackSpeed , loopCount = 1}
     }   
     local body =  display.newSprite( sheet , sequenceData )
     cannon.body = body

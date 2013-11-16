@@ -28,7 +28,7 @@ function scene:createScene( event )
 
     require "kalacool.sango.Set.PlayerSet"
 
-    dog=PlayerSet.newDoggy({x=100,y=1200})
+    dog=PlayerSet.newDoggy({x=300,y=600})
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
@@ -49,8 +49,8 @@ function scene:createScene( event )
     function onEveryFrame()    
         local movex = myLevel.x - dog.image.x
         local movey = myLevel.y - dog.image.y
-        camera.x = 650 + movex
-        camera.y = 400 + movey 
+        camera.x = 640 + movex
+        camera.y = 360 + movey 
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )
 
