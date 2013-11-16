@@ -5,7 +5,7 @@ function new()
     local widget = require( "widget" )
     local storyboard = require( "storyboard" )
 	
-	Content = display.newGroup()
+	local Content = display.newGroup()
 
 ------------------- buttonHandler Start ---------------
 	local buttonHandler = function( event )

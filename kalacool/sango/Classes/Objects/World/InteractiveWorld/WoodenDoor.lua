@@ -15,6 +15,23 @@ function new(config)
     WoodenDoor.show(config)
     physics.addBody( WoodenDoor.image,  "kinematic", { density=1, friction=0.3, bounce=0} )
 
-    
+    function WoodenDoor:removeAllEvent(event)
+        FloatingFloor.dispose()
+    end
+
+    function WoodenDoor.preCollision(self, event)
+        if ( event.other.type == "player" ) then
+            local completeClass = require "kalacool.sango.HUD.YouComplete"
+    		local complete = completeClass.new()
+ 			WoodenDoor.image:removeEventListener( "preCollision", WoodenDoor)
+        end
+	end
+ 	
+ 	WoodenDoor.image:addEventListener( "preCollision", WoodenDoor)
+ 	WoodenDoor.listeners[2] = {event='removeAllEvent' , listener = WoodenDoor}
+
+ 	WoodenDoor[1] = {event="preCollision" , listener = WoodenDoor}
+    WoodenDoor[2] = {event='removeAllEvent' , listener = WoodenDoor}
+
     return WoodenDoor
 end
