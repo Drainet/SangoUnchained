@@ -10,6 +10,7 @@ function new()
 
     local function allEnterFrame()
         scene:dispatchEvent({name='floatingFloorMoving',target = Player} )
+        scene:dispatchEvent({name='moveLayer'})
     end    
 
 --------------------------------- EventCentral API ---------------------------------
@@ -29,4 +30,3 @@ function new()
 
     return eventCental
 end
-
