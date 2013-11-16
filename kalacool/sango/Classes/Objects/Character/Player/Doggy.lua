@@ -112,7 +112,7 @@ function new(config)
     Doggy.image:insert(body)
     Doggy.image:insert(hang)
 
-    local Filter = { categoryBits = 2, maskBits = 1 }
+    local Filter = { categoryBits = 2, maskBits = 5 }
 	
 	local shapew=38
 	local shapeh=72

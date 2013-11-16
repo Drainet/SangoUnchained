@@ -11,24 +11,18 @@ function new(monster , target , option)
     AI.monster = monster
 
     function AI:run()
-        local dir = 1
+        if ( AI:isPlayerVisible() ) then
+            
 
-        local function AI_RUN()  return AI:run () end
-        if math.abs(target.image.y - monster.image.y) > 30 then
-            dir = AI:monsterDir()
-            monster:move(dir.x*0.5,dir.y*0.2)
-            timer.performWithDelay(1000, AI_RUN )
 
-        elseif AI:getDistance() < 1000 then
-            dir = AI:monsterDir()
-            monster:move(dir.x, 0)
-            timer.performWithDelay(100 , AI_RUN )
-        else
-            timer.performWithDelay(1500 , AI_RUN )
+
         end
-
-
     end
+
+    local function AI_RUN()  return AI:run () end
+    
+
+    
 
 
     return AI

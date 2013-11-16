@@ -2,8 +2,8 @@
 
 module(..., package.seeall)
 require("kalacool.sango.Set.WorldSet")
-
-require('kalacool.sango.set.SupplementSet')
+require("kalacool.sango.Set.EnemySet")
+require('kalacool.sango.Set.SupplementSet')
 function CreateLevel(physics)
 
     display.setDefault( 'background', 0, 0, 0 )
@@ -82,8 +82,10 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object28"].image)
  level.layers["InteractiveWorld"].objects["object27"] = SupplementSet.new_Sup_MoreLife({x=390,y=600})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object27"].image)
-
-
+-- set monster in game
+ level.layers["InteractiveWorld"].objects["object33"] =  EnemySet.new_Monster_Cannon({x=700,y=600})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object33"].image)
+    
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])

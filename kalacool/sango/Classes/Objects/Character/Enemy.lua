@@ -9,20 +9,38 @@ function new()
     local scene = scene
 
     Enemy.image = display.newGroup( )
-    Enemy.image.damage = "fatal"
-    Enemy.alive = true
+    
+   
 
 
-    -- Percentage of monster get damage reduce
-    Enemy.damageReduce = 1
-    Enemy.HP = 1
-
-
-    --event to recive player's message, and set attack target
+   -- ALL attribute of Monster
+        --basic type & name
+        Enemy.image.damage = "fatal"
+        Enemy.alive = true
+        -- basic attribute , HP , DEF , attackRange , visibleDistance
+        Enemy.damageReduce = 1     -- Percentage of monster get damage reduce
+        Enemy.HP = 1
+        Enemy.visibleDistance = 1000
+        
+        -- attribute of different Monster
+        Enemy.moveSpeed = 0
+        Enemy.attackSpeed = 0
+        Enemy.attackRange = 0
+    -- attribute end
+   
+    
+    -- event to recive player's message, and set attack target
+    -- set AI for Monster
     function Enemy:onPlayerShow(event)
+
     	Enemy.target = event.target
     	Enemy:newAI()
     	Enemy.AI:run()
+    end
+
+    -- event to remove all monster listener & stop AI 
+    function Enemy:removeAllEvent(event)
+        Enemy:dead()
     end
 
     function Enemy:hurt(damage)
@@ -30,17 +48,13 @@ function new()
     end
 
     function Enemy.onCollision(self, event)
-        
         if (event.phase == "began") then
             if (event.other.type == "bullet") then
                 if(Enemy.HP > 1) then
-                    print( Enemy.HP )
                     Enemy:hurt(1)
                 else
-                    Enemy.AI:stop()
                     Enemy:dead()
                 end
-
             end
         end
     end
@@ -49,21 +63,21 @@ function new()
     function Enemy:dead()
         Enemy.alive = false
         Enemy.hide()
+        Enemy.AI:stop()
         Enemy.dispose()
     end
     
-
-
 
     Enemy.collision = Enemy.onCollision
     Enemy.image:addEventListener("collision", Enemy)
     scene:addEventListener( 'onPlayerShow', Enemy )
     scene:addEventListener( 'onPlayerHide', Enemy )
-    
+    scene:addEventListener( 'removeAllEvent', Enemy)
    
 
     Enemy.listeners[1] = {event='onPlayerShow' , listener = Enemy}
     Enemy.listeners[2] = {event='onPlayerHide' , listener = Enemy}
     Enemy.listeners[3] = {event="collision", listener = Enemy}
+    Enemy.listeners[4] = {event='removeAllEvent', listener = Enemy}
     return Enemy
 end
