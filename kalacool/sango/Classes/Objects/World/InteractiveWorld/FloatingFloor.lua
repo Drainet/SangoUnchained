@@ -33,8 +33,7 @@ function new(config)
     end
 
     function FloatingFloor:removeAllEvent(event)
-        scene:removeEventListener( 'floatingFloorMoving', FloatingFloor )
-        scene:removeEventListener( 'removeAllEvent', FloatingFloor )
+        FloatingFloor.dispose()
     end
 
     function FloatingFloor.image:preCollision(event)
@@ -47,8 +46,12 @@ function new(config)
     
     scene:addEventListener( 'floatingFloorMoving', FloatingFloor )
     scene:addEventListener( 'removeAllEvent', FloatingFloor )
-
     FloatingFloor.image:addEventListener( "preCollision")
+
+    FloatingFloor.listeners[1] = {event='floatingFloorMoving' , listener = FloatingFloor}
+    FloatingFloor.listeners[2] = {event='removeAllEvent' , listener = FloatingFloor}
+    FloatingFloor.listeners[3] = {event="preCollision", listener = FloatingFloor.image}
+
     return FloatingFloor
 end
 
