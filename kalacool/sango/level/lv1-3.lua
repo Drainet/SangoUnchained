@@ -151,9 +151,9 @@ level.layers["InteractiveWorld"].objects = {}
 
  
  -- create monster 
- level.layers["InteractiveWorld"].objects["object62"] = EnemySet.new_Monster_Fireball({x=4500,y=1764})
+ level.layers["InteractiveWorld"].objects["object62"] = EnemySet.new_Monster_Fireball({x=4500,y=1764, xL=4500,xR=5000})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object62"].image)
- level.layers["InteractiveWorld"].objects["object63"] = EnemySet.new_Monster_Fireball({x=4600,y=1764})
+ level.layers["InteractiveWorld"].objects["object63"] = EnemySet.new_Monster_Fireball({x=4600,y=1764,xL=4000,xR=6000})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object63"].image)
  -- monster END
 

@@ -14,27 +14,27 @@ function new(config)
 	Item.image.y = config.y
 
 	physics.addBody(Item.image,"static", {Filter = Item.Filter})
-
+	Item.image.isSensor = true
 	-- buff effect  -> add one more life to player
 	Item.addLifeNum = 1
 
 	-- buff icon collision 
-	function Item.image.preCollision(self, event)
+	function Item.image.collision(self, event)
 		if(event.other.type == "player") then
-		-- set icon not collision with Player
-		event.contact.isEnabled = false
 
 		-- set icon cooldown 
-		timer.performWithDelay(0, Item.coolDown)
+		Item.timerCoolDown = timer.performWithDelay(0, Item.coolDown)
+		Item.timerRenew =  timer.performWithDelay(20000, Item.renew)
 
 		event.other.heart.max = event.other.heart.max + Item.addLifeNum
 		Item.addLifeNum = Item.addLifeNum - 1
 		event.other.heart.full()
-		timer.performWithDelay(20000, Item.renew)
+
 		end
+
 	end	
 
-	Item.image:addEventListener( "preCollision")
-
+	Item.image:addEventListener( "collision" )
+	Item.listeners[table.maxn(Item.listeners)+1] = {event="collision", listener = Item}
 	return Item
 end

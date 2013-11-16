@@ -7,10 +7,17 @@ AI = require("kalacool.sango.Classes.Objects.Character.Enemy.MonsterAI.Fireball_
 function new(config)
 
 local fireball = Monster.new()
-    
+    -- set monster's patrol range
+    fireball.patrolRange = {}  
+    fireball.patrolRange.xL = config.xL
+    fireball.patrolRange.xR = config.xR
+    fireball.originPosition = config
+    fireball.config = config
     -- set monster's attribute
     fireball.HP = 10
     fireball.moveSpeed = 300
+    fireball.attackRange = 150
+    fireball.visibleDistance = 1000
     -- set monster's body
     fireball.name ="monster"
     fireball.body = display.newImage("kalacool/sango/image/item/fire3.png")
@@ -22,9 +29,10 @@ local fireball = Monster.new()
     fireball.image.y = config.y
 
     -- add physics attribute
-    local Filter = { categoryBits = 4, maskBits = 2 }   -- collision with {Player , ENV object}
-    physics.addBody(fireball.image,"dynamic",{density = 3,filter = Filter})
-    fireball.image.isFixedRotation = true
+    local Filter = { categoryBits = 4, maskBits = 2 }   -- collision with {Player}
+    physics.addBody(fireball.image,"dynamic",{density = 10,filter = Filter})
+    fireball.image.isFixedRotation = true    -- Monster no Rotate
+
     -- set monster float
     fireball.image.gravityScale = 0
 
@@ -34,10 +42,6 @@ end
 function fireball:move(x,y)
     fireball.image:setLinearVelocity(x*fireball.moveSpeed , y*fireball.moveSpeed)
 
-end
-
-function fireball:jump(x,y)
-    fireball.body:setLinearVelocity(x,y)
 end
 
 return fireball

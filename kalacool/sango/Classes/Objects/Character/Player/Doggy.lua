@@ -69,6 +69,7 @@ function new(config)
     
 
     Doggy.Filter = { categoryBits = 2, maskBits = 5 }
+
 	
 	local shapew=38
 	local shapeh=72

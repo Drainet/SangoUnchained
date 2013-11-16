@@ -29,6 +29,7 @@ function scene:createScene( event )
     require "kalacool.sango.Set.PlayerSet"
 
     dog=PlayerSet.newDoggy({x=100,y=100})
+
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
@@ -38,6 +39,7 @@ function scene:createScene( event )
         ,{imgPath = "kalacool/sango/image/test/backitem.png",x = 20,y = 10}})
 
   --  camera:insert(bg)
+
     camera:insert(myLevel)
     camera:insert(dog.image)
     HUD:insert(pauseMenu )

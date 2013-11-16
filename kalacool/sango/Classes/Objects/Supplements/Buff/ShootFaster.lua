@@ -15,24 +15,23 @@ function new(config)
 	
 
 	physics.addBody(Item.image,"static", {Filter = Item.Filter})
-
+	Item.image.isSensor = true
 	-- buff effect   -> attack speed up
 	Item.newRate = 0.5
 	Item.buffTime = 5000
-	
+
 	-- buff icon collision 
-	function Item.image.preCollision(self, event)
+	function Item.image.collision(self, event)
 		if(event.other.type == "player") then
-		event.contact.isEnabled = false
-		
+
 		--set icon cooldown
-		timer.performWithDelay(0, Item.coolDown)
+		Item.timerCoolDown = timer.performWithDelay(0, Item.coolDown)
+		Item.timerRenew = timer.performWithDelay( Item.buffTime, Item.effectCallback)
 
 		Item.oldRate = event.other.Magazine.rate
 		event.other.Magazine.rate = Item.newRate
 		Item.effectTarget = event.other
 
-		timer.performWithDelay( Item.buffTime, Item.effectCallback)
 		end
 	end	
 
@@ -43,7 +42,7 @@ function new(config)
 	end
 
 
-	Item.image:addEventListener( "preCollision")
-
+	Item.image:addEventListener( "collision")
+	Item.listeners[table.maxn(Item.listeners)+1] = {event="collision", listener = Item}
 	return Item
 end
