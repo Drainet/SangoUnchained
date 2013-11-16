@@ -12,6 +12,8 @@ function CreateLevel(physics)
     level.layers = {}
     level.name = "1-1"
 
+
+
 level.layers["StaticWorld"] = display.newGroup()
 level.layers["StaticWorld"].name = "StaticWorld"
 level.layers["StaticWorld"].objects = {}
