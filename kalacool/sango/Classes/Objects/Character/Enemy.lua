@@ -40,7 +40,7 @@ function new()
 
     -- event to remove all monster listener & stop AI 
     function Enemy:removeAllEvent(event)
-        Enemy:dead()
+        Enemy.dead()
     end
 
     function Enemy:hurt(damage)
@@ -53,17 +53,13 @@ function new()
                 if(Enemy.HP > 1) then
                     Enemy:hurt(1)
                 else
-                    Enemy:dead()
+                    timer.performWithDelay( 10,Enemy.dead ) 
                 end
             end
         end
     end
 
-    function Enemy:removeAllEvent()
-        Enemy:dead()
-    end
-
-    function Enemy:dead()
+    function Enemy.dead()
         Enemy.alive = false
         Enemy.hide()
         Enemy.AI:stop()

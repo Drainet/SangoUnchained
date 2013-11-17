@@ -1,6 +1,6 @@
 local storyboard = require( "storyboard" )
 local widget = require( "widget" )
-scene = storyboard.newScene()
+local scene = storyboard.newScene()
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
     local screenGroup = self.view

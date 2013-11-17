@@ -203,7 +203,16 @@ function new()
         storyboard.removeAll()
     end
 ------------------- Button Function End -------------------
-		
+
+
+------------------- Complete Level ButtonPause Disappear Start ------------------- 
+    function Content.removePauseButton(event) 
+        buttonPause.isVisible = false 
+        scene:removeEventListener( 'removePauseButton', Content ) 
+    end 
+    
+    scene:addEventListener( 'removePauseButton', Content ) 
+------------------- Complete Level ButtonPause Disappear End -------------------		
 	return Content
 
 end

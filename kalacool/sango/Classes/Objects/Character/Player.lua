@@ -1,5 +1,5 @@
 module(..., package.seeall)
-
+local scene = scene
 CharacterClass = require('kalacool.sango.Classes.Objects.Character')
 require "kalacool.sango.Set.Weapon"
 
@@ -173,7 +173,7 @@ function new(config)
 			end
 
 			if(Player.stickTimer==nil)then
-				Player.stickTimer=timer.performWithDelay( 500, Player.setpreCollision ,1 )
+				Player.stickTimer=timer.performWithDelay( 100, Player.setpreCollision ,1 )
 			end
 			--print(event.y)
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
@@ -283,13 +283,19 @@ function new(config)
     	Player.setgun( Player.pack[Player.switch.state] )
     end
 
+    function Player:removeAllEvent(event)
+        Player.dispose()
+        
+    end
+
    
    
 
 	Runtime:addEventListener( "touch", Player.shoot)
-	--scene:addEventListener( 'onSwitchTouch', Player )
+	scene:addEventListener( 'removeAllEvent', Player )
 
 	Player.listeners[1] = {event="touch",listener=Player.shoot}
+	Player.listeners[2] = {event='removeAllEvent' , listener = Player}
 	--Player.listeners[2] = {event='onSwitchTouch',listener=Player}
 
 	

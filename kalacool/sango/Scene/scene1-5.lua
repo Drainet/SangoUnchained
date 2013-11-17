@@ -71,7 +71,6 @@ end
 function scene:exitScene( event )
     local group = self.view
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
-    dog.dispose()
     storyboard.removeScene("kalacool.sango.Scene.scene1-5")
 
 end

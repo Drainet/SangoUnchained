@@ -13,7 +13,7 @@ function new(config)
     FloatingFloor.image.width = 240
     FloatingFloor.image.height = 20
     FloatingFloor.image.damage = "safe"
-    FloatingFloor.image.surface = "rough"
+    FloatingFloor.image.surface = "smooth"
     FloatingFloor.show(config)
     physics.addBody( FloatingFloor.image,  "kinematic", { density=10, friction=99, bounce=0} )
     FloatingFloor.count=0
@@ -37,11 +37,20 @@ function new(config)
     end
 
     function FloatingFloor.image:preCollision(event)
+
+        local vx , vy = event.other:getLinearVelocity()
         
-        if(event.other.y>self.y)then
+        -- if(vy<0)then
+            
+            -- event.contact.isEnabled=false
+        -- end
+
+        if(event.other.y+70>self.y)then
             
             event.contact.isEnabled=false
         end
+
+       
     end
     
     scene:addEventListener( 'floatingFloorMoving', FloatingFloor )
