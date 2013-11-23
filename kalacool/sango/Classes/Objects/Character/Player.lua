@@ -31,7 +31,7 @@ function new(config)
 	Player.alive=true
 	Player.heart=heartClass.new(3)
 	Player.switch=switchClass.new(Player)
-	Player.lastCheckPoint=config	
+	Player.image.lastCheckPoint=config	
 	Player.image.heart = Player.heart
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
@@ -232,7 +232,8 @@ function new(config)
 -------復活 死亡 start---
 
 	function Player:respawn( event )
-		Player.show(Player.lastCheckPoint)
+		--Player.show(Player.image.lastCheckPoint)
+		scene:dispatchEvent( {name='playerRespawn'} )
 		Player.default()
 		
 	end

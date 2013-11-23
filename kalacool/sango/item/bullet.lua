@@ -56,9 +56,9 @@ function new(x,y,vx,vy)
 
         bullet:insert(oneshot)
 
-        function oneshot:collision( event )
+        function oneshot:preCollision( event )
 
-			if ( event.phase == "began" ) then
+			--if ( event.phase == "began" ) then
 				--if(event.object1.name=="oneshot") then
 				
 					--local x= 100*Cos(self.angle*Pi/180)+self.x
@@ -76,14 +76,14 @@ function new(x,y,vx,vy)
 					display.remove( event.object2 )
 				end]]
 
-			elseif ( event.phase == "ended" ) then
+			--elseif ( event.phase == "ended" ) then
 
 
-			end
+			--end
 
 		end
 
-		oneshot:addEventListener( "collision")
+		oneshot:addEventListener( "preCollision")
 
     end
 

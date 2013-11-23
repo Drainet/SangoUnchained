@@ -22,6 +22,9 @@ function new(config)
     
 
 	function Doggy.default()
+
+		Doggy.show(Doggy.image.lastCheckPoint)
+
 		Doggy.body:setSequence( "jump" )
 		Doggy.body:play()
 
@@ -85,8 +88,7 @@ function new(config)
 	--body.x=Doggy.x
     --body.y=Doggy.y
 	
-	Doggy.image.x= config.x
-	Doggy.image.y= config.y
+	
 
 	
 

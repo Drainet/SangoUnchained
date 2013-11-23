@@ -11,6 +11,7 @@ local FireBall = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld
 local hor_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.hor_floor")
 local leftTop_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.leftTop_floor")
 local par_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.par_floor")
+local checkDoor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.checkDoor")
 
 WorldSet={}
 
@@ -65,6 +66,10 @@ end
 
 function WorldSet.newFireBall(config)
     return FireBall.new(config)
+end
+
+function WorldSet.newCheckDoor(config)
+    return checkDoor.new(config)
 end
 
 

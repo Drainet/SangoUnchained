@@ -176,6 +176,18 @@ level.layers["StaticWorld"].objects["object0"] = WorldSet.newhor_floor({x=300,y=
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object73"].image)
  level.layers["StaticWorld"].objects["object74"] = WorldSet.newThorn({x=2330,y=2028})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object74"].image)
+ level.layers["StaticWorld"].objects["object75"] =WorldSet.newCheckDoor({x=2700,y=515})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object75"].image)
+ level.layers["StaticWorld"].objects["object76"] =WorldSet.newCheckDoor({x=4364,y=1256})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object76"].image)
+
+ level.layers["StaticWorld"].objects["object77"] =WorldSet.newCheckDoor({x=2400,y=515})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object77"].image)
+ level.layers["StaticWorld"].objects["object78"] =WorldSet.newCheckDoor({x=2100,y=515})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object78"].image)
+ level.layers["StaticWorld"].objects["object79"] =WorldSet.newCheckDoor({x=3000,y=515})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object79"].image)
+
  
  level.layers["Monster"].objects["object100"] = EnemySet.newMonsterFireball({x=3260,y=1538,xL=2930,xR=4000})
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object100"].image)
