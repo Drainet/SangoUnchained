@@ -15,7 +15,7 @@ local cannon = Monster.new()
     cannon.attackSpeed = 2000
     cannon.bulletSpeed = 600
     cannon.visibleDistance = 1280
-    
+    cannon.config = config
     --set Cannon's head
     cannon.head = display.newImage( "kalacool/sango/image/monster/Cannon/cannon_head.png" )
     cannon.image:insert(cannon.head)

@@ -28,8 +28,8 @@ function new()
 		Supplements.dispose()
 	end
 
-	 scene:addEventListener( 'removeAllEvent', Supplements)
-	 Supplements.listeners[1] = {event='removeAllEvent', listener = Supplements}
+	scene:addEventListener( 'removeAllEvent', Supplements)
+	Supplements.listeners[1] = {event='removeAllEvent', listener = Supplements}
 
 	return Supplements
 end

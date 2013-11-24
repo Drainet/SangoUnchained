@@ -24,7 +24,7 @@ function new(config)
 
 		-- set icon cooldown 
 		Item.timerCoolDown = timer.performWithDelay(0, Item.coolDown)
-		Item.timerRenew =  timer.performWithDelay(20000, Item.renew)
+		--Item.timerRenew =  timer.performWithDelay(20000, Item.renew)
 
 		event.other.heart.max = event.other.heart.max + Item.addLifeNum
 		Item.addLifeNum = Item.addLifeNum - 1

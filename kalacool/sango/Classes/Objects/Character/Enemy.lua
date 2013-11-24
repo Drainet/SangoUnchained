@@ -1,6 +1,14 @@
 module(..., package.seeall)
 
 CharacterClass = require("kalacool.sango.Classes.Objects.Character")
+require("kalacool.sango.Set.SupplementSet")
+
+-- Monster dorp item list
+local dropItemTable = {
+    {name = "ShootFaster" , func = SupplementSet.newSupShootFaster} ,
+    {name = "MoreLife"  , func = SupplementSet.newSupMoreLife} , 
+    {name = "ReloadBullet"  ,func = SupplementSet.new_SupReloadBullet}
+}
 
 
 function new()
@@ -53,14 +61,33 @@ function new()
                 if(Enemy.HP > 1) then
                     Enemy:hurt(event.other.damage)
                 else
-                    timer.performWithDelay( 10,Enemy.dead ) 
+                    if(Enemy.alive == true) then
+                        timer.performWithDelay( 10,Enemy.dead,1) 
+                        Enemy.alive = false
+                    end
                 end
             end
         end
     end
 
+    -- Monster dead drop item
+    function Enemy:dropItem()
+     print( #dropItemTable )  
+        for i =1,#dropItemTable do 
+            if(dropItemTable[i].name == Enemy.config.name) then
+                SUP = dropItemTable[i].func({ x = Enemy.image.x , y = Enemy.image.y }) 
+                break
+            end
+        end
+        camera:insert(SUP.image)
+    end
+
+    -- Monster dead remove all listener and timer
     function Enemy.dead()
         Enemy.alive = false
+        if(Enemy.config.name ~= nil) then
+            Enemy:dropItem()
+        end
         Enemy.hide()
         Enemy.AI:stop()
         Enemy.dispose()
