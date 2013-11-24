@@ -12,7 +12,7 @@ function new(config)
 	Item.body.y = Item.image.y
 	Item.image.x = config.x
 	Item.image.y = config.y
-	
+	Item.shootFaster = false
 
 	physics.addBody(Item.image,"static", {Filter = Item.Filter})
 	Item.image.isSensor = true
@@ -22,11 +22,11 @@ function new(config)
 
 	-- buff icon collision 
 	function Item.image.collision(self, event)
-		if(event.other.type == "player") then
-
+		if(event.other.type == "player" and Item.shootFaster == false) then
+		Item.shootFaster = true
 		--set icon cooldown
 		Item.timerCoolDown = timer.performWithDelay(0, Item.coolDown)
-		Item.timerRenew = timer.performWithDelay( Item.buffTime, Item.effectCallback)
+		Item.timerRenew = timer.performWithDelay( Item.buffTime, Item.effectCallback ,1)
 
 		Item.oldRate = event.other.Magazine.rate
 		event.other.Magazine.rate = Item.newRate
@@ -37,8 +37,9 @@ function new(config)
 
 	-- buff effect turn down
 	function Item.effectCallback()
+		Item.shootFaster = false
 		Item.effectTarget.Magazine.rate = Item.oldRate
-		timer.performWithDelay(Item.buffTime , Item.renew)
+		Item.timerRenew = timer.performWithDelay(Item.buffTime , Item.renew)
 	end
 
 
