@@ -1,6 +1,7 @@
 module(..., package.seeall)
 local scene = scene
 CharacterClass = require('kalacool.sango.Classes.Objects.Character')
+require "kalacool.sango.animation.Animation"
 require "kalacool.sango.Set.Weapon"
 
 local heartClass = require "kalacool.sango.HUD.Heart"
@@ -29,12 +30,14 @@ function new(config)
 	Player.HUD=display.newGroup()
 	Player.image.type="player"
 	Player.alive=true
-	Player.heart=heartClass.new(3)
+	Player.heart=heartClass.new(5)
 	Player.switch=switchClass.new(Player)
 	Player.image.lastCheckPoint=config	
 	Player.image.heart = Player.heart
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
+
+
 
 	Player.isSticky=true		
 -------è¨­åæ§start---
@@ -110,11 +113,7 @@ function new(config)
 			end
 		end
 
-		if( event.other.damage=="fatal"and Player.isInvincible==false) then
 
-			timer.performWithDelay( 0, Player.dead,1 )
-
-		end
 
 
 	end
@@ -131,6 +130,37 @@ function new(config)
 				Player.Magazine.onGround()
 
 				--timer.resume( Player.Magazine.reloadTimer )
+			end
+
+			if( event.other.damage=="fatal"and Player.isInvincible==false) then
+				Animation:wound()
+
+				if(event.other.damageValue == nil )then
+					
+					Player.heart.zero()
+				else
+					
+					for i=1,event.other.damageValue do
+
+						Player.heart.hurt()
+						Player.invincible(8)
+						Player.noSticky( )
+						if(self.x <= event.other.x)then
+							Player.image:setLinearVelocity( -200, -300 )
+						else	
+							Player.image:setLinearVelocity( 200, -300 )
+						end
+
+					end
+					
+				end
+
+				if(Player.heart.num<=0)then
+					timer.performWithDelay( 0, Player.dead,1 )
+				end
+					
+					
+
 			end
 			
 	    	
@@ -156,6 +186,22 @@ function new(config)
 	
 	end
 --------ç¢°æ end---
+	function Player.noSticky( )
+		Player.isSticky=false
+			
+
+		if(Player.stickTimer~=nil)then
+			timer.cancel( Player.stickTimer )
+			Player.stickTimer=nil
+		end
+
+		if(Player.stickTimer==nil)then
+			Player.stickTimer=timer.performWithDelay( 100, Player.setpreCollision ,1 )
+		end
+
+	end
+
+
 
 --------‹æ start---
 	function Player.shoot( event )
@@ -164,17 +210,10 @@ function new(config)
 		local phase = event.phase
 		if "began" == phase then
 
-			Player.isSticky=false
-			--Player.image:removeEventListener( "preCollision" )
+			
+			
 
-			if(Player.stickTimer~=nil)then
-				timer.cancel( Player.stickTimer )
-				Player.stickTimer=nil
-			end
-
-			if(Player.stickTimer==nil)then
-				Player.stickTimer=timer.performWithDelay( 100, Player.setpreCollision ,1 )
-			end
+			Player.noSticky( )
 			--print(event.y)
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
 				Player.hang:setSequence( "shoot" )
@@ -241,7 +280,7 @@ function new(config)
 	function Player:dead( event )
 
 		Player.alive=false
-		Player.heart.zero()
+		
 		physics.removeBody( Player.image )
 		Player.Magazine:cancelReload()
 		Player.body:setSequence( "dead" )
@@ -250,7 +289,7 @@ function new(config)
 
 	end
 
-	function Player.invincible(  )
+	function Player.invincible(time)
 
 		local function shine( event )
 			if(math.fmod(event.count,2)==1)then
@@ -259,7 +298,8 @@ function new(config)
 				Player.image.alpha = 0.2
 			end
 
-			if(event.count==15)then
+
+			if(event.count==time)then
 				Player.image.alpha = 1
 				Player.isInvincible=false
 				Player.image.isAwake=true
@@ -267,7 +307,7 @@ function new(config)
 			-- body
 		end
 
-		timer.performWithDelay( 100, shine,15 )
+		timer.performWithDelay( 100, shine,time )
 		
 		Player.isInvincible=true
 

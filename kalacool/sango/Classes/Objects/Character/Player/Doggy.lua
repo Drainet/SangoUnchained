@@ -41,7 +41,7 @@ function new(config)
 		Doggy.alive=true
 
 		Doggy.heart.full()
-		Doggy.invincible()
+		Doggy.invincible(15)
 
 	end
 	

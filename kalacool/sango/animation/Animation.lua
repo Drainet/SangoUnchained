@@ -18,6 +18,23 @@ function Animation:newSpark(startX,startY)
 
 end
 
+
+function Animation:wound()
+    local myRectangle = display.newRect(0, 0, 2000, 1500)
+    myRectangle:setFillColor(255, 0, 0)
+    myRectangle.x=display.contentCenterX
+    myRectangle.y=display.contentCenterY
+    myRectangle.alpha=0.5
+    function deleteRectangle()
+        display.remove(myRectangle)
+    end
+   
+    transition.to( myRectangle, { time=300, delay=0, alpha=0.0, onComplete = deleteRectangle} )
+
+
+end
+
+
 function Animation:newFire(startX,startY)
 
     function burnning()

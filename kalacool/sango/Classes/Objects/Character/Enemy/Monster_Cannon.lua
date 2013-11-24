@@ -83,6 +83,7 @@ function cannon:new_bullet()
         bullet.isFixedRotation = true
         bullet.gravityScale = 0
         bullet.damage = "fatal"
+        bullet.damageValue = 2
         bullet.isBullet = true
 
         function bullet.collision(self , event)
