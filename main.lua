@@ -7,9 +7,19 @@ display.setStatusBar( display.HiddenStatusBar )
 
 local storyboard = require "storyboard"
 scene = storyboard.newScene()
-storyboard.gotoScene( "kalacool.sango.Scene.Menu", "fade", 400 )
 
+local options = 
+	{
+		effect = "fade",
+		time = 400,
+		params =
+			{
+				firstTimeCome = true,
+			}
+	}
+storyboard.gotoScene( "kalacool.sango.Scene.Menu", options)
 
+		
 --------------- Performance Start ---------------
 	performanceText = display.newText("", 0, 0, native.systemFont, 30)
 	local maxMemory = 0
@@ -23,7 +33,7 @@ storyboard.gotoScene( "kalacool.sango.Scene.Menu", "fade", 400 )
 
 		performanceText.text =  "Memory: ".. string.format("%.3f", collectgarbage("count")) .. " KB\n" ..
 								"Max: ".. string.format("%.3f", maxMemory) .. "KB \n" ..
-								"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB"
+								"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB "
 	end
 
 	Runtime:addEventListener("enterFrame", Performance)

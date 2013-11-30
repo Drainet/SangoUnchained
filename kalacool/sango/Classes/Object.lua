@@ -36,6 +36,7 @@ function new()
 		end
 		display.remove( Object.image )
 		Object.image = nil
+
 	end
 	
 	

@@ -31,7 +31,6 @@ function scene:createScene( event )
 
     dog=PlayerSet.newShadow({x=100,y=300})
 
-
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
@@ -63,15 +62,15 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
-
+    storyboard.removeScene( storyboard.getPrevious() )
 
 end
 
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
     local group = self.view
+
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
-    storyboard.removeScene("kalacool.sango.Scene.scene1-5")
 
 end
 

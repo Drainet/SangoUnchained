@@ -63,7 +63,7 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
-
+    storyboard.removeScene( storyboard.getPrevious() )
 
 end
 
@@ -71,7 +71,6 @@ end
 function scene:exitScene( event )
     local group = self.view
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
-    storyboard.removeScene("kalacool.sango.Scene.scene1-5")
 
 end
 

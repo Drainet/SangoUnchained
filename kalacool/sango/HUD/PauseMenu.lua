@@ -190,6 +190,7 @@ function new()
             ------------------- Button Function Start -------------------
                 function freeView.freeViewBack()
                     freeView:removeSelf()
+                    freeView = nil
                     Runtime:removeEventListener( "touch", swipe )      -- Remove freeView 
                     Runtime:addEventListener( "enterFrame", onEveryFrame )  -- Recover camera 
                     Content.Resume()
