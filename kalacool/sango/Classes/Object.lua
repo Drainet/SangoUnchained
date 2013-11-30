@@ -35,7 +35,7 @@ function new()
 			Runtime:removeEventListener(Object.listeners[i].event, Object.listeners[i].listener)
 		end
 		display.remove( Object.image )
-		
+		Object.image = nil
 	end
 	
 	

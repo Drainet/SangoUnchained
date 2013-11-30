@@ -3,6 +3,7 @@
 module(..., package.seeall)
 require("kalacool.sango.Set.WorldSet")
 require("kalacool.sango.Set.EnemySet")
+require("kalacool.sango.Set.MechanismSet")
 function CreateLevel(physics)
 
     display.setDefault( 'background', 0, 0, 0 )
@@ -127,6 +128,21 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object51"].image)
  level.layers["InteractiveWorld"].objects["object52"] = WorldSet.newfloatingFloor({x=4320,y=1210})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object52"].image)
+
+------ mechanism test ---
+level.layers["InteractiveWorld"].objects["object53"] = MechanismSet.newTriggerButton({x=100,y=150,key="A1"})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object53"].image)
+level.layers["InteractiveWorld"].objects["object53"] = MechanismSet.newTriggerButton({x=1500,y=150,key="A2"})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object53"].image)
+level.layers["InteractiveWorld"].objects["object54"] = MechanismSet.newReceiverRock({x=700,y=400,key="A1"})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object54"].image)
+level.layers["InteractiveWorld"].objects["object55"] = MechanismSet.newReceiverRock({x=3800,y=2200,key="A1"})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object55"].image)
+level.layers["InteractiveWorld"].objects["object56"] = MechanismSet.newDisappearFloor({x=1800,y=400})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object56"].image)
+level.layers["InteractiveWorld"].objects["object57"] = MechanismSet.newDisappearFloor({x=2000,y=400})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object57"].image)
+------ test end ---
 
     level:insert(level.layers["StaticWorld"])
 

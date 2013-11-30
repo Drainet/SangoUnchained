@@ -28,7 +28,7 @@ function scene:createScene( event )
 
     require "kalacool.sango.Set.PlayerSet"
 
-    dog=PlayerSet.newDoggy({x=100,y=100})
+    dog=PlayerSet.newDoggy({x=100,y=350})
 
     dog:setPlayerShow()
 
