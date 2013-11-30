@@ -11,6 +11,7 @@ function new()
     local function allEnterFrame()
         scene:dispatchEvent({name='floatingFloorMoving',target = Player} )
         scene:dispatchEvent({name='moveLayer'})
+        scene:dispatchEvent({name='arrowControl'})
     end    
 
 --------------------------------- EventCentral API ---------------------------------

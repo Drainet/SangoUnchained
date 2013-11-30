@@ -26,6 +26,7 @@ function new(config)
 	
 
     local Player = CharacterClass.new()
+    Player.buffNum = 0
 	Player.image=display.newGroup()
 	Player.HUD=display.newGroup()
 	Player.image.type="player"

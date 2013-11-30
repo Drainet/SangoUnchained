@@ -33,7 +33,7 @@ function new(x,y,vx,vy)
 
     oneshot.name="oneshot"
     oneshot.type="bullet"
-    oneshot.damage = 30
+    oneshot.power = 30
     oneshot:setStrokeColor(0,0,0)
     local Shape= { 88,4, 88,-4, 96,-4, 96,4 }
     physics.addBody( oneshot,"kinematic",{ density=500.0, friction=0, bounce=0.3,  shape=Shape , filter=Filter} )

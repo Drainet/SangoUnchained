@@ -60,6 +60,28 @@ function Weapon.newRifle()
 	return gun
 end
 
+function Weapon.newXbow()
+
+
+	local gun={}
+
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/xbow.png",{ width=600, height=141, numFrames=3 } )
+	
+	local gunsequenceData = {
+ 
+		{ name="shoot", frames= {1,2,3,1}, time=300 ,loopCount = 1}
+
+	}
+
+	local sprite =  display.newSprite(gunsheet, gunsequenceData)
+	
+	gun.sprite = sprite
+	gun.magazine=magazineClass.new(4,500,1000,0,"kalacool/sango/image/UI/arrow.png")
+	gun.bullet= require "kalacool.sango.item.arrow"
+	gun.recoil=400
+	return gun
+end
+
 function Weapon.newgun(name)
 
 	local gun={}
@@ -74,6 +96,10 @@ function Weapon.newgun(name)
 
 	if(name=="rifle")then
 		gun=Weapon.newRifle()
+	end
+
+	if(name=="xbow")then
+		gun=Weapon.newXbow()
 	end
 	
 
