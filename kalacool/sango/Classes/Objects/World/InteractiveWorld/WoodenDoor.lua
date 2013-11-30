@@ -16,7 +16,7 @@ function new(config)
     physics.addBody( WoodenDoor.image,  "kinematic", { density=1, friction=0.3, bounce=0} )
 
     function WoodenDoor:removeAllEvent(event)
-        FloatingFloor.dispose()
+        WoodenDoor.dispose()
     end
 
     function WoodenDoor.preCollision(self, event)

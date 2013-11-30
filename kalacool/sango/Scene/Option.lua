@@ -74,15 +74,14 @@ end
 
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
+    storyboard.removeScene( storyboard.getPrevious() )
     local group = self.view
-
 
 end
 
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
     local group = self.view
-    storyboard.removeScene("kalacool.sango.Scene.Option")
 end
 
 -- Called prior to the removal of scene's "view" (display group)

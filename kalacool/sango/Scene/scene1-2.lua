@@ -20,13 +20,11 @@ function scene:createScene( event )
 
     local levelDirector = require "kalacool.sango.level.lv1-2"
 
-
     local physics = require("physics")
     physics.start()
     --physics.setDrawMode( "hybrid" )
  
     local myLevel = levelDirector.CreateLevel(physics)
-
 
     require "kalacool.sango.Set.PlayerSet"
 
@@ -39,8 +37,8 @@ function scene:createScene( event )
         ,{imgPath = "kalacool/sango/image/test/backgrass.png",x = 30,y = 10}
         ,{imgPath = "kalacool/sango/image/test/backitem.png",x = 20,y = 10}})
 
-
   --  camera:insert(bg)
+
     camera:insert(myLevel)
     camera:insert(dog.image)
     HUD:insert( pauseMenu )
@@ -62,7 +60,7 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
-
+    storyboard.removeScene( storyboard.getPrevious() )
 
 end
 
@@ -70,7 +68,6 @@ end
 function scene:exitScene( event )
     local group = self.view
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
-    storyboard.removeScene("kalacool.sango.Scene.scene1-5")
 
 end
 

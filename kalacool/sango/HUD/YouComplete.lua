@@ -5,6 +5,9 @@ function new()
     local widget = require( "widget" )
     local storyboard = require( "storyboard" )
 
+    local buttonBackToLvSel
+    local buttonNextLevel
+
     Runtime:removeEventListener( "touch", dog.shoot)
     physics.pause()
 	
@@ -14,6 +17,8 @@ function new()
 	local buttonHandler = function( event )
         if event.target.id == "backToLvSel" then
             Content.backToLvSel()
+        elseif event.target.id == "buttonNextLevel" then
+            -- Content.buttonNextLevel()        
         end
     end
 ------------------- buttonHandler End ---------------
@@ -35,22 +40,43 @@ function new()
         {
             id = "backToLvSel",
             defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-            label = "Back",
+            label = "Leave",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
         }
 
-        buttonBackToLvSel.x =display.contentWidth/2; buttonBackToLvSel.y = display.contentHeight/2 + 300
+    buttonNextLevel = widget.newButton
+        {
+            id = "buttonNextLevel",
+            defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+            label = "Next",
+            fontSize = 28,
+            emboss = true,
+            onPress = buttonHandler,
+        }
+
+        buttonBackToLvSel.x =display.contentWidth/2 - 200 ; buttonBackToLvSel.y = display.contentHeight/2 + 300
+        buttonNextLevel.x =display.contentWidth/2 + 200     ; buttonNextLevel.y = display.contentHeight/2 + 300
 
     Content:insert( buttonBackToLvSel )
+    Content:insert( buttonNextLevel )
 ------------------- buttonBackToLvSel End ---------------
 
 
 ------------------- Button Function Start -------------------
     function Content.backToLvSel()
         Content:removeSelf()
+        Content = nil
         storyboard.gotoScene( "kalacool.sango.Scene.LevelSelect", "fade", 200  )
+        storyboard.removeAll()
+    end
+
+    function Content.buttonNextLevel()
+        Content:removeSelf()
+        Content = nil
+        -- Runtime:removeEventListener( "enterFrame", onEveryFrame )
+        storyboard.gotoScene( "kalacool.sango.Scene.scene1-2", "fade", 200  )
         storyboard.removeAll()
     end
 ------------------- Button Function End -------------------
