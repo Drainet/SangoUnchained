@@ -22,14 +22,14 @@ function new(config)
     
 
 	function Doggy.default()
-		Doggy.buffNum = 0
+
 		Doggy.show(Doggy.image.lastCheckPoint)
 
 		Doggy.body:setSequence( "jump" )
 		Doggy.body:play()
 
 		Doggy.pack[1]={name="shotgun",isonAir=true,nowNum=nil}
-    	Doggy.pack[2]={name="rifle",isonAir=true,nowNum=nil}
+    	Doggy.pack[2]={name="xbow",isonAir=true,nowNum=nil}
 
 
 		Doggy.setgun( Doggy.pack[Doggy.switch.state].name )
@@ -52,7 +52,7 @@ function new(config)
 	
 	
 	
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/character/coodog.png", { width=150, height=141, numFrames=9 } )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/character/shadow.png", { width=150, height=141, numFrames=9 } )
 	
 	local sequenceData = {
  

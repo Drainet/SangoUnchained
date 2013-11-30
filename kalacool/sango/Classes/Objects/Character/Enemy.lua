@@ -59,7 +59,7 @@ function new()
         if (event.phase == "began") then
             if (event.other.type == "bullet") then
                 if(Enemy.HP > 1) then
-                    Enemy:hurt(event.other.damage)
+                    Enemy:hurt(event.other.power)
                 else
                     if(Enemy.alive == true) then
                         timer.performWithDelay( 10,Enemy.dead,1) 
