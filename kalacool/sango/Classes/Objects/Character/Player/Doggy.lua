@@ -28,8 +28,11 @@ function new(config)
 		Doggy.body:setSequence( "jump" )
 		Doggy.body:play()
 
-		Doggy.pack[1]={name="shotgun",isonAir=true,nowNum=nil}
-    	Doggy.pack[2]={name="rifle",isonAir=true,nowNum=nil}
+		local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
+    	local characterConfig = GetAndSetStatus.getCurCharacterConfig()
+
+		Doggy.pack[1]={name=characterConfig.wpn1,isonAir=true,nowNum=nil}
+    	Doggy.pack[2]={name=characterConfig.wpn2,isonAir=true,nowNum=nil}
 
 
 		Doggy.setgun( Doggy.pack[Doggy.switch.state].name )

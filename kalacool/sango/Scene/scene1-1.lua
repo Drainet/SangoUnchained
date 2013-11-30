@@ -2,6 +2,7 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 local eventCentralClass = require "eventCentral"
+
 eventCentral = eventCentralClass.new()
 
 -- Called when the scene's view does not exist:
@@ -28,8 +29,9 @@ function scene:createScene( event )
 
     require "kalacool.sango.Set.PlayerSet"
 
-
-    dog=PlayerSet.newShadow({x=100,y=300})
+    local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
+    local characterConfig = GetAndSetStatus.getCurCharacterConfig()
+    dog=PlayerSet.new(characterConfig.char,{x=100,y=300})
 
     dog:setPlayerShow()
 

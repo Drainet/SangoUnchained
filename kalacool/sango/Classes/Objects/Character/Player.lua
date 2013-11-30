@@ -286,13 +286,13 @@ function new(config)
 		Player.Magazine:cancelReload()
 		Player.body:setSequence( "dead" )
 		Player.body:play()
-		timer.performWithDelay( 1000, Player.respawn,1 )
+		Player.respawnTimer = timer.performWithDelay( 1000, Player.respawn,1 )
 
 	end
 
 	function Player.invincible(time)
 
-		local function shine( event )
+		function shine( event )
 			if(math.fmod(event.count,2)==1)then
 				Player.image.alpha = 0.7
 			else
@@ -308,7 +308,7 @@ function new(config)
 			-- body
 		end
 
-		timer.performWithDelay( 100, shine,time )
+		Player.invincibleTimer = timer.performWithDelay( 100, shine,time )
 		
 		Player.isInvincible=true
 
@@ -327,6 +327,14 @@ function new(config)
 
     function Player:removeAllEvent(event)
         Player.dispose()
+        if(Player.respawnTimer ~=nil)then
+			timer.cancel( Player.respawnTimer  )
+		end
+		if(Player.invincibleTimer~=nil)then
+			timer.cancel( Player.invincibleTimer )
+		end
+
+		Player.Magazine:cancelReload()
         
     end
 

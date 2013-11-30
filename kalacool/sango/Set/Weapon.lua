@@ -86,7 +86,7 @@ function Weapon.newgun(name)
 
 	local gun={}
 
-	if(name=="shotgun")then
+	if(name=="DAO-12")then
 		gun=Weapon.newShotgun()
 	end
 	
@@ -94,11 +94,11 @@ function Weapon.newgun(name)
 		gun=Weapon.newNotegun()
 	end
 
-	if(name=="rifle")then
+	if(name=="Kar-98")then
 		gun=Weapon.newRifle()
 	end
 
-	if(name=="xbow")then
+	if(name=="XBOW")then
 		gun=Weapon.newXbow()
 	end
 	

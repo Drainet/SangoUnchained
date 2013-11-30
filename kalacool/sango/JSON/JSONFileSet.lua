@@ -56,7 +56,7 @@ if JSONFileSet.weaponStoreTable  == nil then
 	weaponStoreJson[2].spcialUnclockDescription = ""
 
 	weaponStoreJson[3] ={}
-	weaponStoreJson[3].itemName = "XBOX"
+	weaponStoreJson[3].itemName = "XBOW"
 	weaponStoreJson[3].weaponStoreItemID = 3
 	weaponStoreJson[3].price = 1000
 	weaponStoreJson[3].unlock = true

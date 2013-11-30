@@ -1,25 +1,37 @@
 
-local DoggyClass  = require "kalacool.sango.Classes.Objects.Character.Player.Doggy"
-local CatClass  = require "kalacool.sango.Classes.Objects.Character.Player.Cat"
-local shadow  = require "kalacool.sango.Classes.Objects.Character.Player.shadow"
+local Doggy  = require "kalacool.sango.Classes.Objects.Character.Player.Doggy"
+local Cat  = require "kalacool.sango.Classes.Objects.Character.Player.Cat"
+local Shadow  = require "kalacool.sango.Classes.Objects.Character.Player.shadow"
 PlayerSet={}
 
-function PlayerSet.newDoggy(config)
+-- function PlayerSet.newDoggy(config)
 
 
-	return DoggyClass.new(config)
-end
+-- 	return DoggyClass.new(config)
+-- end
 
 
-function PlayerSet.newCat(config)
+-- function PlayerSet.newCat(config)
 
 
-	return CatClass.new(config)
-end
+-- 	return CatClass.new(config)
+-- end
 
-function PlayerSet.newShadow(config)
+-- function PlayerSet.newShadow(config)
 
 
-	return shadow.new(config)
+-- 	return shadow.new(config)
+-- end
+
+function PlayerSet.new(name,config)
+	if(name == "Shadow")then
+		return Shadow.new(config)
+	end
+
+	if(name == "Doggy")then
+		return Doggy.new(config)
+	end
+
+	
 end
 return PlayerSet
