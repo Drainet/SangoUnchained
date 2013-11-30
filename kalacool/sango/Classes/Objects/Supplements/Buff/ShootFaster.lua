@@ -27,7 +27,10 @@ function new(config)
 		--set icon cooldown
 		Item.timerCoolDown = timer.performWithDelay(0, Item.coolDown)
 		Item.timerRenew = timer.performWithDelay( Item.buffTime, Item.effectCallback ,1)
-
+		if(event.phase == "began")then
+			local buffHUD = require "kalacool.sango.HUD.buffHUD"
+    		buffHUD.new(math.ceil(Item.buffTime/1000) , "kalacool/sango/image/Supplement/shootFaster.jpg")
+		end
 		Item.oldRate = event.other.Magazine.rate
 		event.other.Magazine.rate = Item.newRate
 		Item.effectTarget = event.other
