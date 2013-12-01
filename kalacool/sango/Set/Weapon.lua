@@ -22,7 +22,7 @@ function Weapon.newShotgun()
 	gun.sprite = sprite
 	gun.magazine=magazineClass.new(5,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.bullet"
-	gun.recoil=550
+	gun.recoil=500
 	return gun
 end
 

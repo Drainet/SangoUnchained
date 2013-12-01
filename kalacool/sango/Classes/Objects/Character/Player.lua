@@ -69,7 +69,7 @@ function new(config)
     	--Player.gun.xReference=18
     	--Player.gun.yReference=-8
     	Player.gun.x = Player.hand.fistX
-    	Player.gun.y = Player.hand.fistX
+    	Player.gun.y = Player.hand.fistY
 
     	Player.handGroup:insert(Player.gun)
     	Player.gun:toBack()
@@ -246,7 +246,7 @@ function new(config)
 				end
 				camera:insert(bulletgroup)			
 			        local vx, vy = Player.image:getLinearVelocity()								
-				local limit=Player.Weapon.recoil+200
+				local limit=Player.Weapon.recoil+100
 				local standard=Player.Weapon.recoil
 				if(vx-standard*(coolX)/ratio>limit)then
 								

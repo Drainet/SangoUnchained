@@ -73,6 +73,19 @@ function new(config)
 	
 
     Doggy.image:insert(body)
+
+    Doggy.handGroup = display.newGroup( )
+    Doggy.image:insert(Doggy.handGroup)
+
+    Doggy.hand = display.newImage( "kalacool/sango/image/character/shadowhand.png" )
+    Doggy.hand.x = 0
+    Doggy.hand.y = 0
+    Doggy.hand.fistX = 3
+    Doggy.hand.fistY = 28
+    Doggy.handGroup:insert(Doggy.hand)
+
+    Doggy.handGroup.xReference=14--shoulder position
+    Doggy.handGroup.yReference=10
     
 
     Doggy.Filter = { categoryBits = 2, maskBits = 5 }
