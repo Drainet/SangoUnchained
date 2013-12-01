@@ -5,6 +5,7 @@ function new()
     
     local widget = require( "widget" )
     local storyboard = require( "storyboard" )
+    local levelConfigClass = require "kalacool.sango.System.GetAndSetLV"
 
     local buttonBackToLvSel
     local buttonNextLevel
@@ -13,6 +14,16 @@ function new()
     physics.pause()
 	
 	local Content = display.newGroup()
+
+------------------- Save your record Start ---------------    
+    local newCurLevelConfig={}
+
+    newCurLevelConfig.num = tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) )
+    levelConfigClass.star = 0
+    levelConfigClass.pass = true
+
+    levelConfigClass.setCurLevelConfig(newCurLevelConfig)
+------------------- Save your record End --------------- 
 
 ------------------- buttonHandler Start ---------------
 	local buttonHandler = function( event )
@@ -61,6 +72,7 @@ function new()
     buttonNextLevel.x =display.contentWidth/2 + 200     ; buttonNextLevel.y = display.contentHeight/2 + 300
 
     ---- If this is the final Level
+    ----tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) ) is this leve number, if you are playing "1-4",then it means "4"
     if( tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) ) == totalLevel ) then
         buttonNextLevel.isVisible = false
     end
