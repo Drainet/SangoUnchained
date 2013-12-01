@@ -16,7 +16,7 @@ local fireball = Monster.new()
     -- set monster's attribute
     fireball.HP = 10
     fireball.moveSpeed = 300
-    fireball.attackRange = 150
+    fireball.attackRange = 300
     fireball.visibleDistance = 1000
     -- set monster's body
     fireball.name ="monster"

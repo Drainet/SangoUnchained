@@ -26,6 +26,7 @@ function new()
         end
         return dir
     end    
+    
     -- stop AI
     function ROBOT:stop()
         timer.cancel(ROBOT.timerID)
