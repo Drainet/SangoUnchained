@@ -22,7 +22,7 @@ function new(config)
     
 
 	function Doggy.default()
-
+		Doggy.buffNum = 0
 		Doggy.show(Doggy.image.lastCheckPoint)
 
 		Doggy.body:setSequence( "jump" )

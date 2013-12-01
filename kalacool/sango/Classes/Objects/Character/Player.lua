@@ -26,7 +26,6 @@ function new(config)
 	
 
     local Player = CharacterClass.new()
-    Player.buffNum = 0
 	Player.image=display.newGroup()
 	Player.HUD=display.newGroup()
 	Player.image.type="player"
@@ -41,6 +40,10 @@ function new(config)
 
 
 	Player.isSticky=true		
+	--- Dog buff effect counter ---
+	Player.image.shootFaster = false
+	--- Dog buff effect counter END ---
+	
 -------è¨­åæ§start---
 	function Player.setgun()
 		if(Player.Weapon~=nil)then
@@ -286,13 +289,13 @@ function new(config)
 		Player.Magazine:cancelReload()
 		Player.body:setSequence( "dead" )
 		Player.body:play()
-		Player.respawnTimer = timer.performWithDelay( 1000, Player.respawn,1 )
+		timer.performWithDelay( 1000, Player.respawn,1 )
 
 	end
 
 	function Player.invincible(time)
 
-		function shine( event )
+		local function shine( event )
 			if(math.fmod(event.count,2)==1)then
 				Player.image.alpha = 0.7
 			else
@@ -308,7 +311,7 @@ function new(config)
 			-- body
 		end
 
-		Player.invincibleTimer = timer.performWithDelay( 100, shine,time )
+		timer.performWithDelay( 100, shine,time )
 		
 		Player.isInvincible=true
 
@@ -327,14 +330,6 @@ function new(config)
 
     function Player:removeAllEvent(event)
         Player.dispose()
-        if(Player.respawnTimer ~=nil)then
-			timer.cancel( Player.respawnTimer  )
-		end
-		if(Player.invincibleTimer~=nil)then
-			timer.cancel( Player.invincibleTimer )
-		end
-
-		Player.Magazine:cancelReload()
         
     end
 
