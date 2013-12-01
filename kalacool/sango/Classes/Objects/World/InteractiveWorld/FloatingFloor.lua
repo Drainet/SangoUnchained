@@ -45,7 +45,7 @@ function new(config)
             -- event.contact.isEnabled=false
         -- end
 
-        if(event.other.y+70>self.y and event.contact~=nil)then
+        if((event.otherElement~=2 or vy<0) and event.contact~=nil)then
             
             event.contact.isEnabled=false
         end
