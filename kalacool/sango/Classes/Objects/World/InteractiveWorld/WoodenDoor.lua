@@ -16,7 +16,8 @@ function new(config)
     physics.addBody( WoodenDoor.image,  "kinematic", { density=1, friction=0.3, bounce=0} )
 
     function WoodenDoor:removeAllEvent(event)
-        FloatingFloor.dispose()
+        WoodenDoor.dispose()
+        print("wdddddd")
     end
 
     function WoodenDoor.preCollision(self, event)
@@ -29,7 +30,7 @@ function new(config)
 	end
  	
  	WoodenDoor.image:addEventListener( "preCollision", WoodenDoor)
- 	WoodenDoor.listeners[2] = {event='removeAllEvent' , listener = WoodenDoor}
+ 	WoodenDoor.listeners[1] = {event='removeAllEvent' , listener = WoodenDoor}
 
  	WoodenDoor[1] = {event="preCollision" , listener = WoodenDoor}
     WoodenDoor[2] = {event='removeAllEvent' , listener = WoodenDoor}

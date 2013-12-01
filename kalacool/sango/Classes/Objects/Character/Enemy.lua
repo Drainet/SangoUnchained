@@ -57,7 +57,7 @@ function new()
 
     function Enemy.onCollision(self, event)
         if (event.phase == "began") then
-            if (event.other.type == "bullet") then
+            if (event.other.type == "bullet" or event.other.type == "explosion") then
                 if(Enemy.HP > 1) then
                     Enemy:hurt(event.other.damage)
                 else

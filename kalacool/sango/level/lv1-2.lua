@@ -152,6 +152,12 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object64"].image)
  level.layers["InteractiveWorld"].objects["object65"] = WorldSet.newFireBall({x=3888,y=1088})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object65"].image)
+
+
+ level.layers["InteractiveWorld"].objects["object68"] = WorldSet.newDrum({x=350,y=602})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object68"].image)
+ level.layers["InteractiveWorld"].objects["object69"] = WorldSet.newDrum({x=248,y=608})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object69"].image)
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])
