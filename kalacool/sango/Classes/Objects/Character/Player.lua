@@ -294,7 +294,7 @@ function new(config)
 		Player.Magazine:cancelReload()
 		Player.body:setSequence( "dead" )
 		Player.body:play()
-		timer.performWithDelay( 1000, Player.respawn,1 )
+		Player.respawnTimer = timer.performWithDelay( 1000, Player.respawn,1 )
 
 	end
 
@@ -316,7 +316,11 @@ function new(config)
 			-- body
 		end
 
-		timer.performWithDelay( 100, shine,time )
+		if(Player.shineTimer~=nil)then
+		 	timer.cancel( Player.shineTimer )
+		end
+
+		Player.shineTimer = timer.performWithDelay( 100, shine,time )
 		
 		Player.isInvincible=true
 
@@ -335,6 +339,15 @@ function new(config)
 
     function Player:removeAllEvent(event)
         Player.dispose()
+
+  		Player.Magazine:cancelReload()
+
+        if(Player.shineTimer~=nil)then
+		 	timer.cancel( Player.shineTimer )
+		end
+		if(Player.respawnTimer~=nil)then
+		 	timer.cancel( Player.respawnTimer )
+		end
         
     end
 

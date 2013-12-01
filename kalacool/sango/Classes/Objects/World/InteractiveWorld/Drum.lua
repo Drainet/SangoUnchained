@@ -32,7 +32,7 @@ function new(config)
 
 
     function Drum.image:boom()
-        if(Drum~=null) then
+        if(Drum.image.x~=nil) then
         Animation:newBom(Drum.image.x,Drum.image.y)
             local function createCircleSenser() 
                 local circle = display.newCircle( Drum.image.x, Drum.image.y, 500 )  

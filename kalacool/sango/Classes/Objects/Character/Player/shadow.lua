@@ -88,7 +88,7 @@ function new(config)
     Doggy.handGroup.yReference=10
     
 
-    Doggy.Filter = { categoryBits = 2, maskBits = 5 }
+    Doggy.Filter = { categoryBits = 2, maskBits = 37 }
 
 	
 	local shapew=30
