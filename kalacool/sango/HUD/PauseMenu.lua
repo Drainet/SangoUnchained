@@ -138,8 +138,21 @@ function new()
                         xDistance =  oldX - newX -- X Movement
                         yDistance =  oldY - newY -- Y Movement
                         
-                        camera.x = camera.x + xDistance
-                        camera.y = camera.y + yDistance     
+                        if(camera.x + xDistance > cameraMaxRange.left) then
+                            camera.x = cameraMaxRange.left
+                        elseif(camera.x + xDistance < cameraMaxRange.right) then
+                            camera.x = cameraMaxRange.right
+                        else
+                            camera.x = camera.x + xDistance
+                        end
+                        
+                        if(camera.y + yDistance > cameraMaxRange.up) then
+                            camera.y = cameraMaxRange.up
+                        elseif(camera.y + yDistance < cameraMaxRange.down) then
+                            camera.y = cameraMaxRange.down
+                        else
+                            camera.y = camera.y + yDistance
+                        end     
                 end
                  
                 function swipe(event)

@@ -1,9 +1,11 @@
 module(..., package.seeall)
+local scene = scene
 
 function new()
     
     local widget = require( "widget" )
     local storyboard = require( "storyboard" )
+    local levelConfigClass = require "kalacool.sango.System.GetAndSetLV"
 
     local buttonBackToLvSel
     local buttonNextLevel
@@ -13,12 +15,22 @@ function new()
 	
 	local Content = display.newGroup()
 
+------------------- Save your record Start ---------------    
+    local newCurLevelConfig={}
+
+    newCurLevelConfig.num = tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) )
+    levelConfigClass.star = 0
+    levelConfigClass.pass = true
+
+    levelConfigClass.setCurLevelConfig(newCurLevelConfig)
+------------------- Save your record End --------------- 
+
 ------------------- buttonHandler Start ---------------
 	local buttonHandler = function( event )
         if event.target.id == "backToLvSel" then
             Content.backToLvSel()
         elseif event.target.id == "buttonNextLevel" then
-            -- Content.buttonNextLevel()        
+            Content.buttonNextLevel()        
         end
     end
 ------------------- buttonHandler End ---------------
@@ -56,8 +68,14 @@ function new()
             onPress = buttonHandler,
         }
 
-        buttonBackToLvSel.x =display.contentWidth/2 - 200 ; buttonBackToLvSel.y = display.contentHeight/2 + 300
-        buttonNextLevel.x =display.contentWidth/2 + 200     ; buttonNextLevel.y = display.contentHeight/2 + 300
+    buttonBackToLvSel.x =display.contentWidth/2 - 200 ; buttonBackToLvSel.y = display.contentHeight/2 + 300
+    buttonNextLevel.x =display.contentWidth/2 + 200     ; buttonNextLevel.y = display.contentHeight/2 + 300
+
+    ---- If this is the final Level
+    ----tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) ) is this leve number, if you are playing "1-4",then it means "4"
+    if( tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) ) == totalLevel ) then
+        buttonNextLevel.isVisible = false
+    end
 
     Content:insert( buttonBackToLvSel )
     Content:insert( buttonNextLevel )
@@ -75,8 +93,11 @@ function new()
     function Content.buttonNextLevel()
         Content:removeSelf()
         Content = nil
-        -- Runtime:removeEventListener( "enterFrame", onEveryFrame )
-        storyboard.gotoScene( "kalacool.sango.Scene.scene1-2", "fade", 200  )
+        local CurScene = tostring(storyboard.getCurrentSceneName() )
+        local numberLV = tonumber(CurScene:sub(string.find(CurScene, "-")+1) )
+        local NxtScene = CurScene:sub(1,string.len(CurScene)-1) .. (numberLV + 1)
+        scene:dispatchEvent({name='callCentralStop'})
+        storyboard.gotoScene( NxtScene, "fade", 200  )
         storyboard.removeAll()
     end
 ------------------- Button Function End -------------------

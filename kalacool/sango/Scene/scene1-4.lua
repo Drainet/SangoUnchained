@@ -70,15 +70,13 @@ end
 function scene:exitScene( event )
     local group = self.view
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
-
+    physics.stop()
+    eventCentral.stop()
 end
 
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroyScene( event )
     local group = self.view
-    physics.stop()
-    eventCentral.stop()
-
 end
 
 -- "createScene" event is dispatched if scene's view does not exist
