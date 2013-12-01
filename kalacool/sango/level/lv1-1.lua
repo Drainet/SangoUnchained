@@ -144,6 +144,17 @@ level.layers["InteractiveWorld"].objects["object57"] = MechanismSet.newDisappear
 level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object57"].image)
 ------ test end ---
 
+-- level.layers["InteractiveWorld"].objects["object53"] = WorldSet.newDrum({x=100,y=622})
+-- level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object53"].image)
+level.layers["InteractiveWorld"].objects["object56"] = WorldSet.newDrum({x=200,y=622})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object56"].image)
+
+ level.layers["InteractiveWorld"].objects["object54"] = EnemySet.newMonsterFireball({x=394,y=572,xL=20,xR=20})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object54"].image)
+ level.layers["InteractiveWorld"].objects["object55"] = EnemySet.newMonsterFireball({x=292,y=602,xL=10,xR=10})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object55"].image)
+    level:insert(level.layers["StaticWorld"])
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])

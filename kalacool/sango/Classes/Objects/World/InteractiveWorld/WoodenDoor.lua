@@ -17,6 +17,7 @@ function new(config)
 
     function WoodenDoor:removeAllEvent(event)
         WoodenDoor.dispose()
+        print("wdddddd")
     end
 
     function WoodenDoor.preCollision(self, event)
@@ -29,7 +30,7 @@ function new(config)
 	end
  	
  	WoodenDoor.image:addEventListener( "preCollision", WoodenDoor)
- 	WoodenDoor.listeners[2] = {event='removeAllEvent' , listener = WoodenDoor}
+ 	WoodenDoor.listeners[1] = {event='removeAllEvent' , listener = WoodenDoor}
 
  	WoodenDoor[1] = {event="preCollision" , listener = WoodenDoor}
     WoodenDoor[2] = {event='removeAllEvent' , listener = WoodenDoor}
