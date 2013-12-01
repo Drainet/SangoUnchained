@@ -59,7 +59,7 @@ function new(config)
 	
 	local sequenceData = {
  
-		{ name="normal",frames= { 2, 1, 3}, time=300 , loopDirection = "bounce" },
+		{ name="normal",frames= { 1, 2, 3}, time=300 , loopDirection = "bounce" },
 		{ name="jump", start=4, count=3, time=200 ,loopDirection = "bounce"},
 		{ name="dead", start=7, count=3, time=200 ,loopDirection = "bounce"}
  

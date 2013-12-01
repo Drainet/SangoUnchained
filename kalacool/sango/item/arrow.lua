@@ -128,8 +128,11 @@ function new(x,y,vx,vy)
                 local  function GG()
                     
                     local myJoint = physics.newJoint( "pivot", self, event.other, event.x, event.y )
-                    myJoint.isLimitEnabled = true -- (boolean)
-                    myJoint:setRotationLimits( 0, 0 )
+                    if(myJoint~=nil)then
+                        myJoint.isLimitEnabled = true -- (boolean)
+                        myJoint:setRotationLimits( 0, 0 )
+                    end
+                    
                     --myJoint.maxForce = 999999999999
                     --myJoint.maxTorque = 99999999999999999
                     --oneshot.bodyType = "static"

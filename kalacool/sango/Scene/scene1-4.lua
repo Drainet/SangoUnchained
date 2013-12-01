@@ -2,6 +2,9 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 local eventCentralClass = require "eventCentral"
+
+local movex, movey
+
 eventCentral = eventCentralClass.new()
 
 -- Called when the scene's view does not exist:
@@ -50,10 +53,10 @@ function scene:createScene( event )
     group:insert( HUD )
 
     function onEveryFrame()    
-        local movex = myLevel.x - dog.image.x
-        local movey = myLevel.y - dog.image.y
+        movex = myLevel.x - dog.image.x
+        movey = myLevel.y - dog.image.y
         camera.x = 640 + movex
-        camera.y = 360 + movey 
+        camera.y = 460 + movey 
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )
 
