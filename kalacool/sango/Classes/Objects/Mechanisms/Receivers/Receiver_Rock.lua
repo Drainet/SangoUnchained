@@ -11,9 +11,9 @@ function new(config)
 	Receiver.key = config.key
 	Receiver.explosioinTime = 2000
 	-- Set Receiver image
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/receiver_rock.png", { width=546, height=597, numFrames=10 } )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/receiver_rock.png", { width=546, height=597, numFrames=9 } )
     local sequenceData = {
-        { name="explosion", start=1, count=10, time=Receiver.explosioinTime },
+        { name="explosion", start=1, count=9, time=Receiver.explosioinTime },
       --  { name="normal", start=1, count=1, time= 100 }
     }
     local body =  display.newSprite( sheet , sequenceData )
