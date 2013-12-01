@@ -20,11 +20,11 @@ function new(config)
 
     local maxCount = 100
     function FloatingFloor:floatingFloorMoving(event)
-    if( FloatingFloor.count == maxCount) then
-        FloatingFloor.count = 0 
-    end
+        if( FloatingFloor.count == maxCount) then
+            FloatingFloor.count = 0 
+        end
 
-    FloatingFloor.count = FloatingFloor.count + 1   
+        FloatingFloor.count = FloatingFloor.count + 1   
         if FloatingFloor.count == 1 then
             FloatingFloor.image:setLinearVelocity(200,0)
         elseif FloatingFloor.count == maxCount/2 + 1 then

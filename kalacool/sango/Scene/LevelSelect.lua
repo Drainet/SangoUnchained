@@ -7,8 +7,6 @@ local scene = storyboard.newScene()
     local buttonBack 
 ------------ Declare Buttons End ------------
 
-local totalLevel = 5 -- total level numbers
-
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
     local group = self.view

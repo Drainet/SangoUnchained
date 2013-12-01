@@ -1,6 +1,6 @@
 require("Class")
 
-
+require "kalacool.sango.System.globalVariable"
 JSONFileSet = require "kalacool.sango.JSON.JSONFileSet"
 
 display.setStatusBar( display.HiddenStatusBar ) 
@@ -19,7 +19,7 @@ local options =
 	}
 storyboard.gotoScene( "kalacool.sango.Scene.Menu", options)
 
-		
+
 --------------- Performance Start ---------------
 	performanceText = display.newText("", 0, 0, native.systemFont, 30)
 	local maxMemory = 0

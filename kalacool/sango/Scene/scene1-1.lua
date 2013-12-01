@@ -2,6 +2,8 @@
 local storyboard = require( "storyboard" )
 local scene = storyboard.newScene()
 local eventCentralClass = require "eventCentral"
+
+local movex, movey
 eventCentral = eventCentralClass.new()
 
 -- Called when the scene's view does not exist:
@@ -30,7 +32,6 @@ function scene:createScene( event )
 
 
     dog=PlayerSet.newShadow({x=100,y=300})
-
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
@@ -49,11 +50,11 @@ function scene:createScene( event )
     group:insert( camera )
     group:insert( HUD )
 
-    function onEveryFrame()     
-        local movex = myLevel.x - dog.image.x
-        local movey = myLevel.y - dog.image.y
-        camera.x = 650 + movex
-        camera.y = 400 + movey 
+    function onEveryFrame()  
+        movex = myLevel.x - dog.image.x
+        movey = myLevel.y - dog.image.y
+        camera.x = 640 + movex
+        camera.y = 360 + movey
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )
 
@@ -69,16 +70,14 @@ end
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
     local group = self.view
-
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
-
+    physics.stop()
+    eventCentral.stop()
 end
 
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroyScene( event )
     local group = self.view
-    physics.stop()
-    eventCentral.stop()
 
 end
 

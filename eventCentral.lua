@@ -1,7 +1,5 @@
 --eventCentral.lua
-
 module(..., package.seeall)
-
 local scene = scene
 
 function new()
@@ -28,6 +26,24 @@ function new()
         scene:dispatchEvent({name='removeAllEvent'})
     end
 --------------------------------- EventCentral API End ---------------------------------
+
+--------------------------------- External EventCentral API Start ---------------------------------
+    function eventCental:callCentralStart(event)
+        eventCental.start()
+    end
+
+    function eventCental:callCentralPause(event)
+        eventCental.pause()
+    end
+
+    function eventCental:callCentralStop(event)
+        eventCental.stop()
+    end
+
+    scene:addEventListener( 'callCentralStart', eventCental )
+    scene:addEventListener( 'callCentralPause', eventCental )
+    scene:addEventListener( 'callCentralStop', eventCental )
+--------------------------------- External EventCentral API End ---------------------------------
 
     return eventCental
 end
