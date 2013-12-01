@@ -55,7 +55,7 @@ function new(config)
 	
 	
 	
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/character/shadow.png", { width=150, height=141, numFrames=9 } )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/character/shadow.png", { width=120, height=113, numFrames=9 } )
 	
 	local sequenceData = {
  
@@ -73,16 +73,29 @@ function new(config)
 	
 
     Doggy.image:insert(body)
+
+    Doggy.handGroup = display.newGroup( )
+    Doggy.image:insert(Doggy.handGroup)
+
+    Doggy.hand = display.newImage( "kalacool/sango/image/character/shadowhand.png" )
+    Doggy.hand.x = 0
+    Doggy.hand.y = 0
+    Doggy.hand.fistX = 3
+    Doggy.hand.fistY = 28
+    Doggy.handGroup:insert(Doggy.hand)
+
+    Doggy.handGroup.xReference=14--shoulder position
+    Doggy.handGroup.yReference=10
     
 
     Doggy.Filter = { categoryBits = 2, maskBits = 5 }
 
 	
-	local shapew=38
-	local shapeh=72
+	local shapew=30
+	local shapeh=56
 
-	Doggy.Shape= { -shapew,-shapeh, shapew,-shapeh, shapew,66, -shapew,66 }
-	Doggy.foot= { -shapew+2,66, shapew-2,66, shapew-2,shapeh, -shapew+2,shapeh }
+	Doggy.Shape= { -shapew,-shapeh, shapew,-shapeh, shapew,53, -shapew,53 }
+	Doggy.foot= { -shapew+2,53, shapew-2,53, shapew-2,shapeh, -shapew+2,shapeh }
 	--physics.setDrawMode( "hybrid" )
     
 	

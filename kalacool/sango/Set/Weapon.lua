@@ -9,7 +9,7 @@ function Weapon.newShotgun()
 	local gun={}
 
 
-	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/dao12.png",{ width=300, height=141, numFrames=3 } )
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/dao12.png",{ width=480, height=113, numFrames=3 } )
 	
 	local gunsequenceData = {
  
@@ -22,7 +22,7 @@ function Weapon.newShotgun()
 	gun.sprite = sprite
 	gun.magazine=magazineClass.new(5,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.bullet"
-	gun.recoil=550
+	gun.recoil=500
 	return gun
 end
 
@@ -43,7 +43,7 @@ function Weapon.newRifle()
 
 	local gun={}
 
-	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/kar98.png",{ width=600, height=141, numFrames=3 } )
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/kar98.png",{ width=480, height=113, numFrames=3 } )
 	
 	local gunsequenceData = {
  
@@ -65,7 +65,7 @@ function Weapon.newXbow()
 
 	local gun={}
 
-	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/xbow.png",{ width=600, height=141, numFrames=3 } )
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/xbow.png",{ width=480, height=113, numFrames=3 } )
 	
 	local gunsequenceData = {
  

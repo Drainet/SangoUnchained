@@ -67,12 +67,17 @@ function new(config)
 		Player.Magazine.start()
 		Player.Magazine.ammoMax = temp
 
-		Player.hang = Player.Weapon.sprite
+		Player.gun = Player.Weapon.sprite
 
-    	Player.hang.xReference=25
-    	Player.hang.yReference=-11
+    	--Player.gun.xReference=18
+    	--Player.gun.yReference=-8
+    	Player.gun.x = Player.hand.fistX
+    	Player.gun.y = Player.hand.fistY
 
-    	Player.image:insert(Player.hang)
+    	Player.handGroup:insert(Player.gun)
+    	Player.gun:toBack()
+    	
+    	--Player.image:insert(Player.hang)
 
     	--Player.hang.x=Player.image.x+25-config.x
     	--Player.hang.y=Player.image.y-11-config.y
@@ -220,8 +225,8 @@ function new(config)
 			Player.noSticky( )
 			--print(event.y)
 			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
-				Player.hang:setSequence( "shoot" )
-				Player.hang:play()
+				Player.gun:setSequence( "shoot" )
+				Player.gun:play()
 				Player.Magazine.pop()	
 				local coolX= -camera.x+event.x-Player.image.x
 				local coolY= -camera.y+event.y-Player.image.y
@@ -238,13 +243,13 @@ function new(config)
 				end
 
 				if(Player.image.xScale == 1)then
-					Player.hang.rotation=  angle+180
+					Player.handGroup.rotation=  angle+180
 				elseif(Player.image.xScale == -1)then
-					Player.hang.rotation=  angle*-1
+					Player.handGroup.rotation=  angle*-1
 				end
 				camera:insert(bulletgroup)			
 			        local vx, vy = Player.image:getLinearVelocity()								
-				local limit=Player.Weapon.recoil+200
+				local limit=Player.Weapon.recoil+100
 				local standard=Player.Weapon.recoil
 				if(vx-standard*(coolX)/ratio>limit)then
 								
