@@ -58,13 +58,16 @@ function new()
     function Enemy.onCollision(self, event)
                                     print(event.other.type)
         if (event.phase == "began") then
-
+            
             if (event.other.type == "bullet" or event.other.type == "explosive") then
-
+                
                 if(Enemy.HP > 1) then
+                    
                     Enemy:hurt(event.other.power)
-                else
+                end
+                if(Enemy.HP <=1) then
                     if(Enemy.alive == true) then
+                        
                         timer.performWithDelay( 10,Enemy.dead,1) 
                         Enemy.alive = false
                     end

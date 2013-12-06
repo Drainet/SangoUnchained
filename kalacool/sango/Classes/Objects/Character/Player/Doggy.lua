@@ -38,8 +38,8 @@ function new(config)
 		Doggy.setgun( Doggy.pack[Doggy.switch.state].name )
 		--Doggy.setgun("rifle")
 		physics.addBody( Doggy.image
-			,{ density=10.0, friction=1, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}
-			,{ density=10.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} )
+			,{ density=10.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
+			,{ density=10.0, friction=0.2, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter})
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet = true
 		Doggy.alive=true
@@ -80,20 +80,20 @@ function new(config)
     Doggy.hand = display.newImage( "kalacool/sango/image/character/coodoghand.png" )
     Doggy.hand.x = 0
     Doggy.hand.y = 0
-    Doggy.hand.fistX = 16
-    Doggy.hand.fistY = 15
+    Doggy.hand.fistX = 13
+    Doggy.hand.fistY = 21
     Doggy.handGroup:insert(Doggy.hand)
 
-    Doggy.handGroup.xReference=20 --shoulder position
-    Doggy.handGroup.yReference=-8
+    Doggy.handGroup.xReference=16 --shoulder position
+    Doggy.handGroup.yReference=8
 
-    Doggy.Filter = { categoryBits = 2, maskBits = 37 }
+    --Doggy.Filter = { categoryBits = 2, maskBits = 37 }
 
 	
 	local shapew=30
 	local shapeh=56
 
-	Doggy.Shape= { -shapew,-shapeh, shapew,-shapeh, shapew,53, -shapew,53 }
+	Doggy.Shape= { -shapew,-shapeh+30, shapew,-shapeh+30, shapew,53, -shapew,53 }
 	Doggy.foot= { -shapew+2,53, shapew-2,53, shapew-2,shapeh, -shapew+2,shapeh }
 	--physics.setDrawMode( "hybrid" )
     

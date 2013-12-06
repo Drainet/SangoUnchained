@@ -26,15 +26,15 @@ function new(config)
 	
 	local image = display.newSprite( sheet, sequenceData )
 	checkDoor.image = image
-	--checkDoor.image.damage = "safe"
-    --checkDoor.image.surface = "smooth"
+	checkDoor.image.damage = "safe"
+    checkDoor.image.surface = "smooth"
    
 
     checkDoor.show(config)
-    local Shape1 = { -115,-118, 0,-178, 115,-118,  125,178, -125,178 }
+    local Shape1 = { -115,-118, 0,-178, 115,-118,  125,152, -125,152 }
     local Shape2 = {-115,153,115,153,125,178,-125,178}
-    physics.addBody( checkDoor.image, "static", { density=1, friction=0, bounce=0, shape = Shape1})
-    checkDoor.image.isSensor=true
+    physics.addBody( checkDoor.image, "static", {  shape = Shape1 , isSensor =true,filter =  { categoryBits = 8, maskBits = 2 }}
+    	,{density=1, friction=1, bounce=0,shape = Shape2})
 
     function checkDoor.image:collision(event )
 

@@ -13,17 +13,18 @@ function new(config)
     Drum.setImage('kalacool/sango/image/world/interactiveWorld/Drum.png')
     Drum.image.damage = "safe"
     Drum.image.surface = "rough"
-    Drum.image.type = "explosive"
+    --Drum.image.type = "explosive"
     Drum.show(config)
     Drum.dead = false
-    physics.addBody( Drum.image,  "dynamic",{ density = 5,friction=0.3, bounce=0,shape = {-50,-64,50,-64,50,64,-50,64}} )
+    physics.addBody( Drum.image,  "dynamic",{ density = 5,friction=1, bounce=0,shape = {-50,-64,50,-64,50,64,-50,64}} )
 
     function Drum:removeAllEvent(event)
         Drum.dispose()
     end
 
-    function Drum.preCollision(self, event)
-        if (event.other.type == "bullet" and Drum.dead == false) then
+    function Drum:collision(event)
+
+        if ((event.other.type == "bullet" or event.other.type == "explosive") and Drum.dead == false and event.phase == "began") then
             Drum.image:boom()
         end
 	end
@@ -33,9 +34,10 @@ function new(config)
         if(Drum.image.x~=nil) then
         Animation:newBom(Drum.image.x,Drum.image.y)
             local function createCircleSenser() 
-                if(Drum.image.x~=nil) then
+                if(Drum.image~=nil) then
                     local circle = display.newCircle( Drum.image.x, Drum.image.y, 500 )  
                     circle.removed = false
+                    circle.type = "explosive"
                     circle.damage = "fatal"
                     circle.damageValue = 3
                     circle.power = 10
@@ -62,8 +64,7 @@ function new(config)
                                 circle.removed =true
                             end  
                             
-                        elseif(event.other.type == "explosive") then
-                            event.other:boom()
+                        
                         end
                     end 
                         circle.myName = "circle" 
@@ -73,7 +74,7 @@ function new(config)
                         circle:addEventListener( "collision", circle )
                         camera:insert(circle)    
                         timer.performWithDelay( 10, circle.removeSensor ,1 )
-                        physics.setDrawMode( "hybrid" )
+                        --physics.setDrawMode( "hybrid" )
                 end
             end
             timer.performWithDelay( 9,createCircleSenser,1) 
@@ -82,8 +83,8 @@ function new(config)
         end
     end
 
- 	Drum.image.isFixedRotation = true
- 	Drum.image:addEventListener( "preCollision", Drum)
+ 	
+ 	Drum.image:addEventListener( "collision", Drum)
  	Drum.listeners[1] = {event='removeAllEvent' , listener = Drum}
 
  	Drum[2] = {event="preCollision" , listener = Drum}

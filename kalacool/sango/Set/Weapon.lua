@@ -9,7 +9,7 @@ function Weapon.newShotgun()
 	local gun={}
 
 
-	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/dao12.png",{ width=480, height=113, numFrames=3 } )
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/dao12.png",{ width=374, height=88, numFrames=3 } )
 	
 	local gunsequenceData = {
  
@@ -43,7 +43,7 @@ function Weapon.newRifle()
 
 	local gun={}
 
-	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/kar98.png",{ width=480, height=113, numFrames=3 } )
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/kar98.png",{ width=374, height=88, numFrames=3 } )
 	
 	local gunsequenceData = {
  
@@ -65,7 +65,7 @@ function Weapon.newXbow()
 
 	local gun={}
 
-	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/xbow.png",{ width=480, height=113, numFrames=3 } )
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/xbow.png",{ width=374, height=88, numFrames=3 } )
 	
 	local gunsequenceData = {
  

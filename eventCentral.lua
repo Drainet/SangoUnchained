@@ -10,6 +10,7 @@ function new()
         scene:dispatchEvent({name='floatingFloorMoving',target = Player} )
         scene:dispatchEvent({name='moveLayer'})
         scene:dispatchEvent({name='arrowControl'})
+        scene:dispatchEvent({name='playerState'})
     end    
 
 --------------------------------- EventCentral API ---------------------------------

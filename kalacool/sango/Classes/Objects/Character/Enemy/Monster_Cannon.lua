@@ -41,7 +41,7 @@ local cannon = Monster.new()
     cannon.head.y = cannon.body.y + cannon.head.RY
     cannon.head.rotation = 0
     -- add physics attribute
-    local Filter = { categoryBits = 4, maskBits = 3 } 
+    local Filter = { categoryBits = 4, maskBits = 67 } 
     physics.addBody(cannon.image,"static",{density = 3,filter = Filter})
 
     cannon.image.isFixedRotation = true
@@ -78,7 +78,7 @@ function cannon:new_bullet()
         bullet:insert(body)
 
         -- set Bullet Attribute
-        local Filter = { categoryBits = 4 , maskBits = 3}
+        local Filter = { categoryBits = 4 , maskBits = 67}
         physics.addBody(bullet, "dynamic", {density = 1 , filter = Filter }) 
         bullet.isFixedRotation = true
         bullet.gravityScale = 0

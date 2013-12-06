@@ -15,7 +15,7 @@ local Atan2 = math.atan2
 
 
 function new(x,y,vx,vy)
-    local Filter = { categoryBits = 2, maskBits = 5 }
+    local Filter = { categoryBits = 64, maskBits = 55 }
 
     local bullet=display.newGroup()
 	local angle= (Atan2( vy,vx)*180/Pi)
@@ -56,9 +56,9 @@ function new(x,y,vx,vy)
 
         bullet:insert(oneshot)
 
-        function oneshot:preCollision( event )
-
-			--if ( event.phase == "began" ) then
+        function oneshot:collision( event )
+        	
+			if ( event.phase == "began" ) then
 				--if(event.object1.name=="oneshot") then
 				
 					--local x= 100*Cos(self.angle*Pi/180)+self.x
@@ -79,11 +79,11 @@ function new(x,y,vx,vy)
 			--elseif ( event.phase == "ended" ) then
 
 
-			--end
+			end
 
 		end
 
-		oneshot:addEventListener( "preCollision")
+		oneshot:addEventListener( "collision")
 
     end
 
@@ -95,7 +95,7 @@ function new(x,y,vx,vy)
 	
 	end
 	
-	timer.performWithDelay( 1000,bullet.timeout,1 )
+	timer.performWithDelay( 600,bullet.timeout,1 )
 	
 	
 	

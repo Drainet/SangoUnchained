@@ -14,7 +14,7 @@ local Ceil  = math.ceil
 local Atan2 = math.atan2
 
 function new(x,y,vx,vy)
-    Filter = { categoryBits = 2, maskBits = 5 }
+    Filter = { categoryBits = 64, maskBits = 55 }
     local bullet=display.newGroup()
 	local angle= (Atan2( vy,vx)*180/Pi)
 	

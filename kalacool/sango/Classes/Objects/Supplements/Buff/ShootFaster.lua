@@ -14,7 +14,7 @@ function new(config)
 	Item.image.y = config.y
 	Item.shootFaster = false
 
-	physics.addBody(Item.image,"static", {Filter = Item.Filter})
+	physics.addBody(Item.image,"static", {filter = Item.Filter})
 	Item.image.isSensor = true
 	-- buff effect   -> attack speed up
 	Item.newRate = 0.5

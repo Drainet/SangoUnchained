@@ -36,7 +36,7 @@ function new(config)
 	Player.image.heart = Player.heart
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
-
+	Player.Filter =  { categoryBits = 2, maskBits = 61 }
 
 
 	Player.isSticky=true		
@@ -96,23 +96,30 @@ function new(config)
     function Player.image:preCollision(event )
 
     	---³å¿«åˆ°ç²—çå®‰å…¨©éè¡¨é¢----
-    	if( Player.isSticky == true and event.other.damage=="safe" and event.other.surface=="rough" and event.selfElement == 2) then
-    		--and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)
-    		--print( self.y+self.height/2)
-    		--print( event.other.y-event.other.height/2)
-    		local vx, vy = event.other:getLinearVelocity()
-    		self:setLinearVelocity( vx, vy )
+    	-- if( Player.isSticky == true and event.other.damage=="safe" and event.other.surface=="rough" and event.selfElement == 1) then
+    	-- 	--and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)
+    	-- 	--print( self.y+self.height/2)
+    	-- 	--print( event.other.y-event.other.height/2)
+    	-- 	local vx, vy = event.other:getLinearVelocity()
+    	-- 	self:setLinearVelocity( vx, vy )
 
-    	end
+    	-- end
 
-    	if(event.other.damage=="safe" and event.selfElement == 2 ) then
-    		if(Player.body.sequence ~= "normal")then
-				Player.body:setSequence( "normal" )
-				Player.body:play()
+    	if(event.contact~=nil)then
+
+	    	if(event.other.damage=="safe" and event.selfElement == 1 and event.contact.isEnabled==true) then
+
+
+	    		if(Player.body.sequence ~= "normal" )then
+					Player.body:setSequence( "normal" )
+					Player.body:play()
+				end
+				if(Player.Magazine.isonAir == true)then
+					Player.Magazine.onGround()
+				end
+
 			end
-			Player.Magazine.onGround()
 
-				--timer.resume( Player.Magazine.reloadTimer )
 		end
 
 		if( event.other.damage=="fatal" and Player.isInvincible==true) then
@@ -133,13 +140,13 @@ function new(config)
 	
 		if ( event.phase == "began" ) then
 			---³æ°å¨ç‰©é«”è¡¨---
-			if(event.other.damage=="safe" and event.selfElement == 2 ) then
-				Player.body:setSequence( "normal" )
-				Player.body:play()
-				Player.Magazine.onGround()
+			-- if(event.other.damage=="safe" and event.selfElement == 1 ) then
+			-- 	Player.body:setSequence( "normal" )
+			-- 	Player.body:play()
+			-- 	Player.Magazine.onGround()
 
-				--timer.resume( Player.Magazine.reloadTimer )
-			end
+			-- 	--timer.resume( Player.Magazine.reloadTimer )
+			-- end
 
 			if( event.other.damage=="fatal"and Player.isInvincible==false) then
 				Animation:wound()
@@ -181,19 +188,39 @@ function new(config)
 		elseif ( event.phase == "ended" ) then
 
 			---³é›¢‹å¨ç‰©é«”è¡¨---
-			if(event.other.damage=="safe" and event.selfElement == 2) then
+			if(event.other.damage=="safe" and event.selfElement == 1) then
 				Player.body:setSequence( "jump" )
 				Player.body:play()
-				Player.Magazine.onAir()
+
+				if(Player.Magazine.isonAir == false)then
+					Player.Magazine.onAir()
+				end
+				
 
 			end
 
 		end
 
-
-
-	
 	end
+
+	function Player:playerState(event)
+
+
+		if(Player.alive==true)then
+
+			local vx, vy = Player.image:getLinearVelocity()
+	        
+	        if(vy~=0)then
+
+	        else
+
+	        end
+	    end
+    end
+
+
+
+
 --------ç¢°æ end---
 	function Player.noSticky( )
 		Player.isSticky=false
@@ -356,9 +383,11 @@ function new(config)
 
 	Runtime:addEventListener( "touch", Player.shoot)
 	scene:addEventListener( 'removeAllEvent', Player )
+	scene:addEventListener( 'playerState', Player )
 
 	Player.listeners[1] = {event="touch",listener=Player.shoot}
 	Player.listeners[2] = {event='removeAllEvent' , listener = Player}
+	Player.listeners[3] = {event='playerState' , listener = Player}
 	--Player.listeners[2] = {event='onSwitchTouch',listener=Player}
 
 	

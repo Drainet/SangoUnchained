@@ -38,8 +38,8 @@ function new(config)
 		Doggy.setgun( Doggy.pack[Doggy.switch.state].name )
 		--Doggy.setgun("rifle")
 		physics.addBody( Doggy.image
-			,{ density=10.0, friction=1, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}
-			,{ density=10.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} )
+			,{ density=10.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
+			,{ density=10.0, friction=0.2, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter})
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet = true
 		Doggy.alive=true
@@ -88,13 +88,13 @@ function new(config)
     Doggy.handGroup.yReference=10
     
 
-    Doggy.Filter = { categoryBits = 2, maskBits = 37 }
+    --Doggy.Filter = { categoryBits = 2, maskBits = 37 }
 
 	
 	local shapew=30
 	local shapeh=56
 
-	Doggy.Shape= { -shapew,-shapeh, shapew,-shapeh, shapew,53, -shapew,53 }
+	Doggy.Shape= { -shapew,-shapeh+30, shapew,-shapeh+30, shapew,53, -shapew,53 }
 	Doggy.foot= { -shapew+2,53, shapew-2,53, shapew-2,shapeh, -shapew+2,shapeh }
 	--physics.setDrawMode( "hybrid" )
     
