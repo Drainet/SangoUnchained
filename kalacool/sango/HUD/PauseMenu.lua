@@ -1,5 +1,8 @@
 module(..., package.seeall)
 
+local eventCentralClass = require "eventCentral"
+eventCentral = eventCentralClass.new()
+
 function new()
     
     local widget = require( "widget" )
@@ -102,14 +105,16 @@ function new()
 
 ------------------- Button Function Start -------------------
     function Content.Pause()
-    	Runtime:removeEventListener( "touch", dog.shoot)
+    	--Runtime:removeEventListener( "touch", dog.shoot)
+        eventCentral.pause()
     	physics.pause()
         buttonPause.isVisible = false
         pauseMenu.isVisible   = true
     end
 
     function Content.Resume()  
-        Runtime:addEventListener( "touch", dog.shoot)  	
+        --Runtime:addEventListener( "touch", dog.shoot)  	
+        eventCentral.resume()
 		physics.start()
 		buttonPause.isVisible = true
         pauseMenu.isVisible   = false

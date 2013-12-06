@@ -205,7 +205,7 @@ function new(config)
 
 	function Player:playerState(event)
 
-
+		print( "dodo" )
 		if(Player.alive==true)then
 
 			local vx, vy = Player.image:getLinearVelocity()
@@ -322,6 +322,7 @@ function new(config)
 		Player.body:setSequence( "dead" )
 		Player.body:play()
 		Player.respawnTimer = timer.performWithDelay( 1000, Player.respawn,1 )
+		Player.timers[2] = Player.respawnTimer
 
 	end
 
@@ -348,6 +349,7 @@ function new(config)
 		end
 
 		Player.shineTimer = timer.performWithDelay( 100, shine,time )
+		Player.timers[1] = Player.shineTimer
 		
 		Player.isInvincible=true
 
@@ -382,12 +384,12 @@ function new(config)
    
 
 	Runtime:addEventListener( "touch", Player.shoot)
-	scene:addEventListener( 'removeAllEvent', Player )
+	--scene:addEventListener( 'removeAllEvent', Player )
 	scene:addEventListener( 'playerState', Player )
 
-	Player.listeners[1] = {event="touch",listener=Player.shoot}
-	Player.listeners[2] = {event='removeAllEvent' , listener = Player}
-	Player.listeners[3] = {event='playerState' , listener = Player}
+	Player.runtimeListeners[table.maxn(Player.runtimeListeners)+1] = {event="touch",listener=Player.shoot}
+	--Player.listeners[table.maxn(Player.listeners)+1] = {event='removeAllEvent' , listener = Player}
+	Player.listeners[table.maxn(Player.listeners)+1] = {event='playerState' , listener = Player}
 	--Player.listeners[2] = {event='onSwitchTouch',listener=Player}
 
 	

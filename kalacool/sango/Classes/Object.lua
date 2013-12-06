@@ -9,7 +9,9 @@ local scene = scene
 function new()
     --creates our instance's display image
 	local Object={}
+	Object.runtimeListeners={}
 	Object.listeners={}
+	Object.timers={}
 	
 	function Object.setImage(img)
 		Object.image = display.newImage(img)
@@ -32,13 +34,110 @@ function new()
 		for i = 1,table.maxn( Object.listeners) do
 			--print(Object.listeners[i].event)
 			scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
-			Runtime:removeEventListener(Object.listeners[i].event, Object.listeners[i].listener)
+			--Runtime:removeEventListener(Object.listeners[i].event, Object.listeners[i].listener)
 		end
+
+		for i = 1,table.maxn( Object.runtimeListeners) do
+			--print(Object.listeners[i].event)
+			--scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
+			Runtime:removeEventListener(Object.runtimeListeners[i].event, Object.runtimeListeners[i].listener)
+		end
+
+		for i = 1,table.maxn( Object.timers) do
+			--print(Object.listeners[i].event)
+			if(Object.timers[i]~=nil)then
+		 		timer.cancel( Object.timers[i] )
+			end
+		end
+
+		scene:removeEventListener( 'removeAllEvent', Object )
+    	scene:removeEventListener( 'pauseAllEvent', Object )
+    	scene:removeEventListener( 'resumeAllEvent', Object )
+
 		display.remove( Object.image )
 		Object.image = nil
 
 	end
+
+
+	function Object.freeze()
+		--hide this object
+		for i = 1,table.maxn( Object.listeners) do
+			--print(Object.listeners[i].event)
+			scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
+			--Runtime:removeEventListener(Object.listeners[i].event, Object.listeners[i].listener)
+		end
+
+		for i = 1,table.maxn( Object.runtimeListeners) do
+			--print(Object.listeners[i].event)
+			--scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
+			Runtime:removeEventListener(Object.runtimeListeners[i].event, Object.runtimeListeners[i].listener)
+		end
+
+		-- for i = 1,table.maxn( Object.sceneListeners) do
+		-- 	--print(Object.listeners[i].event)
+		-- 	scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
+			
+		-- end
+
+		for i = 1,table.maxn( Object.timers) do
+			--print(Object.listeners[i].event)
+			if(Object.timers[i]~=nil)then
+		 		timer.pause( Object.timers[i] )
+			end
+		end
+
+	end
+
+	function Object.unfreeze()
+		--hide this object
+		for i = 1,table.maxn( Object.listeners) do
+			--print(Object.listeners[i].event)
+			 scene:addEventListener( Object.listeners[i].event, Object.listeners[i].listener )
+			 --Runtime:addEventListener(Object.listeners[i].event, Object.listeners[i].listener)
+		end
+
+		for i = 1,table.maxn( Object.runtimeListeners) do
+			--print(Object.listeners[i].event)
+			--scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
+			Runtime:addEventListener(Object.runtimeListeners[i].event, Object.runtimeListeners[i].listener)
+		end
+
+		for i = 1,table.maxn( Object.timers) do
+			--print(Object.listeners[i].event)
+			if(Object.timers[i]~=nil)then
+				
+		 		timer.resume( Object.timers[i] )
+			end
+		end
+
+	end
+
+	function Object:removeAllEvent(event)
+        
+        Object.dispose()
+
+    end
+
+    function Object:pauseAllEvent(event)
+        
+        Object.freeze()
+
+    end
+
+    function Object:resumeAllEvent(event)
+        
+        Object.unfreeze()
+
+    end
+
+    scene:addEventListener( 'removeAllEvent', Object )
+    scene:addEventListener( 'pauseAllEvent', Object )
+    scene:addEventListener( 'resumeAllEvent', Object )
 	
+	-- Object.listeners[table.maxn(Object.listeners)+1] = {event='removeAllEvent' , listener = Object}
+	-- Object.listeners[table.maxn(Object.listeners)+1] = {event='pauseAllEvent' , listener = Object}
+	-- Object.listeners[table.maxn(Object.listeners)+1] = {event='resumeAllEvent' , listener = Object}
 	
 
     

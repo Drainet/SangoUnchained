@@ -22,6 +22,10 @@ function new()
         scene:dispatchEvent({name='pauseAllEvent'})
     end
 
+    function eventCental.resume()
+        scene:dispatchEvent({name='resumeAllEvent'})
+    end
+
     function eventCental.stop()
         Runtime:removeEventListener("enterFrame", allEnterFrame)
         scene:dispatchEvent({name='removeAllEvent'})
