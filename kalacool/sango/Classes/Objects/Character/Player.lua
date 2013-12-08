@@ -30,6 +30,7 @@ function new(config)
 	Player.HUD=display.newGroup()
 	Player.image.type="player"
 	Player.alive=true
+	Player.noDead=true
 	Player.heart=heartClass.new(5)
 	Player.switch=switchClass.new(Player)
 	Player.image.lastCheckPoint=config	
@@ -296,6 +297,10 @@ function new(config)
 		Player.body:play()
 		Player.respawnTimer = timer.performWithDelay( 1000, Player.respawn,1 )
 
+		if Player.noDead == true then
+			scene:dispatchEvent({name='HealthFail'})
+			Player.noDead = false
+		end
 	end
 
 	function Player.invincible(time)

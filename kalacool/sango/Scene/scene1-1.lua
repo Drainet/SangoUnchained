@@ -20,6 +20,9 @@ function scene:createScene( event )
     local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
 
+    local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
+    local starSystem = starSystemClass.new({fs=4,ss=2,ts=3, wp1=1,wp2=2,ct=30 })
+
     local levelDirector = require "kalacool.sango.level.lv1-1"
 
     local physics = require("physics")
@@ -51,6 +54,8 @@ function scene:createScene( event )
     group:insert( background )
     group:insert( camera )
     group:insert( HUD )
+    group:insert(starSystem)
+
 
     function onEveryFrame()  
         movex = myLevel.x - dog.image.x

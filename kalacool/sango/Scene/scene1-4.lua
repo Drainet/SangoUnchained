@@ -15,11 +15,11 @@ function scene:createScene( event )
     camera = display.newGroup()
     HUD = display.newGroup()
 
-   -- require( "tilebg" )
-   -- local bg = tileBG()
-
     local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
+
+    local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
+    local starSystem = starSystemClass.new({fs=1,ss=2,ts=3, wp1=1,wp2=2,ct=100 })
 
     local levelDirector = require "kalacool.sango.level.lv1-4"
 
@@ -43,7 +43,6 @@ function scene:createScene( event )
         ,{imgPath = "kalacool/sango/image/test/backgrass.png",x = 30,y = 10}
         ,{imgPath = "kalacool/sango/image/test/backitem.png",x = 20,y = 10}})
 
-   -- camera:insert(bg)
     camera:insert(myLevel)
     camera:insert(dog.image)
     HUD:insert(pauseMenu )
@@ -51,6 +50,7 @@ function scene:createScene( event )
     group:insert(background)
     group:insert( camera )
     group:insert( HUD )
+    group:insert(starSystem)
 
     function onEveryFrame()    
         movex = myLevel.x - dog.image.x

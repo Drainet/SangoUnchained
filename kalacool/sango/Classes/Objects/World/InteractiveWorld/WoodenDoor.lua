@@ -23,6 +23,7 @@ function new(config)
     function WoodenDoor.preCollision(self, event)
         if ( event.other.type == "player" ) then
             scene:dispatchEvent({name='removePauseButton'})
+            scene:dispatchEvent({name='levelComplete'})
             local completeClass = require "kalacool.sango.HUD.YouComplete"
     		local complete = completeClass.new()
  			WoodenDoor.image:removeEventListener( "preCollision", WoodenDoor)
