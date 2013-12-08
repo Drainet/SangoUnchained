@@ -20,7 +20,7 @@ function scene:createScene( event )
     local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
 
-    local levelDirector = require "kalacool.sango.level.456"
+    local levelDirector = require "kalacool.sango.level.lv1-1"
 
     local physics = require("physics")
     physics.start()

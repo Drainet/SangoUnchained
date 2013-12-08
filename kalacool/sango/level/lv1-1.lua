@@ -118,7 +118,7 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object46"].image)
  level.layers["StaticWorld"].objects["object47"] = WorldSet.newhor_floor({x=5020,y=710})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object47"].image)
- level.layers["InteractiveWorld"].objects["object48"] = WorldSet.newWoodenDoor({x=5266,y=548})
+ level.layers["InteractiveWorld"].objects["object48"] = WorldSet.newWoodenDoor({x=266,y=548})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object48"].image)
  level.layers["StaticWorld"].objects["object49"] = WorldSet.newhor_floor({x=5040,y=210})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object49"].image)

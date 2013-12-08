@@ -1,14 +1,14 @@
 module(..., package.seeall)
 
-local eventCentralClass = require "eventCentral"
-eventCentral = eventCentralClass.new()
+-- local eventCentralClass = require "eventCentral"
+-- eventCentral = eventCentralClass.new()
 
 function new()
     
     local widget = require( "widget" )
     local storyboard = require( "storyboard" )
 	
-	local Content = display.newGroup()
+	local Content = {}
 
 ------------------- buttonHandler Start ---------------
 	local buttonHandler = function( event )
@@ -28,7 +28,7 @@ function new()
 
 
 ------------------- pauseButton Start ---------------
-    buttonPause = widget.newButton
+    local buttonPause = widget.newButton
         {
             id = "Pause",
             defaultFile = "kalacool/sango/image/UI/pauseMenu/pauseButton.png",
@@ -37,87 +37,100 @@ function new()
 
         buttonPause.x =display.contentWidth-40; buttonPause.y = 40
 
-    Content:insert( buttonPause )
+    
 ------------------- pauseButton End ---------------
 
 
 ------------------- pauseMenu Start --------------- 
-    local pauseMenu = display.newGroup()
-    pauseMenu.isVisible = false
+    function newPauseMenu()
 
-        menuBackground= display.newImage("kalacool/sango/image/UI/pauseMenu/pauseMenu.png")
+        pauseMenu = display.newGroup()
+        --pauseMenu.isVisible = false
 
-        buttonResume = widget.newButton
-            {
-                id = "Resume",
-                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                label = "Resume",
-                fontSize = 28,
-                emboss = true,
-                onPress = buttonHandler,
-            }
+            menuBackground= display.newImage("kalacool/sango/image/UI/pauseMenu/pauseMenu.png")
 
-        buttonNewGame = widget.newButton
-            {
-                id = "NewGame",
-                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                label = "NewGame",
-                fontSize = 28,
-                emboss = true,
-                onPress = buttonHandler,
-            }
 
-        buttonFreeView = widget.newButton
-            {
-                id = "FreeView",
-                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                label = "FreeView",
-                fontSize = 28,
-                emboss = true,
-                onPress = buttonHandler,
-            }
+            function menuBackground:touch(event)
+                return true
+            end
 
-        buttonMainMenu = widget.newButton
-            {
-                id = "MainMenu",
-                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                label = "Main Menu",
-                fontSize = 28,
-                emboss = true,
-                onPress = buttonHandler,
-            }
+            menuBackground:addEventListener( "touch",menuBackground)
 
-        menuBackground.x = display.contentWidth/2   ; menuBackground.y = display.contentHeight/2
-        buttonResume.x = display.contentWidth/2     ; buttonResume.y = display.contentHeight/2      -250
-        buttonNewGame.x = display.contentWidth/2    ; buttonNewGame.y = display.contentHeight/2     -150
-        buttonFreeView.x = display.contentWidth/2   ; buttonFreeView.y = display.contentHeight/2    -50
-        buttonMainMenu.x = display.contentWidth/2   ; buttonMainMenu.y = display.contentHeight/2    +250
+            buttonResume = widget.newButton
+                {
+                    id = "Resume",
+                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                    label = "Resume",
+                    fontSize = 28,
+                    emboss = true,
+                    onPress = buttonHandler,
+                }
 
-        pauseMenu:insert(menuBackground)
-        pauseMenu:insert(buttonResume)
-        pauseMenu:insert(buttonNewGame)
-        pauseMenu:insert(buttonFreeView)
-        pauseMenu:insert(buttonMainMenu)
+            buttonNewGame = widget.newButton
+                {
+                    id = "NewGame",
+                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                    label = "NewGame",
+                    fontSize = 28,
+                    emboss = true,
+                    onPress = buttonHandler,
+                }
 
-    Content:insert( pauseMenu )
+            buttonFreeView = widget.newButton
+                {
+                    id = "FreeView",
+                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                    label = "FreeView",
+                    fontSize = 28,
+                    emboss = true,
+                    onPress = buttonHandler,
+                }
+
+            buttonMainMenu = widget.newButton
+                {
+                    id = "MainMenu",
+                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                    label = "Main Menu",
+                    fontSize = 28,
+                    emboss = true,
+                    onPress = buttonHandler,
+                }
+
+            menuBackground.x = display.contentWidth/2   ; menuBackground.y = display.contentHeight/2
+            buttonResume.x = display.contentWidth/2     ; buttonResume.y = display.contentHeight/2      -250
+            buttonNewGame.x = display.contentWidth/2    ; buttonNewGame.y = display.contentHeight/2     -150
+            buttonFreeView.x = display.contentWidth/2   ; buttonFreeView.y = display.contentHeight/2    -50
+            buttonMainMenu.x = display.contentWidth/2   ; buttonMainMenu.y = display.contentHeight/2    +250
+
+            pauseMenu:insert(menuBackground)
+            pauseMenu:insert(buttonResume)
+            pauseMenu:insert(buttonNewGame)
+            pauseMenu:insert(buttonFreeView)
+            pauseMenu:insert(buttonMainMenu)
+
+        return pauseMenu
+
+
+    end
 ------------------- pauseMenu End ---------------
 
 
 ------------------- Button Function Start -------------------
     function Content.Pause()
     	--Runtime:removeEventListener( "touch", dog.shoot)
-        eventCentral.pause()
-    	physics.pause()
-        buttonPause.isVisible = false
-        pauseMenu.isVisible   = true
+        eventCentral.pause(newPauseMenu(),true)
+    	
+        --buttonPause.isVisible = false
+        --pauseMenu.isVisible   = true
+        
     end
 
     function Content.Resume()  
         --Runtime:addEventListener( "touch", dog.shoot)  	
         eventCentral.resume()
-		physics.start()
-		buttonPause.isVisible = true
-        pauseMenu.isVisible   = false
+		
+		--buttonPause.isVisible = true
+        --pauseMenu.isVisible   = false
 	end
 
 	function Content.NewGame()    	
@@ -130,6 +143,8 @@ function new()
         ----------------- FreeView Start ---------------------
             local freeView = display.newGroup()
 
+            
+            eventCentral.cancelCover()
             Runtime:removeEventListener( "enterFrame", onEveryFrame ) -- Remove camera 
             ------------------- Swipe Function Start ---------------
                 local newX, newY  
@@ -160,22 +175,31 @@ function new()
                         end     
                 end
                  
-                function swipe(event)
-                        if event.phase == "began" then
-                            newX = event.x
-                            newY = event.y
-                        end
-                        
-                        if event.phase == "moved" then
-                            oldX = event.x 
-                            oldY = event.y
-                            checkSwipeDirection();
-                            newX = event.x
-                            newY = event.y
-                        end
+                local backCover = display.newRect( 0, 0 , display.contentWidth, display.contentHeight)
+
+                backCover.x = display.contentWidth/2
+                backCover.y = display.contentHeight/2
+                backCover.alpha = 0.01
+
+                function backCover:touch(event)
+                    if event.phase == "began" then
+                        newX = event.x
+                        newY = event.y
+                    end
+                    
+                    if event.phase == "moved" then
+                        oldX = event.x 
+                        oldY = event.y
+                        checkSwipeDirection();
+                        newX = event.x
+                        newY = event.y
+                    end
+                    return true
                 end
 
-                Runtime:addEventListener("touch", swipe)
+                backCover:addEventListener( "touch",backCover)
+
+                freeView:insert( backCover )
             ------------------- Swipe Function End ---------------
 
 
@@ -184,6 +208,8 @@ function new()
                     if event.target.id == "freeViewBack" then
                         freeView.freeViewBack()
                     end
+
+                    return true
                 end
             ------------------- buttonHandler End ---------------
 
@@ -209,7 +235,7 @@ function new()
                 function freeView.freeViewBack()
                     freeView:removeSelf()
                     freeView = nil
-                    Runtime:removeEventListener( "touch", swipe )      -- Remove freeView 
+                    --Runtime:removeEventListener( "touch", swipe )      -- Remove freeView 
                     Runtime:addEventListener( "enterFrame", onEveryFrame )  -- Recover camera 
                     Content.Resume()
                 end    
@@ -232,6 +258,6 @@ function new()
     
     scene:addEventListener( 'removePauseButton', Content ) 
 ------------------- Complete Level ButtonPause Disappear End -------------------		
-	return Content
+	return buttonPause
 
 end

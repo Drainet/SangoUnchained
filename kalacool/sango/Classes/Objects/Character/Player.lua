@@ -37,7 +37,7 @@ function new(config)
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
 	Player.Filter =  { categoryBits = 2, maskBits = 61 }
-
+	Player.onBody = 15
 
 	Player.isSticky=true		
 	--- Dog buff effect counter ---
@@ -109,7 +109,7 @@ function new(config)
 
 	    	if(event.other.damage=="safe" and event.selfElement == 1 and event.contact.isEnabled==true) then
 
-
+	    		Player.onBody = 0
 	    		if(Player.body.sequence ~= "normal" )then
 					Player.body:setSequence( "normal" )
 					Player.body:play()
@@ -189,12 +189,14 @@ function new(config)
 
 			---³é›¢‹å¨ç‰©é«”è¡¨---
 			if(event.other.damage=="safe" and event.selfElement == 1) then
-				Player.body:setSequence( "jump" )
-				Player.body:play()
 
-				if(Player.Magazine.isonAir == false)then
-					Player.Magazine.onAir()
-				end
+				
+				-- Player.body:setSequence( "jump" )
+				-- Player.body:play()
+
+				-- if(Player.Magazine.isonAir == false)then
+				-- 	Player.Magazine.onAir()
+				-- end
 				
 
 			end
@@ -203,19 +205,50 @@ function new(config)
 
 	end
 
+
+
+	
+
 	function Player:playerState(event)
 
-		print( "dodo" )
-		if(Player.alive==true)then
+		
+
+
+		--print( count)
+		if(Player.onBody < 3)then
+			Player.onBody = Player.onBody +1
+		end
+
+
+		if(Player.alive==true and Player.onBody >= 3)then
 
 			local vx, vy = Player.image:getLinearVelocity()
 	        
-	        if(vy~=0)then
+	        if((vy>30 or vy<-30) )then
+
+	        	
+
+	        	if(Player.body.sequence ~= "jump" )then
+					Player.body:setSequence( "jump" )
+					Player.body:play()
+				end
+	        	
+				
+
+				if(Player.Magazine.isonAir == false)then
+					Player.Magazine.onAir()
+				end
 
 	        else
 
 	        end
+
 	    end
+
+	    
+
+
+	    
     end
 
 
@@ -240,10 +273,10 @@ function new(config)
 
 
 --------‹æ start---
-	function Player.shoot( event )
-
+	function Player:screenTouch( event )
 		
-		local phase = event.phase
+		
+		local phase = event.target.phase
 		if "began" == phase then
 
 			
@@ -255,8 +288,8 @@ function new(config)
 				Player.gun:setSequence( "shoot" )
 				Player.gun:play()
 				Player.Magazine.pop()	
-				local coolX= -camera.x+event.x-Player.image.x
-				local coolY= -camera.y+event.y-Player.image.y
+				local coolX= -camera.x+event.target.x-Player.image.x
+				local coolY= -camera.y+event.target.y-Player.image.y
 				local ratio = math.sqrt((coolX)^2+(coolY)^2)
 				local bulletgroup=Player.bullet.new(Player.image.x , Player.image.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
 
@@ -366,30 +399,33 @@ function new(config)
     	Player.setgun( Player.pack[Player.switch.state] )
     end
 
-    function Player:removeAllEvent(event)
-        Player.dispose()
+  --   function Player:removeAllEvent(event)
+    	
+  --       Player.dispose()
 
-  		Player.Magazine:cancelReload()
+  -- 		Player.Magazine:cancelReload()
 
-        if(Player.shineTimer~=nil)then
-		 	timer.cancel( Player.shineTimer )
-		end
-		if(Player.respawnTimer~=nil)then
-		 	timer.cancel( Player.respawnTimer )
-		end
+  --       if(Player.shineTimer~=nil)then
+		--  	timer.cancel( Player.shineTimer )
+		-- end
+		-- if(Player.respawnTimer~=nil)then
+		--  	timer.cancel( Player.respawnTimer )
+		-- end
         
-    end
+  --   end
 
    
    
 
-	Runtime:addEventListener( "touch", Player.shoot)
+	
 	--scene:addEventListener( 'removeAllEvent', Player )
 	scene:addEventListener( 'playerState', Player )
+	scene:addEventListener( 'screenTouch', Player )
 
-	Player.runtimeListeners[table.maxn(Player.runtimeListeners)+1] = {event="touch",listener=Player.shoot}
+	--Player.runtimeListeners[table.maxn(Player.runtimeListeners)+1] = {event="touch",listener=Player.shoot}
 	--Player.listeners[table.maxn(Player.listeners)+1] = {event='removeAllEvent' , listener = Player}
 	Player.listeners[table.maxn(Player.listeners)+1] = {event='playerState' , listener = Player}
+	Player.listeners[table.maxn(Player.listeners)+1] = {event='screenTouch' , listener = Player}
 	--Player.listeners[2] = {event='onSwitchTouch',listener=Player}
 
 	

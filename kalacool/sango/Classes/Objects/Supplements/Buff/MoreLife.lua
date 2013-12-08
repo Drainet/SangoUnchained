@@ -13,7 +13,7 @@ function new(config)
 	Item.image.x = config.x
 	Item.image.y = config.y
 
-	physics.addBody(Item.image,"static", {Filter = Item.Filter})
+	physics.addBody(Item.image,"static", {filter = Item.Filter})
 	Item.image.isSensor = true
 	-- buff effect  -> add one more life to player
 	Item.addLifeNum = 1

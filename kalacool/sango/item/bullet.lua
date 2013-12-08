@@ -2,6 +2,7 @@ module (..., package.seeall)
 
 local physics = require "physics"
 require "kalacool.sango.animation.Animation"
+ObjectClass = require('kalacool.sango.Classes.Object')
 physics.setReportCollisionsInContentCoordinates( true )
 
 
@@ -17,7 +18,16 @@ local Atan2 = math.atan2
 function new(x,y,vx,vy)
     local Filter = { categoryBits = 64, maskBits = 55 }
 
-    local bullet=display.newGroup()
+
+
+
+--INSTANCE FUNCTIONS
+
+
+	
+
+    local bullet=ObjectClass.new()
+    bullet.image = display.newGroup( )
 	local angle= (Atan2( vy,vx)*180/Pi)
 	
 	--Animation:newSpark(70*Cos(angle*Pi/180)+x,70*Sin(angle*Pi/180)+y)
@@ -54,7 +64,7 @@ function new(x,y,vx,vy)
 		
         oneshot:setLinearVelocity(2000*Cos(dangle*Pi/180), 2000*Sin(dangle*Pi/180) )
 
-        bullet:insert(oneshot)
+        bullet.image:insert(oneshot)
 
         function oneshot:collision( event )
         	
@@ -91,17 +101,17 @@ function new(x,y,vx,vy)
 
     function bullet.timeout( event )
 	
-		display.remove(bullet)
+		display.remove(bullet.image)
 	
 	end
 	
-	timer.performWithDelay( 600,bullet.timeout,1 )
+	bullet.timers[1] = timer.performWithDelay( 600,bullet.timeout,1 )
 	
 	
 	
 	
 
-    return bullet
+    return bullet.image
 end
 
 

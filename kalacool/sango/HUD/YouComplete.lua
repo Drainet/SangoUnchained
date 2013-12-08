@@ -1,6 +1,7 @@
 module(..., package.seeall)
 local scene = scene
 
+
 function new()
     
     local widget = require( "widget" )
@@ -10,10 +11,12 @@ function new()
     local buttonBackToLvSel
     local buttonNextLevel
 
-    Runtime:removeEventListener( "touch", dog.shoot)
-    physics.pause()
+    local Content = display.newGroup()
+
+    eventCentral.pause(Content,false)
+    --eventCentral.cancelCover()
 	
-	local Content = display.newGroup()
+	
 
 ------------------- Save your record Start ---------------    
     local newCurLevelConfig={}

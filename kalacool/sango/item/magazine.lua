@@ -1,5 +1,5 @@
 module(..., package.seeall)
-
+ObjectClass = require('kalacool.sango.Classes.Object')
 
 
 
@@ -7,7 +7,7 @@ module(..., package.seeall)
 
 function new(num,rate,reloadCool,reloadSpeed,image)
     
-	local Magazine = {}
+	local Magazine = ObjectClass.new()
 	Magazine.image = display.newGroup( )
 	Magazine.shellImage=image
 	
@@ -51,6 +51,7 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 	function Magazine.startReload( )
 
 		Magazine.reloadTimer=timer.performWithDelay( Magazine.reloadSpeed, Magazine.reload, Magazine.ammoMax - Magazine.ammo)
+		Magazine.timers[3] = Magazine.reloadTimer
 		if(Magazine.isonAir==true)then
 			
 			timer.pause( Magazine.reloadTimer )
@@ -89,10 +90,12 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 			Magazine.ammo=Magazine.ammo-1
 			
 			Magazine.shootable=false
-			timer.performWithDelay( Magazine.rate, Magazine.coolDown,1 )
+			Magazine.timers[1] = timer.performWithDelay( Magazine.rate, Magazine.coolDown,1 )
 			
 			Magazine:cancelReload()
 			Magazine.reloadCoolTimer=timer.performWithDelay( Magazine.reloadCool, Magazine.reloadCoolDown,1 )
+			Magazine.timers[2] = Magazine.reloadCoolTimer
+
 		end
 		
 		
