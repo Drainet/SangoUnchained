@@ -1,4 +1,5 @@
 module(..., package.seeall)
+local storyboard = require( "storyboard" )
 local scene = scene
 
 function new(config)
@@ -139,6 +140,29 @@ star you can collect.
         scene:removeEventListener( 'levelComplete', Content )
         scene:removeEventListener( 'GotCollectableItem', Content )
         scene:removeEventListener( 'HealthFail', Content )
+        Content.setLevelStar()
+    end
+
+    function Content.setLevelStar()
+        local starVariable = 0
+        if star[1].pass == true then
+            starVariable = starVariable + 4
+        end
+        if star[2].pass == true then
+            starVariable = starVariable + 2
+        end
+        if star[3].pass == true then
+            starVariable = starVariable + 1
+        end
+    ------------------- Save your record Start ---------------
+        local newCurLevelConfig={}
+        newCurLevelConfig.num = tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) )
+        
+        local levelConfigClass = require "kalacool.sango.System.GetAndSetLV"
+        newCurLevelConfig.star = starVariable
+        newCurLevelConfig.pass = true
+        levelConfigClass.setCurLevelConfig(newCurLevelConfig)
+    ------------------- Save your record End ---------------
     end
 
     scene:addEventListener( 'levelComplete', Content )

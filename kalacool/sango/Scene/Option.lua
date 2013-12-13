@@ -33,6 +33,7 @@ function scene:createScene( event )
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Audio",
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
@@ -44,6 +45,7 @@ function scene:createScene( event )
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Credit",
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
@@ -55,11 +57,12 @@ function scene:createScene( event )
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Back",
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
         }
-
+    background.x = display.contentWidth/2       ; background.y = display.contentHeight/2
     buttonAudio.x =display.contentWidth/2; buttonAudio.y = display.contentHeight/2
     buttonCredit.x =display.contentWidth/2; buttonCredit.y = display.contentHeight/2+100
     buttonBack.x =display.contentWidth/2; buttonBack.y = display.contentHeight/2+200

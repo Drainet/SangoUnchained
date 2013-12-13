@@ -215,8 +215,6 @@ function new(config)
 
 --------‹æ start---
 	function Player.shoot( event )
-
-		
 		local phase = event.phase
 		if "began" == phase then
 

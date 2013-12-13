@@ -7,16 +7,16 @@ function scene:createScene( event )
     
 ----------------- Background Start -------------
     local background = display.newImage( "kalacool/sango/image/UI/Menu/menu_background.png" )
+    background.x = display.contentWidth/2       ; background.y = display.contentHeight/2
     screenGroup:insert( background )
 ----------------- Background End -------------
-
 
 ----------------- buttonHandler Start -------------
     local buttonHandler = function( event )
         if event.target.id == "Play" then
             storyboard.gotoScene( "kalacool.sango.Scene.LevelSelect", "fade", 200  )
         elseif event.target.id == "Achievement" then
-            --storyboard.gotoScene( "kalacool.sango.Scene.Achievement", "fade", 200  )
+            storyboard.gotoScene( "kalacool.sango.Scene.Achievement", "fade", 200  )
         elseif event.target.id == "Option" then
             storyboard.gotoScene( "kalacool.sango.Scene.Option", "fade", 200  )
         elseif event.target.id == "Exit" then
@@ -25,7 +25,6 @@ function scene:createScene( event )
     end
 ----------------- buttonHandler End -------------
 
-
 ----------------- Menu Buttion Start -------------
     local buttonPlay = widget.newButton
         {
@@ -33,6 +32,8 @@ function scene:createScene( event )
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Play",
+            labelColor = {default = {255, 255, 255, 255}},
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
@@ -44,6 +45,8 @@ function scene:createScene( event )
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Achievement",
+            labelColor = {default = {255, 255, 255, 255}},
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
@@ -55,6 +58,8 @@ function scene:createScene( event )
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Option",
+            labelColor = {default = {255, 255, 255, 255}},
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
@@ -66,11 +71,12 @@ function scene:createScene( event )
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Exit",
+            labelColor = {default = {255, 255, 255, 255}},
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
         }
-
     buttonPlay.x =display.contentWidth/2        ; buttonPlay.y = display.contentHeight/2        -100
     buttonAchievement.x =display.contentWidth/2 ; buttonAchievement.y = display.contentHeight/2
     buttonOption.x =display.contentWidth/2      ; buttonOption.y = display.contentHeight/2      +100

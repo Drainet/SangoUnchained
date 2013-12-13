@@ -16,13 +16,24 @@ function new()
 	local Content = display.newGroup()
 
 ------------------- Save your record Start ---------------    
-    local newCurLevelConfig={}
+    -- local newCurLevelConfig={}
 
-    newCurLevelConfig.num = tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) )
-    levelConfigClass.star = 0
-    levelConfigClass.pass = true
+    -- newCurLevelConfig.num = tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) )
 
-    levelConfigClass.setCurLevelConfig(newCurLevelConfig)
+    -- function Content:sendStarVariable(event)
+    --     newCurLevelConfig.star = event.target
+    --     print("~!~~~~~~~~")
+    --     newCurLevelConfig.pass = true
+    --     levelConfigClass.setCurLevelConfig(newCurLevelConfig)
+    --     scene:removeEventListener( 'sendStarVariable', Content )
+    -- end
+    -- print("add listener")
+    -- scene:addEventListener( 'sendStarVariable', Content )
+
+    -- newCurLevelConfig.star = 0
+    -- newCurLevelConfig.pass = true
+
+    -- levelConfigClass.setCurLevelConfig(newCurLevelConfig)
 ------------------- Save your record End --------------- 
 
 ------------------- buttonHandler Start ---------------
@@ -38,7 +49,7 @@ function new()
 ------------------- niceText Start ---------------
     niceText = display.newText("GOOD JOB !!", 0, 0, native.systemFont, 180)
     niceText.x = display.contentWidth/2; niceText.y = display.contentHeight/2 - 300
-    niceText:setTextColor( 110, 20, 0 )
+    niceText:setFillColor( 110, 20, 0 )
 
     transition.to( niceText, { time=1, alpha=0 } )
     transition.to( niceText, { time=100, alpha=1, delay=100, x=display.contentWidth/2, y=display.contentHeight/2 - 100 } )
@@ -53,6 +64,7 @@ function new()
             id = "backToLvSel",
             defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
             label = "Leave",
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
@@ -63,6 +75,7 @@ function new()
             id = "buttonNextLevel",
             defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
             label = "Next",
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,

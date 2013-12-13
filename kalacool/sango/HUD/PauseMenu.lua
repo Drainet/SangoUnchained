@@ -30,6 +30,7 @@ function new()
             id = "Pause",
             defaultFile = "kalacool/sango/image/UI/pauseMenu/pauseButton.png",
             onPress = buttonHandler,
+            font = "arial",
         }
 
         buttonPause.x =display.contentWidth-40; buttonPause.y = 40
@@ -49,6 +50,7 @@ function new()
                 id = "Resume",
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "Resume",
+                font = "arial",
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,
@@ -59,6 +61,7 @@ function new()
                 id = "NewGame",
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "NewGame",
+                font = "arial",
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,
@@ -69,6 +72,7 @@ function new()
                 id = "FreeView",
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "FreeView",
+                font = "arial",
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,
@@ -79,6 +83,7 @@ function new()
                 id = "MainMenu",
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "Main Menu",
+                font = "arial",
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,

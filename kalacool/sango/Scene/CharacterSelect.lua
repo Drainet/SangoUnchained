@@ -48,6 +48,7 @@ function scene:enterScene( event )
     local charSelMenu = display.newGroup()
 
         local menuBackground= display.newImage("kalacool/sango/image/UI/chSel/charSelMenu.png")
+        menuBackground.x = display.contentWidth/2    ; menuBackground.y = display.contentHeight/2 + 50
 
         ---- Buttons Start----
             btnCharNext = widget.newButton
@@ -109,14 +110,11 @@ function scene:enterScene( event )
             curWpn1Text:setTextColor( 255, 255, 255 )
             curWpn2Text:setTextColor( 255, 255, 255 )
 
-            curCharText.x = menuBackground.x - 200   ; curCharText.y = menuBackground.y - 100
-            curWpn1Text.x = menuBackground.x - 200   ; curWpn1Text.y = menuBackground.y + 100
-            curWpn2Text.x = menuBackground.x - 200   ; curWpn2Text.y = menuBackground.y + 200
+            curCharText.x = menuBackground.x - 300   ; curCharText.y = menuBackground.y - 200
+            curWpn1Text.x = menuBackground.x - 300   ; curWpn1Text.y = menuBackground.y 
+            curWpn2Text.x = menuBackground.x - 300   ; curWpn2Text.y = menuBackground.y + 100
         ---- Text End ----
 
-
-        menuBackground.x = display.contentWidth/2    ; menuBackground.y = display.contentHeight/2 + 50
-        
         btnCharNext.x = menuBackground.x - 110       ; btnCharNext.y = menuBackground.y - 200
         btnCharLast.x = menuBackground.x - 200       ; btnCharLast.y = menuBackground.y - 200
         btnWpn1Next.x = menuBackground.x - 110       ; btnWpn1Next.y = menuBackground.y 

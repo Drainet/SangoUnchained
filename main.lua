@@ -24,7 +24,7 @@ storyboard.gotoScene( "kalacool.sango.Scene.Menu", options)
 	performanceText = display.newText("", 0, 0, native.systemFont, 30)
 	local maxMemory = 0
 	local function Performance()
-		performanceText:setTextColor( 255, 0, 0 )
+		performanceText:setFillColor( 255, 0, 0 )
 		performanceText.x, performanceText.y = display.contentWidth/2 -400, display.contentHeight - 50
 
 		if maxMemory < collectgarbage("count") then

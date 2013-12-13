@@ -1,10 +1,13 @@
 local JSONFileHelper  = require "kalacool.sango.JSON.JSONFileHelper"
 
 JSONFileSet = {}
-JSONFileSet.playerTable = JSONFileHelper.loadTable('player.json')
-JSONFileSet.levelTable  = JSONFileHelper.loadTable('level.json')
-JSONFileSet.weaponStoreTable  = JSONFileHelper.loadTable('weaponStore.json')
-JSONFileSet.characterStoreTable  = JSONFileHelper.loadTable('characterStore.json')
+JSONFileSet.playerTable 			= JSONFileHelper.loadTable('player.json')
+JSONFileSet.levelTable  			= JSONFileHelper.loadTable('level.json')
+JSONFileSet.weaponStoreTable  		= JSONFileHelper.loadTable('weaponStore.json')
+JSONFileSet.characterStoreTable 	= JSONFileHelper.loadTable('characterStore.json')
+JSONFileSet.achievementTable  	= JSONFileHelper.loadTable('achievementStore.json')
+
+
 if JSONFileSet.playerTable == nil then 
 	playerJson = {}
 	playerJson.character = "Doggy"
@@ -102,6 +105,26 @@ if JSONFileSet.characterStoreTable  == nil then
 	JSONFileHelper.saveTable(characterStoreJson,'characterStore.json')
 	end
 
+if JSONFileSet.achievementTable  == nil then 
+	achievementStoreJson = {}
+	achievementStoreJson[1] ={}
+	achievementStoreJson[1].achName = "First Shot"
+	achievementStoreJson[1].achievementItemID = 1
+	achievementStoreJson[1].image = "fistShotIcon"
+	achievementStoreJson[1].unlock = false
+	achievementStoreJson[1].descripion = "Use your weapon for first time!"
+
+	achievementStoreJson[2] ={}
+	achievementStoreJson[2].achName = "Meet the Shadow"
+	achievementStoreJson[2].achievementItemID = 2
+	achievementStoreJson[2].image = "meetShadow"
+	achievementStoreJson[2].unlock = false
+	achievementStoreJson[2].descripion = "Use Character - Shadow"
+
+	JSONFileSet.achievementTable = achievementStoreJson
+	JSONFileHelper.saveTable(achievementStoreJson,'achievementStore.json')
+	end
+
 function JSONFileSet:savePlayerTable()
 	JSONFileHelper.saveTable(self.playerTable,'player.json')
 	end
@@ -114,6 +137,8 @@ function JSONFileSet:saveWeaponStoreTable()
 function JSONFileSet:saveCharacterStoreTable()
 	JSONFileHelper.saveTable(self.characterStoreTable,'characterStore.json')
 	end
-
+function JSONFileSet:saveAchievementTable()
+	JSONFileHelper.saveTable(self.achievementTable,'achievementStore.json')
+	end
 
 return JSONFileSet

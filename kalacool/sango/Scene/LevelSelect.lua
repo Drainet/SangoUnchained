@@ -7,6 +7,7 @@ local levelConfig={}
 
 ------------ Declare Buttons Start ------------
     local buttonLV = {}
+    local buttonStarLV = {}
     local buttonBack 
 ------------ Declare Buttons End ------------
 
@@ -16,6 +17,7 @@ function scene:createScene( event )
     storyboard.removeAll()
 ----------------- Background Start -------------
     local background = display.newImage( "kalacool/sango/image/UI/Menu/menu_background.png" )
+    background.x = display.contentWidth/2       ; background.y = display.contentHeight/2
     group:insert( background )
 ----------------- Background End -------------
 
@@ -38,6 +40,15 @@ function scene:createScene( event )
 
 
 ----------------- LevelSelect Buttion Start --------------------------
+    
+    local sheetData = { width=181, height=167, numFrames=2 }
+    local sheet = graphics.newImageSheet( "kalacool/sango/image/UI/starSystem/star.png", sheetData )
+    local sequenceData =
+    {
+        { name="emptyStar"  , start=1, count=1 } ,
+        { name="yellowStar" , start=2, count=1 }
+    }
+
 
     for i=1, totalLevel do
 
@@ -52,25 +63,59 @@ function scene:createScene( event )
                     defaultFile = "kalacool/sango/image/UI/Menu/lvBlue.png",
                     label = "1-" .. i,
                     labelColor = {default = {255, 255, 255, 255}},
+                    font = "arial",
                     fontSize = 28,
                     emboss = true,
                     onPress = buttonHandler,
                 }
         else
-        ----If yo had passed ---- 
+        ----If you had passed ---- 
         buttonLV[i] = widget.newButton
                 {
                     id = "1-" .. i,
                     defaultFile = "kalacool/sango/image/UI/Menu/lvOrange.png",
                     label = "1-" .. i,
                     labelColor = {default = {255, 255, 255, 255}},
+                    font = "arial",
                     fontSize = 28,
                     emboss = true,
                     onPress = buttonHandler,
                 }
         end
-
         buttonLV[i].x =display.contentWidth/2 + (i - (totalLevel+1)/2 ) * 200 ; buttonLV[i].y = display.contentHeight/2-100
+
+        buttonStarLV[i]={}
+        buttonStarLV[i].image={}
+
+        buttonStarLV[i].image[1] =  display.newSprite( sheet, sequenceData )
+        buttonStarLV[i].image[1]:scale( 0.15, 0.15 )
+
+        buttonStarLV[i].image[2] =  display.newSprite( sheet, sequenceData )
+        buttonStarLV[i].image[2]:scale( 0.15, 0.15 )
+
+        buttonStarLV[i].image[3] =  display.newSprite( sheet, sequenceData )
+        buttonStarLV[i].image[3]:scale( 0.15, 0.15 )
+        
+        buttonStarLV[i].image[1].x = buttonLV[i].x - 30    ; buttonStarLV[i].image[1].y = buttonLV[i].y + 65
+        buttonStarLV[i].image[2].x = buttonLV[i].x         ; buttonStarLV[i].image[2].y = buttonLV[i].y + 65
+        buttonStarLV[i].image[3].x = buttonLV[i].x + 30    ; buttonStarLV[i].image[3].y = buttonLV[i].y + 65
+       
+        if levelConfig.star - 4 >= 0 then
+            buttonStarLV[i].image[1]:setSequence( "yellowStar" )
+            levelConfig.star = levelConfig.star - 4
+        end
+        if levelConfig.star - 2 >= 0 then
+            buttonStarLV[i].image[2]:setSequence( "yellowStar" )
+            levelConfig.star = levelConfig.star - 2
+        end
+        if levelConfig.star - 1 >= 0 then
+            buttonStarLV[i].image[3]:setSequence( "yellowStar" )
+            levelConfig.star = levelConfig.star - 1    
+        end
+
+        group:insert( buttonStarLV[i].image[1] )
+        group:insert( buttonStarLV[i].image[2] )
+        group:insert( buttonStarLV[i].image[3] )
         group:insert( buttonLV[i] )
     end
 
@@ -81,6 +126,7 @@ function scene:createScene( event )
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Back",
             labelColor = {default = {255, 255, 255, 255}},
+            font = "arial",
             fontSize = 28,
             emboss = true,
             onPress = buttonHandler,
@@ -96,6 +142,7 @@ function scene:createScene( event )
                 id = "charSelBtn",
                 defaultFile = "kalacool/sango/image/UI/chSel/charSelBtn.png",
                 onPress = buttonHandler,
+                font = "arial",
             }
 
             buttonCharSelBtn.x = 40 ; buttonCharSelBtn.y = display.contentHeight-40
