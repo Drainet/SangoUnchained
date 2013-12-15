@@ -33,6 +33,7 @@ function new()
             id = "Pause",
             defaultFile = "kalacool/sango/image/UI/pauseMenu/pauseButton.png",
             onPress = buttonHandler,
+            font = "arial",
         }
 
         buttonPause.x =display.contentWidth-40; buttonPause.y = 40
@@ -57,44 +58,48 @@ function new()
             menuBackground:addEventListener( "touch",menuBackground)
 
             buttonResume = widget.newButton
-                {
-                    id = "Resume",
-                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                    label = "Resume",
-                    fontSize = 28,
-                    emboss = true,
-                    onPress = buttonHandler,
-                }
+            {
+                id = "Resume",
+                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                label = "Resume",
+                font = "arial",
+                fontSize = 28,
+                emboss = true,
+                onPress = buttonHandler,
+            }
 
-            buttonNewGame = widget.newButton
-                {
-                    id = "NewGame",
-                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                    label = "NewGame",
-                    fontSize = 28,
-                    emboss = true,
-                    onPress = buttonHandler,
-                }
+        buttonNewGame = widget.newButton
+            {
+                id = "NewGame",
+                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                label = "NewGame",
+                font = "arial",
+                fontSize = 28,
+                emboss = true,
+                onPress = buttonHandler,
+            }
 
-            buttonFreeView = widget.newButton
-                {
-                    id = "FreeView",
-                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                    label = "FreeView",
-                    fontSize = 28,
-                    emboss = true,
-                    onPress = buttonHandler,
-                }
+        buttonFreeView = widget.newButton
+            {
+                id = "FreeView",
+                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                label = "FreeView",
+                font = "arial",
+                fontSize = 28,
+                emboss = true,
+                onPress = buttonHandler,
+            }
 
-            buttonMainMenu = widget.newButton
-                {
-                    id = "MainMenu",
-                    defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                    label = "Main Menu",
-                    fontSize = 28,
-                    emboss = true,
-                    onPress = buttonHandler,
-                }
+        buttonMainMenu = widget.newButton
+            {
+                id = "MainMenu",
+                defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+                label = "Main Menu",
+                font = "arial",
+                fontSize = 28,
+                emboss = true,
+                onPress = buttonHandler,
+            }
 
             menuBackground.x = display.contentWidth/2   ; menuBackground.y = display.contentHeight/2
             buttonResume.x = display.contentWidth/2     ; buttonResume.y = display.contentHeight/2      -250

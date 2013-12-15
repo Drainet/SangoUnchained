@@ -22,6 +22,7 @@ function new(config)
     
 
 	function Doggy.default()
+		scene:dispatchEvent({name='Ach2'})
 		Doggy.buffNum = 0
 		Doggy.show(Doggy.image.lastCheckPoint)
 

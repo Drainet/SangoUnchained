@@ -1,10 +1,13 @@
 local JSONFileHelper  = require "kalacool.sango.JSON.JSONFileHelper"
 
 JSONFileSet = {}
-JSONFileSet.playerTable = JSONFileHelper.loadTable('player.json')
-JSONFileSet.levelTable  = JSONFileHelper.loadTable('level.json')
-JSONFileSet.weaponStoreTable  = JSONFileHelper.loadTable('weaponStore.json')
-JSONFileSet.characterStoreTable  = JSONFileHelper.loadTable('characterStore.json')
+JSONFileSet.playerTable 			= JSONFileHelper.loadTable('player.json')
+JSONFileSet.levelTable  			= JSONFileHelper.loadTable('level.json')
+JSONFileSet.weaponStoreTable  		= JSONFileHelper.loadTable('weaponStore.json')
+JSONFileSet.characterStoreTable 	= JSONFileHelper.loadTable('characterStore.json')
+JSONFileSet.achievementTable  		= JSONFileHelper.loadTable('achievement.json')
+
+
 if JSONFileSet.playerTable == nil then 
 	playerJson = {}
 	playerJson.character = "Doggy"
@@ -58,7 +61,7 @@ if JSONFileSet.weaponStoreTable  == nil then
 	weaponStoreJson[1].weaponStoreItemID = 1
 	weaponStoreJson[1].price = 1000
 	weaponStoreJson[1].unlock = true
-	weaponStoreJson[1].descripion = ""
+	weaponStoreJson[1].description = ""
 	weaponStoreJson[1].spcialUnclockDescription = ""
 
 	weaponStoreJson[2] ={}
@@ -66,7 +69,7 @@ if JSONFileSet.weaponStoreTable  == nil then
 	weaponStoreJson[2].weaponStoreItemID = 2
 	weaponStoreJson[2].price = 1000
 	weaponStoreJson[2].unlock = true
-	weaponStoreJson[2].descripion = ""
+	weaponStoreJson[2].description = ""
 	weaponStoreJson[2].spcialUnclockDescription = ""
 
 	weaponStoreJson[3] ={}
@@ -74,7 +77,7 @@ if JSONFileSet.weaponStoreTable  == nil then
 	weaponStoreJson[3].weaponStoreItemID = 3
 	weaponStoreJson[3].price = 1000
 	weaponStoreJson[3].unlock = true
-	weaponStoreJson[3].descripion = ""
+	weaponStoreJson[3].description = ""
 	weaponStoreJson[3].spcialUnclockDescription = ""
 	JSONFileSet.weaponStoreTable = weaponStoreJson
 	JSONFileHelper.saveTable(weaponStoreJson,'weaponStore.json')
@@ -87,7 +90,7 @@ if JSONFileSet.characterStoreTable  == nil then
 	characterStoreJson[1].characterStoreItemID = 1
 	characterStoreJson[1].price = 1000
 	characterStoreJson[1].unlock = true
-	characterStoreJson[1].descripion = ""
+	characterStoreJson[1].description = ""
 	characterStoreJson[1].spcialUnclockDescription = ""
 
 	characterStoreJson[2] ={}
@@ -95,11 +98,31 @@ if JSONFileSet.characterStoreTable  == nil then
 	characterStoreJson[2].characterStoreItemID = 2
 	characterStoreJson[2].price = 1000
 	characterStoreJson[2].unlock = true
-	characterStoreJson[2].descripion = ""
+	characterStoreJson[2].description = ""
 	characterStoreJson[2].spcialUnclockDescription = ""
 
 	JSONFileSet.characterStoreTable = characterStoreJson
 	JSONFileHelper.saveTable(characterStoreJson,'characterStore.json')
+	end
+
+if JSONFileSet.achievementTable  == nil then 
+	achievementStoreJson = {}
+	achievementStoreJson[1] ={}
+	achievementStoreJson[1].achName = "First Shot"
+	achievementStoreJson[1].achievementItemID = 1
+	achievementStoreJson[1].image = "kalacool/sango/image/UI/Achievement/ach1.png"
+	achievementStoreJson[1].unlock = false
+	achievementStoreJson[1].description = "Use your weapon for first time!"
+
+	achievementStoreJson[2] ={}
+	achievementStoreJson[2].achName = "Meet the Shadow"
+	achievementStoreJson[2].achievementItemID = 2
+	achievementStoreJson[2].image = "kalacool/sango/image/UI/Achievement/ach2.png"
+	achievementStoreJson[2].unlock = false
+	achievementStoreJson[2].description = "Use Character - Shadow"
+
+	JSONFileSet.achievementTable = achievementStoreJson
+	JSONFileHelper.saveTable(achievementStoreJson,'achievement.json')
 	end
 
 function JSONFileSet:savePlayerTable()
@@ -114,6 +137,8 @@ function JSONFileSet:saveWeaponStoreTable()
 function JSONFileSet:saveCharacterStoreTable()
 	JSONFileHelper.saveTable(self.characterStoreTable,'characterStore.json')
 	end
-
+function JSONFileSet:saveAchievementTable()
+	JSONFileHelper.saveTable(self.achievementTable,'achievement.json')
+	end
 
 return JSONFileSet

@@ -30,6 +30,7 @@ function new(config)
 	Player.HUD=display.newGroup()
 	Player.image.type="player"
 	Player.alive=true
+	Player.noDead=true
 	Player.heart=heartClass.new(5)
 	Player.switch=switchClass.new(Player)
 	Player.image.lastCheckPoint=config	
@@ -273,10 +274,12 @@ function new(config)
 
 
 --------‹æ start---
+
 	function Player:screenTouch( event )
-		
+		scene:dispatchEvent({name='Ach1'})
 		
 		local phase = event.target.phase
+
 		if "began" == phase then
 
 			
@@ -357,6 +360,10 @@ function new(config)
 		Player.respawnTimer = timer.performWithDelay( 1000, Player.respawn,1 )
 		Player.timers[2] = Player.respawnTimer
 
+		if Player.noDead == true then
+			scene:dispatchEvent({name='HealthFail'})
+			Player.noDead = false
+		end
 	end
 
 	function Player.invincible(time)

@@ -48,12 +48,14 @@ function scene:enterScene( event )
     local charSelMenu = display.newGroup()
 
         local menuBackground= display.newImage("kalacool/sango/image/UI/chSel/charSelMenu.png")
+        menuBackground.x = display.contentWidth/2    ; menuBackground.y = display.contentHeight/2 + 50
 
         ---- Buttons Start----
             btnCharNext = widget.newButton
                 {
                     id = "charSelNext",
                     defaultFile = "kalacool/sango/image/UI/chSel/next.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -61,6 +63,7 @@ function scene:enterScene( event )
                 {
                     id = "charSelLast",
                     defaultFile = "kalacool/sango/image/UI/chSel/last.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -68,6 +71,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn1Next",
                     defaultFile = "kalacool/sango/image/UI/chSel/next.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -75,6 +79,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn1Last",
                     defaultFile = "kalacool/sango/image/UI/chSel/last.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -82,6 +87,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn2Next",
                     defaultFile = "kalacool/sango/image/UI/chSel/next.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -89,6 +95,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn2Last",
                     defaultFile = "kalacool/sango/image/UI/chSel/last.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -96,27 +103,25 @@ function scene:enterScene( event )
                 {
                     id = "Exit",
                     defaultFile = "kalacool/sango/image/UI/chSel/exitBtn.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
         ---- Buttons End----
 
         ---- Text Start----
-            local curCharText = display.newText("", 0, 0, native.systemFont, 30)
-            local curWpn1Text = display.newText("", 0, 0, native.systemFont, 30)
-            local curWpn2Text = display.newText("", 0, 0, native.systemFont, 30)
+            local curCharText = display.newText("", 0, 0, "arial", 30)
+            local curWpn1Text = display.newText("", 0, 0, "arial", 30)
+            local curWpn2Text = display.newText("", 0, 0, "arial", 30)
 
-            curCharText:setTextColor( 255, 255, 255 )
-            curWpn1Text:setTextColor( 255, 255, 255 )
-            curWpn2Text:setTextColor( 255, 255, 255 )
+            curCharText:setFillColor( 255, 255, 255 )
+            curWpn1Text:setFillColor( 255, 255, 255 )
+            curWpn2Text:setFillColor( 255, 255, 255 )
 
-            curCharText.x = menuBackground.x - 200   ; curCharText.y = menuBackground.y - 100
-            curWpn1Text.x = menuBackground.x - 200   ; curWpn1Text.y = menuBackground.y + 100
-            curWpn2Text.x = menuBackground.x - 200   ; curWpn2Text.y = menuBackground.y + 200
+            curCharText.x = menuBackground.x - 300   ; curCharText.y = menuBackground.y - 200
+            curWpn1Text.x = menuBackground.x - 300   ; curWpn1Text.y = menuBackground.y 
+            curWpn2Text.x = menuBackground.x - 300   ; curWpn2Text.y = menuBackground.y + 100
         ---- Text End ----
 
-
-        menuBackground.x = display.contentWidth/2    ; menuBackground.y = display.contentHeight/2 + 50
-        
         btnCharNext.x = menuBackground.x - 110       ; btnCharNext.y = menuBackground.y - 200
         btnCharLast.x = menuBackground.x - 200       ; btnCharLast.y = menuBackground.y - 200
         btnWpn1Next.x = menuBackground.x - 110       ; btnWpn1Next.y = menuBackground.y 

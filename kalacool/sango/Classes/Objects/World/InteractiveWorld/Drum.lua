@@ -74,6 +74,7 @@ function new(config)
                         circle:addEventListener( "collision", circle )
                         camera:insert(circle)    
                         timer.performWithDelay( 10, circle.removeSensor ,1 )
+
                         --physics.setDrawMode( "hybrid" )
                 end
             end
