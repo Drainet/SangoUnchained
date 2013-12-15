@@ -108,12 +108,19 @@ function scene:enterScene( event )
     ----------------- Achievement Content Start -------------
         for i=1,achievementConfig.totalAch do
             achievements[i] = {}
-            achievements[i].Title = display.newText(tostring(achievementConfig[i].achName), display.contentCenterX-300, (i-1)*300, native.systemFontBold, 60) 
+            if achievementConfig[i].unlock == true then
+                achievements[i].Image = display.newImage( achievementConfig[i].image, display.contentCenterX-500, (i-1)*170 )
+            else
+                achievements[i].Image = display.newImage( "kalacool/sango/image/UI/Achievement/locked.png", display.contentCenterX-500, (i-1)*170 )
+            end
+            achievements[i].Title = display.newText("", display.contentCenterX-320, (i-1)*170 -30, native.systemFontBold, 30) 
+            achievements[i].Title.text = tostring(achievementConfig[i].achName)
+            achievements[i].Description = display.newText("", display.contentCenterX-300, (i-1)*170 , native.systemFontBold, 20) 
+            achievements[i].Description.text = tostring(achievementConfig[i].description)
+            scrollView:insert( achievements[i].Image )
             scrollView:insert( achievements[i].Title )
+            scrollView:insert( achievements[i].Description )
         end
-        -- local titleText = display.newText("Move Up to Scroll", display.contentCenterX, 48, native.systemFontBold, 16)
-        -- titleText:setFillColor( 0 )
-        -- scrollView:insert( titleText.Title )
     ----------------- Achievement Content End -------------
 
 end

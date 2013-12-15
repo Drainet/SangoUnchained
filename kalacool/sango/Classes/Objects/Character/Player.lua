@@ -215,6 +215,7 @@ function new(config)
 
 --------‹æ start---
 	function Player.shoot( event )
+		scene:dispatchEvent({name='Ach1'})
 		local phase = event.phase
 		if "began" == phase then
 

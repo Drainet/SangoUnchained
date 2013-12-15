@@ -55,6 +55,7 @@ function scene:enterScene( event )
                 {
                     id = "charSelNext",
                     defaultFile = "kalacool/sango/image/UI/chSel/next.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -62,6 +63,7 @@ function scene:enterScene( event )
                 {
                     id = "charSelLast",
                     defaultFile = "kalacool/sango/image/UI/chSel/last.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -69,6 +71,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn1Next",
                     defaultFile = "kalacool/sango/image/UI/chSel/next.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -76,6 +79,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn1Last",
                     defaultFile = "kalacool/sango/image/UI/chSel/last.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -83,6 +87,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn2Next",
                     defaultFile = "kalacool/sango/image/UI/chSel/next.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -90,6 +95,7 @@ function scene:enterScene( event )
                 {
                     id = "charWpn2Last",
                     defaultFile = "kalacool/sango/image/UI/chSel/last.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
 
@@ -97,18 +103,19 @@ function scene:enterScene( event )
                 {
                     id = "Exit",
                     defaultFile = "kalacool/sango/image/UI/chSel/exitBtn.png",
+                    font = "arial",
                     onPress = buttonHandler,
                 }
         ---- Buttons End----
 
         ---- Text Start----
-            local curCharText = display.newText("", 0, 0, native.systemFont, 30)
-            local curWpn1Text = display.newText("", 0, 0, native.systemFont, 30)
-            local curWpn2Text = display.newText("", 0, 0, native.systemFont, 30)
+            local curCharText = display.newText("", 0, 0, "arial", 30)
+            local curWpn1Text = display.newText("", 0, 0, "arial", 30)
+            local curWpn2Text = display.newText("", 0, 0, "arial", 30)
 
-            curCharText:setTextColor( 255, 255, 255 )
-            curWpn1Text:setTextColor( 255, 255, 255 )
-            curWpn2Text:setTextColor( 255, 255, 255 )
+            curCharText:setFillColor( 255, 255, 255 )
+            curWpn1Text:setFillColor( 255, 255, 255 )
+            curWpn2Text:setFillColor( 255, 255, 255 )
 
             curCharText.x = menuBackground.x - 300   ; curCharText.y = menuBackground.y - 200
             curWpn1Text.x = menuBackground.x - 300   ; curWpn1Text.y = menuBackground.y 

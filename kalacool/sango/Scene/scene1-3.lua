@@ -48,11 +48,11 @@ function scene:createScene( event )
     camera:insert(myLevel)
     camera:insert(dog.image)
     HUD:insert(pauseMenu )
+    HUD:insert(starSystem)
     HUD:insert(dog.HUD )
     group:insert( background )
     group:insert( camera )
     group:insert( HUD )
-    group:insert(starSystem)
 
     function onEveryFrame()     
         movex = myLevel.x - dog.image.x

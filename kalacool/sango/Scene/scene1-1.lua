@@ -52,12 +52,12 @@ function scene:createScene( event )
 
     camera:insert(myLevel)
     camera:insert(dog.image)
+    HUD:insert(starSystem)
     HUD:insert(pauseMenu )
     HUD:insert(dog.HUD )
     group:insert( background )
     group:insert( camera )
     group:insert( HUD )
-    group:insert(starSystem)
 
 
     function onEveryFrame()  

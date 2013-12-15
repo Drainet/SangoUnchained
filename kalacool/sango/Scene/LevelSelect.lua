@@ -70,7 +70,7 @@ function scene:createScene( event )
                 }
         else
         ----If you had passed ---- 
-        buttonLV[i] = widget.newButton
+            buttonLV[i] = widget.newButton
                 {
                     id = "1-" .. i,
                     defaultFile = "kalacool/sango/image/UI/Menu/lvOrange.png",
