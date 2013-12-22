@@ -140,6 +140,7 @@ function new()
 
 	function Content.NewGame()    	
 		storyboard.gotoScene( "kalacool.sango.Scene.LevelSelect", "fade", 200  )
+        eventCentral.stop()
         storyboard.removeAll()
 	end
 
@@ -250,6 +251,7 @@ function new()
 
     function Content.MainMenu()      
         storyboard.gotoScene( "kalacool.sango.Scene.Menu", "fade", 200  )
+        eventCentral.stop()
         storyboard.removeAll()
     end
 ------------------- Button Function End -------------------

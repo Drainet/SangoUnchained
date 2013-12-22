@@ -137,10 +137,16 @@ star you can collect.
                 star[i].image:setSequence( "yellowStar" )
             end
         end
+        Content.removeAllEvent()
+        Content.setLevelStar()
+    end
+
+    function Content.removeAllEvent()
         scene:removeEventListener( 'levelComplete', Content )
         scene:removeEventListener( 'GotCollectableItem', Content )
         scene:removeEventListener( 'HealthFail', Content )
-        Content.setLevelStar()
+        scene:removeEventListener( 'levelComplete', Content )
+        scene:removeEventListener( 'removeAllEvent', Content )
     end
 
     function Content.setLevelStar()
@@ -166,6 +172,7 @@ star you can collect.
     end
 
     scene:addEventListener( 'levelComplete', Content )
+    scene:addEventListener( 'removeAllEvent', Content )
 
 	return Content
 
