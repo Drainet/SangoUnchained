@@ -36,5 +36,6 @@ function new(config)
 
 	Item.image:addEventListener( "collision" )
 	Item.listeners[table.maxn(Item.listeners)+1] = {event="collision", listener = Item}
+	Item.timers[1] = Item.timerCoolDown 
 	return Item
 end
