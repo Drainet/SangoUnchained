@@ -84,8 +84,10 @@ function new(config)
     Doggy.hand.fistY = 21
     Doggy.handGroup:insert(Doggy.hand)
 
-    Doggy.handGroup.xReference=16 --shoulder position
-    Doggy.handGroup.yReference=8
+    -- Doggy.handGroup.anchorChildren = true
+    -- Doggy.handGroup.anchorX=16 --shoulder position
+    -- Doggy.handGroup.anchorY=8
+
 
     --Doggy.Filter = { categoryBits = 2, maskBits = 37 }
 

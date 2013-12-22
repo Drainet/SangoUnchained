@@ -13,11 +13,11 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 	
 	Magazine.shootable=true
 	Magazine.reloadable=true
-	local magazine=display.newRect(10,10,50*num,90)
-	magazine.strokeWidth = 3
-	magazine:setFillColor(140, 140, 140)
-	magazine:setStrokeColor(180, 180, 180)
-	Magazine.image:insert(magazine)
+	--local magazine=display.newRect(28*num,45,50*num,90)
+	--magazine.strokeWidth = 3
+	--magazine:setFillColor(140, 140, 140)
+	--magazine:setStrokeColor(180, 180, 180)
+	--Magazine.image:insert(magazine)
 	Magazine.ammo=0
 	Magazine.ammoMax=num
 	Magazine.rate=rate
@@ -33,7 +33,7 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 			
 			-- and Magazine.reloadable == true
 			Magazine.ammo=Magazine.ammo+1
-			Magazine[Magazine.ammo]=display.newImage(Magazine.shellImage,40*Magazine.ammo-15,20)
+			Magazine[Magazine.ammo]=display.newImage(Magazine.shellImage,40*Magazine.ammo ,45)
 			Magazine.image:insert(Magazine[Magazine.ammo])
 		end
 
