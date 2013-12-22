@@ -5,11 +5,12 @@ local JSONtable = require "kalacool.sango.JSON.JSONFileSet"
 function getCurLevelConfig(config)
 	local LevelConfig = {}
 	local index = tonumber(config.num)
-	
-	LevelConfig.LVName 	= JSONtable.levelTable[index].LVName
-	LevelConfig.star 	= JSONtable.levelTable[index].star
-	LevelConfig.pass 	= JSONtable.levelTable[index].pass
-		
+
+	LevelConfig.LVName 		= JSONtable.levelTable[index].LVName
+	LevelConfig.star 		= JSONtable.levelTable[index].star
+	LevelConfig.pass 		= JSONtable.levelTable[index].pass
+	LevelConfig.requirement	= JSONtable.levelTable[index].requirement
+
 	return LevelConfig
 end
 
@@ -19,7 +20,6 @@ function setCurLevelConfig(newCurlevelConfig)
 
 	JSONtable.levelTable[index].star = newCurlevelConfig.star
 	JSONtable.levelTable[index].pass = newCurlevelConfig.pass
-
 	JSONtable:saveLevelTable()
 
 end

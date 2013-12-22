@@ -2,6 +2,7 @@ local storyboard = require( "storyboard" )
 local widget = require( "widget" )
 local scene = storyboard.newScene()
 local levelConfigClass = require "kalacool.sango.System.GetAndSetLV"
+local totalStar = 0
 
 local levelConfig={}
 
@@ -52,10 +53,23 @@ function scene:createScene( event )
 
     for i=1, totalLevel do
 
-        ---- Check this level pass or not ----
+        ---- Check this level pass or not and whether stars enough to play ----
         levelConfig = levelConfigClass.getCurLevelConfig({num = i})
 
-        if (levelConfig.pass == false) then
+        if (totalStar < levelConfig.requirement) then
+        ----If you had passed ---- 
+            buttonLV[i] = widget.newButton
+                {
+                    id = "1-" .. i,
+                    defaultFile = "kalacool/sango/image/UI/Menu/lvLocked.png",
+                    label = "1-" .. i,
+                    labelColor = {default = {255, 255, 255, 255}},
+                    font = "arial",
+                    fontSize = 28,
+                    emboss = true,
+                    isEnabled = false
+                }
+        elseif (levelConfig.pass == false) then
         ----If you haven't passed ----
             buttonLV[i] = widget.newButton
                 {
@@ -80,7 +94,7 @@ function scene:createScene( event )
                     fontSize = 28,
                     emboss = true,
                     onPress = buttonHandler,
-                }
+                }   
         end
         buttonLV[i].x =display.contentWidth/2 + (i - (totalLevel+1)/2 ) * 200 ; buttonLV[i].y = display.contentHeight/2-100
 
@@ -103,15 +117,18 @@ function scene:createScene( event )
         if levelConfig.star - 4 >= 0 then
             buttonStarLV[i].image[1]:setSequence( "yellowStar" )
             levelConfig.star = levelConfig.star - 4
+            totalStar = totalStar + 1
         end
         if levelConfig.star - 2 >= 0 then
             buttonStarLV[i].image[2]:setSequence( "yellowStar" )
             levelConfig.star = levelConfig.star - 2
+            totalStar = totalStar + 1
         end
         if levelConfig.star - 1 >= 0 then
             buttonStarLV[i].image[3]:setSequence( "yellowStar" )
             levelConfig.star = levelConfig.star - 1    
-        end
+            totalStar = totalStar + 1
+        end  
 
         group:insert( buttonStarLV[i].image[1] )
         group:insert( buttonStarLV[i].image[2] )

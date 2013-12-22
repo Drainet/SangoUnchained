@@ -24,29 +24,35 @@ if JSONFileSet.playerTable == nil then
 
 if JSONFileSet.levelTable  == nil then 
 	levelJson = {}
-	
+	local totalStar = 0
+
 	levelJson[1] = {}
 	levelJson[1].LVName = '1-1'
+	levelJson[1].requirement = 0
 	levelJson[1].star = 0
 	levelJson[1].pass = false
 
 	levelJson[2] = {}
 	levelJson[2].LVName = '1-2'
+	levelJson[2].requirement = 1
 	levelJson[2].star = 0
 	levelJson[2].pass = false
 
 	levelJson[3] = {}
 	levelJson[3].LVName = '1-3'
+	levelJson[3].requirement = 3
 	levelJson[3].star = 0
 	levelJson[3].pass = false
 
 	levelJson[4] = {}
 	levelJson[4].LVName = '1-4'
+	levelJson[4].requirement = 5
 	levelJson[4].star = 0
 	levelJson[4].pass = false
 
 	levelJson[5] = {}
 	levelJson[5].LVName = '1-5'
+	levelJson[5].requirement = 7
 	levelJson[5].star = 0
 	levelJson[5].pass = false
 

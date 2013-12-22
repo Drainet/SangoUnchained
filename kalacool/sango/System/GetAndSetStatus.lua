@@ -2,6 +2,19 @@ module(..., package.seeall)
 
 local JSONtable = require "kalacool.sango.JSON.JSONFileSet"
 
+-- --------testing --------
+-- function getCurTotalStarConfig()
+-- 	local characterConfig = {}
+-- 	characterConfig.totalStar 	= JSONtable.playerTable.totalStar
+		
+-- 	return characterConfig
+-- end
+-- function setCurTotalStarConfig(newStarConfig)
+-- 	JSONtable.playerTable.totalStar = newStarConfig.num
+		
+-- 	JSONtable:savePlayerTable()
+-- end
+-- --------testing --------
 function getCurCharacterConfig()
 
 	local characterConfig = {}
