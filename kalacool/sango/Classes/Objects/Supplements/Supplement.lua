@@ -14,8 +14,10 @@ function new()
 		Supplements.image.alpha = 0.5
 	end
 	function Supplements.renew()
-		Supplements.image.isBodyActive = true
+	
 		Supplements.image.alpha = 1
+			Supplements.image.isBodyActive = true
+		print( "Renew "..Supplements.image.x.." "..Supplements.image.y)
 	end
 
 	function Supplements:removeAllEvent()

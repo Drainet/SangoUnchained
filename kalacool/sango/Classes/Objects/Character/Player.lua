@@ -41,9 +41,12 @@ function new(config)
 	Player.onBody = 15
 
 	Player.isSticky=true		
-	--- Dog buff effect counter ---
+
+	--- Dog buff effect ---
 	Player.image.shootFaster = false
-	--- Dog buff effect counter END ---
+	Player.image.magazineRate = 1
+	Player.image.shootFasterBuffTime =0
+	--- Dog buff effect  END ---
 	
 -------è¨­åæ§start---
 	function Player.setgun()
