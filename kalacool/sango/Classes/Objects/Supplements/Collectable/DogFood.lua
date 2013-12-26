@@ -6,7 +6,7 @@ function new(config)
 	local scene = scene
 
 	-- set attribute of Item
-	Item.body = display.newImage("kalacool/sango/image/Supplement/collectable/DogFood.png")
+	Item.body = display.newImage("kalacool/sango/image/Supplement/collectable/dogFood.png")
 	Item.image:insert(Item.body)
 	Item.body.x = Item.image.x
 	Item.body.y = Item.image.y
