@@ -16,6 +16,8 @@ if JSONFileSet.playerTable == nil then
 	playerJson.weapon1ID = 1
 	playerJson.weapon2 = "Kar-98"
 	playerJson.weapon2ID = 2
+	playerJson.money = 0
+	playerJson.diamond = 0
 	playerJson.firstPerk = ""
 	playerJson.description = ""
 	JSONFileSet.playerTable = playerJson

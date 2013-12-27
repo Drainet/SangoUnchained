@@ -20,7 +20,7 @@ local Atan2 = math.atan2
 
  
 function new(config)
-    --create Player display object
+    --create Player display objectc
 	
 	--local Heart = heartClass.new(3)
 	

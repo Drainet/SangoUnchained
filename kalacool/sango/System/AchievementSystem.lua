@@ -67,26 +67,6 @@ and it will unlocked !
     end
 -------- Dispose Function End --------
 
--------- define function Start--------
-
-
-
-
--------- Set which star you can collect in this level --------
-
---------
-
- 
-    ------------------- Save your record Start ---------------
-        -- local newCurLevelConfig={}
-        -- newCurLevelConfig.num = tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) )
-        
-        -- local levelConfigClass = require "kalacool.sango.System.GetAndSetLV"
-        -- newCurLevelConfig.star = starVariable
-        -- newCurLevelConfig.pass = true
-        -- levelConfigClass.setCurLevelConfig(newCurLevelConfig)
-    ------------------- Save your record End ---------------
-
 	return Content
 
 end

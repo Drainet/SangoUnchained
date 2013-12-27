@@ -24,6 +24,8 @@ function getCurCharacterConfig()
 	characterConfig.wpn1ID 	= JSONtable.playerTable.weapon1ID 
 	characterConfig.wpn2 	= JSONtable.playerTable.weapon2
 	characterConfig.wpn2ID 	= JSONtable.playerTable.weapon2ID
+	characterConfig.money 	= JSONtable.playerTable.money
+	characterConfig.diamond = JSONtable.playerTable.diamond
 		
 	return characterConfig
 end
@@ -56,7 +58,6 @@ end
 
 function setCurCharacterConfig(newCurCharacterConfig)
 	local characterConfig = {}
-	-- characterConfig.char = JSONtable.playerTable.character
 	JSONtable.playerTable.character 	= newCurCharacterConfig.char
 	JSONtable.playerTable.characterID 	= newCurCharacterConfig.charID
 	JSONtable.playerTable.weapon1 		= newCurCharacterConfig.wpn1

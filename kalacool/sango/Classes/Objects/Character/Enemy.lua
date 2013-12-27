@@ -97,6 +97,7 @@ function new()
         Enemy.hide()
         Enemy.AI:stop()
         Enemy.dispose()
+        scene:dispatchEvent({name='gotMoney',money = 100})
     end
     
 

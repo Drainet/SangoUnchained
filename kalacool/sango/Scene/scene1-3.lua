@@ -23,6 +23,9 @@ function scene:createScene( event )
     local achievementSystemClass = require "kalacool.sango.System.AchievementSystem"
     local achievement = achievementSystemClass.new()
 
+    local moneySystemClass = require "kalacool.sango.System.MoneySystem"
+    local moneySystem = moneySystemClass.new()
+
     local levelDirector = require "kalacool.sango.level.lv1-3"
 
     local physics = require("physics")

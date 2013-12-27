@@ -85,11 +85,7 @@ function new()
 
     end
 
-    
-
 -- Add sprite listener
-    
-
     
 --------------------------------- EventCentral API End ---------------------------------
 
