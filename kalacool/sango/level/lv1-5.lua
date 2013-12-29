@@ -21,6 +21,11 @@ level.layers["DynamicWorld"].objects = {}
 level.layers["InteractiveWorld"] = display.newGroup()
 level.layers["InteractiveWorld"].name = "StaticWorld"
 level.layers["InteractiveWorld"].objects = {}
+--- monster test ---
+level.layers["Monster"] = display.newGroup()
+level.layers["Monster"].name = "Monster"
+level.layers["Monster"].objects = {}
+--------------------
  level.layers["StaticWorld"].objects["object0"] = WorldSet.newhor_floor({x=300,y=2150})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object0"].image)
  level.layers["StaticWorld"].objects["object1"] = WorldSet.newhor_floor({x=880,y=2150})
@@ -274,8 +279,12 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["DynamicWorld"].objects["object125"] = WorldSet.newBox({x=3324,y=184})
  level.layers["DynamicWorld"]:insert(level.layers["DynamicWorld"].objects["object125"].image)
 
-
-
+---- monster test ----
+ level.layers["Monster"].objects["object126"] = EnemySet.newMonsterSlime({x=1200,y=2000,xL=500,xR=3000})
+ level.layers["Monster"]:insert(level.layers["Monster"].objects["object126"].image)
+  level.layers["Monster"].objects["object127"] = EnemySet.newMonsterSlime({x=1500,y=2000,xL=500,xR=3000})
+ level.layers["Monster"]:insert(level.layers["Monster"].objects["object127"].image)
+ ---------------------
  --level.layers["InteractiveWorld"].objects["object300"] = EnemySet.new_Monster_Fireball({x=1500,y=1764})
  --level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object300"].image)
 
@@ -306,7 +315,7 @@ level.layers["InteractiveWorld"].objects = {}
     level:insert(level.layers["DynamicWorld"])
 
     level:insert(level.layers["InteractiveWorld"])
-
+    level:insert(level.layers["Monster"])
     return level
 
 end -- CreateLevel

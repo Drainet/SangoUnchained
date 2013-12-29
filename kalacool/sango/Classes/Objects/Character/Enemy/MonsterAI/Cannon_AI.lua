@@ -20,7 +20,7 @@ function new(monster , target , option)
         else 
             AI.timerID = timer.performWithDelay( 2000, AI.run)
         end
-
+            AI.timers[1] = AI.timerID
     end
 
 

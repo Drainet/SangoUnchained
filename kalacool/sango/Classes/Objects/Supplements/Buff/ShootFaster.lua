@@ -25,43 +25,42 @@ function new(config)
 		if(event.other.type == "player" and Item.isUsed == false and event.phase == "began") then
 			Item.shootFaster = true
 			Item.isUsed = true
+			-- reset buff time counter
+			if(event.other.shootFasterBuffTime < 0 )then
+				event.other.shootFasterBuffTime = 0
+			end 
 			--set icon cooldown
 			Item.timerCoolDown = timer.performWithDelay(0, Item.coolDown)
 			Item.timerRenew = timer.performWithDelay( Item.buffTime + event.other.shootFasterBuffTime*1000, Item.effectCallback ,1)
 			Item.effectTarget = event.other
-			print( "alpha = "..Item.image.alpha )
+
+			local buffHUD = require "kalacool.sango.HUD.buffHUD"
 			if (event.other.shootFaster == false) then
-				-- set HUD
-				local buffHUD = require "kalacool.sango.HUD.buffHUD"
 	    		event.other.shooterFasterHUD = buffHUD.new(math.ceil(Item.buffTime/1000) , "kalacool/sango/image/Supplement/shootFaster.jpg")
 				event.other.magazineRate = Item.newRate
 				event.other.shootFaster = true
-				event.other.shootFasterBuffTime = Item.buffTime/1000
+				event.other.shootFasterBuffTime = Item.buffTime/1000 -1
 			-- active same Buff if Buff time not over
 			elseif (event.other.shootFaster == true) then
-				local buffHUD = require "kalacool.sango.HUD.buffHUD"
 				-- delete old shootFaster HUD
 				event.other.shooterFasterHUD.dispose()
 				-- add new shootFaster HUD
-				event.other.shootFasterBuffTime = event.other.shootFasterBuffTime + Item.buffTime/1000
-		    	event.other.shooterFasterHUD = buffHUD.new(math.ceil(event.other.shootFasterBuffTime) , "kalacool/sango/image/Supplement/shootFaster.jpg")
+				event.other.shootFasterBuffTime = event.other.shootFasterBuffTime + Item.buffTime/1000 -1
+		    	event.other.shooterFasterHUD = buffHUD.new(math.ceil(event.other.shootFasterBuffTime +1) , "kalacool/sango/image/Supplement/shootFaster.jpg")
 
 			end
 		end
-
 	end	
 
 	-- buff effect turn down
 	function Item.effectCallback()
-		if(Item.effectTarget.shootFasterBuffTime == 1)then
+		if(Item.effectTarget.shootFasterBuffTime == 0)then
 			Item.effectTarget.shootFaster = false
 			Item.effectTarget.magazineRate = 1
 		end
-		print( Item.effectTarget.shootFasterBuffTime.. " AA" )
 		Item.isUsed = false
 		Item.timerRenew = timer.performWithDelay(Item.buffTime , Item.renew)
 	end
-
 	
 	Item.image:addEventListener( "collision")
 	Item.listeners[table.maxn(Item.listeners)+1] = {event="collision", listener = Item}

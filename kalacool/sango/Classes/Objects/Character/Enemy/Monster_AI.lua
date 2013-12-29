@@ -1,12 +1,12 @@
 module (..., package.seeall)
 
 timer = require("timer")
-
+ObjectClass = require('kalacool.sango.Classes.Object')
 
 
 function new()
-    local ROBOT = {}
-
+    --local ROBOT = {}
+    local ROBOT = ObjectClass.new()
     function ROBOT:getDistance()
         local distance = math.sqrt( math.pow((ROBOT.monster.image.x - ROBOT.target.image.x),2) + math.pow((ROBOT.monster.image.y - ROBOT.target.image.y),2))
         return distance
@@ -29,7 +29,10 @@ function new()
     
     -- stop AI
     function ROBOT:stop()
-        timer.cancel(ROBOT.timerID)
+        if (ROBOT.timerID ~= nil) then
+             timer.cancel(ROBOT.timerID)
+        end
+       
     end
 
     -- find if player is in Patrol Range
@@ -61,7 +64,7 @@ function new()
 
     -- find if monster is in Patrol range
     function ROBOT:isMonsterInPatrolRange()
-        if (ROBOT.monster.image.x < (ROBOT.monster.config.x +50)  and ROBOT.monster.image.x > (ROBOT.monster.config.x-50) ) then
+        if (ROBOT.monster.image.x > (ROBOT.monster.config.xL )  and ROBOT.monster.image.x < (ROBOT.monster.config.xR) ) then
             return true
         else
             return false
