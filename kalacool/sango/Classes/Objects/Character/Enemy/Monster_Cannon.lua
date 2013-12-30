@@ -2,12 +2,11 @@ module(..., package.seeall)
 
 
 Monster = require ("kalacool.sango.Classes.Objects.Character.Enemy")
-AI = require("kalacool.sango.Classes.Objects.Character.Enemy.MonsterAI.Cannon_AI")
-
+ObjectClass = require('kalacool.sango.Classes.Object')
 function new(config)
 
 local cannon = Monster.new()
-    
+    cannon.Robot = require("kalacool.sango.Classes.Objects.Character.Enemy.MonsterAI.Cannon_AI")
     -- set monster's attribute 
     cannon.name ="monster"
     cannon.HP = 10
@@ -45,26 +44,20 @@ local cannon = Monster.new()
     physics.addBody(cannon.image,"static",{density = 3,filter = Filter})
 
     cannon.image.isFixedRotation = true
-
-
-function cannon:newAI()
-    cannon.AI = AI.new(cannon, cannon.target)
-end
-
 function cannon:attack(angle,dirX,dirY)
 
         cannon.bullet = cannon:new_bullet()
-        cannon.bullet.x = cannon.image.x
-        cannon.bullet.y = cannon.image.y
-        cannon.bullet:setLinearVelocity(cannon.bulletSpeed*angle*dirX , cannon.bulletSpeed*(1- angle)*dirY)
+        cannon.bullet.image.x = cannon.image.x
+        cannon.bullet.image.y = cannon.image.y
+        cannon.bullet.image:setLinearVelocity(cannon.bulletSpeed*angle*dirX , cannon.bulletSpeed*(1- angle)*dirY)
         cannon.body:play()
 end
 
 
 -- New A bullet
 function cannon:new_bullet()
-        local bullet = display.newGroup( )
-
+        local bullet = ObjectClass.new()
+        bullet.image = display.newGroup()
         -- set Bullet Animation
         local sheet = graphics.newImageSheet( "kalacool/sango/image/monster/Cannon/cannon_bullet_animation.png", { width=51, height=49, numFrames=8 } )
         local sequenceData = {
@@ -75,36 +68,26 @@ function cannon:new_bullet()
         bullet.body = body
         bullet.body:setSequence( "fly" )
         bullet.body:play()
-        bullet:insert(body)
+        bullet.image:insert(body)
 
         -- set Bullet Attribute
         local Filter = { categoryBits = 4 , maskBits = 67}
-        physics.addBody(bullet, "dynamic", {density = 1 , filter = Filter }) 
-        bullet.isFixedRotation = true
-        bullet.gravityScale = 0
-        bullet.damage = "fatal"
-        bullet.damageValue = 2
-        bullet.isBullet = true
+        physics.addBody(bullet.image, "dynamic", {density = 1 , filter = Filter }) 
+        bullet.image.isFixedRotation = true
+        bullet.image.gravityScale = 0
+        bullet.image.damage = "fatal"
+        bullet.image.damageValue = 2
+        bullet.image.isBullet = true
 
         function bullet.collision(self , event)
-                bullet:setLinearVelocity(0, 0)
+                bullet.image:setLinearVelocity(0, 0)
                 bullet.body:setSequence("explosion")
                 bullet.body:play()
-                timerBullet = timer.performWithDelay( 300, bullet.dispose)
+                timerBullet = timer.performWithDelay( 300, bullet.dispose)     
         end
 
-        function bullet:removeAllEvent()
-            timer.cancel( timerBullet )
-            bullet.dispose() 
-        end
-
-        function bullet.dispose()
-            display.remove( bullet )
-        end
-        -- Listeners of Bullet
-        bullet:addEventListener( 'removeAllEvent', bullet )
-        bullet:addEventListener("collision")
-        camera:insert(bullet)
+        bullet.image:addEventListener("collision",bullet)
+        camera:insert(bullet.image)
         return bullet
 end
 

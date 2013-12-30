@@ -37,12 +37,14 @@ function new(monster , target)
         R = math.random(1,4)
         monster:move(dirTable[R].x*0.5 , dirTable[R].y*0.5)
         AI.timerID =  timer.performWithDelay(500 , AI.run)
+        AI.timers[1] = AI.timerID
     end
 
     function AI:backHome()
         local dir = AI:monsterDir(AI.monster.config)
         monster:move(dir.x , dir.y)
         AI.timerID =  timer.performWithDelay(500 , AI.run)
+        AI.timers[1] = AI.timerID
     end
 
     function AI:attack()
@@ -54,6 +56,7 @@ function new(monster , target)
         end
         monster:move(dir.x*1.5, dir.y*1.5)
         AI.timerID = timer.performWithDelay(1500 , AI.run)
+        AI.timers[1] = AI.timerID
     end
 
     function AI:trace()
@@ -69,7 +72,7 @@ function new(monster , target)
         else
             AI.timerID = timer.performWithDelay(1500 , AI.run)
         end
-
+            AI.timers[1] = AI.timerID
     end
     return AI
 end

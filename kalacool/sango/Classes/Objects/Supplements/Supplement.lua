@@ -17,7 +17,7 @@ function new()
 	
 		Supplements.image.alpha = 1
 			Supplements.image.isBodyActive = true
-		print( "Renew "..Supplements.image.x.." "..Supplements.image.y)
+		--print( "Renew "..Supplements.image.x.." "..Supplements.image.y)
 	end
 
 	function Supplements:removeAllEvent()
@@ -30,8 +30,8 @@ function new()
 		Supplements.dispose()
 	end
 
-	scene:addEventListener( 'removeAllEvent', Supplements)
-	Supplements.listeners[1] = {event='removeAllEvent', listener = Supplements}
+--	scene:addEventListener( 'removeAllEvent', Supplements)
+--	Supplements.listeners[1] = {event='removeAllEvent', listener = Supplements}
 
 	return Supplements
 end
