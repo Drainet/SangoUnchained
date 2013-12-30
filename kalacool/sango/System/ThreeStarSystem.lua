@@ -131,6 +131,11 @@ star you can collect.
         timer.pause( rt ) 
     end
 
+    scene:addEventListener( 'resumeAllEvent', Content )
+    function Content.resumeAllEvent()
+        timer.resume( rt ) 
+    end
+
     function Content.levelComplete()
         for i = 1, table.maxn(star) do
             if star[i].pass == true then

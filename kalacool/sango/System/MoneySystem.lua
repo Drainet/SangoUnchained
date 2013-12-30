@@ -18,12 +18,14 @@ and it will unlocked !
     ---- the money you earn in this level
     local tempMoney = 0 
 
-    function Content.gotMoney(event)
+    function Content:gotMoney(event)
         characterConfig.money = JSONtable.playerTable.money
-        tempMoney = tempMoney + 100
+        tempMoney = tempMoney + tonumber(event.money)
         print("plus 100, and now you total add " .. tempMoney)
     end
     scene:addEventListener( 'gotMoney', Content )
+    
+    scene:dispatchEvent({name='gotMoney',money = 100})
 
 -------- Save Money Record Start --------
     function Content.setTotalMoney()

@@ -1,6 +1,8 @@
 require("Class")
 
 require "kalacool.sango.System.globalVariable"
+require "kalacool.sango.System.GlobalPara.World"
+
 JSONFileSet = require "kalacool.sango.JSON.JSONFileSet"
 
 display.setStatusBar( display.HiddenStatusBar ) 

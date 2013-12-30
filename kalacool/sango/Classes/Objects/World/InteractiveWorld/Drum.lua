@@ -10,13 +10,12 @@ require('kalacool.sango.animation.Animation')
 function new(config)
 
     local Drum = InteractiveWorldClass.new()
-    Drum.setImage('kalacool/sango/image/world/interactiveWorld/Drum.png')
-    Drum.image.damage = "safe"
-    Drum.image.surface = "rough"
+    Drum.setImage(_World.InteractiveWorld.Drum.ImagePath)
+    Drum.image.damage = _World.InteractiveWorld.Drum.Damage
     --Drum.image.type = "explosive"
     Drum.show(config)
     Drum.dead = false
-    physics.addBody( Drum.image,  "dynamic",{ density = 5,friction=1, bounce=0,shape = {-50,-64,50,-64,50,64,-50,64}} )
+    physics.addBody( Drum.image, _World.InteractiveWorld.Drum.Physic.Type, _World.InteractiveWorld.Drum.Physic.Option)
 
     function Drum:removeAllEvent(event)
         Drum.dispose()

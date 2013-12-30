@@ -58,6 +58,36 @@ if JSONFileSet.levelTable  == nil then
 	levelJson[5].star = 0
 	levelJson[5].pass = false
 
+	levelJson[6] = {}
+	levelJson[6].LVName = '1-6'
+	levelJson[6].requirement = 11
+	levelJson[6].star = 0
+	levelJson[6].pass = false
+
+	levelJson[7] = {}
+	levelJson[7].LVName = '1-7'
+	levelJson[7].requirement = 14
+	levelJson[7].star = 0
+	levelJson[7].pass = false
+
+	levelJson[8] = {}
+	levelJson[8].LVName = '1-8'
+	levelJson[8].requirement = 17
+	levelJson[8].star = 0
+	levelJson[8].pass = false
+
+	levelJson[9] = {}
+	levelJson[9].LVName = '1-9'
+	levelJson[9].requirement = 20
+	levelJson[9].star = 0
+	levelJson[9].pass = false
+
+	levelJson[10] = {}
+	levelJson[10].LVName = '1-10'
+	levelJson[10].requirement = 25
+	levelJson[10].star = 0
+	levelJson[10].pass = false
+
 	JSONFileSet.levelTable = levelJson
 	JSONFileHelper.saveTable(levelJson,'level.json')
 	end

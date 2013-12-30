@@ -10,11 +10,11 @@ function new(imagePath)
 
 	Background.image2 = display.newImage(imagePath)
 	Background.image2.x = -display.contentWidth/2
-	Background.image2.y = display.contentHeight/2
+	Background.image2.y = display.contentHeight/2 
 
 	Background.image3 = display.newImage(imagePath)
 	Background.image3.x = 3*display.contentWidth/2
-	Background.image3.y = display.contentHeight/2
+	Background.image3.y = display.contentHeight/2 
 	Background:insert(Background.image1)
 	Background:insert(Background.image2)
 	Background:insert(Background.image3)

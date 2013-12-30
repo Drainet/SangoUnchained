@@ -9,12 +9,11 @@ DynamicWorldClass = require('kalacool.sango.Classes.Objects.World.DynamicWorld')
 function new(config)
 
     local CompanionCube = DynamicWorldClass.new()
-    CompanionCube.setImage('kalacool/sango/image/world/dynamicWorld/companionCube.png')
-    CompanionCube.image.damage = "safe"
-    CompanionCube.image.surface = "smooth"
+    CompanionCube.setImage(_World.DynamicWorld.CompanionCube.ImagePath)
+    CompanionCube.image.damage = _World.DynamicWorld.CompanionCube.Damage
     CompanionCube.show(config)
-    physics.addBody( CompanionCube.image, "dynamic", { density=10, friction=0.7, bounce=0.5} )
-    CompanionCube.image.isFixedRotation = true
+    physics.addBody( CompanionCube.image, _World.DynamicWorld.CompanionCube.Physic.Type, _World.DynamicWorld.CompanionCube.Physic.Option )
+    CompanionCube.image.isFixedRotation = _World.DynamicWorld.CompanionCube.isFixedRotation
     
 
     return CompanionCube

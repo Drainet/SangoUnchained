@@ -12,12 +12,12 @@ local StaticWorldClass = require('kalacool.sango.Classes.Objects.World.StaticWor
 function new(config)
 
     local Thorn = StaticWorldClass.new()
-    Thorn.setImage('kalacool/sango/image/world/staticWorld/thorn.png')
-    Thorn.image.damage = "fatal"
+    Thorn.setImage(_World.StaticWorld.Thorn.ImagePath)
+    Thorn.image.damage = _World.StaticWorld.Thorn.Damage
 
     Thorn.show(config)
     Shape = {-47,61,-39,-61,37,-66,47,65}
-    physics.addBody( Thorn.image, "static", { density=1, friction=0.3, bounce=0, shape = Shape} )
+    physics.addBody( Thorn.image, _World.StaticWorld.Thorn.Physic.Type, _World.StaticWorld.Thorn.Physic.Option )
 
 
     return Thorn

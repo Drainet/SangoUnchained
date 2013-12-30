@@ -9,19 +9,17 @@ InteractiveWorldClass = require('kalacool.sango.Classes.Objects.World.Interactiv
 function new(config)
 
     local FireBall = InteractiveWorldClass.new()
-    FireBall.setImage('kalacool/sango/image/world/interactiveWorld/fireBall.png')
+    FireBall.setImage(_World.InteractiveWorld.FireBall.ImagePath)
     FireBall.show(config)
     FireBall.configX = config.x
     FireBall.configY = config.y
-    FireBall.image.damage = "fatal"
-    local Shape = {-35,-1,-13,-10,14,-2,25,26,6,54,-24,54,-43,42,-49,22}
-    local Filter = { categoryBits = 1, maskBits = 2 }
-    physics.addBody( FireBall.image,  "kinematic", { density=10, friction=99, bounce=0, shape=Shape, filter = Fiter} )
-    FireBall.image:setLinearVelocity( -250, 500 ) --(X velocity, Y velocity)
+    FireBall.image.damage = _World.InteractiveWorld.FireBall.Damage
+    physics.addBody( FireBall.image,  _World.InteractiveWorld.FireBall.Physic.Type, _World.InteractiveWorld.FireBall.Physic.Option)
+    FireBall.image:setLinearVelocity( _World.InteractiveWorld.FireBall.Velocity.Vx, _World.InteractiveWorld.FireBall.Velocity.Vy ) --(X velocity, Y velocity)
 
 
     function FireBall.moving()
-       FireBall.timers[1] = timer.performWithDelay(2000 + math.random(0, 3)*500, FireBall.reset)
+       FireBall.timers[1] = timer.performWithDelay(math.random(_World.InteractiveWorld.FireBall.RespawnTimeBegin, _World.InteractiveWorld.FireBall.RespawnTimeEnd)*1000, FireBall.reset)
     end
 
     --math.random(70, 80)  ---> an integer between 70 and 80 (inclusive)

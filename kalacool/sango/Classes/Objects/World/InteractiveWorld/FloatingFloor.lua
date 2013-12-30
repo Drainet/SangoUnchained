@@ -9,13 +9,12 @@ local InteractiveWorldClass = require('kalacool.sango.Classes.Objects.World.Inte
 function new(config)
 
     local FloatingFloor = InteractiveWorldClass.new()
-    FloatingFloor.setImage('kalacool/sango/image/world/interactiveWorld/floatingFloor.png')
-    FloatingFloor.image.width = 240
-    FloatingFloor.image.height = 20
-    FloatingFloor.image.damage = "safe"
-    FloatingFloor.image.surface = "smooth"
+    FloatingFloor.setImage(_World.InteractiveWorld.FloatingFloor.ImagePath)
+    FloatingFloor.image.width = _World.InteractiveWorld.FloatingFloor.Width
+    FloatingFloor.image.height = _World.InteractiveWorld.FloatingFloor.Height
+    FloatingFloor.image.damage = _World.InteractiveWorld.FloatingFloor.Damage
     FloatingFloor.show(config)
-    physics.addBody( FloatingFloor.image,  "kinematic", { density=10, friction=99, bounce=0} )
+    physics.addBody( FloatingFloor.image,  _World.InteractiveWorld.FloatingFloor.Physic.Type, _World.InteractiveWorld.FloatingFloor.Physic.Option )
     FloatingFloor.count=0
 
     local maxCount = 100

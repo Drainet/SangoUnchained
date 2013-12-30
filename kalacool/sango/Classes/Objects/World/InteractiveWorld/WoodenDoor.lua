@@ -9,15 +9,13 @@ InteractiveWorldClass = require('kalacool.sango.Classes.Objects.World.Interactiv
 function new(config)
 
     local WoodenDoor = InteractiveWorldClass.new()
-    WoodenDoor.setImage('kalacool/sango/image/world/interactiveWorld/woodenDoor.png')
-    WoodenDoor.image.damage = "safe"
-    WoodenDoor.image.surface = "rough"
+    WoodenDoor.setImage(_World.InteractiveWorld.WoodenDoor.ImagePath)
+    WoodenDoor.image.damage = _World.InteractiveWorld.WoodenDoor.Damage
     WoodenDoor.show(config)
-    physics.addBody( WoodenDoor.image,  "kinematic", { density=1, friction=0.3, bounce=0} )
+    physics.addBody( WoodenDoor.image,  _World.InteractiveWorld.WoodenDoor.Physic.Type, _World.InteractiveWorld.WoodenDoor.Physic.Option )
 
     function WoodenDoor:removeAllEvent(event)
         WoodenDoor.dispose()
-        print("wdddddd")
     end
 
     function WoodenDoor.preCollision(self, event)

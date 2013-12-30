@@ -96,7 +96,12 @@ function scene:createScene( event )
                     onPress = buttonHandler,
                 }   
         end
-        buttonLV[i].x =display.contentWidth/2 + (i - (totalLevel+1)/2 ) * 200 ; buttonLV[i].y = display.contentHeight/2-100
+
+        if(i <= totalLevel/2) then
+            buttonLV[i].x =display.contentWidth/2 + (i - (totalLevel/2+1)/2 ) * 200 ; buttonLV[i].y = display.contentHeight/2-90
+        else
+            buttonLV[i].x =display.contentWidth/2 + ((i-totalLevel/2) - (totalLevel/2+1)/2 ) * 200 ; buttonLV[i].y = display.contentHeight/2+80
+        end
 
         buttonStarLV[i]={}
         buttonStarLV[i].image={}
@@ -136,6 +141,22 @@ function scene:createScene( event )
         group:insert( buttonLV[i] )
     end
 
+    buttonBoss = widget.newButton
+        {
+            id = "Boss",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
+            overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
+            label = "Boss",
+            labelColor = {default = {255, 255, 255, 255}},
+            font = "arial",
+            fontSize = 28,
+            emboss = true,
+            onPress = buttonHandler,
+        }
+
+    buttonBoss.x =display.contentWidth/2 ; buttonBoss.y = display.contentHeight/2 - 230
+    group:insert( buttonBoss )
+
     buttonBack = widget.newButton
         {
             id = "Back",
@@ -150,7 +171,6 @@ function scene:createScene( event )
         }
 
     buttonBack.x =display.contentWidth/2 ; buttonBack.y = display.contentHeight/2 + 250
-
     group:insert( buttonBack )
 
     ------------------- charSelBtn Start ---------------

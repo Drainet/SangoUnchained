@@ -9,11 +9,12 @@ DynamicWorldClass = require('kalacool.sango.Classes.Objects.World.DynamicWorld')
 function new(config)
 
     local Box = DynamicWorldClass.new()
-    Box.setImage('kalacool/sango/image/world/dynamicWorld/box.png')
-    Box.image.damage = "safe"
-    Box.image.surface = "smooth"
+    Box.setImage(_World.DynamicWorld.Box.ImagePath)
+    Box.image.damage = _World.DynamicWorld.Box.Damage
+    
+    Box.image.surface = _World.DynamicWorld.Box.Surface
     Box.show(config)
-    physics.addBody( Box.image, "dynamic", { density=5, friction=0.6, bounce=0.1 } )
+    physics.addBody( Box.image, _World.DynamicWorld.Box.Physic.Type, _World.DynamicWorld.Box.Physic.Option )
 
     return Box
 end

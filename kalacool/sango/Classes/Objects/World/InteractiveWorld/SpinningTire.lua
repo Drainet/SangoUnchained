@@ -9,12 +9,11 @@ InteractiveWorldClass = require('kalacool.sango.Classes.Objects.World.Interactiv
 function new(config)
 
     local SpinningTire = InteractiveWorldClass.new()
-    SpinningTire.setImage('kalacool/sango/image/world/interactiveWorld/tire.png')
+    SpinningTire.setImage(_World.InteractiveWorld.SpinningTire.ImagePath)
     SpinningTire.show(config)
-    SpinningTire.image.damage = "safe"
-    SpinningTire.image.surface = "smooth"
-    physics.addBody( SpinningTire.image,  "kinematic", { density=0.1, friction=0.9, bounce=0, radius = 220} )
-    SpinningTire.image.angularVelocity = 60
+    SpinningTire.image.damage = _World.InteractiveWorld.SpinningTire.Damage
+    physics.addBody( SpinningTire.image,  _World.InteractiveWorld.SpinningTire.Physic.Type, _World.InteractiveWorld.SpinningTire.Physic.Option )
+    SpinningTire.image.angularVelocity = _World.InteractiveWorld.SpinningTire.AngularVelocity
 
     return SpinningTire
 end

@@ -63,6 +63,7 @@ function new()
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "Resume",
                 font = "arial",
+                labelColor = {default = {255, 255, 255, 255}},
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,
@@ -74,6 +75,7 @@ function new()
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "NewGame",
                 font = "arial",
+                labelColor = {default = {255, 255, 255, 255}},
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,
@@ -85,6 +87,7 @@ function new()
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "FreeView",
                 font = "arial",
+                labelColor = {default = {255, 255, 255, 255}},
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,
@@ -96,16 +99,17 @@ function new()
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
                 label = "Main Menu",
                 font = "arial",
+                labelColor = {default = {255, 255, 255, 255}},
                 fontSize = 28,
                 emboss = true,
                 onPress = buttonHandler,
             }
 
-            menuBackground.x = display.contentWidth/2   ; menuBackground.y = display.contentHeight/2
-            buttonResume.x = display.contentWidth/2     ; buttonResume.y = display.contentHeight/2      -250
-            buttonNewGame.x = display.contentWidth/2    ; buttonNewGame.y = display.contentHeight/2     -150
-            buttonFreeView.x = display.contentWidth/2   ; buttonFreeView.y = display.contentHeight/2    -50
-            buttonMainMenu.x = display.contentWidth/2   ; buttonMainMenu.y = display.contentHeight/2    +250
+            menuBackground.x = display.contentWidth/2       ; menuBackground.y = display.contentHeight/2
+            buttonResume.x = display.contentWidth/2     + 30; buttonResume.y = display.contentHeight/2      -95
+            buttonNewGame.x = display.contentWidth/2    + 30; buttonNewGame.y = display.contentHeight/2     +40
+            buttonFreeView.x = display.contentWidth/2   + 30; buttonFreeView.y = display.contentHeight/2    +180
+            buttonMainMenu.x = display.contentWidth/2   + 30; buttonMainMenu.y = display.contentHeight/2    +250
 
             pauseMenu:insert(menuBackground)
             pauseMenu:insert(buttonResume)
