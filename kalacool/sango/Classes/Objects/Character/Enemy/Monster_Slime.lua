@@ -15,25 +15,25 @@ local slime = Monster.new()
     slime.originPosition = config
     slime.config = config
     -- set monster's attribute
-    slime.HP = 10
-    slime.moveSpeed = 300
-    slime.attackRange = 200
-    slime.visibleDistance = 800
+    slime.HP                = _Enemy.Monster_Slime.HP
+    slime.moveSpeed         = _Enemy.Monster_Slime.moveSpeed
+    slime.attackRange       = _Enemy.Monster_Slime.attackRange
+    slime.visibleDistance   = _Enemy.Monster_Slime.visibleDistance
     -- set monster's body
-    slime.name ="monster"
-    slime.body = display.newImage("kalacool/sango/image/monster/Slime/slime.png")
+    slime.name              = _Enemy.Monster_Slime.name
+    slime.body              = display.newImage( _Enemy.Monster_Slime.ImagePath)
 
     slime.image:insert(slime.body)
-    slime.body.x = slime.image.x
-    slime.body.y = slime.image.y
-    slime.image.x = config.x
-    slime.image.y = config.y
+    slime.body.x    = slime.image.x
+    slime.body.y    = slime.image.y
+    slime.image.x   = config.x
+    slime.image.y   = config.y
 
     -- add physics attribute
-    local Filter = { categoryBits = 4, maskBits = 99 }   -- collision with {Player}
-    physics.addBody(slime.image,"dynamic",{density = 10, friction = 0.7,filter = Filter})
-    slime.image.isFixedRotation = true    -- Monster no Rotate
-    slime.image.damageValue = 1
+    -- local Filter = { categoryBits = 4, maskBits = 99 }   -- collision with {Player}
+    physics.addBody(slime.image, _Enemy.Monster_Slime.Type, _Enemy.Monster_Slime.Option)
+    slime.image.isFixedRotation = _Enemy.Monster_Slime.isFixedRotation    -- Monster no Rotate
+    slime.image.damageValue     = _Enemy.Monster_Slime.damageValue
 
     function slime:move(x,y)
         slime.image:setLinearVelocity(x*slime.moveSpeed , y*slime.moveSpeed)

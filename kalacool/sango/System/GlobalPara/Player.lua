@@ -6,29 +6,54 @@
 
 	_Player = {}
 
-	---------------- Dynamic World Start ----------------
-		_World.DynamicWorld = {}
+	---------------- [ Doggy ] ----------------
+		_Player.Doggy = {}
 
-		----------------[ Box ] ----------------
-			_World.DynamicWorld.Box = {}
+		_Player.Doggy.ImageSheetPath 		= "kalacool/sango/image/character/coodog.png"
+		_Player.Doggy.ImageSheetOption 		= { width=120, height=113, numFrames=9 }
+		_Player.Doggy.ImageSheetSequence 	= 
+		{
+			{ name="normal", frames= {2, 1, 3}, time=300 , loopDirection = "bounce" },
+			{ name="jump",	 start=4, count=3,  time=200 , loopDirection = "bounce" },
+			{ name="dead",   start=7, count=3,  time=200 , loopDirection = "bounce" }
+		}
+		_Player.Doggy.hand 				= {}
+			_Player.Doggy.hand.ImagePath	= "kalacool/sango/image/character/coodoghand.png"
+			_Player.Doggy.hand.fistX		= 13
+			_Player.Doggy.hand.fistY		= 21
+	----
+	---------------- [ shadow ] ----------------
+		_Player.shadow = {}
 
-			_World.DynamicWorld.Box.ImagePath 	= "kalacool/sango/image/world/dynamicWorld/box.png"			
-			_World.DynamicWorld.Box.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage 		
-			_World.DynamicWorld.Box.Physic		= {}
-				_World.DynamicWorld.Box.Physic.Type		= "dynamic"
-				_World.DynamicWorld.Box.Physic.Option	= { density=5, friction=0.6, bounce=0.1 }
-		----
-		----------------[ CompanionCube ] ----------------
-			_World.DynamicWorld.CompanionCube = {}
+		_Player.shadow.ImageSheetPath 		= "kalacool/sango/image/character/shadow.png"
+		_Player.shadow.ImageSheetOption 	= { width=120, height=113, numFrames=9 }
+		_Player.shadow.ImageSheetSequence 	= 
+		{
+			{ name="normal", frames={1, 2, 3}, time=300 ,loopDirection = "bounce" },
+			{ name="jump",   start=4, count=3, time=200 ,loopDirection = "bounce" },
+			{ name="dead",   start=7, count=3, time=200 ,loopDirection = "bounce" }
+		}
+		_Player.shadow.hand 				= {}
+			_Player.shadow.hand.ImagePath		= "kalacool/sango/image/character/shadowhand.png"
+			_Player.shadow.hand.fistX			= 3
+			_Player.shadow.hand.fistY			= 28
+	----
+	---------------- [ Cat ] ----------------
+		_Player.Cat = {}
 
-			_World.DynamicWorld.CompanionCube.ImagePath 		= "kalacool/sango/image/world/dynamicWorld/companionCube.png"			
-			_World.DynamicWorld.CompanionCube.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage			
-			_World.DynamicWorld.CompanionCube.Physic			= {}
-				_World.DynamicWorld.CompanionCube.Physic.Type	= "dynamic"
-				_World.DynamicWorld.CompanionCube.Physic.Option	= { density=10, friction=0.7, bounce=0.5}
-			_World.DynamicWorld.CompanionCube.isFixedRotation= true 
-		----
-	---------------- Dynamic World End ----------------
+		_Player.Cat.ImageSheetPath 		= "kalacool/sango/image/character/cat.png"
+		_Player.Cat.ImageSheetOption 	= { width=150, height=141, numFrames=9 }
+		_Player.Cat.ImageSheetSwquence 	= 
+		{
+			{ name="normal"	, start=1, count=3, time=800 },
+			{ name="jump"	, start=4, count=3, time=200 },
+			{ name="dead"	, start=7, count=3, time=200 }
+		}
+		_Player.Cat.hang 				= {}
+			_Player.Cat.hang.ImagePath		= "kalacool/sango/image/character/cat_hand.png"
+			_Player.Cat.hang.xReference		= 27
+			_Player.Cat.hang.yReference		= -8
+	----
 
 
 

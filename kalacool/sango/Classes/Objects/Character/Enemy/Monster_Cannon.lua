@@ -8,24 +8,22 @@ function new(config)
 local cannon = Monster.new()
     cannon.Robot = require("kalacool.sango.Classes.Objects.Character.Enemy.MonsterAI.Cannon_AI")
     -- set monster's attribute 
-    cannon.name ="monster"
-    cannon.HP = 10
-    cannon.moveSpeed = 0
-    cannon.attackSpeed = 2000
-    cannon.bulletSpeed = 600
-    cannon.visibleDistance = 1280
+    cannon.name             = _Enemy.Monster_Cannon.name
+    cannon.HP               = _Enemy.Monster_Cannon.HP
+    cannon.moveSpeed        = _Enemy.Monster_Cannon.moveSpeed
+    cannon.attackSpeed      = _Enemy.Monster_Cannon.attackSpeed
+    cannon.bulletSpeed      = _Enemy.Monster_Cannon.bulletSpeed
+    cannon.visibleDistance  = _Enemy.Monster_Cannon.visibleDistance
     cannon.config = config
     --set Cannon's head
-    cannon.head = display.newImage( "kalacool/sango/image/monster/Cannon/cannon_head.png" )
+    cannon.head = display.newImage( _Enemy.Monster_Cannon.head.ImagePath )
     cannon.image:insert(cannon.head)
-    cannon.head.RX = -12
-    cannon.head.RY = -43
+    cannon.head.RX =        _Enemy.Monster_Cannon.head.RX
+    cannon.head.RY =        _Enemy.Monster_Cannon.head.RY
 
     -- set Cannon's body
-    local sheet = graphics.newImageSheet( "kalacool/sango/image/monster/Cannon/cannon_body_animation.png", { width=82, height=98, numFrames=10 } )
-    local sequenceData = {
-        { name="loading", start=1, count=10, time= cannon.attackSpeed , loopCount = 1}
-    }   
+    local sheet = graphics.newImageSheet( _Enemy.Monster_Cannon.ImageSheetPath, _Enemy.Monster_Cannon.ImageSheetOption )
+    local sequenceData = _Enemy.Monster_Cannon.ImageSheetSequence
     local body =  display.newSprite( sheet , sequenceData )
     cannon.body = body
     body:setSequence( "loading" )
@@ -40,8 +38,8 @@ local cannon = Monster.new()
     cannon.head.y = cannon.body.y + cannon.head.RY
     cannon.head.rotation = 0
     -- add physics attribute
-    local Filter = { categoryBits = 4, maskBits = 67 } 
-    physics.addBody(cannon.image,"static",{density = 3,filter = Filter})
+    -- local Filter = { categoryBits = 4, maskBits = 67 } 
+    physics.addBody(cannon.image, _Enemy.Monster_Cannon.Physic.Type, _Enemy.Monster_Cannon.Physic.Option)
 
     cannon.image.isFixedRotation = true
 function cannon:attack(angle,dirX,dirY)
@@ -59,11 +57,9 @@ function cannon:new_bullet()
         local bullet = ObjectClass.new()
         bullet.image = display.newGroup()
         -- set Bullet Animation
-        local sheet = graphics.newImageSheet( "kalacool/sango/image/monster/Cannon/cannon_bullet_animation.png", { width=51, height=49, numFrames=8 } )
-        local sequenceData = {
-            { name="fly", start=1, count=4, time= 400},
-            { name="explosion", start=5, count=4, time= 300 }
-        }
+        local sheet = graphics.newImageSheet( _Enemy.Monster_Cannon.bullet.ImageSheetPath, _Enemy.Monster_Cannon.bullet.ImageSheetOption )
+        local sequenceData = _Enemy.Monster_Cannon.bullet.ImageSheetSequence
+
         local body =  display.newSprite( sheet , sequenceData )
         bullet.body = body
         bullet.body:setSequence( "fly" )
@@ -71,19 +67,19 @@ function cannon:new_bullet()
         bullet.image:insert(body)
 
         -- set Bullet Attribute
-        local Filter = { categoryBits = 4 , maskBits = 67}
-        physics.addBody(bullet.image, "dynamic", {density = 1 , filter = Filter }) 
-        bullet.image.isFixedRotation = true
-        bullet.image.gravityScale = 0
-        bullet.image.damage = "fatal"
-        bullet.image.damageValue = 2
-        bullet.image.isBullet = true
+        -- local Filter = { categoryBits = 4 , maskBits = 67}
+        physics.addBody(bullet.image, _Enemy.Monster_Cannon.bullet.Physic.Type, _Enemy.Monster_Cannon.bullet.Physic.Option) 
+        bullet.image.isFixedRotation    = true
+        bullet.image.gravityScale       = _Enemy.Monster_Cannon.bullet.gravityScale
+        bullet.image.damage             = _Enemy.Monster_Cannon.bullet.damage
+        bullet.image.damageValue        = _Enemy.Monster_Cannon.bullet.damageValue
+        bullet.image.isBullet           = true
 
         function bullet.collision(self , event)
-                bullet.image:setLinearVelocity(0, 0)
-                bullet.body:setSequence("explosion")
-                bullet.body:play()
-                timerBullet = timer.performWithDelay( 300, bullet.dispose)     
+            bullet.image:setLinearVelocity(0, 0)
+            bullet.body:setSequence("explosion")
+            bullet.body:play()
+            timerBullet = timer.performWithDelay( 300, bullet.dispose)     
         end
 
         bullet.image:addEventListener("collision",bullet)

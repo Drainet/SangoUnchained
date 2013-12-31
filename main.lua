@@ -2,6 +2,8 @@ require("Class")
 
 require "kalacool.sango.System.globalVariable"
 require "kalacool.sango.System.GlobalPara.World"
+require "kalacool.sango.System.GlobalPara.Enemy"
+require "kalacool.sango.System.GlobalPara.Player"
 
 JSONFileSet = require "kalacool.sango.JSON.JSONFileSet"
 

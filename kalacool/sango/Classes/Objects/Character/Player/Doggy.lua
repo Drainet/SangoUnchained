@@ -1,25 +1,16 @@
 module(..., package.seeall)
 
-
-
 local PlayerClass  = require "kalacool.sango.Classes.Objects.Character.Player"
-
 
 function new(config)
     --create Doggy display object
-
 
     local Doggy = PlayerClass.new(config)
 
     Doggy.pack = {}
     
-
-    
     --Doggy.pack[1].isonAir=true
     --Doggy.pack[2].isonAir=true
-	
-	
-    
 
 	function Doggy.default()
 		Doggy.buffNum = 0
@@ -41,74 +32,48 @@ function new(config)
 			,{ density=10.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
 			,{ density=10.0, friction=0.2, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter})
 		Doggy.image.isFixedRotation = true
-		Doggy.image.isBullet = true
-		Doggy.alive=true
+		Doggy.image.isBullet 		= true
+		Doggy.alive 				= true
 
 		Doggy.heart.full()
 		Doggy.invincible(15)
 
 	end
 	
-
+	local sheet = graphics.newImageSheet( _Player.Doggy.ImageSheetPath, _Player.Doggy.ImageSheetOption)
 	
-	
-	
-	
-	
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/character/coodog.png", { width=120, height=113, numFrames=9 } )
-	
-	local sequenceData = {
- 
-		{ name="normal",frames= { 2, 1, 3}, time=300 , loopDirection = "bounce" },
-		{ name="jump", start=4, count=3, time=200 ,loopDirection = "bounce"},
-		{ name="dead", start=7, count=3, time=200 ,loopDirection = "bounce"}
- 
-	}
-
-	
+	local sequenceData = _Player.Doggy.ImageSheetSequence
 	
 	local body = display.newSprite( sheet, sequenceData )
 	Doggy.body = body
-
-	
 
     Doggy.image:insert(body)
 
     Doggy.handGroup = display.newGroup( )
     Doggy.image:insert(Doggy.handGroup)
 
-    Doggy.hand = display.newImage( "kalacool/sango/image/character/coodoghand.png" )
-    Doggy.hand.x = 0
-    Doggy.hand.y = 0
-    Doggy.hand.fistX = 13
-    Doggy.hand.fistY = 21
+    Doggy.hand = display.newImage( _Player.Doggy.hand.ImagePath )
+    Doggy.hand.x 		= 0
+    Doggy.hand.y 		= 0
+    Doggy.hand.fistX 	= _Player.Doggy.hand.fistX
+    Doggy.hand.fistY 	= _Player.Doggy.hand.fistY
     Doggy.handGroup:insert(Doggy.hand)
 
     -- Doggy.handGroup.anchorChildren = true
     -- Doggy.handGroup.anchorX=16 --shoulder position
     -- Doggy.handGroup.anchorY=8
 
-
     --Doggy.Filter = { categoryBits = 2, maskBits = 37 }
 
-	
-	local shapew=30
-	local shapeh=56
+	local shapew = 30
+	local shapeh = 56
 
-	Doggy.Shape= { -shapew,-shapeh+30, shapew,-shapeh+30, shapew,53, -shapew,53 }
-	Doggy.foot= { -shapew+2,53, shapew-2,53, shapew-2,shapeh, -shapew+2,shapeh }
+	Doggy.Shape = { -shapew, -shapeh+30, shapew, -shapeh+30, shapew,53, -shapew,53 }
+	Doggy.foot	= { -shapew+2, 53, shapew-2,53, shapew-2, shapeh, -shapew+2, shapeh }
 	--physics.setDrawMode( "hybrid" )
     
-	
-	
-		
-	
 	--body.x=Doggy.x
     --body.y=Doggy.y
-	
-	
-
-	
 
     Doggy.image:addEventListener( "collision")
     Doggy.image:addEventListener( "preCollision")
@@ -117,9 +82,6 @@ function new(config)
 
     --Doggy.listeners[table.maxn(Doggy.listeners)+1]= {event="collision",listener=Doggy.crash}
 
-   
-	
- 
     --add to Instances table
     return Doggy
 end
