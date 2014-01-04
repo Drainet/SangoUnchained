@@ -60,6 +60,7 @@ level.layers["Monster"].objects = {}
  level.layers["Monster"].objects["object15"] = EnemySet.newMonsterCannon({x=98,y=1584,name="ShootFaster"})
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object15"].image)
  level.layers["Monster"].objects["object16"] = EnemySet.newMonsterCannon({x=1118,y=1584,name="MoreLife"})
+ level.layers["Monster"].objects["object16"].image.rotation = 270
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object16"].image)
  level.layers["StaticWorld"].objects["object17"] = WorldSet.newhor_floor({x=920,y=1950})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object17"].image)

@@ -297,7 +297,7 @@ function new(config)
 				local coolX= -camera.x+event.target.x-Player.image.x
 				local coolY= -camera.y+event.target.y-Player.image.y
 				local ratio = math.sqrt((coolX)^2+(coolY)^2)
-				local bulletgroup=Player.bullet.new(Player.image.x , Player.image.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
+				local bulletgroup=Player.bullet.new(Player.image.x + Player.handGroup.x , Player.image.y + Player.handGroup.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
 
 				local angle= (Atan2( coolY,coolX)*180/Pi)
 

@@ -9,10 +9,10 @@ function new(config)
 	--- set Attribute of disappearFloor
 	DisappearFloor.image = display.newGroup( )
 	DisappearFloor.Filter = { categoryBits = 16 , maskBits = 11} 
-	DisappearFloor.remainTime = 2000
+	DisappearFloor.remainTime = 1000
 	DisappearFloor.isActive = false
 	--- set disappearFloor's image
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/disappearFloor.png", { width=265, height=40, numFrames=10 } )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/disappearFloor.png", { width=200, height=30, numFrames=10 } )
     local sequenceData = {
         { name="fadeAway", start=1, count=10, time= DisappearFloor.remainTime, loopCount=1 },
     }
@@ -29,7 +29,7 @@ function new(config)
 	DisappearFloor.image.damage = "safe"
 	DisappearFloor.image:insert(DisappearFloor.body)
 
-	physics.addBody( DisappearFloor.image ,"static" , {Filter=DisappearFloor.Filter} )
+	physics.addBody( DisappearFloor.image ,"static" , {friction=1,Filter=DisappearFloor.Filter} )
 	DisappearFloor.image.isSensor = true
 
 	function DisappearFloor.active()

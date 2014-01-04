@@ -16,8 +16,9 @@ function new(config)
     Thorn.image.damage = _World.StaticWorld.Thorn.Damage
 
     Thorn.show(config)
-    Shape = {-47,61,-39,-61,37,-66,47,65}
+     _World.StaticWorld.Thorn.Physic.Option.radius = Thorn.image.width/2
     physics.addBody( Thorn.image, _World.StaticWorld.Thorn.Physic.Type, _World.StaticWorld.Thorn.Physic.Option )
+    
 
 
     return Thorn

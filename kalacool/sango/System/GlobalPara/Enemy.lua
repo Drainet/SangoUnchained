@@ -17,10 +17,10 @@
 		_Enemy.Monster_Cannon.visibleDistance	= 1280
 		_Enemy.Monster_Cannon.head 				= {}
 			_Enemy.Monster_Cannon.head.ImagePath	= "kalacool/sango/image/monster/Cannon/cannon_head.png"
-			_Enemy.Monster_Cannon.head.RX			= -12
-			_Enemy.Monster_Cannon.head.RY			= -43
+			_Enemy.Monster_Cannon.head.RX			= -2
+			_Enemy.Monster_Cannon.head.RY			= -33
 		_Enemy.Monster_Cannon.ImageSheetPath 	= "kalacool/sango/image/monster/Cannon/cannon_body_animation.png"
-		_Enemy.Monster_Cannon.ImageSheetOption 	= { width=82, height=98, numFrames=10 }
+		_Enemy.Monster_Cannon.ImageSheetOption 	= { width=60, height=80, numFrames=10 }
 		_Enemy.Monster_Cannon.ImageSheetSequence = 
 		{
         	{name="loading", start=1, count=10, time= _Enemy.Monster_Cannon.attackSpeed , loopCount = 1}
@@ -52,7 +52,7 @@
 		_Enemy.Monster_fireball.attackRange 	= 300
 		_Enemy.Monster_fireball.visibleDistance = 1000
 		_Enemy.Monster_fireball.name 			= "monster"
-		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/item/fire3.png"
+		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/monster/FireBall/fireball.png"
 		_Enemy.Monster_fireball.Physic			= {}
 			_Enemy.Monster_fireball.Physic.Type		= "dynamic"
 			_Enemy.Monster_fireball.Physic.Option	= {density = 10,filter = {categoryBits = 4, maskBits = 98 }}

@@ -30,8 +30,8 @@ function new(config)
    
 
     checkDoor.show(config)
-    local Shape1 = { -115,-118, 0,-178, 115,-118,  125,152, -125,152 }
-    local Shape2 = {-115,153,115,153,125,178,-125,178}
+    local Shape1 = { -70,-100, 0,-125, 70,-100,  90,100, -90,100 }
+    local Shape2 = {-80,100,80,100,90,120,-90,120}
     physics.addBody( checkDoor.image, _World.StaticWorld.checkDoor.Physic.Type, {  shape = Shape1 , isSensor =true,filter =  { categoryBits = 8, maskBits = 2 }}
     	,{density=1, friction=1, bounce=0,shape = Shape2})
 
@@ -89,6 +89,6 @@ function new(config)
 
     checkDoor.image:addEventListener( "collision")
 
-    --physics.setDrawMode( "hybrid" )
+    -- physics.setDrawMode( "hybrid" )
     return checkDoor
 end
