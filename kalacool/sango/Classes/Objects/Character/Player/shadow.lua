@@ -13,7 +13,7 @@ function new(config)
     --Doggy.pack[2].isonAir=true
 	
 	function Doggy.default()
-		scene:dispatchEvent({name='Ach2'})
+
 		Doggy.buffNum = 0
 		Doggy.show(Doggy.image.lastCheckPoint)
 

@@ -66,7 +66,7 @@ function scene:createScene( event )
     function onEveryFrame()  
         movex = myLevel.x - dog.image.x
         movey = myLevel.y - dog.image.y
-        camera.x = 240 + movex
+        camera.x = 640 + movex
         camera.y = 460 + movey
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )

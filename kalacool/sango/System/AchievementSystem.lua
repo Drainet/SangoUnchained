@@ -34,7 +34,7 @@ and it will unlocked !
             popOutAchievement.achievementBkgrd:setFillColor(0, 0, 0)
             popOutAchievement.achievementImage = display.newImage( curAchievement[newAchievementConfig.num].image, display.contentWidth/2-200, 200 )
             popOutAchievement.achievementTitle = display.newText(curAchievement[newAchievementConfig.num].achName, display.contentWidth/2 , 200, native.systemFontBold, 30)
-            timer.performWithDelay( 2000, removePopOut )
+            timer.performWithDelay( 5000, removePopOut )
         end
     end
 -------- Initalize Function End --------
@@ -57,6 +57,33 @@ and it will unlocked !
 
         scene:removeEventListener( 'Ach2', Content )
     end
+
+    scene:addEventListener( 'Ach3', Content )
+    function Content.Ach3()
+        newAchievementConfig.num = 3
+        addPopOut()
+        achievementConfigClass.setCurAchievementConfig(newAchievementConfig)
+
+        scene:removeEventListener( 'Ach3', Content )
+    end
+
+    scene:addEventListener( 'Ach4', Content )
+    function Content.Ach4()
+        newAchievementConfig.num = 4
+        addPopOut()
+        achievementConfigClass.setCurAchievementConfig(newAchievementConfig)
+
+        scene:removeEventListener( 'Ach4', Content )
+    end
+
+    scene:addEventListener( 'Ach5', Content )
+    function Content.Ach5()
+        newAchievementConfig.num = 5
+        addPopOut()
+        achievementConfigClass.setCurAchievementConfig(newAchievementConfig)
+
+        scene:removeEventListener( 'Ach5', Content )
+    end
 -------- Edit Achievement End --------
 
 -------- Dispose Function Start --------
@@ -64,6 +91,9 @@ and it will unlocked !
     function Content.removeAllEvent()
         scene:removeEventListener( 'Ach1', Content )
         scene:removeEventListener( 'Ach2', Content )
+        scene:removeEventListener( 'Ach3', Content )
+        scene:removeEventListener( 'Ach4', Content )
+        scene:removeEventListener( 'Ach5', Content )
     end
 -------- Dispose Function End --------
 

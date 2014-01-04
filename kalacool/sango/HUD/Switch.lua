@@ -16,6 +16,7 @@ function new(Player)
 	
 	function switch:touch( event )
 	    if event.phase == "began" then
+   		scene:dispatchEvent({name='Ach3'})
 
 	    	
 	    	Player.pack[switch.state].nowNum=Player.Weapon.magazine.ammo

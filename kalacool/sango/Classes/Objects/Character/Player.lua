@@ -279,7 +279,6 @@ function new(config)
 --------‹æ start---
 
 	function Player:screenTouch( event )
-		scene:dispatchEvent({name='Ach1'})
 		
 		local phase = event.target.phase
 

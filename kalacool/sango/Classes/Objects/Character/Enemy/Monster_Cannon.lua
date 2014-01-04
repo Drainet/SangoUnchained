@@ -91,6 +91,11 @@ function cannon:turnHead()
     cannon.head.rotation = 100
 end
 
+function cannon.dispose()
+    local scene = scene
+    scene:dispatchEvent({name='Ach2'})
+end
+
 
 
 return cannon

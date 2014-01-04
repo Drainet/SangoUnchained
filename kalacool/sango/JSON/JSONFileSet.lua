@@ -146,18 +146,39 @@ if JSONFileSet.characterStoreTable  == nil then
 if JSONFileSet.achievementTable  == nil then 
 	achievementStoreJson = {}
 	achievementStoreJson[1] ={}
-	achievementStoreJson[1].achName = "First Shot"
+	achievementStoreJson[1].achName = "Hello Noob !"
 	achievementStoreJson[1].achievementItemID = 1
-	achievementStoreJson[1].image = "kalacool/sango/image/UI/Achievement/ach1.png"
+	achievementStoreJson[1].image = "kalacool/sango/image/UI/Achievement/ach2.png"
 	achievementStoreJson[1].unlock = false
-	achievementStoreJson[1].description = "Use your weapon for first time!"
+	achievementStoreJson[1].description = "Enter the World for first time!"
 
 	achievementStoreJson[2] ={}
-	achievementStoreJson[2].achName = "Meet the Shadow"
+	achievementStoreJson[2].achName = "Triple Kill !"
 	achievementStoreJson[2].achievementItemID = 2
 	achievementStoreJson[2].image = "kalacool/sango/image/UI/Achievement/ach2.png"
 	achievementStoreJson[2].unlock = false
-	achievementStoreJson[2].description = "Use Character - Shadow"
+	achievementStoreJson[2].description = "kill 3 enemy !"
+
+	achievementStoreJson[3] ={}
+	achievementStoreJson[3].achName = "Second choice !"
+	achievementStoreJson[3].achievementItemID = 3
+	achievementStoreJson[3].image = "kalacool/sango/image/UI/Achievement/ach2.png"
+	achievementStoreJson[3].unlock = false
+	achievementStoreJson[3].description = "change weapons"
+
+	achievementStoreJson[4] ={}
+	achievementStoreJson[4].achName = "Meet the Shadow"
+	achievementStoreJson[4].achievementItemID = 4
+	achievementStoreJson[4].image = "kalacool/sango/image/UI/Achievement/ach2.png"
+	achievementStoreJson[4].unlock = false
+	achievementStoreJson[4].description = "Use Character - Shadow"
+
+	achievementStoreJson[5] ={}
+	achievementStoreJson[5].achName = "Meet the Shadow"
+	achievementStoreJson[5].achievementItemID = 5
+	achievementStoreJson[5].image = "kalacool/sango/image/UI/Achievement/ach2.png"
+	achievementStoreJson[5].unlock = false
+	achievementStoreJson[5].description = "Use Character - Shadow"
 
 	JSONFileSet.achievementTable = achievementStoreJson
 	JSONFileHelper.saveTable(achievementStoreJson,'achievement.json')
