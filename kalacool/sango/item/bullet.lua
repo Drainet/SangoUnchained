@@ -76,7 +76,7 @@ function new(x,y,vx,vy)
 					--local y= 100*Sin(self.angle*Pi/180)+self.y
 					--print(event.x)
 					--print(event.y)
-					Animation:newSpark(event.x,event.y)
+					Animation:newFlare(event.x,event.y)
 					
 					display.remove( self )
 				--[[elseif(event.object2.name=="oneshot")then
@@ -106,7 +106,7 @@ function new(x,y,vx,vy)
 	
 	end
 	
-	bullet.timers[1] = timer.performWithDelay( 300,bullet.timeout,1 )
+	bullet.timers[1] = timer.performWithDelay( 500,bullet.timeout,1 )
 	
 	
 	

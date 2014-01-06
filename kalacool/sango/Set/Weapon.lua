@@ -20,9 +20,9 @@ function Weapon.newShotgun()
     local sprite =  display.newSprite(gunsheet, gunsequenceData)
 	
 	gun.sprite = sprite
-	gun.magazine=magazineClass.new(5,300,500,100,"kalacool/sango/image/UI/shell.png")
+	gun.magazine=magazineClass.new(7,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.bullet"
-	gun.recoil=500
+	gun.recoil=400
 	return gun
 end
 
@@ -34,7 +34,7 @@ function Weapon.newNotegun()
 	
 	gun.magazine=magazineClass.new(3,200,600,0,"kalacool/sango/image/UI/note_shell.png")
 	gun.bullet= require "kalacool.sango.item.note_bullet"
-	gun.recoil=600
+	gun.recoil=500
 	return gun
 end
 
@@ -56,7 +56,7 @@ function Weapon.newRifle()
 	gun.sprite = sprite
 	gun.magazine=magazineClass.new(1,600,1000,0,"kalacool/sango/image/UI/rifleShell.png")
 	gun.bullet= require "kalacool.sango.item.rifle_bullet"
-	gun.recoil=1200
+	gun.recoil=800
 	return gun
 end
 

@@ -23,7 +23,7 @@ level.layers["DynamicWorld"].objects = {}
 level.layers["InteractiveWorld"] = display.newGroup()
 level.layers["InteractiveWorld"].name = "StaticWorld"
 level.layers["InteractiveWorld"].objects = {}
- level.layers["StaticWorld"].objects["object0"] = WorldSet.newS_hor_floor({x=300,y=710})
+ level.layers["StaticWorld"].objects["object0"] = WorldSet.newhor_floor({x=300,y=710})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object0"].image)
   level.layers["StaticWorld"].objects["object999"] = WorldSet.newThorn({x=1100,y=300})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object999"].image)

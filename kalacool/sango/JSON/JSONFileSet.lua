@@ -36,37 +36,37 @@ if JSONFileSet.levelTable  == nil then
 
 	levelJson[2] = {}
 	levelJson[2].LVName = '1-2'
-	levelJson[2].requirement = 1
+	levelJson[2].requirement = 0
 	levelJson[2].star = 0
 	levelJson[2].pass = false
 
 	levelJson[3] = {}
 	levelJson[3].LVName = '1-3'
-	levelJson[3].requirement = 3
+	levelJson[3].requirement = 0
 	levelJson[3].star = 0
 	levelJson[3].pass = false
 
 	levelJson[4] = {}
 	levelJson[4].LVName = '1-4'
-	levelJson[4].requirement = 5
+	levelJson[4].requirement = 0
 	levelJson[4].star = 0
 	levelJson[4].pass = false
 
 	levelJson[5] = {}
 	levelJson[5].LVName = '1-5'
-	levelJson[5].requirement = 7
+	levelJson[5].requirement = 0
 	levelJson[5].star = 0
 	levelJson[5].pass = false
 
 	levelJson[6] = {}
 	levelJson[6].LVName = '1-6'
-	levelJson[6].requirement = 11
+	levelJson[6].requirement = 0
 	levelJson[6].star = 0
 	levelJson[6].pass = false
 
 	levelJson[7] = {}
 	levelJson[7].LVName = '1-7'
-	levelJson[7].requirement = 14
+	levelJson[7].requirement = 0
 	levelJson[7].star = 0
 	levelJson[7].pass = false
 

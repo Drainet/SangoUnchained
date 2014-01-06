@@ -26,7 +26,7 @@ function scene:createScene( event )
     local moneySystemClass = require "kalacool.sango.System.MoneySystem"
     local moneySystem = moneySystemClass.new()
 
-    local levelDirector = require "kalacool.sango.level.lv1-3"
+    local levelDirector = require "kalacool.sango.level.zxc"
 
     local physics = require("physics")
     physics.start()
