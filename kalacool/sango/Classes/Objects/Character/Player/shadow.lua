@@ -58,12 +58,16 @@ function new(config)
     Doggy.hand.fistY 	= _Player.shadow.hand.fistY
     Doggy.handGroup:insert(Doggy.hand)
 
-    -- Doggy.handGroup.anchorChildren = true
-    -- Doggy.handGroup.anchorX=14--shoulder position
-    -- Doggy.handGroup.anchorY=10
+    Doggy.handGroup.anchorChildren = true
+    Doggy.handGroup.anchorX=0.53--shoulder position
+    Doggy.handGroup.anchorY=0.5
+
+    Doggy.handGroup.x = 10
+    Doggy.handGroup.y = 8
 
     --Doggy.Filter = { categoryBits = 2, maskBits = 37 }
-
+	--local dodo =  display.newCircle( Doggy.handGroup.x, Doggy.handGroup.y, 2 )
+    --Doggy.image:insert(dodo)
 	local shapew = 30
 	local shapeh  =56
 

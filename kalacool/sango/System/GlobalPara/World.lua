@@ -25,7 +25,7 @@
 			_World.DynamicWorld.CompanionCube.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.DynamicWorld.CompanionCube.Physic			= {}
 				_World.DynamicWorld.CompanionCube.Physic.Type	= "dynamic"
-				_World.DynamicWorld.CompanionCube.Physic.Option	= { density=10, friction=0.7, bounce=0.5}
+				_World.DynamicWorld.CompanionCube.Physic.Option	= { density=30, friction=0.7, bounce=0.5}
 			_World.DynamicWorld.CompanionCube.isFixedRotation= true 
 		----
 	---------------- Dynamic World End ----------------
@@ -40,7 +40,7 @@
 			_World.InteractiveWorld.Drum.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.InteractiveWorld.Drum.Physic			= {}
 				_World.InteractiveWorld.Drum.Physic.Type		= "dynamic"
-				_World.InteractiveWorld.Drum.Physic.Option	= { density = 5,friction=1, bounce=0,shape = {-50,-64,50,-64,50,64,-50,64}}
+				_World.InteractiveWorld.Drum.Physic.Option	= { density = 5,friction=1, bounce=0}
 		----
 		----------------[ FireBall ] ----------------
 			_World.InteractiveWorld.FireBall = {}
@@ -74,7 +74,7 @@
 			_World.InteractiveWorld.SpinningTire.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.InteractiveWorld.SpinningTire.Physic			= {}
 				_World.InteractiveWorld.SpinningTire.Physic.Type		= "kinematic"
-				_World.InteractiveWorld.SpinningTire.Physic.Option	= { density=0.1, friction=0.9, bounce=0, radius = 220}
+				_World.InteractiveWorld.SpinningTire.Physic.Option	= { density=0.1, friction=0.9, bounce=0}
 			_World.InteractiveWorld.SpinningTire.AngularVelocity	= 60
 		----
 		----------------[ WoodenDoor ] ----------------
@@ -95,7 +95,7 @@
 			_World.StaticWorld.checkDoor = {}
 
 			_World.StaticWorld.checkDoor.ImagePath 	= "kalacool/sango/image/world/staticWorld/portal.png"	
-			_World.StaticWorld.checkDoor.ImageSheet = { width=260, height=376, numFrames=4}	
+			_World.StaticWorld.checkDoor.ImageSheet = { width=180, height=250, numFrames=4}	
 			_World.StaticWorld.checkDoor.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.StaticWorld.checkDoor.Physic			= {}
 				_World.StaticWorld.checkDoor.Physic.Type	= "static"
@@ -109,6 +109,15 @@
 			_World.StaticWorld.hor_floor.Physic			= {}
 				_World.StaticWorld.hor_floor.Physic.Type	= "static"
 				_World.StaticWorld.hor_floor.Physic.Option	= { density=1, friction=0.9, bounce=0}
+		----
+		----------------[ S_hor_floor ] ----------------
+			_World.StaticWorld.S_hor_floor = {}
+
+			_World.StaticWorld.S_hor_floor.ImagePath 	= "kalacool/sango/image/world/staticWorld/S_hor_floor.png"	
+			_World.StaticWorld.S_hor_floor.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
+			_World.StaticWorld.S_hor_floor.Physic			= {}
+				_World.StaticWorld.S_hor_floor.Physic.Type	= "static"
+				_World.StaticWorld.S_hor_floor.Physic.Option	= { density=1, friction=0.9, bounce=0}
 		----
 		----------------[ leftTop_floor ] ----------------
 			_World.StaticWorld.leftTop_floor = {}
@@ -135,7 +144,7 @@
 			_World.StaticWorld.Thorn.Damage 	= "fatal"		--  "safe" = no damage, "fatal" = have damage			
 			_World.StaticWorld.Thorn.Physic			= {}
 				_World.StaticWorld.Thorn.Physic.Type	= "static"
-				_World.StaticWorld.Thorn.Physic.Option	= { density=1, friction=0.3, bounce=0, shape = {-47,61,-39,-61,37,-66,47,65}}
+				_World.StaticWorld.Thorn.Physic.Option	= { density=1, friction=0.3, bounce=0}
 		----
 
 	---------------- Static World End ----------------

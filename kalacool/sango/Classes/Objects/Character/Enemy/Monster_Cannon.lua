@@ -33,22 +33,31 @@ local cannon = Monster.new()
     cannon.body.y = cannon.image.y
     cannon.image.x = config.x
     cannon.image.y = config.y
+    cannon.image.damage = "safe" 
 
-    cannon.head.x = cannon.body.x + cannon.head.RX
+    cannon.head.anchorX = 48/80
+    cannon.head.anchorY = 18/30
+
+    
+    cannon.head.x = cannon.body.x + cannon.head.RX 
     cannon.head.y = cannon.body.y + cannon.head.RY
-    cannon.head.rotation = 0
+    --cannon.head.rotation = 215
     -- add physics attribute
     -- local Filter = { categoryBits = 4, maskBits = 67 } 
     physics.addBody(cannon.image, _Enemy.Monster_Cannon.Physic.Type, _Enemy.Monster_Cannon.Physic.Option)
-
+    -- local dodo = display.newCircle( cannon.head.x, cannon.head.y, 2 )
+    -- cannon.image:insert(dodo)
     cannon.image.isFixedRotation = true
 function cannon:attack(angle,dirX,dirY)
 
         cannon.bullet = cannon:new_bullet()
         cannon.bullet.image.x = cannon.image.x
         cannon.bullet.image.y = cannon.image.y
-        cannon.bullet.image:setLinearVelocity(cannon.bulletSpeed*angle*dirX , cannon.bulletSpeed*(1- angle)*dirY)
+        cannon.bullet.image:setLinearVelocity(cannon.bulletSpeed*math.sin(angle)*dirX , cannon.bulletSpeed*math.cos(angle)*dirY)
         cannon.body:play()
+
+        --cannon.head.rotation = math.deg( angle ) 
+
 end
 
 
@@ -88,14 +97,26 @@ function cannon:new_bullet()
 end
 
 function cannon:turnHead()
-    cannon.head.rotation = 100
+    local angle = math.deg( math.atan( (dog.image.y - cannon.image.y) /  (dog.image.x - cannon.image.x) ))
+    
+    
+    if(dog.image.x>cannon.image.x)then
+        angle= angle+180
+    end
+    cannon.head.rotation = angle - cannon.image.rotation
+    
 end
+
 
 function cannon.dispose()
     local scene = scene
     scene:dispatchEvent({name='Ach2'})
 end
 
+
+
+scene:addEventListener( 'turnHead', cannon )
+cannon.listeners[table.maxn(cannon.listeners)+1] = {event='turnHead' , listener = cannon}
 
 
 return cannon

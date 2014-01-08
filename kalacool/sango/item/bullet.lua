@@ -32,9 +32,10 @@ function new(x,y,vx,vy)
 	
 	--Animation:newSpark(70*Cos(angle*Pi/180)+x,70*Sin(angle*Pi/180)+y)
     for i = 1,6 do
-        local oneshot = display.newImageRect( "kalacool/sango/image/item/bullet.png",200,20 )
+        local oneshot = display.newImage( "kalacool/sango/image/item/bullet.png" )
 		
-		
+		oneshot.xScale = 2
+		oneshot.yScale = 1.2
 
         local dangle = angle+ math.random(-10,10)
 		
@@ -48,8 +49,8 @@ function new(x,y,vx,vy)
         oneshot.type="bullet"
         oneshot.power = 1
         oneshot:setStrokeColor(0,0,0)
-        local Shape= { 88,4, 88,-4, 96,-4, 96,4 }
-        physics.addBody( oneshot,{ density=500.0, friction=0, bounce=0.3,  shape=Shape , filter=Filter} )
+        --local Shape= { 88,4, 88,-4, 96,-4, 96,4 }
+        physics.addBody( oneshot,{ density=150.0, friction=0, bounce=0.3,  filter=Filter} )
         --"kinematic",
         oneshot.isBullet = true
         oneshot.gravityScale = 0
@@ -62,7 +63,7 @@ function new(x,y,vx,vy)
 
         --Runtime:addEventListener( "enterFrame", oneshot.norotate )
 		
-        oneshot:setLinearVelocity(2000*Cos(dangle*Pi/180), 2000*Sin(dangle*Pi/180) )
+        oneshot:setLinearVelocity(1000*Cos(dangle*Pi/180), 1000*Sin(dangle*Pi/180) )
 
         bullet.image:insert(oneshot)
 
@@ -75,7 +76,7 @@ function new(x,y,vx,vy)
 					--local y= 100*Sin(self.angle*Pi/180)+self.y
 					--print(event.x)
 					--print(event.y)
-					Animation:newSpark(event.x,event.y)
+					Animation:newFlare(event.x,event.y)
 					
 					display.remove( self )
 				--[[elseif(event.object2.name=="oneshot")then
@@ -105,7 +106,7 @@ function new(x,y,vx,vy)
 	
 	end
 	
-	bullet.timers[1] = timer.performWithDelay( 600,bullet.timeout,1 )
+	bullet.timers[1] = timer.performWithDelay( 500,bullet.timeout,1 )
 	
 	
 	

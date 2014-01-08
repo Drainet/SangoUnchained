@@ -31,10 +31,10 @@ function new(config)
 
     function Drum.image:boom()
         if(Drum.image.x~=nil) then
-        Animation:newBom(Drum.image.x,Drum.image.y)
+        Animation:newExplode(Drum.image.x,Drum.image.y)
             local function createCircleSenser() 
                 if(Drum.image~=nil) then
-                    local circle = display.newCircle( Drum.image.x, Drum.image.y, 500 )  
+                    local circle = display.newCircle( Drum.image.x, Drum.image.y, 300 )  
                     circle.removed = false
                     circle.type = "explosive"
                     circle.damage = "fatal"

@@ -48,6 +48,7 @@ function new()
 
     function Enemy:hurt(damage)
         Enemy.HP = Enemy.HP - damage*Enemy.damageReduce
+        
     end
 
     function Enemy.onCollision(self, event)

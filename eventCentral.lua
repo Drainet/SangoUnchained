@@ -14,6 +14,7 @@ function new()
         scene:dispatchEvent({name='moveLayer'})
         scene:dispatchEvent({name='arrowControl'})
         scene:dispatchEvent({name='playerState'})
+        scene:dispatchEvent({name='turnHead'})
     end    
 
     function allRuntimeTouch(event)
