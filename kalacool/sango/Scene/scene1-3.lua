@@ -26,7 +26,7 @@ function scene:createScene( event )
     local moneySystemClass = require "kalacool.sango.System.MoneySystem"
     local moneySystem = moneySystemClass.new()
 
-    local levelDirector = require "kalacool.sango.level.zxc"
+    local levelDirector = require "kalacool.sango.level.demo"
 
     local physics = require("physics")
     physics.start()
@@ -39,14 +39,12 @@ function scene:createScene( event )
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
 
-    dog=PlayerSet.new(characterConfig.char,{x=640,y=100})
+    dog=PlayerSet.new(characterConfig.char,{x=340,y=300})
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
     local background = BackgroundSet.setBackgroundLayer(myLevel,dog,
-        {{imgPath = "kalacool/sango/image/test/back.png",x = 40,y = 10}
-        ,{imgPath = "kalacool/sango/image/test/backgrass.png",x = 30,y = 10}
-        ,{imgPath = "kalacool/sango/image/test/backitem.png",x = 20,y = 10}})
+        {{imgPath = "kalacool/sango/image/test/castle.jpg",x = 10,y = 40}})
 
     camera:insert(myLevel)
     camera:insert(dog.image)

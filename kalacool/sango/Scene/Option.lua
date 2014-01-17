@@ -15,11 +15,7 @@ function scene:createScene( event )
 
 ----------------- buttonHandler Start -------------
     local buttonHandler = function( event )
-        if event.target.id == "Audio" then
-            --storyboard.gotoScene( "kalacool.sango.Scene.", "fade", 200  )
-        elseif event.target.id == "Credit" then
-            --storyboard.gotoScene( "kalacool.sango.Scene.", "fade", 200  )
-        elseif event.target.id == "Back" then
+        if event.target.id == "Back" then
             storyboard.gotoScene( "kalacool.sango.Scene.Menu", "fade", 200  )
         end
     end

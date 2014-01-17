@@ -108,10 +108,10 @@ function cannon:turnHead()
 end
 
 
-function cannon.dispose()
-    local scene = scene
-    scene:dispatchEvent({name='Ach2'})
-end
+-- function cannon.dispose()
+--     local scene = scene
+--     scene:dispatchEvent({name='Ach2'})
+-- end
 
 
 
