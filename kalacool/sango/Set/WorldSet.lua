@@ -11,6 +11,7 @@ local Drum = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.Dru
 
 local hor_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.hor_floor")
 local S_hor_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.S_hor_floor")
+local M_hor_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.M_hor_floor")
 local leftTop_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.leftTop_floor")
 local par_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.par_floor")
 local checkDoor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.checkDoor")
@@ -32,6 +33,10 @@ end
 
 function WorldSet.newS_hor_floor(config)
     return S_hor_floor.new(config)
+end
+
+function WorldSet.newM_hor_floor(config)
+    return M_hor_floor.new(config)
 end
 
 function WorldSet.newleftTop_floor(config)

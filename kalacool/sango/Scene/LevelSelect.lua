@@ -34,7 +34,9 @@ function scene:createScene( event )
         if event.target.id == "Back" then
             storyboard.gotoScene( "kalacool.sango.Scene.Menu", "fade", 200  )
         elseif event.target.id == "charSelBtn" then
-            storyboard.showOverlay( "kalacool.sango.Scene.CharacterSelect" )            
+            storyboard.showOverlay( "kalacool.sango.Scene.CharacterSelect" )  
+        elseif event.target.id == "Boss" then
+            storyboard.gotoScene( "kalacool.sango.Scene.boss" )          
         end
     end
 ----------------- buttonHandler End -------------
@@ -146,7 +148,7 @@ function scene:createScene( event )
             id = "Boss",
             defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
             overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
-            label = "Boss",
+            label = "TEST Button",
             labelColor = {default = {255, 255, 255, 255}},
             font = "arial",
             fontSize = 28,

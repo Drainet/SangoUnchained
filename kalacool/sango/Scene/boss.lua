@@ -14,9 +14,6 @@ function scene:createScene( event )
     camera = display.newGroup()
     HUD = display.newGroup()
 
-   -- require( "tilebg" )
-  --  local bg = tileBG()
-
     local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
 
@@ -29,7 +26,7 @@ function scene:createScene( event )
     local moneySystemClass = require "kalacool.sango.System.MoneySystem"
     local moneySystem = moneySystemClass.new()
 
-    local levelDirector = require "kalacool.sango.level.lv1-1"
+    local levelDirector = require "kalacool.sango.level.bossLV"
 
     local physics = require("physics")
     physics.start()

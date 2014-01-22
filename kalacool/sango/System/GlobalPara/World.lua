@@ -119,6 +119,15 @@
 				_World.StaticWorld.S_hor_floor.Physic.Type	= "static"
 				_World.StaticWorld.S_hor_floor.Physic.Option	= { density=1, friction=0.9, bounce=0}
 		----
+		----------------[ M_hor_floor ] ----------------
+			_World.StaticWorld.M_hor_floor = {}
+
+			_World.StaticWorld.M_hor_floor.ImagePath 	= "kalacool/sango/image/world/staticWorld/M_hor_floor.png"	
+			_World.StaticWorld.M_hor_floor.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
+			_World.StaticWorld.M_hor_floor.Physic			= {}
+				_World.StaticWorld.M_hor_floor.Physic.Type	= "static"
+				_World.StaticWorld.M_hor_floor.Physic.Option	= { density=1, friction=0.9, bounce=0}
+		----
 		----------------[ leftTop_floor ] ----------------
 			_World.StaticWorld.leftTop_floor = {}
 
