@@ -62,11 +62,24 @@ star you can collect.
 ----
 ---- Collect ----
     function Content.CollectInit(thisStar)
-        scene:addEventListener( 'GotCollectableItem', Content )
-        thisStar.pass = false
-        function Content.GotCollectableItem()
-            thisStar.pass = true
-            scene:removeEventListener( 'GotCollectableItem', Content )
+        if thisStar.index == 1 then
+            scene:addEventListener( 'GotCollectableItemOne', Content )
+            thisStar.pass = false
+            function Content.GotCollectableItemOne()
+                thisStar.pass = true
+            end
+        elseif thisStar.index == 2 then
+            scene:addEventListener( 'GotCollectableItemTwo', Content )
+            thisStar.pass = false
+            function Content.GotCollectableItemTwo()
+                thisStar.pass = true
+            end
+        elseif thisStar.index == 3 then
+            scene:addEventListener( 'GotCollectableItemThr', Content )
+            thisStar.pass = false
+            function Content.GotCollectableItemThr()
+                thisStar.pass = true
+            end
         end
     end
 ----
@@ -128,7 +141,9 @@ star you can collect.
 
     scene:addEventListener( 'pauseAllEvent', Content )
     function Content.pauseAllEvent()
-        timer.pause( rt ) 
+        if rt ~= nil then
+            timer.pause( rt ) 
+        end
     end
 
     scene:addEventListener( 'resumeAllEvent', Content )
@@ -148,7 +163,9 @@ star you can collect.
 
     function Content.removeAllEvent()
         scene:removeEventListener( 'levelComplete', Content )
-        scene:removeEventListener( 'GotCollectableItem', Content )
+        scene:removeEventListener( 'GotCollectableItemOne', Content )
+        scene:removeEventListener( 'GotCollectableItemTwo', Content )
+        scene:removeEventListener( 'GotCollectableItemThr', Content )
         scene:removeEventListener( 'HealthFail', Content )
         scene:removeEventListener( 'levelComplete', Content )
         scene:removeEventListener( 'removeAllEvent', Content )

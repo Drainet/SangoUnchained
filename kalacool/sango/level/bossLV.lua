@@ -68,6 +68,8 @@ level.layers["Supplement"].objects = {}
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object17"].image)
  level.layers["Monster"].objects["object18"] = EnemySet.newMonsterFireball({x=1190,y=788,xL=100,xR=110})
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object18"].image)
+ level.layers["Supplement"].objects["object19"] = SupplementSet.newDogFood({x=866,y=484})
+ level.layers["Supplement"]:insert(level.layers["Supplement"].objects["object19"].image)
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])

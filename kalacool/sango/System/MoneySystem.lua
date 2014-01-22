@@ -21,7 +21,7 @@ and it will unlocked !
     function Content:gotMoney(event)
         characterConfig.money = JSONtable.playerTable.money
         tempMoney = tempMoney + tonumber(event.money)
-        print("plus 100, and now you total add " .. tempMoney)
+        -- print("plus 100, and now you total add " .. tempMoney)
     end
     scene:addEventListener( 'gotMoney', Content )
     
@@ -30,10 +30,10 @@ and it will unlocked !
 -------- Save Money Record Start --------
     function Content.setTotalMoney()
         characterConfig.money = JSONtable.playerTable.money
-        print("player have:" .. characterConfig.money)
+        -- print("player have:" .. characterConfig.money)
         characterConfig.money = tonumber(characterConfig.money) + tempMoney
         JSONtable.playerTable.money = characterConfig.money
-        print("player now have:" .. JSONtable.playerTable.money)
+        -- print("player now have:" .. JSONtable.playerTable.money)
         JSONtable:savePlayerTable()
     end
 -------- Save Money Record End --------

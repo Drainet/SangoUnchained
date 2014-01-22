@@ -21,7 +21,7 @@ function scene:createScene( event )
     local pauseMenu = pauseMenuClass.new()
 
     local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
-    local starSystem = starSystemClass.new({fs=4,ss=2,ts=3, wp1=1,wp2=2,ct=30 })
+    local starSystem = starSystemClass.new({fs=4,ss=4,ts=4})
 
     local achievementSystemClass = require "kalacool.sango.System.AchievementSystem"
     local achievement = achievementSystemClass.new()
@@ -41,7 +41,7 @@ function scene:createScene( event )
 
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
-    dog=PlayerSet.new(characterConfig.char,{x=100,y=300})
+    dog=PlayerSet.new(characterConfig.char,{x=600,y=1670})
 
     dog:setPlayerShow()
 
