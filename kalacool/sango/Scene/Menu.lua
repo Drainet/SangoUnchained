@@ -6,7 +6,7 @@ function scene:createScene( event )
     local screenGroup = self.view
     
 ----------------- Background Start -------------
-    local background = display.newImage( "kalacool/sango/image/UI/Menu/menu_background.png" )
+    local background = display.newImage( "kalacool/sango/image/UI/Menu/menu_background.png", true )
     background.x = display.contentWidth/2       ; background.y = display.contentHeight/2
     screenGroup:insert( background )
 ----------------- Background End -------------
