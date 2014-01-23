@@ -10,7 +10,7 @@ function scene:createScene( event )
     local buttonBack
     
 ----------------- Background Start -------------
-    local background = display.newImage( "kalacool/sango/image/UI/Achievement/background.png" )
+    local background = display.newImage( "kalacool/sango/image/UI/Achievement/background.png", true )
     background.x = display.contentWidth/2       ; background.y = display.contentHeight/2
     group:insert( background )
 ----------------- Background End -------------

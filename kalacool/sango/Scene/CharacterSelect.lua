@@ -47,7 +47,7 @@ function scene:enterScene( event )
 ------------------- charSelMenu Start --------------- 
     local charSelMenu = display.newGroup()
 
-        local menuBackground= display.newImage("kalacool/sango/image/UI/chSel/charSelMenu.png")
+        local menuBackground= display.newImage("kalacool/sango/image/UI/chSel/charSelMenu.png", true)
         menuBackground.x = display.contentWidth/2    ; menuBackground.y = display.contentHeight/2 + 50
 
         ---- Buttons Start----
