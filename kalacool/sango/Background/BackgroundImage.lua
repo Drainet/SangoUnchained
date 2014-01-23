@@ -3,7 +3,7 @@ module(...,package.seeall)
 local secne = secne
 function new(imagePath)
 	local Background = display.newGroup()
-	
+
 	Background.image1 = display.newImage(imagePath, true)
 	Background.image1.x = display.contentWidth/2
 	Background.image1.y = display.contentHeight/2
