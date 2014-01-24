@@ -79,6 +79,31 @@
 
 	---------------- Enemy End ----------------
 
+	----------------[ Monster_Warrior ] ----------------
+		_Enemy.Monster_Warrior = {}
+
+		_Enemy.Monster_Warrior.HP 				= 10
+		_Enemy.Monster_Warrior.moveSpeed		= 300
+		_Enemy.Monster_Warrior.attackRange 		= 200
+		_Enemy.Monster_Warrior.visibleDistance 	= 800
+		_Enemy.Monster_Warrior.name 				= "monster"
+		_Enemy.Monster_Warrior.ImageSheet			= graphics.newImageSheet( "kalacool/sango/image/monster/warrior/warrior.png",{ width=518, height=252, numFrames=18 })
+		_Enemy.Monster_Warrior.ImageSequence		= {
+ 			
+ 			{ name="move", start=1,count=3, time=500,loopDirection = "bounce"},
+			{ name="chop", start=1,count=18, time=1000,loopCount = 0}
+
+		}
+	
+		_Enemy.Monster_Warrior.Physic				= {}
+		_Enemy.Monster_Warrior.Type				= "dynamic"
+		_Enemy.Monster_Warrior.Option				= {density = 20, friction = 0.7,filter = { categoryBits = 4, maskBits = 99}}
+		_Enemy.Monster_Warrior.isFixedRotation	= true
+		_Enemy.Monster_Warrior.damageValue		= 1
+	----
+
+	---------------- Enemy End ----------------
+
 
 
 
