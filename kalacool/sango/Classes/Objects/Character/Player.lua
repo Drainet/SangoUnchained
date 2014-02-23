@@ -6,6 +6,7 @@ require "kalacool.sango.Set.Weapon"
 
 local heartClass = require "kalacool.sango.HUD.Heart"
 local switchClass = require "kalacool.sango.HUD.Switch"
+local SFclass = require "kalacool.sango.HUD.SF"
 
 local Pi    = math.pi
 local Sqr   = math.sqrt
@@ -29,14 +30,17 @@ function new(config)
 	Player.image=display.newGroup()
 	Player.HUD=display.newGroup()
 	Player.image.type="player"
+	Player.isFloat = false
 	Player.alive=true
 	Player.noDead=true
 	Player.heart=heartClass.new(5)
 	Player.switch=switchClass.new(Player)
+	Player.SF=SFclass.new(Player)
 	Player.image.lastCheckPoint=config	
 	Player.image.heart = Player.heart
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
+	Player.HUD:insert(Player.SF)
 	Player.Filter =  { categoryBits = 2, maskBits = 61 }
 	Player.onBody = 15
 
@@ -47,7 +51,24 @@ function new(config)
 	Player.image.magazineRate = 1
 	Player.image.shootFasterBuffTime =0
 	--- Dog buff effect  END ---
-	
+	function Player.superfloat()
+		
+		if(Player.alive==true)then
+			Player.image.gravityScale = 0
+			Player.isFloat = true
+			Player.image:setLinearVelocity(0,0)
+			Player.body:setSequence( "float" )
+			Player.body:play()
+		end
+	end
+	function Player.unSuperfloat()
+		if(Player.alive==true)then
+			Player.image.gravityScale = 1
+			Player.isFloat = false
+			Player.image.isAwake = true
+			Player.image:setLinearVelocity(0,3)
+		end
+	end
 -------è¨­åæ§start---
 	function Player.setgun()
 		if(Player.Weapon~=nil)then
@@ -151,10 +172,14 @@ function new(config)
 
 			-- 	--timer.resume( Player.Magazine.reloadTimer )
 			-- end
-
+			if(event.selfElement == 3)then
+				
+				Player.body:setSequence( "chop" )
+			 	Player.body:play()
+			end
 			if( event.other.damage=="fatal"and Player.isInvincible==false) then
 				Animation:wound()
-
+				Player.unSuperfloat()
 				if(event.other.damageValue == nil )then
 					
 					Player.heart.zero()
@@ -216,8 +241,9 @@ function new(config)
 	function Player:playerState(event)
 
 		
-
-
+		if(Player.isFloat == true and Player.alive==true)then
+			Player.image:setLinearVelocity(0,0)
+		end
 		--print( count)
 		if(Player.onBody < 3)then
 			Player.onBody = Player.onBody +1
@@ -317,18 +343,22 @@ function new(config)
 			        local vx, vy = Player.image:getLinearVelocity()								
 				local limit=Player.Weapon.recoil+100
 				local standard=Player.Weapon.recoil
-				if(vx-standard*(coolX)/ratio>limit)then
-								
-					Player.image:setLinearVelocity( limit, -standard*(coolY)/ratio )
 
-				elseif(vx-standard*(coolX)/ratio<-limit)then
-					Player.image:setLinearVelocity( -limit, -standard*(coolY)/ratio )
-				else 
-					
-					Player.image:setLinearVelocity( vx-standard*(coolX)/ratio, -standard*(coolY)/ratio )
-				end
-								
+				if(Player.isFloat ~= true)then
 				
+		
+					if(vx-standard*(coolX)/ratio>limit)then
+									
+						Player.image:setLinearVelocity( limit, -standard*(coolY)/ratio )
+
+					elseif(vx-standard*(coolX)/ratio<-limit)then
+						Player.image:setLinearVelocity( -limit, -standard*(coolY)/ratio )
+					else 
+						
+						Player.image:setLinearVelocity( vx-standard*(coolX)/ratio, -standard*(coolY)/ratio )
+					end
+								
+				end
 
 				--Player.image:applyLinearImpulse( -6500*(coolX)/ratio, -6500*(coolY)/ratio,Player.image.x,Player.image.y )
 

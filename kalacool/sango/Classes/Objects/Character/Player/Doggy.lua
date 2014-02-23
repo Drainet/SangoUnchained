@@ -30,7 +30,8 @@ function new(config)
 		--Doggy.setgun("rifle")
 		physics.addBody( Doggy.image
 			,{ density=10.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
-			,{ density=10.0, friction=0.2, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter})
+			,{ density=10.0, friction=0.2, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}
+            ,{ isSensor = true,radius = 70,filter=Doggy.Filter})
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet 		= true
 		Doggy.alive 				= true
