@@ -135,6 +135,13 @@ level.layers["InteractiveWorld"].objects = {}
 level.layers["InteractiveWorld"].objects["object544"] = SupplementSet.newDogFood({x=512,y=452})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object544"].image)
 
+----new item test ----
+level.layers["InteractiveWorld"].objects["object60"] = MechanismSet.newDestructibleBlock({x=512,y=455})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object60"].image)
+level.layers["InteractiveWorld"].objects["object61"] = MechanismSet.newDestructibleBlock({x=662,y=455})
+level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object61"].image)
+---- test end ----
+
 ------ mechanism test ---
 level.layers["InteractiveWorld"].objects["object53"] = MechanismSet.newTriggerButton({x=100,y=150,key="A1"})
 level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object53"].image)
