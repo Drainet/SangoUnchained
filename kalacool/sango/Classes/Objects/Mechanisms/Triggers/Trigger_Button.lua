@@ -34,5 +34,19 @@ function new(config)
 		Trigger.body:play()
 	end
 
+	function Trigger.onCollsion(self , event)
+		if(Trigger.image.type=="trigger" and event.other.type == "player") then
+			if(Trigger.isActive == false) then
+				Trigger:sendActiveSignal()
+				Trigger:active()
+				Trigger.isActive = true
+			end
+		end
+			
+	end
+
+	Trigger.collision = Trigger.onCollsion
+ 	Trigger.image:addEventListener( "collision" , Trigger )
+
 	return Trigger
 end

@@ -27,11 +27,11 @@ function scene:createScene( event )
     local moneySystemClass = require "kalacool.sango.System.MoneySystem"
     local moneySystem = moneySystemClass.new()
 
-    local levelDirector = require "kalacool.sango.level.lv1-2"
+    local levelDirector = require "kalacool.sango.level.lv1-7"
 
     local physics = require("physics")
     physics.start()
-    --physics.setDrawMode( "hybrid" )
+    -- physics.setDrawMode( "hybrid" )
  
     local myLevel = levelDirector.CreateLevel(physics)
 

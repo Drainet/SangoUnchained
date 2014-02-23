@@ -24,15 +24,7 @@ function new()
 		end
 	end
 
-	function Mechanism.onCollsion(slef , event)
-		if(Mechanism.image.type=="trigger" and event.other.type == "player") then
-			if(Mechanism.isActive == false) then
-				Mechanism:sendActiveSignal()
-				Mechanism:active()
-				Mechanism.isActive = true
-			end
-		end
-			
+	function Mechanism.onCollsion(self , event)
 	end
 
 	function Mechanism:removeAllEvent()
@@ -42,8 +34,7 @@ function new()
 		end
 	end
 
-	Mechanism.collision = Mechanism.onCollsion
- 	Mechanism.image:addEventListener( "collision" , Mechanism )
+	
 	scene:addEventListener( 'removeAllEvent', Mechanism)
 	scene:addEventListener( 'getActiveSignal', Mechanism)
 	Mechanism.listeners[1] = {event='removeAllEvent', listener = Mechanism}
