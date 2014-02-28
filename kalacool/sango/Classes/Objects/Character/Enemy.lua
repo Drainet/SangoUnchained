@@ -24,6 +24,7 @@ function new()
     -- ALL attribute of Monster
         --basic type & name
         Enemy.image.damage = "fatal"
+        Enemy.image.type = "enemy"
         Enemy.alive = true
         -- basic attribute , HP , DEF , attackRange , visibleDistance
         Enemy.damageReduce = 1     -- Percentage of monster get damage reduce
@@ -43,7 +44,8 @@ function new()
         startTime = math.random(2000)
     	Enemy.target = event.target
     	Enemy:newAI()
-    	timer.performWithDelay( startTime , Enemy.AI.run )
+    	
+        Enemy.timers[1] = timer.performWithDelay( startTime , Enemy.AI.run )
     end
 
     function Enemy:hurt(damage)
@@ -53,7 +55,7 @@ function new()
     function Enemy.onCollision(self, event)
         if (event.phase == "began") then
             
-            if (event.other.type == "bullet" or event.other.type == "explosive") then
+            if (event.other.type == "bullet" or event.other.type == "explosive" or event.otherElement == 3) then
                 Enemy:hurt(event.other.power)
                 if(Enemy.HP <=1) then
                     if(Enemy.alive == true) then
@@ -84,7 +86,7 @@ function new()
             Enemy:dropItem()
         end
         Enemy.hide()
-        Enemy.AI:stop()
+        --Enemy.AI:stop()
         Enemy.AI.dispose()
         Enemy.dispose()
         scene:dispatchEvent({name='gotMoney',money = 100})

@@ -30,7 +30,8 @@ function new(config)
 		--Doggy.setgun("rifle")
 		physics.addBody( Doggy.image
 			,{ density=10.0, friction=1, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
-			,{ density=10.0, friction=0.2, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter})
+			,{ density=10.0, friction=0.2, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}
+            ,{ isSensor = true,radius = 70,filter=Doggy.Filter})
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet 		= true
 		Doggy.alive 				= true
@@ -51,6 +52,13 @@ function new(config)
 
     Doggy.handGroup = display.newGroup( )
     Doggy.image:insert(Doggy.handGroup)
+
+    Doggy.knife = display.newSprite( graphics.newImageSheet( "kalacool/sango/image/character/knife.png",  { width=150, height=150, numFrames=6 })
+        , {{ name="normal", frames= {6,5,4,3,2,1}, time=300  ,loopCount = 1}} )
+    Doggy.image:insert(Doggy.knife)
+
+    Doggy.knife:setSequence( "normal" )
+    Doggy.knife.isVisible = false
 
     Doggy.hand = display.newImage( _Player.Doggy.hand.ImagePath )
     Doggy.hand.x 		= 0
