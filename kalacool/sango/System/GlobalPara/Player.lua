@@ -10,14 +10,13 @@
 		_Player.Doggy = {}
 
 		_Player.Doggy.ImageSheetPath 		= "kalacool/sango/image/character/coodog.png"
-		_Player.Doggy.ImageSheetOption 		= { width=120, height=113, numFrames=15 }
+		_Player.Doggy.ImageSheetOption 		= { width=120, height=113, numFrames=12 }
 		_Player.Doggy.ImageSheetSequence 	= 
 		{
 			{ name="normal", frames= {2, 1, 3}, time=300 , loopDirection = "bounce" },
 			{ name="jump",	 start=4, count=3,  time=200 , loopDirection = "bounce" },
 			{ name="dead",   start=7, count=3,  time=200 , loopDirection = "bounce" },
-			{ name="float",   start=10, count=3,  time=400 , loopDirection = "bounce" },
-			{ name="chop",   start=13, count=3,  time=200 ,loopCount = 1}
+			{ name="float",  frames= {11, 10, 12},  time=400 , loopDirection = "bounce" }
 		}
 		_Player.Doggy.hand 				= {}
 			_Player.Doggy.hand.ImagePath	= "kalacool/sango/image/character/coodoghand.png"

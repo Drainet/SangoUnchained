@@ -53,6 +53,13 @@ function new(config)
     Doggy.handGroup = display.newGroup( )
     Doggy.image:insert(Doggy.handGroup)
 
+    Doggy.knife = display.newSprite( graphics.newImageSheet( "kalacool/sango/image/character/knife.png",  { width=150, height=150, numFrames=6 })
+        , {{ name="normal", frames= {6,5,4,3,2,1}, time=300  ,loopCount = 1}} )
+    Doggy.image:insert(Doggy.knife)
+
+    Doggy.knife:setSequence( "normal" )
+    Doggy.knife.isVisible = false
+
     Doggy.hand = display.newImage( _Player.Doggy.hand.ImagePath )
     Doggy.hand.x 		= 0
     Doggy.hand.y 		= 0

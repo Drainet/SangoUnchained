@@ -33,6 +33,7 @@ function new(config)
 	Player.isFloat = false
 	Player.alive=true
 	Player.noDead=true
+	Player.image.power = 100
 	Player.heart=heartClass.new(5)
 	Player.switch=switchClass.new(Player)
 	Player.SF=SFclass.new(Player)
@@ -135,7 +136,7 @@ function new(config)
 	    	if(event.other.damage=="safe" and event.selfElement == 1 and event.contact.isEnabled==true) then
 
 	    		Player.onBody = 0
-	    		if(Player.body.sequence ~= "normal" )then
+	    		if(Player.body.sequence ~= "normal"  and Player.isFloat == false )then
 					Player.body:setSequence( "normal" )
 					Player.body:play()
 				end
@@ -172,12 +173,12 @@ function new(config)
 
 			-- 	--timer.resume( Player.Magazine.reloadTimer )
 			-- end
-			if(event.selfElement == 3)then
+			if(event.selfElement == 3 and event.other.type == "enemy")then
+				Player.knife.isVisible = true
+				Player.knife:play()
 				
-				Player.body:setSequence( "chop" )
-			 	Player.body:play()
 			end
-			if( event.other.damage=="fatal"and Player.isInvincible==false) then
+			if( event.other.damage=="fatal"and Player.isInvincible==false and(event.selfElement ~= 3)) then
 				Animation:wound()
 				Player.unSuperfloat()
 				if(event.other.damageValue == nil )then
@@ -243,6 +244,11 @@ function new(config)
 		
 		if(Player.isFloat == true and Player.alive==true)then
 			Player.image:setLinearVelocity(0,0)
+			if(Player.body.sequence ~= "float" )then
+					Player.body:setSequence( "float" )
+					Player.body:play()
+			end
+			
 		end
 		--print( count)
 		if(Player.onBody < 3)then
