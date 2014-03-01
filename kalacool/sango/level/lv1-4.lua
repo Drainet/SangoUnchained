@@ -200,6 +200,15 @@ level.layers["StaticWorld"].objects["object0"] = WorldSet.newhor_floor({x=300,y=
  level.layers["Monster"].objects["object104"] = EnemySet.newMonsterFireball({x=3210,y=1531,xL=2930,xR=4000})
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object104"].image)
 
+ level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)
+ level.layers["StaticWorld"].objects["boundDown"] = WorldSet.newboundRecRow({x=2700,y=3030})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundDown"].image)
+ level.layers["StaticWorld"].objects["boundLeft"] = WorldSet.newboundRecCol({x=-700,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundLeft"].image)
+ level.layers["StaticWorld"].objects["boundRight"] = WorldSet.newboundRecCol({x=6100,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundRight"].image)
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])

@@ -158,6 +158,16 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object68"].image)
  level.layers["InteractiveWorld"].objects["object69"] = WorldSet.newDrum({x=248,y=608})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object69"].image)
+
+ level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)
+ level.layers["StaticWorld"].objects["boundDown"] = WorldSet.newboundRecRow({x=2700,y=3030})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundDown"].image)
+ level.layers["StaticWorld"].objects["boundLeft"] = WorldSet.newboundRecCol({x=-700,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundLeft"].image)
+ level.layers["StaticWorld"].objects["boundRight"] = WorldSet.newboundRecCol({x=6100,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundRight"].image)
+ 
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])

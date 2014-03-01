@@ -274,6 +274,15 @@ level.layers["InteractiveWorld"].objects = {}
  level.layers["DynamicWorld"].objects["object125"] = WorldSet.newBox({x=3324,y=184})
  level.layers["DynamicWorld"]:insert(level.layers["DynamicWorld"].objects["object125"].image)
 
+ level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)
+ level.layers["StaticWorld"].objects["boundDown"] = WorldSet.newboundRecRow({x=2700,y=3030})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundDown"].image)
+ level.layers["StaticWorld"].objects["boundLeft"] = WorldSet.newboundRecCol({x=-700,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundLeft"].image)
+ level.layers["StaticWorld"].objects["boundRight"] = WorldSet.newboundRecCol({x=6100,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundRight"].image)
+
 
 
  --level.layers["InteractiveWorld"].objects["object300"] = EnemySet.new_Monster_Fireball({x=1500,y=1764})

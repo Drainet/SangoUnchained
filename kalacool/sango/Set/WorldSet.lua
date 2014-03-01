@@ -8,6 +8,8 @@ local SpinningTire = require ("kalacool.sango.Classes.Objects.World.InteractiveW
 local FloatingFloor = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.FloatingFloor")
 local FireBall = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.FireBall")
 local Drum = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.Drum")
+local boundRecRow = require ("kalacool.sango.Classes.Objects.World.StaticWorld.boundRecRow")
+local boundRecCol = require ("kalacool.sango.Classes.Objects.World.StaticWorld.boundRecCol")
 
 local hor_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.hor_floor")
 local S_hor_floor = require ("kalacool.sango.Classes.Objects.World.StaticWorld.S_hor_floor")
@@ -45,6 +47,14 @@ end
 
 function WorldSet.newpar_floor(config)
     return par_floor.new(config)
+end
+
+function WorldSet.newboundRecRow(config)
+    return boundRecRow.new(config)
+end
+
+function WorldSet.newboundRecCol(config)
+    return boundRecCol.new(config)
 end
 
 --******************* Dynamic World *******************
