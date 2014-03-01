@@ -5,7 +5,7 @@ MechanismSet = {}
 	destructibleBlock =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.DestructibleBlock")
 	powerGenerator = require("kalacool.sango.Classes.Objects.Mechanisms.Triggers.Trigger_PowerGenerator")
 	powerDoor =  require("kalacool.sango.Classes.Objects.Mechanisms.Receivers.Receiver_PowerDoor")
-
+	dirt =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.Dirt")
 
 
 	function MechanismSet.newTriggerButton(config)
@@ -37,3 +37,7 @@ MechanismSet = {}
 		return mechanism 
 	end
 
+	function  MechanismSet.newDirtBlock(config)
+		local mechanism  = dirt.new(config)
+		return mechanism 
+	end
