@@ -9,10 +9,11 @@ function new(config)
 	--- set Attribute of Block
 	Block.image = display.newGroup( )
 	Block.Filter = { categoryBits = 1} 
-	Block.HP = 10
-	Block.MaxHP = 10
+	
+	Block.MaxHP = 30
+	Block.HP = Block.MaxHP 
 	--- set Block's image
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/block.png", { width=150, height=150, numFrames=4} )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/block.png", { width=80, height=80, numFrames=4} )
     local sequenceData = {
     	{ name="start", start=1, count=1, time= Block.remainTime, loopCount=1 },
         { name="break1", start=2, count=1, time= Block.remainTime, loopCount=1 },
