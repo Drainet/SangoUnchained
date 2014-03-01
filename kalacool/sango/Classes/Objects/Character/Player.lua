@@ -5,6 +5,7 @@ require "kalacool.sango.animation.Animation"
 require "kalacool.sango.Set.Weapon"
 
 local heartClass = require "kalacool.sango.HUD.Heart"
+local powerClass = require "kalacool.sango.HUD.power"
 local switchClass = require "kalacool.sango.HUD.Switch"
 local SFclass = require "kalacool.sango.HUD.SF"
 
@@ -34,6 +35,7 @@ function new(config)
 	Player.alive=true
 	Player.noDead=true
 	Player.image.power = 100
+	Player.powerTank = powerClass.new(1000)
 	Player.heart=heartClass.new(5)
 	Player.switch=switchClass.new(Player)
 	Player.SF=SFclass.new(Player)
@@ -42,12 +44,14 @@ function new(config)
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
 	Player.HUD:insert(Player.SF)
+	Player.HUD:insert(Player.powerTank.image)
 	Player.Filter =  { categoryBits = 2, maskBits = 61 }
 	Player.onBody = 15
-
+	Player.shootable= true
 	Player.isSticky=true		
-
-	--- Dog buff effect ---
+	Player.isShooting = false
+	Player.fingerX = nil 
+	Player.fingerY = nil	--- Dog buff effect ---
 	Player.image.shootFaster = false
 	Player.image.magazineRate = 1
 	Player.image.shootFasterBuffTime =0
@@ -240,7 +244,69 @@ function new(config)
 	
 
 	function Player:playerState(event)
+		if(Player.isShooting == true)then
 
+
+			local coolX= -camera.x+Player.fingerX-Player.image.x
+			local coolY= -camera.y+Player.fingerY-Player.image.y
+			local ratio = math.sqrt((coolX)^2+(coolY)^2)
+			local angle= (Atan2( coolY,coolX)*180/Pi)
+
+			if(Player.image.xScale == 1)then
+				Player.handGroup.rotation=  angle+180
+			elseif(Player.image.xScale == -1)then
+				Player.handGroup.rotation=  angle*-1
+			end
+
+			if (angle>-90 and angle<90) then
+				Player.image.xScale = -1
+			elseif ((angle>90 and angle<180)or(angle<-90 and angle>-180)) then
+				Player.image.xScale = 1
+			end
+
+			if(Player.shootable==true and Player.powerTank.value>0 and Player.alive==true )then
+				Player.gun:setSequence( "shoot" )
+				Player.gun:play()
+				Player.powerTank.reduce(Player.Weapon.para.cost)
+				Player.Magazine.pop()
+				Player.shootable=false
+				function coolover( )
+					Player.shootable=true
+				end
+				timer.performWithDelay( Player.Weapon.para.rate, coolover, 1)
+
+				
+				local bulletgroup=Player.bullet.new(Player.image.x + Player.handGroup.x , Player.image.y + Player.handGroup.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
+
+				
+
+
+				
+
+				
+				camera:insert(bulletgroup)			
+			        local vx, vy = Player.image:getLinearVelocity()								
+				local limit=Player.Weapon.recoil+100
+				local standard=Player.Weapon.recoil
+
+				if(Player.isFloat ~= true)then
+				
+		
+					if(vx-standard*(coolX)/ratio>limit)then
+									
+						Player.image:setLinearVelocity( limit, -standard*(coolY)/ratio )
+
+					elseif(vx-standard*(coolX)/ratio<-limit)then
+						Player.image:setLinearVelocity( -limit, -standard*(coolY)/ratio )
+					else 
+						
+						Player.image:setLinearVelocity( vx-standard*(coolX)/ratio, -standard*(coolY)/ratio )
+					end
+								
+				end
+			end
+
+		end
 		
 		if(Player.isFloat == true and Player.alive==true)then
 			Player.image:setLinearVelocity(0,0)
@@ -316,59 +382,30 @@ function new(config)
 		local phase = event.target.phase
 
 		if "began" == phase then
-
-			
+			--display.getCurrentStage():setFocus( event.target.target , event.target.id )
+			display.getCurrentStage():setFocus( display.getCurrentStage() )
 			
 
 			Player.noSticky( )
 			--print(event.y)
-			if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
-				Player.gun:setSequence( "shoot" )
-				Player.gun:play()
-				Player.Magazine.pop()	
-				local coolX= -camera.x+event.target.x-Player.image.x
-				local coolY= -camera.y+event.target.y-Player.image.y
-				local ratio = math.sqrt((coolX)^2+(coolY)^2)
-				local bulletgroup=Player.bullet.new(Player.image.x + Player.handGroup.x , Player.image.y + Player.handGroup.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
-
-				local angle= (Atan2( coolY,coolX)*180/Pi)
-
-
-				if (angle>-90 and angle<90) then
-					Player.image.xScale = -1
-				elseif ((angle>90 and angle<180)or(angle<-90 and angle>-180)) then
-					Player.image.xScale = 1
-				end
-
-				if(Player.image.xScale == 1)then
-					Player.handGroup.rotation=  angle+180
-				elseif(Player.image.xScale == -1)then
-					Player.handGroup.rotation=  angle*-1
-				end
-				camera:insert(bulletgroup)			
-			        local vx, vy = Player.image:getLinearVelocity()								
-				local limit=Player.Weapon.recoil+100
-				local standard=Player.Weapon.recoil
-
-				if(Player.isFloat ~= true)then
-				
-		
-					if(vx-standard*(coolX)/ratio>limit)then
-									
-						Player.image:setLinearVelocity( limit, -standard*(coolY)/ratio )
-
-					elseif(vx-standard*(coolX)/ratio<-limit)then
-						Player.image:setLinearVelocity( -limit, -standard*(coolY)/ratio )
-					else 
-						
-						Player.image:setLinearVelocity( vx-standard*(coolX)/ratio, -standard*(coolY)/ratio )
-					end
-								
-				end
-
+			--if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
+			
+			Player.isShooting = true	
+			Player.fingerX = event.target.x
+			Player.fingerY = event.target.y
 				--Player.image:applyLinearImpulse( -6500*(coolX)/ratio, -6500*(coolY)/ratio,Player.image.x,Player.image.y )
 
-			end
+			
+		end
+		if "moved" == phase then
+			Player.fingerX = event.target.x
+			Player.fingerY = event.target.y
+		end
+
+
+		if "ended" == phase then
+			display.getCurrentStage():setFocus( nil )
+			Player.isShooting = false
 		end
 		return true
 

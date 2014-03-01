@@ -18,7 +18,9 @@ function new()
     end    
 
     function allRuntimeTouch(event)
+        
         scene:dispatchEvent({name='screenTouch',target = event})
+        return true
     end  
 
     function callBackCover(switch)

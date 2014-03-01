@@ -20,6 +20,7 @@ function Weapon.newShotgun()
     local sprite =  display.newSprite(gunsheet, gunsequenceData)
 	
 	gun.sprite = sprite
+	gun.para = {cost = 1 , rate = 400}
 	gun.magazine=magazineClass.new(7,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.bullet"
 	gun.recoil=400
@@ -47,12 +48,12 @@ function Weapon.newRifle()
 	
 	local gunsequenceData = {
  
-		{ name="shoot", frames= {1,2,3,1}, time=300 ,loopCount = 1}
+		{ name="shoot", frames= {1,2,3,1}, time=100 ,loopCount = 1}
 
 	}
 
 	local sprite =  display.newSprite(gunsheet, gunsequenceData)
-	
+	gun.para = {cost = 5 , rate = 150}
 	gun.sprite = sprite
 	gun.magazine=magazineClass.new(1,600,1000,0,"kalacool/sango/image/UI/rifleShell.png")
 	gun.bullet= require "kalacool.sango.item.rifle_bullet"
@@ -69,12 +70,12 @@ function Weapon.newXbow()
 	
 	local gunsequenceData = {
  
-		{ name="shoot", frames= {1,2,3,1}, time=300 ,loopCount = 1}
+		{ name="shoot", frames= {1,2,3,1}, time=100 ,loopCount = 1}
 
 	}
 
 	local sprite =  display.newSprite(gunsheet, gunsequenceData)
-	
+	gun.para = {cost = 1 , rate = 150}
 	gun.sprite = sprite
 	gun.magazine=magazineClass.new(4,500,1000,0,"kalacool/sango/image/UI/arrow.png")
 	gun.bullet= require "kalacool.sango.item.arrow"
