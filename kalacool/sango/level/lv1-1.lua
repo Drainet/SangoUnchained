@@ -257,6 +257,10 @@ level.layers["Image"].objects = {}
  level.layers["InteractiveWorld"].objects["object111"] = MechanismSet.newDestructibleBlock({x=574,y=734})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object111"].image)
 
+
+ level.layers["InteractiveWorld"].objects["99"] = MechanismSet.newDestructibleBlockStone({x=822,y=1530})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["99"].image)
+
  level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)
  level.layers["StaticWorld"].objects["boundDown"] = WorldSet.newboundRecRow({x=2700,y=3030})
