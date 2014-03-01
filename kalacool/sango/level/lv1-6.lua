@@ -166,6 +166,16 @@ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects
  -- level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object54"].image)
  -- level.layers["InteractiveWorld"].objects["object55"] = EnemySet.newMonsterFireball({x=292,y=602,xL=10,xR=10})
  -- level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object55"].image)
+
+ level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)
+ level.layers["StaticWorld"].objects["boundDown"] = WorldSet.newboundRecRow({x=2700,y=3030})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundDown"].image)
+ level.layers["StaticWorld"].objects["boundLeft"] = WorldSet.newboundRecCol({x=-700,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundLeft"].image)
+ level.layers["StaticWorld"].objects["boundRight"] = WorldSet.newboundRecCol({x=6100,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundRight"].image)
+ 
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["StaticWorld"])

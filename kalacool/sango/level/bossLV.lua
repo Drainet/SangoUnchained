@@ -70,6 +70,19 @@ level.layers["Supplement"].objects = {}
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object18"].image)
  level.layers["Supplement"].objects["object19"] = SupplementSet.newDogFood({x=866,y=484})
  level.layers["Supplement"]:insert(level.layers["Supplement"].objects["object19"].image)
+
+
+
+ level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)
+ level.layers["StaticWorld"].objects["boundDown"] = WorldSet.newboundRecRow({x=2700,y=3030})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundDown"].image)
+ level.layers["StaticWorld"].objects["boundLeft"] = WorldSet.newboundRecCol({x=-700,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundLeft"].image)
+ level.layers["StaticWorld"].objects["boundRight"] = WorldSet.newboundRecCol({x=6100,y=1500})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundRight"].image)
+
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])
