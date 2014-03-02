@@ -117,6 +117,14 @@ if JSONFileSet.weaponStoreTable  == nil then
 	weaponStoreJson[3].unlock = true
 	weaponStoreJson[3].description = ""
 	weaponStoreJson[3].spcialUnclockDescription = ""
+
+	weaponStoreJson[4] ={}
+	weaponStoreJson[4].itemName = "MP7"
+	weaponStoreJson[4].weaponStoreItemID = 4
+	weaponStoreJson[4].price = 1000
+	weaponStoreJson[4].unlock = true
+	weaponStoreJson[4].description = ""
+	weaponStoreJson[4].spcialUnclockDescription = ""
 	JSONFileSet.weaponStoreTable = weaponStoreJson
 	JSONFileHelper.saveTable(weaponStoreJson,'weaponStore.json')
 	end

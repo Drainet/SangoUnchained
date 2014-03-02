@@ -27,6 +27,29 @@ function Weapon.newShotgun()
 	return gun
 end
 
+function Weapon.newMP7()
+
+	local gun={}
+
+
+	local gunsheet = graphics.newImageSheet( "kalacool/sango/image/character/mp7.png",{ width=374, height=88, numFrames=3 } )
+	
+	local gunsequenceData = {
+ 
+		{ name="shoot", frames= {1,2,3,1}, time=100 ,loopCount = 1}
+
+	}
+	
+    local sprite =  display.newSprite(gunsheet, gunsequenceData)
+	
+	gun.sprite = sprite
+	gun.para = {cost = 1 , rate = 50}
+	gun.magazine=magazineClass.new(7,300,500,100,"kalacool/sango/image/UI/shell.png")
+	gun.bullet=require "kalacool.sango.item.normal_bullet"
+	gun.recoil=350
+	return gun
+end
+
 
 function Weapon.newNotegun()
 
@@ -101,6 +124,10 @@ function Weapon.newgun(name)
 
 	if(name=="XBOW")then
 		gun=Weapon.newXbow()
+	end
+
+	if(name=="MP7")then
+		gun=Weapon.newMP7()
 	end
 	
 

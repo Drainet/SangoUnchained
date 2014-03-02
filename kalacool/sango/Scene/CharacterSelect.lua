@@ -5,7 +5,7 @@ local scene = storyboard.newScene()
 
 --Order in [ 1, 2, 3, .... total ]
 local totalChar = 2
-local totalWpn  = 3
+local totalWpn  = 4
 
 local characterConfig = {}
 

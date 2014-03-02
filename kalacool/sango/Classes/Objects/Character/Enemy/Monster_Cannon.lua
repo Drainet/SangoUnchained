@@ -85,10 +85,15 @@ function cannon:new_bullet()
         bullet.image.isBullet           = true
 
         function bullet.collision(self , event)
-            bullet.image:setLinearVelocity(0, 0)
-            bullet.body:setSequence("explosion")
-            bullet.body:play()
-            timerBullet = timer.performWithDelay( 300, bullet.dispose)     
+
+            if(event.otherElement ~= 3)then
+                bullet.image:setLinearVelocity(0, 0)
+                bullet.body:setSequence("explosion")
+                bullet.body:play()
+                timerBullet = timer.performWithDelay( 300, bullet.dispose)     
+            end
+
+            
         end
 
         bullet.image:addEventListener("collision",bullet)
