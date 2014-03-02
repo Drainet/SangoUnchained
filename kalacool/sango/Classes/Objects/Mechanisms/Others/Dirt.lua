@@ -14,7 +14,7 @@ function new(config)
 	Dirt.HP = Dirt.MaxHP 
 	Dirt.alive = true
 	--- set Dirt's image
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/dirt.png", { width=80, height=80, numFrames=8} )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/dirt.png", { width=60, height=60, numFrames=8} )
     local sequenceData = {
     	{ name="start", start=1, count=1, time= Dirt.remainTime, loopCount=1 },
         { name="break1", start=2, count=1, time= Dirt.remainTime, loopCount=1 },

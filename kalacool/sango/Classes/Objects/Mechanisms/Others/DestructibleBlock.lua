@@ -13,7 +13,7 @@ function new(config)
 	Block.MaxHP = 30
 	Block.HP = Block.MaxHP 
 	--- set Block's image
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/block.png", { width=80, height=80, numFrames=4} )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/block.png", { width=60, height=60, numFrames=4} )
     local sequenceData = {
     	{ name="start", start=1, count=1, time= Block.remainTime, loopCount=1 },
         { name="break1", start=2, count=1, time= Block.remainTime, loopCount=1 },
@@ -43,7 +43,7 @@ function new(config)
 				Block.HP = Block.HP -event.other.power
 				if (Block.HP < 1) then
 					timer.performWithDelay( 100, Block.dispose)
-				elseif (Block.HP/Block.MaxHP < 1/4) then
+				elseif (Block.HP/Block.MaxHP < 1/4 and Block.HP>1) then
 					Block.body:setSequence( "break3")
 				elseif(Block.HP/Block.MaxHP < 2/4 and Block.HP/Block.MaxHP >= 1/4)	then
 					Block.body:setSequence( "break2")
