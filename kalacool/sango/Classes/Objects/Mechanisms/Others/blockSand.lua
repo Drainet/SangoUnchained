@@ -10,10 +10,10 @@ function new(config)
 	Block.image = display.newGroup( )
 	Block.Filter = { categoryBits = 1} 
 	
-	Block.MaxHP = 15
+	Block.MaxHP = 1
 	Block.HP = Block.MaxHP 
 	--- set Block's image
-	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/blockStone.png", { width=60, height=60, numFrames=4} )
+	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/blockSand.png", { width=60, height=60, numFrames=4} )
     local sequenceData = {
     	{ name="start", start=1, count=1, time= Block.remainTime, loopCount=1 },
         { name="break1", start=2, count=1, time= Block.remainTime, loopCount=1 },

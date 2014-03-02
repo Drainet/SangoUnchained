@@ -3,7 +3,9 @@ MechanismSet = {}
 	receiver =  require("kalacool.sango.Classes.Objects.Mechanisms.Receivers.Receiver_Rock")
 	disappearFloor = require("kalacool.sango.Classes.Objects.Mechanisms.SelfTriggers.SelfTrigger_DisappearFloor")
 	destructibleBlock =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.DestructibleBlock")
-	destructibleBlockStone =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.blockStone")
+	BlockStone =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.blockStone")
+	BlockObs =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.blockObs")
+	BlockSand =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.blockSand")
 	powerGenerator = require("kalacool.sango.Classes.Objects.Mechanisms.Triggers.Trigger_PowerGenerator")
 	powerDoor =  require("kalacool.sango.Classes.Objects.Mechanisms.Receivers.Receiver_PowerDoor")
 
@@ -30,7 +32,17 @@ MechanismSet = {}
 	end
 
 	function  MechanismSet.newDestructibleBlockStone(config)
-		local mechanism  = destructibleBlockStone.new(config)
+		local mechanism  = BlockStone.new(config)
+		return mechanism 
+	end
+
+	function  MechanismSet.newDestructibleBlockObs(config)
+		local mechanism  = BlockObs.new(config)
+		return mechanism 
+	end
+
+	function  MechanismSet.newDestructibleBlockSand(config)
+		local mechanism  = BlockSand.new(config)
 		return mechanism 
 	end
 
