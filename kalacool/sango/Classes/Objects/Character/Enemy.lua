@@ -12,14 +12,10 @@ local dropItemTable = {
 
 
 function new()
-
     local Enemy = CharacterClass.new()
     local scene = scene
 
     Enemy.image = display.newGroup( )
-    
-   
-
 
     -- ALL attribute of Monster
         --basic type & name
@@ -29,6 +25,7 @@ function new()
         -- basic attribute , HP , DEF , attackRange , visibleDistance
         Enemy.damageReduce = 1     -- Percentage of monster get damage reduce
         Enemy.HP = 1
+        Enemy.wave = 1
         Enemy.visibleDistance = 1000
         
         -- attribute of different Monster
@@ -43,6 +40,7 @@ function new()
     function Enemy:onPlayerShow(event)
         startTime = math.random(2000)
     	Enemy.target = event.target
+        
     	Enemy:newAI()
     	
         Enemy.timers[1] = timer.performWithDelay( startTime , Enemy.AI.run )
@@ -90,6 +88,7 @@ function new()
         Enemy.AI.dispose()
         Enemy.dispose()
         scene:dispatchEvent({name='gotMoney',money = 100})
+        scene:dispatchEvent({name='monsterDeadInWave',wave = Enemy.wave})
     end
     
    

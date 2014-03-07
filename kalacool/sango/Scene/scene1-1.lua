@@ -29,7 +29,7 @@ function scene:createScene( event )
     local moneySystemClass = require "kalacool.sango.System.MoneySystem"
     local moneySystem = moneySystemClass.new()
 
-    local levelDirector = require "kalacool.sango.level.gay"
+    local levelDirector = require "kalacool.sango.level.lv1-1"
 
     local physics = require("physics")
     physics.start()
@@ -41,7 +41,7 @@ function scene:createScene( event )
 
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
-    dog=PlayerSet.new(characterConfig.char,{x=112,y=768})
+    dog=PlayerSet.new(characterConfig.char,{x=112,y=2468})
 
     dog:setPlayerShow()
 

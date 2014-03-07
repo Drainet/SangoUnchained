@@ -47,10 +47,10 @@
 	----------------[ Monster_fireball ] ----------------
 		_Enemy.Monster_fireball = {}
 
-		_Enemy.Monster_fireball.HP 				= 10
-		_Enemy.Monster_fireball.moveSpeed 		= 300
+		_Enemy.Monster_fireball.HP 				= 15
+		_Enemy.Monster_fireball.moveSpeed 		= 500
 		_Enemy.Monster_fireball.attackRange 	= 300
-		_Enemy.Monster_fireball.visibleDistance = 1000
+		_Enemy.Monster_fireball.visibleDistance = 2000
 		_Enemy.Monster_fireball.name 			= "monster"
 		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/monster/FireBall/fireball.png"
 		_Enemy.Monster_fireball.Physic			= {}

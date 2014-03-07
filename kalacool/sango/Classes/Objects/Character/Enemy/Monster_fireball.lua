@@ -1,6 +1,5 @@
 module(..., package.seeall)
 
-
 Monster = require ("kalacool.sango.Classes.Objects.Character.Enemy")
 --AI = require("kalacool.sango.Classes.Objects.Character.Enemy.MonsterAI.Fireball_AI")
 
@@ -12,6 +11,7 @@ local fireball = Monster.new()
     fireball.patrolRange = {}  
     fireball.patrolRange.xL = config.xL
     fireball.patrolRange.xR = config.xR
+    fireball.wave           = config.wave
     fireball.originPosition = config
     fireball.config         = config
     --- set monster's attribute ---
