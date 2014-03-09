@@ -10,8 +10,8 @@ local scene = scene
         -- print("test")
         cameraMaxRange = {}
         cameraMaxRange.left     = 100   
-        cameraMaxRange.right    = -2140 
-        cameraMaxRange.up       = -1820    
+        cameraMaxRange.right    = -5140 
+        cameraMaxRange.up       = 0   
         cameraMaxRange.down     = -2200
 
         totalLevel = 10 
