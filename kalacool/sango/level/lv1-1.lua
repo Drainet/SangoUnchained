@@ -653,10 +653,12 @@ function CreateLevel(physics)
 
     local MonsterSpawnWavesClass = require "kalacool.sango.System.MonsterSpawnWaves"
 
-    MonsterImageGroup = display.newGroup()
-    MonsterSpawnWavesClass.NextWaveHandler(MonsterImageGroup)
+    level.MonsterImageGroup = display.newGroup()
+    print("lv1-1 group:")
+    print(level.MonsterImageGroup )
+    MonsterSpawnWavesClass.NextWaveHandler(level.MonsterImageGroup)
 
-    MonsterSpawnWavesClass.addMonster({ID=3,x=568,y=2220,xL=0,xR=10300,wave=1})
+    MonsterSpawnWavesClass.addMonster({ID=1,x=568,y=2220,xL=0,xR=10300,wave=1})
     MonsterSpawnWavesClass.addMonster({ID=4,x=938,y=2020,xL=0,xR=10300,wave=2})
     MonsterSpawnWavesClass.addMonster({ID=4,x=968,y=2010,xL=0,xR=10300,wave=2})
     MonsterSpawnWavesClass.addMonster({ID=1,x=868,y=2120,xL=0,xR=10300,wave=3})
@@ -666,7 +668,7 @@ function CreateLevel(physics)
     
     scene:dispatchEvent({name='nextWave',nextWave = 1})
 
-    level:insert(MonsterImageGroup)
+    level:insert(level.MonsterImageGroup)
 
 
     

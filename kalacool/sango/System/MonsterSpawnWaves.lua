@@ -11,28 +11,41 @@ function NextWaveHandler(ImageGroup)
     
     scene:addEventListener( "monsterDeadInWave", Content )
     function Content:monsterDeadInWave(event)
-        print(event.wave)
         Wave[tonumber(event.wave)] = Wave[tonumber(event.wave)] - 1
         if (Wave[tonumber(event.wave)] == 0) and Wave[tonumber(event.wave)+1] ~= nil then
-            print("gogo")
-            scene:dispatchEvent({name='nextWave',nextWave = tonumber(event.wave) + 1})
+            scene:dispatchEvent({name='nextWave', nextWave = tonumber(event.wave) + 1})
+        elseif (Wave[tonumber(event.wave)] == 0) and Wave[tonumber(event.wave)+1] == nil then
+            scene:dispatchEvent({name='levelComplete'})
+            display.getCurrentStage():setFocus( nil )
+            local completeClass = require "kalacool.sango.HUD.YouComplete"
+            local complete = completeClass.new()
+            imageGroup:removeSelf()
         end     
     end
 
     scene:addEventListener( "nextWave", Content )
     function Content:nextWave(event)
-        if event.nextWave == 1 then
-            for i = 1, Wave[event.nextWave] do
-                imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
-                table.remove(Monster,1)
+        local Text = display.newText("", display.contentWidth/2, display.contentHeight/2 -100, native.systemFont, 100)
+
+        local function Ready()
+            local function Go()
+                local function noText()
+                    Text.text = "" 
+                    Text = nil
+                        for i = 1, Wave[event.nextWave] do
+                            imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
+                            table.remove(Monster,1)
+                        end
+                        scene:dispatchEvent( {name='onPlayerShow',target = dog} )
+                end
+                Text.text = "Go"
+                timer.performWithDelay( 800, noText )
             end
-        else
-            for i = 1, Wave[event.nextWave] do
-                imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
-                table.remove(Monster,1)
-            end
-            scene:dispatchEvent( {name='onPlayerShow',target = dog} )
+            Text.text = "Ready"
+            timer.performWithDelay( 800, Go )
         end
+        Text.text = "Wave " .. event.nextWave
+        timer.performWithDelay( 1500, Ready )
     end
 
 	return Content
