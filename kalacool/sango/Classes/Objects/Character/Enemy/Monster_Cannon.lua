@@ -31,6 +31,7 @@ local cannon = Monster.new()
     cannon.image:insert(cannon.body)
     cannon.body.x = cannon.image.x
     cannon.body.y = cannon.image.y
+    cannon.wave = config.wave
     cannon.image.x = config.x
     cannon.image.y = config.y
     cannon.image.damage = "safe" 

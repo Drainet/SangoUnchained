@@ -12,6 +12,7 @@ function new()
         return distance
     end
 
+    -- direction check
     function ROBOT:monsterDir(target)
         local dir={}
         if  target.x > ROBOT.monster.image.x then
@@ -44,7 +45,7 @@ function new()
         end
     end
     
-    -- find if player is Visible
+    -- find if player is in Visible distance
     function ROBOT:isPlayerVisible()
         if (ROBOT:getDistance() < ROBOT.monster.visibleDistance) then
             return true

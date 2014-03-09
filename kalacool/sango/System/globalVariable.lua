@@ -9,9 +9,9 @@ local scene = scene
     -- function globalVariable.addCameraMaxRange()
         -- print("test")
         cameraMaxRange = {}
-        cameraMaxRange.left     = 600   
-        cameraMaxRange.right    = -4700 
-        cameraMaxRange.up       = 0    
+        cameraMaxRange.left     = 100   
+        cameraMaxRange.right    = -2140 
+        cameraMaxRange.up       = -1820    
         cameraMaxRange.down     = -2200
 
         totalLevel = 10 

@@ -16,10 +16,6 @@ local Sin   = math.sin
 local Cos   = math.cos
 local Ceil  = math.ceil
 local Atan2 = math.atan2
-
-
-
-
  
 function new(config)
     --create Player display objectc
@@ -34,7 +30,7 @@ function new(config)
 	Player.isFloat = false
 	Player.alive=true
 	Player.noDead=true
-	Player.image.power = 100
+	Player.image.power = 4
 	Player.powerTank = powerClass.new(1000)
 	Player.heart=heartClass.new(5)
 	Player.switch=switchClass.new(Player)

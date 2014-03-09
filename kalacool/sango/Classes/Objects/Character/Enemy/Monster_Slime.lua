@@ -26,6 +26,7 @@ local slime = Monster.new()
     slime.image:insert(slime.body)
     slime.body.x    = slime.image.x
     slime.body.y    = slime.image.y
+    slime.wave      = config.wave
     slime.image.x   = config.x
     slime.image.y   = config.y
 

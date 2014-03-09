@@ -18,6 +18,7 @@ function new(monster , target)
               }
 
     function AI.run()
+        monster:normal()
         monster.image.gravityScale = 0
         -- if (AI:isPlayerInPatrolRange() and AI:isPlayerVisible()  and (math.abs(monster.image.y - monster.config.y) <500) ) then
         if (AI:isPlayerInPatrolRange() ) then
@@ -49,15 +50,17 @@ function new(monster , target)
     end
 
     function AI:attack()
-        local dir = AI:monsterDir(target.image)
-        if (dir.y > 0) then
-            monster.image.gravityScale = -0.98
-        else
-            monster.image.gravityScale = 0.98
+        local attackDirX, attackDirY
+        local function charge( event )
+            monster:smash(attackDirX, attackDirY)
+            AI.timerID = timer.performWithDelay(700 , AI.run)
+            AI.timers[1] = AI.timerID
         end
-        monster:move(dir.x*1.05, dir.y*1.05)
-        AI.timerID = timer.performWithDelay(1000 , AI.run)
-        AI.timers[1] = AI.timerID
+        attackDirX = (target.image.x - monster.image.x )*2
+        attackDirY = (target.image.y - monster.image.y )*2
+        monster:charge()
+        monster:move(0,0)
+        AI.timers[2] = timer.performWithDelay( 1200, charge )
     end
 
     function AI:trace()

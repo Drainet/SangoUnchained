@@ -16,6 +16,7 @@ star you can collect.
                             have to add variable "wp1" and "wp2" at "starSystemClass.new" 
                             in scene.lua
     3       |   time    |   complete the level in limited time
+                            ct = counting time
     4       |   collect |   get the special item in level
 
 ---------------------------------------------------------------------------

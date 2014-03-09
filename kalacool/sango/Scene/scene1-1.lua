@@ -21,7 +21,7 @@ function scene:createScene( event )
     local pauseMenu = pauseMenuClass.new()
 
     local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
-    local starSystem = starSystemClass.new({fs=4,ss=4,ts=4})
+    local starSystem = starSystemClass.new({fs=3,ct=1000,ss=3,ct=1000,ts=3,ct=1000})
 
     local achievementSystemClass = require "kalacool.sango.System.AchievementSystem"
     local achievement = achievementSystemClass.new()
