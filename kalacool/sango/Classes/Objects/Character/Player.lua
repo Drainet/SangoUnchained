@@ -239,7 +239,7 @@ function new(config)
 
 	
 
-	function Player:playerState(event)
+	function Player:objectState(event)
 		if(Player.isShooting == true)then
 
 
@@ -498,12 +498,12 @@ function new(config)
 
 	
 	--scene:addEventListener( 'removeAllEvent', Player )
-	scene:addEventListener( 'playerState', Player )
+	scene:addEventListener( 'objectState', Player )
 	scene:addEventListener( 'screenTouch', Player )
 
 	--Player.runtimeListeners[table.maxn(Player.runtimeListeners)+1] = {event="touch",listener=Player.shoot}
 	--Player.listeners[table.maxn(Player.listeners)+1] = {event='removeAllEvent' , listener = Player}
-	Player.listeners[table.maxn(Player.listeners)+1] = {event='playerState' , listener = Player}
+	Player.listeners[table.maxn(Player.listeners)+1] = {event='objectState' , listener = Player}
 	Player.listeners[table.maxn(Player.listeners)+1] = {event='screenTouch' , listener = Player}
 	--Player.listeners[2] = {event='onSwitchTouch',listener=Player}
 

@@ -40,11 +40,13 @@ function new()
     function Enemy:onPlayerShow(event)
         startTime = math.random(2000)
     	Enemy.target = event.target
+
         
     	Enemy:newAI()
     	
         Enemy.timers[1] = timer.performWithDelay( startTime , Enemy.AI.run )
     end
+
 
     function Enemy:hurt(damage)
         Enemy.HP = Enemy.HP - damage*Enemy.damageReduce
@@ -88,13 +90,17 @@ function new()
         Enemy.AI.dispose()
         Enemy.dispose()
         scene:dispatchEvent({name='gotMoney',money = 100})
+        print("dead")
+        print(Enemy.wave)
         scene:dispatchEvent({name='monsterDeadInWave',wave = Enemy.wave})
     end
     
    
     --- New monster AI ---
     function Enemy:newAI()
-        Enemy.AI = Enemy.Robot.new(Enemy, Enemy.target)
+        
+         Enemy.AI = Enemy.Robot.new(Enemy, Enemy.target)
+
     end
      
 

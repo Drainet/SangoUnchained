@@ -38,7 +38,7 @@
         	}
 			_Enemy.Monster_Cannon.bullet.Physic 			= {}
 				_Enemy.Monster_Cannon.bullet.Physic.Type 		= "dynamic"
-				_Enemy.Monster_Cannon.bullet.Physic.Option 		= {density = 1 , filter = { categoryBits = 4 , maskBits = 67} }
+				_Enemy.Monster_Cannon.bullet.Physic.Option 		= {density = 1 , filter = { categoryBits = 4 , maskBits = 3} }
 			_Enemy.Monster_Cannon.bullet.gravityScale 		= 0
 			_Enemy.Monster_Cannon.bullet.damage 			= "fatal"
 			_Enemy.Monster_Cannon.bullet.damageValue 		= 2

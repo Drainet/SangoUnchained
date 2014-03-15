@@ -44,8 +44,8 @@ function new(config)
 			if ( event.phase == "began") then
 				Dirt.HP = Dirt.HP -event.other.power
 				if (Dirt.HP < 1 and Dirt.alive == true) then
+					timer.performWithDelay(0, Dirt.rBody)
 					Dirt.alive = false
-					print( "AAA" )
 					Dirt.body:setSequence( "explode")
 					Dirt.body:play()
 					timer.performWithDelay(400, Dirt.dispose)
@@ -59,7 +59,9 @@ function new(config)
 			end
 		end
 	end
-
+	function Dirt.rBody()
+		physics.removeBody( Dirt.image ) 
+	end
 
  	Dirt.image:addEventListener( "collision" )
 	Dirt.listeners[1] = {event="collision", listener = Dirt}

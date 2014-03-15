@@ -2,7 +2,8 @@
 
 module(..., package.seeall)
 require("kalacool.sango.Set.WorldSet")
-require("kalacool.sango.Set.EnemySet")
+
+
 function CreateLevel(physics)
 
     display.setDefault( 'background', 0, 0, 0 )
@@ -280,10 +281,14 @@ level.layers["Monster"].objects = {}
  level.layers["DynamicWorld"]:insert(level.layers["DynamicWorld"].objects["object125"].image)
 
 ---- monster test ----
- level.layers["Monster"].objects["object126"] = EnemySet.newMonsterSlime({x=1200,y=2000,xL=500,xR=3000})
- level.layers["Monster"]:insert(level.layers["Monster"].objects["object126"].image)
-  level.layers["Monster"].objects["object127"] = EnemySet.newMonsterSlime({x=1500,y=2000,xL=500,xR=3000})
- level.layers["Monster"]:insert(level.layers["Monster"].objects["object127"].image)
+local MonsterSpawnWavesClass = require "kalacool.sango.System.MonsterSpawnWaves"
+MonsterImageGroup = display.newGroup()
+MonsterSpawnWavesClass.NextWaveHandler(MonsterImageGroup)
+
+ MonsterSpawnWavesClass.addMonster({ID=1,x=1200,y=2000,wave=1})
+ scene:dispatchEvent( {name = 'nextWave', nextWave = 1} )
+
+level:insert(MonsterImageGroup)
  ---------------------
  --level.layers["InteractiveWorld"].objects["object300"] = EnemySet.new_Monster_Fireball({x=1500,y=1764})
  --level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object300"].image)
