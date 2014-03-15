@@ -13,7 +13,7 @@ function new()
         scene:dispatchEvent({name='floatingFloorMoving'} )
         scene:dispatchEvent({name='moveLayer'})
         scene:dispatchEvent({name='arrowControl'})
-        scene:dispatchEvent({name='playerState'})
+        scene:dispatchEvent({name='objectState'})
         scene:dispatchEvent({name='turnHead'})
     end    
 
