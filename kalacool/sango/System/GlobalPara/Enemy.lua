@@ -100,6 +100,23 @@
 		_Enemy.Monster_Slime.damageValue		= 1
 	----
 
+	----------------[ Monster_GiantSlime ] ----------------
+		_Enemy.Monster_GiantSlime = {}
+
+		_Enemy.Monster_GiantSlime.HP 				= 10
+		_Enemy.Monster_GiantSlime.moveSpeedX		= 200
+		_Enemy.Monster_GiantSlime.moveSpeedY		= 600
+		_Enemy.Monster_GiantSlime.attackRange 		= 200
+		_Enemy.Monster_GiantSlime.visibleDistance 	= 800
+		_Enemy.Monster_GiantSlime.name 				= "monster"
+		_Enemy.Monster_GiantSlime.ImagePath			= "kalacool/sango/image/monster/Slime/giantSlime.png"
+		_Enemy.Monster_GiantSlime.Physic				= {}
+			_Enemy.Monster_GiantSlime.Type				= "dynamic"
+			_Enemy.Monster_GiantSlime.Option				= {density = 999, friction = 0.7,filter = { categoryBits = 4, maskBits = 99}}
+		_Enemy.Monster_GiantSlime.isFixedRotation	= true
+		_Enemy.Monster_GiantSlime.damageValue		= 1
+	----
+
 	---------------- Enemy End ----------------
 
 

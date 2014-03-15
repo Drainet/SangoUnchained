@@ -24,7 +24,7 @@ function NextWaveHandler(ImageGroup)
 
     scene:addEventListener( "nextWave", Content )
     function Content:nextWave(event)
-        -- local imageGroup = event.imageGroup
+
         local Text = display.newText("", display.contentWidth/2, display.contentHeight/2 -100, native.systemFont, 100)
 
         local function Ready()
@@ -48,6 +48,11 @@ function NextWaveHandler(ImageGroup)
         timer.performWithDelay( 1500, Ready )
     end
 
+    scene:addEventListener( 'addMonsterWaveAmount', Content )
+    function Content:addMonsterWaveAmount(event)
+        Wave[event.whichWave] = Wave[event.whichWave] + event.howMany
+    end    
+
     -------- Dispose Function Start --------
     scene:addEventListener( 'removeAllEvent', Content )
     function Content.removeAllEvent()
@@ -55,6 +60,7 @@ function NextWaveHandler(ImageGroup)
         imageGroup = nil
         scene:removeEventListener( "monsterDeadInWave", Content )
         scene:removeEventListener( "nextWave", Content )
+        scene:removeEventListener( 'addMonsterWaveAmount', Content )
         scene:removeEventListener( 'removeAllEvent', Content )
     end
     -------- Dispose Function End --------
@@ -64,11 +70,13 @@ function NextWaveHandler(ImageGroup)
 end
 
 function addMonster(config)
+    -- print(config.ID)
     table.insert(Monster, table.maxn(Monster)+1, config )  
     if Wave[config.wave] == nil then
         Wave[config.wave] = 1
     else 
         Wave[config.wave] = Wave[config.wave] + 1
     end
+    -- print(Wave[config.wave]
 end
 

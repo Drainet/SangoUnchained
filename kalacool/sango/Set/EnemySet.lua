@@ -4,6 +4,7 @@ monsterSmashball = require("kalacool.sango.Classes.Objects.Character.Enemy.Monst
 monsterCannon = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Cannon")
 monsterSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Slime")
 monsterKnifemo = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Knifemo")
+monsterGiantSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_GiantSlime")
 
 
 function EnemySet.newMonster(config)
@@ -21,6 +22,9 @@ function EnemySet.newMonster(config)
 		return monster
 	elseif config.ID == 99 then
     	local monster = monsterKnifemo.new(config)
+		return monster
+	elseif config.ID == 98 then
+    	local monster = monsterGiantSlime.new(config)
 		return monster
 	end
 
