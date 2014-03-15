@@ -168,7 +168,6 @@ star you can collect.
         scene:removeEventListener( 'GotCollectableItemTwo', Content )
         scene:removeEventListener( 'GotCollectableItemThr', Content )
         scene:removeEventListener( 'HealthFail', Content )
-        scene:removeEventListener( 'levelComplete', Content )
         scene:removeEventListener( 'removeAllEvent', Content )
     end
 

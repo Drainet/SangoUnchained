@@ -19,12 +19,12 @@ function NextWaveHandler(ImageGroup)
             display.getCurrentStage():setFocus( nil )
             local completeClass = require "kalacool.sango.HUD.YouComplete"
             local complete = completeClass.new()
-            imageGroup:removeSelf()
         end     
     end
 
     scene:addEventListener( "nextWave", Content )
     function Content:nextWave(event)
+        -- local imageGroup = event.imageGroup
         local Text = display.newText("", display.contentWidth/2, display.contentHeight/2 -100, native.systemFont, 100)
 
         local function Ready()
@@ -47,6 +47,17 @@ function NextWaveHandler(ImageGroup)
         Text.text = "Wave " .. event.nextWave
         timer.performWithDelay( 1500, Ready )
     end
+
+    -------- Dispose Function Start --------
+    scene:addEventListener( 'removeAllEvent', Content )
+    function Content.removeAllEvent()
+        imageGroup:removeSelf()
+        imageGroup = nil
+        scene:removeEventListener( "monsterDeadInWave", Content )
+        scene:removeEventListener( "nextWave", Content )
+        scene:removeEventListener( 'removeAllEvent', Content )
+    end
+    -------- Dispose Function End --------
 
 	return Content
 
