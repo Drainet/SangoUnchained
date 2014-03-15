@@ -43,10 +43,12 @@ function new()
     function Enemy:onPlayerShow(event)
         startTime = math.random(2000)
     	Enemy.target = event.target
-    	Enemy:newAI()
-    	
-        Enemy.timers[1] = timer.performWithDelay( startTime , Enemy.AI.run )
-    end
+        if(Enemy.Robot~=nil)then
+    	   Enemy:newAI()
+    	   Enemy.timers[1] = timer.performWithDelay( startTime , Enemy.AI.run )
+        end
+        
+    end    
 
     function Enemy:hurt(damage)
         Enemy.HP = Enemy.HP - damage*Enemy.damageReduce
@@ -95,7 +97,9 @@ function new()
    
     --- New monster AI ---
     function Enemy:newAI()
-        Enemy.AI = Enemy.Robot.new(Enemy, Enemy.target)
+        
+         Enemy.AI = Enemy.Robot.new(Enemy, Enemy.target)
+
     end
      
 

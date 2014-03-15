@@ -280,7 +280,7 @@ level.layers["Monster"].objects = {}
  level.layers["DynamicWorld"]:insert(level.layers["DynamicWorld"].objects["object125"].image)
 
 ---- monster test ----
- level.layers["Monster"].objects["object126"] = EnemySet.newMonsterSlime({x=1200,y=2000,xL=500,xR=3000})
+ level.layers["Monster"].objects["object126"] = EnemySet.newMonsterKnifemo({x=1200,y=2000})
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object126"].image)
   level.layers["Monster"].objects["object127"] = EnemySet.newMonsterSlime({x=1500,y=2000,xL=500,xR=3000})
  level.layers["Monster"]:insert(level.layers["Monster"].objects["object127"].image)
