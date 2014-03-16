@@ -6,7 +6,7 @@ Monster = require ("kalacool.sango.Classes.Objects.Character.Enemy")
 function new(config)
 
 local knifemo = Monster.new()
-    
+   
     knifemo.Robot = require("kalacool.sango.Classes.Objects.Character.Enemy.MonsterAI.Knifemo_AI")
     -- set monster's patrol range
     knifemo.patrolRange = {}  
@@ -17,7 +17,7 @@ local knifemo = Monster.new()
     knifemo.HP                = 500
     
     -- set monster's body
-    knifemo.name              = "monster"
+    knifemo.name = "KnifeMo"
 
     local sheet = graphics.newImageSheet( "kalacool/sango/image/monster/knifemo.png",{ width=100, height=100, numFrames=25 } )
     
