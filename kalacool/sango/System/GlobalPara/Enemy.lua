@@ -8,7 +8,7 @@
 	_Enemy = {}
 	----------------[ Monster_Cannon ] ----------------
 		_Enemy.Monster_Cannon = {}
-		
+
 		_Enemy.Monster_Cannon.HP 				= 10	
 		_Enemy.Monster_Cannon.moveSpeed			= 0
 		_Enemy.Monster_Cannon.attackSpeed		= 2000
