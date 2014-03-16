@@ -27,7 +27,7 @@ function new()
         Enemy.HP = 1
         Enemy.wave = 1
         Enemy.visibleDistance = 1000
-        
+        Enemy.AIactive = 0
         -- attribute of different Monster
         Enemy.moveSpeed = 0
         Enemy.attackSpeed = 0
@@ -38,13 +38,13 @@ function new()
     -- event to recive player's message, and set attack target
     -- set AI for Monster
     function Enemy:onPlayerShow(event)
-        startTime = math.random(2000)
-    	Enemy.target = event.target
-
-        
-    	Enemy:newAI()
-    	
-        Enemy.timers[1] = timer.performWithDelay( startTime , Enemy.AI.run )
+        if Enemy.AIactive == 0 then
+            Enemy.AIactive = 1
+            startTime = math.random(1500)
+        	Enemy.target = event.target
+        	Enemy:newAI()
+            Enemy.timers[1] = timer.performWithDelay( startTime , Enemy.AI.run )
+        end
     end
 
 
@@ -90,8 +90,6 @@ function new()
         Enemy.AI.dispose()
         Enemy.dispose()
         scene:dispatchEvent({name='gotMoney',money = 100})
-        print("dead")
-        print(Enemy.wave)
         scene:dispatchEvent({name='monsterDeadInWave',wave = Enemy.wave})
     end
     

@@ -97,7 +97,15 @@ level.layers["Image"].objects = {}
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object26"].image)
  level.layers["InteractiveWorld"].objects["object27"] = MechanismSet.newDestructibleBlockStone({x=510,y=1330})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object27"].image)
-MonsterSpawnWavesClass.addMonster({ID=98,x=1800,y=936,wave=1,xL=400,xR=3000})
+MonsterSpawnWavesClass.addMonster({ID=2,x=1700,y=1036,wave=1,xL=0,xR=9000})
+MonsterSpawnWavesClass.addMonster({ID=2,x=1830,y=836,wave=1,xL=0,xR=9000})
+MonsterSpawnWavesClass.addMonster({ID=2,x=1730,y=736,wave=1,xL=0,xR=9000})
+MonsterSpawnWavesClass.addMonster({ID=2,x=1543,y=666,wave=1,xL=0,xR=9000})
+MonsterSpawnWavesClass.addMonster({ID=4,x=1985,y=766,wave=2,xL=0,xR=9000})
+MonsterSpawnWavesClass.addMonster({ID=4,x=1760,y=786,wave=2,xL=0,xR=9000})
+MonsterSpawnWavesClass.addMonster({ID=4,x=1545,y=876,wave=2,xL=0,xR=9000})
+MonsterSpawnWavesClass.addMonster({ID=98,x=1800,y=936,wave=2,xL=0,xR=9000})
+
 
  level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)

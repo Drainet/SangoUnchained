@@ -40,7 +40,6 @@ function new()
 		
 
 		for i = 1,table.maxn( Object.timers) do
-			
 			if(Object.timers[i]~=nil)then
 		 		timer.cancel( Object.timers[i] )
 			end

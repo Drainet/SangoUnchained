@@ -62,6 +62,8 @@ function NextWaveHandler(ImageGroup)
         scene:removeEventListener( "nextWave", Content )
         scene:removeEventListener( 'addMonsterWaveAmount', Content )
         scene:removeEventListener( 'removeAllEvent', Content )
+        Wave = nil
+        Wave = {}
     end
     -------- Dispose Function End --------
 

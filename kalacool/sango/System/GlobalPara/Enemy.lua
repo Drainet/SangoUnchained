@@ -8,8 +8,7 @@
 	_Enemy = {}
 	----------------[ Monster_Cannon ] ----------------
 		_Enemy.Monster_Cannon = {}
-
-		_Enemy.Monster_Cannon.name 				= "monster"			
+		
 		_Enemy.Monster_Cannon.HP 				= 10	
 		_Enemy.Monster_Cannon.moveSpeed			= 0
 		_Enemy.Monster_Cannon.attackSpeed		= 2000
@@ -51,7 +50,6 @@
 		_Enemy.Monster_fireball.moveSpeed 		= 500
 		_Enemy.Monster_fireball.attackRange 	= 250
 		_Enemy.Monster_fireball.visibleDistance = 2000
-		_Enemy.Monster_fireball.name 			= "monster"
 		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/monster/FireBall/fireball.png"
 		_Enemy.Monster_fireball.Physic			= {}
 			_Enemy.Monster_fireball.Physic.Type		= "dynamic"
@@ -61,14 +59,13 @@
 		_Enemy.Monster_fireball.gravityScale	= 0
 
 	----
-	----------------[ Monster_fireball ] ----------------
+	----------------[ Monster_smashball ] ----------------
 		_Enemy.Monster_smashball = {}
 
 		_Enemy.Monster_smashball.HP 			= 30
 		_Enemy.Monster_smashball.moveSpeed 		= 400
 		_Enemy.Monster_smashball.attackRange 	= 400
 		_Enemy.Monster_smashball.visibleDistance = 2000
-		_Enemy.Monster_smashball.name 			= "monster"
 		_Enemy.Monster_smashball.ImageSheetPath		= "kalacool/sango/image/monster/smashBall/smashball.png"
 		_Enemy.Monster_smashball.ImageSheetOption 	= { width=80, height=80, numFrames=2 }
 			_Enemy.Monster_smashball.ImageSheetSequence =
@@ -91,7 +88,6 @@
 		_Enemy.Monster_Slime.moveSpeed			= 300
 		_Enemy.Monster_Slime.attackRange 		= 200
 		_Enemy.Monster_Slime.visibleDistance 	= 800
-		_Enemy.Monster_Slime.name 				= "monster"
 		_Enemy.Monster_Slime.ImagePath			= "kalacool/sango/image/monster/Slime/slime.png"
 		_Enemy.Monster_Slime.Physic				= {}
 			_Enemy.Monster_Slime.Type				= "dynamic"
@@ -100,15 +96,15 @@
 		_Enemy.Monster_Slime.damageValue		= 1
 	----
 
-	----------------[ Monster_GiantSlime ] ----------------
+	----------------[ Boss_GiantSlime ] ----------------
 		_Enemy.Monster_GiantSlime = {}
 
-		_Enemy.Monster_GiantSlime.HP 				= 10
+		_Enemy.Monster_GiantSlime.HP 				= 300
 		_Enemy.Monster_GiantSlime.moveSpeedX		= 200
-		_Enemy.Monster_GiantSlime.moveSpeedY		= 600
+		_Enemy.Monster_GiantSlime.moveSpeedY		= 500
 		_Enemy.Monster_GiantSlime.attackRange 		= 200
-		_Enemy.Monster_GiantSlime.visibleDistance 	= 800
-		_Enemy.Monster_GiantSlime.name 				= "monster"
+		_Enemy.Monster_GiantSlime.visibleDistance 	= 1200
+		_Enemy.Monster_GiantSlime.name 				= "Slime King"
 		_Enemy.Monster_GiantSlime.ImagePath			= "kalacool/sango/image/monster/Slime/giantSlime.png"
 		_Enemy.Monster_GiantSlime.Physic				= {}
 			_Enemy.Monster_GiantSlime.Type				= "dynamic"
