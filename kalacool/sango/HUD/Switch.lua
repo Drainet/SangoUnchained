@@ -6,7 +6,8 @@ module(..., package.seeall)
 
 function new(Player)
     
-	local switch = display.newImage("kalacool/sango/image/UI/switch.png",50,600)
+	local switch = display.newImage("kalacool/sango/image/UI/switch.png",display.contentWidth-50,500)
+	
 	
 	switch.state = 1
 	switch:scale( 1.3, 1.3)

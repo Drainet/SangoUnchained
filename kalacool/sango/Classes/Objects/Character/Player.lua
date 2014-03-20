@@ -3,6 +3,9 @@ local scene = scene
 CharacterClass = require('kalacool.sango.Classes.Objects.Character')
 require "kalacool.sango.animation.Animation"
 require "kalacool.sango.Set.Weapon"
+system.activate( "multitouch" )
+
+local joystickClass = require( "kalacool.sango.HUD.joystick" )
 
 local heartClass = require "kalacool.sango.HUD.Heart"
 local powerClass = require "kalacool.sango.HUD.power"
@@ -37,9 +40,12 @@ function new(config)
 	Player.SF=SFclass.new(Player)
 	Player.image.lastCheckPoint=config	
 	Player.image.heart = Player.heart
+	
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
 	Player.HUD:insert(Player.SF)
+	
+	
 	Player.HUD:insert(Player.powerTank.image)
 	Player.Filter =  { categoryBits = 2, maskBits = 61 }
 	Player.onBody = 15
@@ -243,64 +249,7 @@ function new(config)
 		if(Player.isShooting == true)then
 
 
-			local coolX= -camera.x+Player.fingerX-Player.image.x
-			local coolY= -camera.y+Player.fingerY-Player.image.y
-			local ratio = math.sqrt((coolX)^2+(coolY)^2)
-			local angle= (Atan2( coolY,coolX)*180/Pi)
-
-			if(Player.image.xScale == 1)then
-				Player.handGroup.rotation=  angle+180
-			elseif(Player.image.xScale == -1)then
-				Player.handGroup.rotation=  angle*-1
-			end
-
-			if (angle>-90 and angle<90) then
-				Player.image.xScale = -1
-			elseif ((angle>90 and angle<180)or(angle<-90 and angle>-180)) then
-				Player.image.xScale = 1
-			end
-
-			if(Player.shootable==true and Player.powerTank.value>0 and Player.alive==true )then
-				Player.gun:setSequence( "shoot" )
-				Player.gun:play()
-				Player.powerTank.reduce(Player.Weapon.para.cost)
-				Player.Magazine.pop()
-				Player.shootable=false
-				function coolover( )
-					Player.shootable=true
-				end
-				timer.performWithDelay( Player.Weapon.para.rate, coolover, 1)
-
-				
-				local bulletgroup=Player.bullet.new(Player.image.x + Player.handGroup.x , Player.image.y + Player.handGroup.y, 1000*(coolX)/ratio, 1000*(coolY)/ratio)
-
-				
-
-
-				
-
-				
-				camera:insert(bulletgroup)			
-			        local vx, vy = Player.image:getLinearVelocity()								
-				local limit=Player.Weapon.recoil+100
-				local standard=Player.Weapon.recoil
-
-				if(Player.isFloat ~= true)then
-				
-		
-					if(vx-standard*(coolX)/ratio>limit)then
-									
-						Player.image:setLinearVelocity( limit, -standard*(coolY)/ratio )
-
-					elseif(vx-standard*(coolX)/ratio<-limit)then
-						Player.image:setLinearVelocity( -limit, -standard*(coolY)/ratio )
-					else 
-						
-						Player.image:setLinearVelocity( vx-standard*(coolX)/ratio, -standard*(coolY)/ratio )
-					end
-								
-				end
-			end
+			
 
 		end
 		
@@ -372,37 +321,128 @@ function new(config)
 
 --------‹æ start---
 
+	function Player.control( event )
+		
+		-- local coolX= -camera.x+Player.fingerX-Player.image.x
+			-- local coolY= -camera.y+Player.fingerY-Player.image.y
+			-- local ratio = math.sqrt((coolX)^2+(coolY)^2)
+			-- local angle= (Atan2( coolY,coolX)*180/Pi)
+			if(event.joyAngle~=false)then
+				local angle=  event.joyAngle-90
+			
+			
+
+				if(Player.image.xScale == 1)then
+					Player.handGroup.rotation=  angle+180
+				elseif(Player.image.xScale == -1)then
+					Player.handGroup.rotation=  angle*-1
+				end
+
+				if (angle>-90 and angle<90) then
+					Player.image.xScale = -1
+				elseif ((angle>=90 and angle<360)or(angle<=-90 and angle>-180)) then
+					Player.image.xScale = 1
+				end
+				
+
+				if(Player.shootable==true and Player.powerTank.value>0 and Player.alive==true )then
+					Player.gun:setSequence( "shoot" )
+					Player.gun:play()
+					Player.powerTank.reduce(Player.Weapon.para.cost)
+					Player.Magazine.pop()
+					Player.shootable=false
+					function coolover( )
+						Player.shootable=true
+					end
+					timer.performWithDelay( Player.Weapon.para.rate, coolover, 1)
+
+					
+					local bulletgroup=Player.bullet.new(Player.image.x + Player.handGroup.x , Player.image.y + Player.handGroup.y, 1000*event.joyX, 1000*event.joyY)
+
+					
+
+
+					
+
+					
+					camera:insert(bulletgroup)			
+				    local vx, vy = Player.image:getLinearVelocity()								
+					local limit=Player.Weapon.recoil+100
+					local standard=Player.Weapon.recoil
+
+					if(Player.isFloat ~= true)then
+					
+			
+						if(vx-standard*event.joyX>limit)then
+										
+							Player.image:setLinearVelocity( limit, -standard*event.joyY )
+
+						elseif(vx-standard*event.joyX<-limit)then
+							Player.image:setLinearVelocity( -limit, -standard*event.joyY )
+						else 
+							
+							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*event.joyY )
+						end
+									
+					end
+				end
+			
+			end
+	end
+
+
+	Player.joystick = joystickClass.newJoystick{
+		outerImage = "",						-- Outer Image - Circular - Leave Empty For Default Vector
+		outerRadius = 60,						-- Outer Radius - Size Of Outer Joystick Element - The Limit
+		outerAlpha = 0.5,							-- Outer Alpha ( 0 - 1 )
+		--innerImage = "joystickInner.png",		-- Inner Image - Circular - Leave Empty For Default Vector
+		innerRadius = 40,						-- Inner Radius - Size Of Touchable Joystick Element
+		innerAlpha = 1,							-- Inner Alpha ( 0 - 1 )
+		--backgroundImage = "joystickDial.png",	-- Background Image
+		background_x = 0,						-- Background X Offset
+		background_y = 0,						-- Background Y Offset
+		backgroundAlpha = 1,					-- Background Alpha ( 0 - 1 )
+		position_x = 100,						-- X Position Top - From Left Of Screen - Positions Outer Image
+		position_y = 550,						-- Y Position - From Left Of Screen - Positions Outer Image
+		ghost = 155,							-- Set Alpha Of Touch Ghost ( 0 - 255 )
+		joystickAlpha = 0.4,					-- Joystick Alpha - ( 0 - 1 ) - Sets Alpha Of Entire Joystick Group
+		joystickFade = true,					-- Fade Effect ( true / false )
+		joystickFadeDelay = 2000,				-- Fade Effect Delay ( In MilliSeconds )
+		onMove = Player.control				-- Move Event
+	}
+	Player.HUD:insert(Player.joystick)
+
 	function Player:screenTouch( event )
 		scene:dispatchEvent({name='Ach1'})
 		
-		local phase = event.target.phase
+		-- local phase = event.target.phase
 
-		if "began" == phase then
-			--display.getCurrentStage():setFocus( event.target.target , event.target.id )
-			display.getCurrentStage():setFocus( display.getCurrentStage() )
+		-- if "began" == phase then
+		-- 	--display.getCurrentStage():setFocus( event.target.target , event.target.id )
+		-- 	display.getCurrentStage():setFocus( display.getCurrentStage() )
 			
 
-			Player.noSticky( )
-			--print(event.y)
-			--if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
+		-- 	Player.noSticky( )
+		-- 	--print(event.y)
+		-- 	--if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
 			
-			Player.isShooting = true	
-			Player.fingerX = event.target.x
-			Player.fingerY = event.target.y
-				--Player.image:applyLinearImpulse( -6500*(coolX)/ratio, -6500*(coolY)/ratio,Player.image.x,Player.image.y )
+		-- 	Player.isShooting = true	
+		-- 	Player.fingerX = event.target.x
+		-- 	Player.fingerY = event.target.y
+		-- 		--Player.image:applyLinearImpulse( -6500*(coolX)/ratio, -6500*(coolY)/ratio,Player.image.x,Player.image.y )
 
 			
-		end
-		if "moved" == phase then
-			Player.fingerX = event.target.x
-			Player.fingerY = event.target.y
-		end
+		-- end
+		-- if "moved" == phase then
+		-- 	Player.fingerX = event.target.x
+		-- 	Player.fingerY = event.target.y
+		-- end
 
 
-		if "ended" == phase then
-			display.getCurrentStage():setFocus( nil )
-			Player.isShooting = false
-		end
+		-- if "ended" == phase then
+		-- 	display.getCurrentStage():setFocus( nil )
+		-- 	Player.isShooting = false
+		-- end
 		return true
 
 	end
@@ -499,7 +539,7 @@ function new(config)
 	
 	--scene:addEventListener( 'removeAllEvent', Player )
 	scene:addEventListener( 'objectState', Player )
-	scene:addEventListener( 'screenTouch', Player )
+	-- scene:addEventListener( 'screenTouch', Player )
 
 	--Player.runtimeListeners[table.maxn(Player.runtimeListeners)+1] = {event="touch",listener=Player.shoot}
 	--Player.listeners[table.maxn(Player.listeners)+1] = {event='removeAllEvent' , listener = Player}
