@@ -4,7 +4,7 @@ monsterSmashball = require("kalacool.sango.Classes.Objects.Character.Enemy.Monst
 monsterCannon = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Cannon")
 monsterSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Slime")
 monsterKnifemo = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Knifemo")
-monsterGiantSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_GiantSlime")
+monsterGiantSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_giantSlime")
 
 
 function EnemySet.newMonster(config)

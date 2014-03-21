@@ -6,8 +6,9 @@ local Wave    = {}
 
 function NextWaveHandler(ImageGroup)
     local imageGroup = ImageGroup
-
+    local timers = {}
     local Content = display.newGroup()
+    local Text = display.newText("", display.contentWidth/2, display.contentHeight/2 -100, native.systemFont, 100)
     
     scene:addEventListener( "monsterDeadInWave", Content )
     function Content:monsterDeadInWave(event)
@@ -25,27 +26,27 @@ function NextWaveHandler(ImageGroup)
     scene:addEventListener( "nextWave", Content )
     function Content:nextWave(event)
 
-        local Text = display.newText("", display.contentWidth/2, display.contentHeight/2 -100, native.systemFont, 100)
+        local function noText()
+            Text.text = "" 
+            for i = 1, Wave[event.nextWave] do
+                imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
+                table.remove(Monster,1)
+            end
+            scene:dispatchEvent( {name='onPlayerShow',target = dog} )
+        end
+
+        local function Go()
+            Text.text = "Go"
+            timers[3] = timer.performWithDelay( 800, noText )
+        end
 
         local function Ready()
-            local function Go()
-                local function noText()
-                    Text.text = "" 
-                    Text = nil
-                        for i = 1, Wave[event.nextWave] do
-                            imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
-                            table.remove(Monster,1)
-                        end
-                        scene:dispatchEvent( {name='onPlayerShow',target = dog} )
-                end
-                Text.text = "Go"
-                timer.performWithDelay( 800, noText )
-            end
             Text.text = "Ready"
-            timer.performWithDelay( 800, Go )
+            timers[2] = timer.performWithDelay( 800, Go )
         end
+
         Text.text = "Wave " .. event.nextWave
-        timer.performWithDelay( 1500, Ready )
+        timers[1] = timer.performWithDelay( 1500, Ready )
     end
 
     scene:addEventListener( 'addMonsterWaveAmount', Content )
@@ -61,24 +62,47 @@ function NextWaveHandler(ImageGroup)
         scene:removeEventListener( "monsterDeadInWave", Content )
         scene:removeEventListener( "nextWave", Content )
         scene:removeEventListener( 'addMonsterWaveAmount', Content )
+        scene:removeEventListener( 'pauseAllEvent', Content )
         scene:removeEventListener( 'removeAllEvent', Content )
-        Wave = nil
+        Text:removeSelf()
+        Text = nil
         Wave = {}
+        Monster = {}
+        for i = 1,table.maxn( timers) do
+            if(timers[i]~=nil)then
+                timer.cancel( timers[i] )
+            end
+        end
     end
     -------- Dispose Function End --------
 
-	return Content
+    scene:addEventListener( 'pauseAllEvent', Content )
+    function Content.pauseAllEvent()
+        for i = 1,table.maxn( timers) do
+            if(timers[i]~=nil)then
+                timer.pause( timers[i] )
+            end
+        end
+    end
 
+    scene:addEventListener( 'resumeAllEvent', Content )
+    function Content.resumeAllEvent()
+        for i = 1,table.maxn( timers) do
+            if(timers[i]~=nil)then
+                timer.resume( timers[i] )
+            end
+        end
+    end
+
+	return Content
 end
 
 function addMonster(config)
-    -- print(config.ID)
     table.insert(Monster, table.maxn(Monster)+1, config )  
     if Wave[config.wave] == nil then
         Wave[config.wave] = 1
     else 
         Wave[config.wave] = Wave[config.wave] + 1
     end
-    -- print(Wave[config.wave]
 end
 
