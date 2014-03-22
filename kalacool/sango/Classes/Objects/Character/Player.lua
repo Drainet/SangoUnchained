@@ -63,7 +63,7 @@ function new(config)
 		if(Player.alive==true)then
 			Player.image.gravityScale = 0
 			Player.isFloat = true
-			Player.image:setLinearVelocity(0,0)
+			Player.image:setLinearVelocity( 0 ,0)
 			Player.body:setSequence( "float" )
 			Player.body:play()
 		end
@@ -396,14 +396,14 @@ function new(config)
 		outerRadius = 60,						-- Outer Radius - Size Of Outer Joystick Element - The Limit
 		outerAlpha = 0.5,							-- Outer Alpha ( 0 - 1 )
 		--innerImage = "joystickInner.png",		-- Inner Image - Circular - Leave Empty For Default Vector
-		innerRadius = 40,						-- Inner Radius - Size Of Touchable Joystick Element
+		innerRadius = 50,						-- Inner Radius - Size Of Touchable Joystick Element
 		innerAlpha = 1,							-- Inner Alpha ( 0 - 1 )
 		--backgroundImage = "joystickDial.png",	-- Background Image
 		background_x = 0,						-- Background X Offset
 		background_y = 0,						-- Background Y Offset
 		backgroundAlpha = 1,					-- Background Alpha ( 0 - 1 )
-		position_x = 100,						-- X Position Top - From Left Of Screen - Positions Outer Image
-		position_y = 550,						-- Y Position - From Left Of Screen - Positions Outer Image
+		position_x = 150,						-- X Position Top - From Left Of Screen - Positions Outer Image
+		position_y = 500,						-- Y Position - From Left Of Screen - Positions Outer Image
 		ghost = 155,							-- Set Alpha Of Touch Ghost ( 0 - 255 )
 		joystickAlpha = 0.4,					-- Joystick Alpha - ( 0 - 1 ) - Sets Alpha Of Entire Joystick Group
 		joystickFade = true,					-- Fade Effect ( true / false )

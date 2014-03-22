@@ -47,7 +47,7 @@ function new(x,y,vx,vy)
 
         oneshot.name="oneshot"
         oneshot.type="bullet"
-        oneshot.power = 1
+        oneshot.power = 3
         oneshot:setStrokeColor(0,0,0)
         --local Shape= { 88,4, 88,-4, 96,-4, 96,4 }
         physics.addBody( oneshot,{ density=150.0, friction=0, bounce=0.3,  filter=Filter} )
