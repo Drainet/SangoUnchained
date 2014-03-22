@@ -20,7 +20,7 @@ function Weapon.newShotgun()
     local sprite =  display.newSprite(gunsheet, gunsequenceData)
 	
 	gun.sprite = sprite
-	gun.para = {cost = 1 , rate = 400}
+	gun.para = {cost = 1 , rate = 250}
 	gun.magazine=magazineClass.new(7,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.bullet"
 	gun.recoil=400
@@ -43,10 +43,10 @@ function Weapon.newMP7()
     local sprite =  display.newSprite(gunsheet, gunsequenceData)
 	
 	gun.sprite = sprite
-	gun.para = {cost = 1 , rate = 50}
+	gun.para = {cost = 1 , rate = 70}
 	gun.magazine=magazineClass.new(7,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.normal_bullet"
-	gun.recoil=250
+	gun.recoil=300
 	return gun
 end
 
