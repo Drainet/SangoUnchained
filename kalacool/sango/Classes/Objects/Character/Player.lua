@@ -248,14 +248,14 @@ function new(config)
 
 		end
 		
-		-- if(Player.isFloat == true and Player.alive==true)then
-		-- 	Player.image:setLinearVelocity(0,0)
-		-- 	if(Player.body.sequence ~= "float" )then
-		-- 			Player.body:setSequence( "float" )
-		-- 			Player.body:play()
-		-- 	end
+		if(Player.isFloat == true and Player.alive==true)then
+			Player.image:setLinearVelocity(0,0)
+			if(Player.body.sequence ~= "float" )then
+					Player.body:setSequence( "float" )
+					Player.body:play()
+			end
 			
-		-- end
+		end
 		--print( count)
 		if(Player.onBody < 3)then
 			Player.onBody = Player.onBody +1
@@ -322,7 +322,20 @@ function new(config)
 			-- local coolY= -camera.y+Player.fingerY-Player.image.y
 			-- local ratio = math.sqrt((coolX)^2+(coolY)^2)
 			-- local angle= (Atan2( coolY,coolX)*180/Pi)
-			if(event.joyAngle~=false)then
+			
+
+			if(event.joyAngle~=false )then
+
+				if(event.joyAngle>=0 and event.joyAngle<90)then
+					event.joyAngle = 0
+					event.joyY=-1
+					event.joyX=0
+				elseif(event.joyAngle>=90 and event.joyAngle<180)then
+					event.joyAngle = 180
+					event.joyY=1
+					event.joyX=0
+				end
+
 				local angle=  event.joyAngle-90
 			
 			
@@ -370,13 +383,13 @@ function new(config)
 			
 						if(vx-standard*event.joyX>limit)then
 										
-							Player.image:setLinearVelocity( limit, -standard*event.joyY )
+							Player.image:setLinearVelocity( limit, -standard*1.5*event.joyY )
 
 						elseif(vx-standard*event.joyX<-limit)then
-							Player.image:setLinearVelocity( -limit, -standard*event.joyY )
+							Player.image:setLinearVelocity( -limit, -standard*1.5*event.joyY )
 						else 
 							
-							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*event.joyY )
+							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*1.5*event.joyY )
 						end
 									
 					end
