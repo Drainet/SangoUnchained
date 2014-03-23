@@ -326,11 +326,11 @@ function new(config)
 
 			if(event.joyAngle~=false )then
 
-				if(event.joyAngle>0 and event.joyAngle<90)then
+				if(event.joyAngle>=0 and event.joyAngle<90)then
 					event.joyAngle = 0
 					event.joyY=-1
 					event.joyX=0
-				elseif(event.joyAngle>90 and event.joyAngle<180)then
+				elseif(event.joyAngle>=90 and event.joyAngle<180)then
 					event.joyAngle = 180
 					event.joyY=1
 					event.joyX=0
