@@ -53,7 +53,7 @@
 		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/monster/FireBall/fireball.png"
 		_Enemy.Monster_fireball.Physic			= {}
 			_Enemy.Monster_fireball.Physic.Type		= "dynamic"
-			_Enemy.Monster_fireball.Physic.Option	= {density = 10,filter = {categoryBits = 4, maskBits = 99 }}
+			_Enemy.Monster_fireball.Physic.Option	= {density = 10,filter = {categoryBits = 4, maskBits = 98 }}
 		_Enemy.Monster_fireball.isFixedRotation	= true
 		_Enemy.Monster_fireball.damageValue		= 1
 		_Enemy.Monster_fireball.gravityScale	= 0
@@ -75,7 +75,7 @@
         	}
 		_Enemy.Monster_smashball.Physic			= {}
 			_Enemy.Monster_smashball.Physic.Type		= "dynamic"
-			_Enemy.Monster_smashball.Physic.Option	= {density = 50,filter = {categoryBits = 4, maskBits = 99 }}
+			_Enemy.Monster_smashball.Physic.Option	= {density = 50,filter = {categoryBits = 4, maskBits = 98 }}
 		_Enemy.Monster_smashball.isFixedRotation	= true
 		_Enemy.Monster_smashball.damageValue		= 2
 		_Enemy.Monster_smashball.gravityScale	= 0

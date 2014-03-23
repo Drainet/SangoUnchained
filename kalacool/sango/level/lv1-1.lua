@@ -110,12 +110,18 @@ MonsterSpawnWavesClass.addMonster({ID=1,x=1800,y=936,wave=2,xL=400,xR=3000})
 -- MonsterSpawnWavesClass.addMonster({ID=4,x=1342,y=828,wave=3,xL=400,xR=3000})
 -- MonsterSpawnWavesClass.addMonster({ID=4,x=1408,y=970,wave=3,xL=400,xR=3000})
 MonsterSpawnWavesClass.addMonster({ID=99,x=1408,y=970,wave=3,xL=400,xR=3000})
+
+
  level.layers["StaticWorld"].objects["boundTop"] = WorldSet.newboundRecRow({x=2700,y=-120})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundTop"].image)
  level.layers["StaticWorld"].objects["boundDown"] = WorldSet.newboundRecRow({x=2700,y=3030})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundDown"].image)
  level.layers["StaticWorld"].objects["boundLeft"] = WorldSet.newboundRecCol({x=-700,y=1500})
- level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundLeft"].image) level.layers["StaticWorld"].objects["boundRight"] = WorldSet.newboundRecCol({x=6100,y=1500}) level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundRight"].image)scene:dispatchEvent({name='nextWave',nextWave = 1})
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundLeft"].image) 
+ level.layers["StaticWorld"].objects["boundRight"] = WorldSet.newboundRecCol({x=6100,y=1500}) 
+ level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["boundRight"].image)
+ 
+ scene:dispatchEvent({name='nextWave',nextWave = 1})
     level:insert(MonsterImageGroup)
 
     level:insert(level.layers["StaticWorld"])

@@ -34,18 +34,18 @@ function NextWaveHandler(ImageGroup)
             scene:dispatchEvent( {name='onPlayerShow',target = dog} )
         end
 
-        local function Go()
-            Text.text = "Go"
-            timers[3] = timer.performWithDelay( 800, noText )
-        end
+        -- local function Go()
+        --     Text.text = "Go"
+        --     timers[3] = timer.performWithDelay( 800, noText )
+        -- end
 
-        local function Ready()
-            Text.text = "Ready"
-            timers[2] = timer.performWithDelay( 800, Go )
-        end
+        -- local function Ready()
+        --     Text.text = "Ready"
+        --     timers[2] = timer.performWithDelay( 800, Go )
+        -- end
 
         Text.text = "Wave " .. event.nextWave
-        timers[1] = timer.performWithDelay( 1500, Ready )
+        timers[1] = timer.performWithDelay( 1000, noText )
     end
 
     scene:addEventListener( 'addMonsterWaveAmount', Content )
