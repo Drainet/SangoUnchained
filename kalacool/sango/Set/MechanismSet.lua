@@ -2,6 +2,7 @@ MechanismSet = {}
 	button =  require("kalacool.sango.Classes.Objects.Mechanisms.Triggers.Trigger_Button")
 	receiver =  require("kalacool.sango.Classes.Objects.Mechanisms.Receivers.Receiver_Rock")
 	disappearFloor = require("kalacool.sango.Classes.Objects.Mechanisms.SelfTriggers.SelfTrigger_DisappearFloor")
+	monsterSpawnZone = require("kalacool.sango.Classes.Objects.Mechanisms.Triggers.monsterSpawnZone")
 	destructibleBlock =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.DestructibleBlock")
 	BlockStone =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.blockStone")
 	BlockObs =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.blockObs")
@@ -9,7 +10,6 @@ MechanismSet = {}
 	powerGenerator = require("kalacool.sango.Classes.Objects.Mechanisms.Triggers.Trigger_PowerGenerator")
 	powerDoor =  require("kalacool.sango.Classes.Objects.Mechanisms.Receivers.Receiver_PowerDoor")
 	dirt =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.Dirt")
-
 
 	function MechanismSet.newTriggerButton(config)
 	    local mechanism = button.new(config)
@@ -24,6 +24,11 @@ MechanismSet = {}
 	function MechanismSet.newDisappearFloor(config)
 		local mechanism  = disappearFloor.new(config)
 		return mechanism 
+	end
+
+	function MechanismSet.newMonsterSpawnZone(config)
+	    local mechanism = monsterSpawnZone.new(config)
+	    return mechanism 
 	end
 
 	function  MechanismSet.newDestructibleBlock(config)
