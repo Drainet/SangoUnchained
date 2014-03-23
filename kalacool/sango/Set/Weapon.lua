@@ -46,7 +46,8 @@ function Weapon.newMP7()
 	gun.para = {cost = 1 , rate = 70}
 	gun.magazine=magazineClass.new(7,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.normal_bullet"
-	gun.recoil=300
+	-- gun.recoil=300
+	gun.recoil=400	
 	return gun
 end
 

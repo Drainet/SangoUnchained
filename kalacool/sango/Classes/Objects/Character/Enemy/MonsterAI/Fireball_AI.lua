@@ -23,7 +23,8 @@ function new(monster , target)
         if (AI:isPlayerInPatrolRange() ) then
            
             if (AI:isPlayerInAttackRange()) then  -- Attack
-                AI:attack()
+                -- AI:attack()
+                AI:trace()
             else  -- Trace player
                 AI:trace()
             end

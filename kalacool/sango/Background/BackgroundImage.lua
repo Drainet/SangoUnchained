@@ -20,6 +20,7 @@ function new(imagePath)
 	Background:insert(Background.image2)
 	Background:insert(Background.image3)
 	function Background:move(x,y)
+		x = x*5
 		self.image1.x =  display.contentWidth/2  + (x%display.contentWidth)
 		self.image1.y =  display.contentHeight/2 +  y 
 		self.image2.x = -display.contentWidth/2  + (x%display.contentWidth)

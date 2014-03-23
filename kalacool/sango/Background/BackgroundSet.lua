@@ -25,7 +25,7 @@ function setBackgroundLayer(level,player,imgArr)
     end
    
    function BackgroundLayer:moveLayer(event)
-        movex = self.level.x - self.player.image.x
+        movex = self.level.x - self.player.image.x * 10
         movey = self.level.y - self.player.image.y
         for i=1,table.getn(imgArr) do
             backgroundArr[i]:move(movex/imgArr[i].x,movey/imgArr[i].y)

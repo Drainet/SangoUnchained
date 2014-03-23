@@ -41,7 +41,7 @@ function scene:createScene( event )
 
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
-    dog=PlayerSet.new(characterConfig.char,{x=100,y=300})
+    dog=PlayerSet.new(characterConfig.char,{x=700,y=300})
 
     dog:setPlayerShow()
 
@@ -65,20 +65,20 @@ function scene:createScene( event )
         movex = myLevel.x - dog.image.x
         movey = myLevel.y - dog.image.y
 
-        if(640 + movex > cameraMaxRange.left) then
+        if(1000 + movex > cameraMaxRange.left) then
             camera.x = cameraMaxRange.left
-        elseif(640 + movex < cameraMaxRange.right) then
+        elseif(1000 + movex < cameraMaxRange.right) then
             camera.x = cameraMaxRange.right
         else
-            camera.x = 640 + movex
+            camera.x = 1000 + movex
         end
         
-        if(460 + movey > cameraMaxRange.up) then
+        if(320 + movey > cameraMaxRange.up) then
             camera.y = cameraMaxRange.up
-        elseif(460 + movey < cameraMaxRange.down) then
+        elseif(320 + movey < cameraMaxRange.down) then
             camera.y = cameraMaxRange.down
         else
-            camera.y = 460 + movey
+            camera.y = 320 + movey
         end
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )

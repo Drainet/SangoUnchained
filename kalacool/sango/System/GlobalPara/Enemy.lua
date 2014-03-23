@@ -46,8 +46,8 @@
 	----------------[ Monster_fireball ] ----------------
 		_Enemy.Monster_fireball = {}
 
-		_Enemy.Monster_fireball.HP 				= 5
-		_Enemy.Monster_fireball.moveSpeed 		= 500
+		_Enemy.Monster_fireball.HP 				= 10
+		_Enemy.Monster_fireball.moveSpeed 		= 1000
 		_Enemy.Monster_fireball.attackRange 	= 250
 		_Enemy.Monster_fireball.visibleDistance = 2000
 		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/monster/FireBall/fireball.png"
@@ -63,7 +63,7 @@
 		_Enemy.Monster_smashball = {}
 
 		_Enemy.Monster_smashball.HP 			= 30
-		_Enemy.Monster_smashball.moveSpeed 		= 400
+		_Enemy.Monster_smashball.moveSpeed 		= 1000
 		_Enemy.Monster_smashball.attackRange 	= 400
 		_Enemy.Monster_smashball.visibleDistance = 2000
 		_Enemy.Monster_smashball.ImageSheetPath		= "kalacool/sango/image/monster/smashBall/smashball.png"

@@ -57,9 +57,9 @@ function new(config)
 	Player.image.shootFaster = false
 	Player.image.magazineRate = 1
 	Player.image.shootFasterBuffTime =0
+	-- Player.image.gravityScale = -9999
 	--- Dog buff effect  END ---
 	function Player.superfloat()
-		
 		if(Player.alive==true)then
 			Player.image.gravityScale = 0
 			Player.isFloat = true
@@ -69,8 +69,9 @@ function new(config)
 		end
 	end
 	function Player.unSuperfloat()
+		print(Player.image.gravityScale)
 		if(Player.alive==true)then
-			Player.image.gravityScale = 1
+			-- Player.image.gravityScale = 1
 			Player.isFloat = false
 			Player.image.isAwake = true
 			Player.image:setLinearVelocity(0,3)
@@ -241,26 +242,20 @@ function new(config)
 
 	end
 
-
-
-	
-
 	function Player:objectState(event)
+		Player.image.gravityScale = 0
 		if(Player.isShooting == true)then
-
-
-			
 
 		end
 		
-		if(Player.isFloat == true and Player.alive==true)then
-			Player.image:setLinearVelocity(0,0)
-			if(Player.body.sequence ~= "float" )then
-					Player.body:setSequence( "float" )
-					Player.body:play()
-			end
+		-- if(Player.isFloat == true and Player.alive==true)then
+		-- 	Player.image:setLinearVelocity(0,0)
+		-- 	if(Player.body.sequence ~= "float" )then
+		-- 			Player.body:setSequence( "float" )
+		-- 			Player.body:play()
+		-- 	end
 			
-		end
+		-- end
 		--print( count)
 		if(Player.onBody < 3)then
 			Player.onBody = Player.onBody +1

@@ -34,6 +34,7 @@ function new(config)
             ,{ isSensor = true,radius = 70,filter=Doggy.Filter})
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet 		= true
+        Doggy.image.gravityScale = 0
 		Doggy.alive 				= true
 
 		Doggy.heart.full()
