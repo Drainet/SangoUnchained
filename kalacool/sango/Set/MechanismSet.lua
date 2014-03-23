@@ -10,7 +10,8 @@ MechanismSet = {}
 	powerGenerator = require("kalacool.sango.Classes.Objects.Mechanisms.Triggers.Trigger_PowerGenerator")
 	powerDoor =  require("kalacool.sango.Classes.Objects.Mechanisms.Receivers.Receiver_PowerDoor")
 	dirt =  require("kalacool.sango.Classes.Objects.Mechanisms.Others.Dirt")
-
+	disappearFloorVertical = require("kalacool.sango.Classes.Objects.Mechanisms.SelfTriggers.SelfTrigger_DisappearFloor_vertical")
+	
 	function MechanismSet.newTriggerButton(config)
 	    local mechanism = button.new(config)
 	    return mechanism 
@@ -63,5 +64,10 @@ MechanismSet = {}
 
 	function  MechanismSet.newDirtBlock(config)
 		local mechanism  = dirt.new(config)
+		return mechanism 
+	end
+
+	function MechanismSet.newDisappearFloorVertical(config)
+		local mechanism  = disappearFloorVertical.new(config)
 		return mechanism 
 	end

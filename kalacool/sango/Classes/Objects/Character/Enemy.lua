@@ -34,7 +34,6 @@ function new()
         Enemy.attackRange = 0
     -- attribute end
         
-    
     -- event to recive player's message, and set attack target
     -- set AI for Monster
     function Enemy:onPlayerShow(event)
@@ -75,7 +74,9 @@ function new()
 
     function Enemy.onCollision(self, event)
         if (event.phase == "began") then
-            
+            if(event.other.damage=="safe")then 
+                Enemy.AI.onTheGround = true
+            end
             if (event.other.type == "bullet" or event.other.type == "explosive" or event.otherElement == 3) then
                 Enemy:hurt(event.other.power)
                 if(Enemy.name) then

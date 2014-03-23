@@ -24,12 +24,13 @@ function new(monster , target)
         if (AI:isPlayerInPatrolRange() ) then
            
             if (AI:isPlayerInAttackRange()) then  -- Attack
-                AI:attack()
+                -- AI:attack()
+                 AI:trace()
             else  -- Trace player
                 AI:trace()
             end
-        elseif ( not AI:isMonsterInPatrolRange()) then --Monster not in Patrol Range , back to patrol range
-            AI:backHome()
+        -- elseif ( not AI:isMonsterInPatrolRange()) then --Monster not in Patrol Range , back to patrol range
+        --     AI:backHome()
         else  --stay
             AI:hangingAround()
         end
@@ -37,42 +38,44 @@ function new(monster , target)
 
     function AI:hangingAround()
         R = math.random(1,4)
-        monster:move(dirTable[R].x*0.5 , dirTable[R].y*0.5)
-        AI.timerID =  timer.performWithDelay(500 , AI.run)
+        --monster:move(dirTable[R].x*0.5 , dirTable[R].y*0.5)
+        AI.timerID =  timer.performWithDelay(1000 , AI.run)
         AI.timers[1] = AI.timerID
     end
 
-    function AI:backHome()
-        local dir = AI:monsterDir(AI.monster.config)
-        monster:move(dir.x , dir.y)
-        AI.timerID =  timer.performWithDelay(500 , AI.run)
-        AI.timers[1] = AI.timerID
-    end
+    -- function AI:backHome()
+    --     local dir = AI:monster(AI.monster.config)
+    --     monster:move(dir.x , dir.y)
+    --     AI.timerID =  timer.performWithDelay(500 , AI.run)
+    --     AI.timers[1] = AI.timerID
+    -- end
 
-    function AI:attack()
-        local attackDirX, attackDirY
-        local function charge( event )
-            monster:smash(attackDirX, attackDirY)
-            AI.timerID = timer.performWithDelay(700 , AI.run)
-            AI.timers[1] = AI.timerID
-        end
-        attackDirX = (target.image.x - monster.image.x )*2
-        attackDirY = (target.image.y - monster.image.y )*2
-        monster:charge()
-        monster:move(0,0)
-        AI.timers[2] = timer.performWithDelay( 1200, charge )
-    end
+    -- function AI:attack()
+    --     local attackDirX, attackDirY
+    --     local function charge( event )
+    --         monster:smash(attackDirX, attackDirY)
+    --         AI.timerID = timer.performWithDelay(700 , AI.run)
+    --         AI.timers[1] = AI.timerID
+    --     end
+    --     attackDirX = (target.image.x - monster.image.x )*2
+    --     attackDirY = (target.image.y - monster.image.y )*2
+    --     monster:charge()
+    --     monster:move(0,0)
+    --     AI.timers[2] = timer.performWithDelay( 1200, charge )
+    -- end
 
     function AI:trace()
         if math.abs(target.image.y - monster.image.y) > 30 then
             local dir = AI:monsterDir(target.image)
-            monster:move(dir.x*0.5,dir.y*0.2)
+            local angle = AI:monsterAngle(target.image)
+            monster:move(dir.x*math.sin(angle),dir.y*math.cos(angle))
             AI.timerID = timer.performWithDelay(1000, AI.run )
 
         elseif AI.isPlayerVisible() then
             local dir = AI:monsterDir(target.image)
-            monster:move(dir.x, 0)
-            AI.timerID = timer.performWithDelay(100 , AI.run)
+            local  angle = AI:monsterAngle(target.image)
+            monster:move(dir.x*math.sin(angle),dir.y*math.cos(angle))
+            AI.timerID = timer.performWithDelay(1000 , AI.run)
         else
             AI.timerID = timer.performWithDelay(1500 , AI.run)
         end

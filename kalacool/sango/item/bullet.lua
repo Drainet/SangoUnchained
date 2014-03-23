@@ -16,7 +16,7 @@ local Atan2 = math.atan2
 
 
 function new(x,y,vx,vy)
-    local Filter = { categoryBits = 64, maskBits = 55 }
+    local Filter = { categoryBits = 64, maskBits = 183 }
 
 
 

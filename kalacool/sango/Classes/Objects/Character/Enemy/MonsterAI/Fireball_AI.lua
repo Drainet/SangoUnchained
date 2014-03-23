@@ -28,8 +28,8 @@ function new(monster , target)
             else  -- Trace player
                 AI:trace()
             end
-        elseif ( not AI:isMonsterInPatrolRange()) then --Monster not in Patrol Range , back to patrol range
-            AI:backHome()
+        -- elseif ( not AI:isMonsterInPatrolRange()) then --Monster not in Patrol Range , back to patrol range
+        --     AI:backHome()
         else  --stay
             AI:hangingAround()
         end
@@ -37,40 +37,42 @@ function new(monster , target)
 
     function AI:hangingAround()
         R = math.random(1,4)
-        monster:move(dirTable[R].x*0.5 , dirTable[R].y*0.5)
-        AI.timerID =  timer.performWithDelay(500 , AI.run)
+        --monster:move(dirTable[R].x*0.5 , dirTable[R].y*0.5)
+        AI.timerID =  timer.performWithDelay(1000, AI.run)
         AI.timers[1] = AI.timerID
     end
 
-    function AI:backHome()
-        local dir = AI:monsterDir(AI.monster.config)
-        monster:move(dir.x , dir.y)
-        AI.timerID =  timer.performWithDelay(500 , AI.run)
-        AI.timers[1] = AI.timerID
-    end
+    -- function AI:backHome()
+    --     local dir = AI:monsterDir(AI.monster.config)
+    --     monster:move(dir.x , dir.y)
+    --     AI.timerID =  timer.performWithDelay(500 , AI.run)
+    --     AI.timers[1] = AI.timerID
+    -- end
 
-    function AI:attack()
-        local dir = AI:monsterDir(target.image)
-        if (dir.y > 0) then
-            monster.image.gravityScale = -0.98
-        else
-            monster.image.gravityScale = 0.98
-        end
-        monster:move(dir.x*1.05, dir.y*1.05)
-        AI.timerID = timer.performWithDelay(1000 , AI.run)
-        AI.timers[1] = AI.timerID
-    end
+    -- function AI:attack()
+    --     local dir = AI:monsterDir(target.image)
+    --     if (dir.y > 0) then
+    --         monster.image.gravityScale = -0.98
+    --     else
+    --         monster.image.gravityScale = 0.98
+    --     end
+    --     monster:move(dir.x*1.05, dir.y*1.05)
+    --     AI.timerID = timer.performWithDelay(1000 , AI.run)
+    --     AI.timers[1] = AI.timerID
+    -- end
 
     function AI:trace()
-        if math.abs(target.image.y - monster.image.y) > 30 then
+            if math.abs(target.image.y - monster.image.y) > 30 then
             local dir = AI:monsterDir(target.image)
-            monster:move(dir.x*0.5,dir.y*0.2)
+            local angle = AI:monsterAngle(target.image)
+            monster:move(dir.x*math.sin(angle),dir.y*math.cos(angle))
             AI.timerID = timer.performWithDelay(1000, AI.run )
 
         elseif AI.isPlayerVisible() then
             local dir = AI:monsterDir(target.image)
-            monster:move(dir.x, 0)
-            AI.timerID = timer.performWithDelay(100 , AI.run)
+            local  angle = AI:monsterAngle(target.image)
+            monster:move(dir.x*math.sin(angle),dir.y*math.cos(angle))
+            AI.timerID = timer.performWithDelay(1000 , AI.run)
         else
             AI.timerID = timer.performWithDelay(1500 , AI.run)
         end

@@ -108,7 +108,7 @@
 			_World.StaticWorld.hor_floor.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.StaticWorld.hor_floor.Physic			= {}
 				_World.StaticWorld.hor_floor.Physic.Type	= "static"
-				_World.StaticWorld.hor_floor.Physic.Option	= { density=1, friction=0.9, bounce=0}
+				_World.StaticWorld.hor_floor.Physic.Option	= { density=1, friction=0.9, bounce=0 ,filter = { categoryBits = 128}}
 		----
 		----------------[ S_hor_floor ] ----------------
 			_World.StaticWorld.S_hor_floor = {}

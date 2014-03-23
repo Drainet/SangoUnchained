@@ -28,6 +28,11 @@ function new()
         return dir
     end    
     
+    function ROBOT:monsterAngle(target)
+        local angle =  math.acos( math.abs(ROBOT.monster.image.y - ROBOT.target.image.y) /  ROBOT:getDistance() )
+        return angle
+    end    
+    
     -- stop AI
     function ROBOT:stop()
         if (ROBOT.timerID ~= nil) then

@@ -47,7 +47,7 @@ function new(config)
 	
 	
 	Player.HUD:insert(Player.powerTank.image)
-	Player.Filter =  { categoryBits = 2, maskBits = 61 }
+	Player.Filter =  { categoryBits = 2, maskBits = 189 }
 	Player.onBody = 15
 	Player.shootable= true
 	Player.isSticky=true		
