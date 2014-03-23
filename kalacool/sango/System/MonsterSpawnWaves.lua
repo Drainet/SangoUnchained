@@ -14,18 +14,17 @@ function NextWaveHandler(ImageGroup)
     function Content:monsterDeadInWave(event)
         Wave[tonumber(event.wave)] = Wave[tonumber(event.wave)] - 1
         if (Wave[tonumber(event.wave)] == 0) and Wave[tonumber(event.wave)+1] ~= nil then
-            scene:dispatchEvent({name='nextWave', nextWave = tonumber(event.wave) + 1})
+            -- scene:dispatchEvent({name='nextWave', nextWave = tonumber(event.wave) + 1})
         elseif (Wave[tonumber(event.wave)] == 0) and Wave[tonumber(event.wave)+1] == nil then
-            scene:dispatchEvent({name='levelComplete'})
-            display.getCurrentStage():setFocus( nil )
-            local completeClass = require "kalacool.sango.HUD.YouComplete"
-            local complete = completeClass.new()
+            -- scene:dispatchEvent({name='levelComplete'})
+            -- display.getCurrentStage():setFocus( nil )
+            -- local completeClass = require "kalacool.sango.HUD.YouComplete"
+            -- local complete = completeClass.new()
         end     
     end
 
     scene:addEventListener( "nextWave", Content )
     function Content:nextWave(event)
-
         local function noText()
             Text.text = "" 
             for i = 1, Wave[event.nextWave] do
