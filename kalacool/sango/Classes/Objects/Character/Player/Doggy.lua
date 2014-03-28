@@ -31,7 +31,10 @@ function new(config)
 		physics.addBody( Doggy.image
 			,{ density=10.0, friction=0, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
 			,{ density=10.0, friction=0, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}
-            ,{ isSensor = true,radius = 70,filter=Doggy.Filter})
+
+            ,{ isSensor = true,radius = 70,filter=Doggy.Filter}
+            ,{ density=1.0, friction=0 , bounce=0,shape=Doggy.wall, filter= { categoryBits = 64, maskBits = 4 } })
+
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet 		= true
         Doggy.image.gravityScale = 0
@@ -83,6 +86,7 @@ function new(config)
 
 	Doggy.Shape = { -shapew, -shapeh+30, shapew, -shapeh+30, shapew,53, -shapew,53 }
 	Doggy.foot	= { -shapew+2, 53, shapew-2,53, shapew-2, shapeh, -shapew+2, shapeh }
+    Doggy.wall  = { shapew -20, -1000, shapew,-1000, shapew, 1000, shapew - 20, 1000 }
 	--physics.setDrawMode( "hybrid" )
     
 	--body.x=Doggy.x
