@@ -383,13 +383,13 @@ function new(config)
 			
 						if(vx-standard*event.joyX>limit)then
 										
-							Player.image:setLinearVelocity( limit, -standard*1.5*event.joyY )
+							Player.image:setLinearVelocity( limit, -standard*1.3*event.joyY )
 
 						elseif(vx-standard*event.joyX<-limit)then
-							Player.image:setLinearVelocity( -limit, -standard*1.5*event.joyY )
+							Player.image:setLinearVelocity( -limit, -standard*1.3*event.joyY )
 						else 
 							
-							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*1.5*event.joyY )
+							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*1.3*event.joyY )
 						end
 									
 					end
