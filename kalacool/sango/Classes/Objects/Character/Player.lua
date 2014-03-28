@@ -57,7 +57,6 @@ function new(config)
 	Player.image.shootFaster = false
 	Player.image.magazineRate = 1
 	Player.image.shootFasterBuffTime =0
-	-- Player.image.gravityScale = -9999
 	--- Dog buff effect  END ---
 	function Player.superfloat()
 		if(Player.alive==true)then
