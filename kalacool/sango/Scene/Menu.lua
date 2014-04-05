@@ -86,6 +86,17 @@ function scene:createScene( event )
     screenGroup:insert( buttonAchievement )
     screenGroup:insert( buttonOption )
     screenGroup:insert( buttonExit )
+
+    -----------------demo
+    buttonAchievement.isVisible = false
+    buttonOption.isVisible = false
+    text = display.newText("", 0, 0, native.systemFont, 50)
+    text:setFillColor( 255, 255, 255 )
+    text.x, text.y = display.contentWidth/2, 100
+    text.text =  "DEMO Version"
+    screenGroup:insert(text)
+    -----------------
+
 ----------------- Menu Buttion End -------------
 end
 

@@ -175,6 +175,14 @@ function scene:createScene( event )
     buttonBack.x =display.contentWidth/2 ; buttonBack.y = display.contentHeight/2 + 250
     group:insert( buttonBack )
 
+
+    --------------demo
+    buttonBoss.isVisible = false
+    for  i=6, 10 do
+        buttonLV[i].isVisible = false
+    end 
+    --------------
+
     ------------------- charSelBtn Start ---------------
         local buttonCharSelBtn = widget.newButton
             {
@@ -184,7 +192,7 @@ function scene:createScene( event )
                 font = "arial",
             }
 
-            buttonCharSelBtn.x = 40 ; buttonCharSelBtn.y = display.contentHeight-40
+            buttonCharSelBtn.x = 40 ; buttonCharSelBtn.y = display.contentHeight-100
 
         group:insert( buttonCharSelBtn )
     ------------------- charSelBtn End ---------------
