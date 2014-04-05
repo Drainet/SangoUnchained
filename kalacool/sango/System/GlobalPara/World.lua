@@ -156,6 +156,26 @@
 				_World.StaticWorld.Thorn.Physic.Option	= { density=1, friction=0.3, bounce=0}
 		----
 
+		----------------[ pipeUp ] ----------------
+			_World.StaticWorld.pipeUp = {}
+
+			_World.StaticWorld.pipeUp.ImagePath 	= "kalacool/sango/image/world/staticWorld/pipeUp.png"	
+			_World.StaticWorld.pipeUp.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
+			_World.StaticWorld.pipeUp.Physic			= {}
+				_World.StaticWorld.pipeUp.Physic.Type	= "static"
+				_World.StaticWorld.pipeUp.Physic.Option	= { density=1, friction=0.3, bounce=0}
+		----
+
+		----------------[ pipeDown ] ----------------
+			_World.StaticWorld.pipeDown = {}
+
+			_World.StaticWorld.pipeDown.ImagePath 	= "kalacool/sango/image/world/staticWorld/pipeDown.png"	
+			_World.StaticWorld.pipeDown.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
+			_World.StaticWorld.pipeDown.Physic			= {}
+				_World.StaticWorld.pipeDown.Physic.Type	= "static"
+				_World.StaticWorld.pipeDown.Physic.Option	= { density=1, friction=0.3, bounce=0}
+		----
+
 	---------------- Static World End ----------------
 
 

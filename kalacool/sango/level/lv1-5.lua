@@ -34,7 +34,7 @@ level.layers["Supplement"].objects = {}
 level.layers["Image"] = display.newGroup()
 level.layers["Image"].name = "Image"
 level.layers["Image"].objects = {}
- level.layers["StaticWorld"].objects["object0"] = WorldSet.newhor_floor({x=300,y=10})
+ level.layers["StaticWorld"].objects["object0"] = WorldSet.newPipeUp({x=300,y=10})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object0"].image)
  level.layers["StaticWorld"].objects["object1"] = WorldSet.newhor_floor({x=900,y=10})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object1"].image)

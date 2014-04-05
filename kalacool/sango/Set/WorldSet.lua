@@ -1,5 +1,7 @@
 local FloorClass = require ("kalacool.sango.Classes.Objects.World.StaticWorld.Floor")
 local Thorn = require ("kalacool.sango.Classes.Objects.World.StaticWorld.Thorn")
+local pipeUp = require ("kalacool.sango.Classes.Objects.World.StaticWorld.pipeUp")
+local pipeDown = require ("kalacool.sango.Classes.Objects.World.StaticWorld.pipeDown")
 local Box = require ("kalacool.sango.Classes.Objects.World.DynamicWorld.Box")
 local CompanionCube = require ("kalacool.sango.Classes.Objects.World.DynamicWorld.CompanionCube")
 local WoodenDoor = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.WoodenDoor")
@@ -27,6 +29,14 @@ end
 
 function WorldSet.newThorn(config)
     return Thorn.new(config)
+end
+
+function WorldSet.newPipeUp(config)
+    return pipeUp.new(config)
+end
+
+function WorldSet.newPipeDown(config)
+    return pipeDown.new(config)
 end
 
 function WorldSet.newhor_floor(config)
