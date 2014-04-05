@@ -40,12 +40,12 @@ function scene:createScene( event )
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
 
-    dog=PlayerSet.new(characterConfig.char,{x=100,y=2000})
+    dog=PlayerSet.new(characterConfig.char,{x=100,y=300})
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
     local background = BackgroundSet.setBackgroundLayer(myLevel,dog,
-        {{imgPath = "kalacool/sango/image/test/castle.jpg",x = 40,y = 10}})
+        {{imgPath = "kalacool/sango/image/gameBackground/flappy.png",x = 40,y = 380}})
 
     camera:insert(myLevel)
     camera:insert(dog.image)
