@@ -40,7 +40,7 @@ function scene:createScene( event )
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
 
-    dog=PlayerSet.new(characterConfig.char,{x=300,y=300})
+    dog=PlayerSet.new(characterConfig.char,{x=300,y=1000})
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"

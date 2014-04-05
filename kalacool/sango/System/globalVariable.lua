@@ -11,8 +11,8 @@ local scene = scene
         cameraMaxRange = {}
         cameraMaxRange.left     = 500   
         cameraMaxRange.right    = -51400
-        cameraMaxRange.up       = 0   
-        cameraMaxRange.down     = 1
+        cameraMaxRange.up       = -720   
+        cameraMaxRange.down     = -719
         -- cameraMaxRange.down     = -5000
 
         totalLevel = 10 
