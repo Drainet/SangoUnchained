@@ -157,7 +157,7 @@ function new(config)
 		if( event.other.damage=="fatal" and Player.isInvincible==true) then
 
 			if(event.contact~=nil)then
-				event.contact.isEnabled=false
+				--event.contact.isEnabled=false
 			end
 		end
 
@@ -184,7 +184,7 @@ function new(config)
 				Player.knife:play()
 				
 			end
-			if( event.other.damage=="fatal"and Player.isInvincible==false and(event.selfElement ~= 3)) then
+			if( event.other.damage=="fatal"and Player.isInvincible==false and(event.selfElement ~= 3)and(event.selfElement ~= 4)) then
 				Animation:wound()
 				Player.unSuperfloat()
 				if(event.other.damageValue == nil )then
@@ -382,13 +382,13 @@ function new(config)
 			
 						if(vx-standard*event.joyX>limit)then
 										
-							Player.image:setLinearVelocity( limit, -standard*1.5*event.joyY )
+							Player.image:setLinearVelocity( limit, -standard*1.3*event.joyY )
 
 						elseif(vx-standard*event.joyX<-limit)then
-							Player.image:setLinearVelocity( -limit, -standard*1.5*event.joyY )
+							Player.image:setLinearVelocity( -limit, -standard*1.3*event.joyY )
 						else 
 							
-							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*1.5*event.joyY )
+							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*1.3*event.joyY )
 						end
 									
 					end
@@ -464,6 +464,7 @@ function new(config)
 	function Player:respawn( event )
 		--Player.show(Player.image.lastCheckPoint)
 		scene:dispatchEvent( {name='playerRespawn'} )
+
 		Player.default()
 		
 	end
@@ -499,6 +500,8 @@ function new(config)
 				Player.image.alpha = 1
 				Player.isInvincible=false
 				Player.image.isAwake=true
+				Player.image.x = Player.image.x+5
+				Player:setPlayerShow()
 			end
 			-- body
 		end
