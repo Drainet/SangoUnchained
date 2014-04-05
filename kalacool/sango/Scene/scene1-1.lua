@@ -20,14 +20,14 @@ function scene:createScene( event )
     local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
 
-    local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
-    local starSystem = starSystemClass.new({fs=3,ct=1000,ss=3,ct=1000,ts=3,ct=1000})
+    -- local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
+    -- local starSystem = starSystemClass.new({fs=3,ct=1000,ss=3,ct=1000,ts=3,ct=1000})
 
-    local achievementSystemClass = require "kalacool.sango.System.AchievementSystem"
-    local achievement = achievementSystemClass.new()
+    -- local achievementSystemClass = require "kalacool.sango.System.AchievementSystem"
+    -- local achievement = achievementSystemClass.new()
 
-    local moneySystemClass = require "kalacool.sango.System.MoneySystem"
-    local moneySystem = moneySystemClass.new()
+    -- local moneySystemClass = require "kalacool.sango.System.MoneySystem"
+    -- local moneySystem = moneySystemClass.new()
 
     local levelDirector = require "kalacool.sango.level.lv1-1"
 
@@ -53,7 +53,7 @@ function scene:createScene( event )
 
     camera:insert(myLevel)
     camera:insert(dog.image)
-    HUD:insert(starSystem)
+    -- HUD:insert(starSystem)
     HUD:insert(pauseMenu )
     HUD:insert(dog.HUD )
     group:insert( background )

@@ -29,12 +29,12 @@ function scene:createScene( event )
     local buttonPlay = widget.newButton
         {
             id = "Play",
-            defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
-            overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonGray.png",
+            -- overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Play",
-            labelColor = {default = {255, 255, 255, 255}},
+            labelColor = {default = {0, 0, 0, 1}},
             font = "arial",
-            fontSize = 28,
+            fontSize = 45,
             emboss = true,
             onPress = buttonHandler,
         }
@@ -42,10 +42,10 @@ function scene:createScene( event )
     local buttonAchievement = widget.newButton
         {
             id = "Achievement",
-            defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
-            overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonGray.png",
+            -- overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Achievement",
-            labelColor = {default = {255, 255, 255, 255}},
+            labelColor = {default = {0, 0, 0, 255}},
             font = "arial",
             fontSize = 28,
             emboss = true,
@@ -55,10 +55,10 @@ function scene:createScene( event )
     local buttonOption = widget.newButton
         {
             id = "Option",
-            defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
-            overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonGray.png",
+            -- overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Option",
-            labelColor = {default = {255, 255, 255, 255}},
+            labelColor = {default = {0, 0, 0, 255}},
             font = "arial",
             fontSize = 28,
             emboss = true,
@@ -68,19 +68,19 @@ function scene:createScene( event )
     local buttonExit = widget.newButton
         {
             id = "Exit",
-            defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
-            overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonGray.png",
+            -- overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Exit",
-            labelColor = {default = {255, 255, 255, 255}},
+            labelColor = {default = {0, 0, 0, 255}},
             font = "arial",
-            fontSize = 28,
+            fontSize = 45,
             emboss = true,
             onPress = buttonHandler,
         }
     buttonPlay.x =display.contentWidth/2        ; buttonPlay.y = display.contentHeight/2        -100
     buttonAchievement.x =display.contentWidth/2 ; buttonAchievement.y = display.contentHeight/2
     buttonOption.x =display.contentWidth/2      ; buttonOption.y = display.contentHeight/2      +100
-    buttonExit.x =display.contentWidth/2        ; buttonExit.y = display.contentHeight/2        +200
+    buttonExit.x =display.contentWidth/2        ; buttonExit.y = display.contentHeight/2        +100
 
     screenGroup:insert( buttonPlay )
     screenGroup:insert( buttonAchievement )
@@ -91,8 +91,9 @@ function scene:createScene( event )
     buttonAchievement.isVisible = false
     buttonOption.isVisible = false
     text = display.newText("", 0, 0, native.systemFont, 50)
-    text:setFillColor( 255, 255, 255 )
-    text.x, text.y = display.contentWidth/2, 100
+    text:setFillColor( 1, 1, 1 )
+    text.alpha = 0.4
+    text.x, text.y = display.contentWidth/2, 70
     text.text =  "DEMO Version"
     screenGroup:insert(text)
     -----------------

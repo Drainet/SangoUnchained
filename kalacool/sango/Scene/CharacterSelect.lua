@@ -48,7 +48,8 @@ function scene:enterScene( event )
     local charSelMenu = display.newGroup()
 
         local menuBackground= display.newImage("kalacool/sango/image/UI/chSel/charSelMenu.png", true)
-        menuBackground.x = display.contentWidth/2    ; menuBackground.y = display.contentHeight/2 + 50
+        menuBackground.alpha = 0.9
+        menuBackground.x = display.contentWidth/2    ; menuBackground.y = display.contentHeight/2 
 
         ---- Buttons Start----
             btnCharNext = widget.newButton
@@ -109,27 +110,27 @@ function scene:enterScene( event )
         ---- Buttons End----
 
         ---- Text Start----
-            local curCharText = display.newText("", 0, 0, "arial", 30)
-            local curWpn1Text = display.newText("", 0, 0, "arial", 30)
-            local curWpn2Text = display.newText("", 0, 0, "arial", 30)
+            local curCharText = display.newText("", 0, 0, "arial", 70)
+            local curWpn1Text = display.newText("", 0, 0, "arial", 70)
+            local curWpn2Text = display.newText("", 0, 0, "arial", 70)
 
-            curCharText:setFillColor( 255, 255, 255 )
-            curWpn1Text:setFillColor( 255, 255, 255 )
-            curWpn2Text:setFillColor( 255, 255, 255 )
+            curCharText:setFillColor( 0, 0, 0 )
+            curWpn1Text:setFillColor( 0, 0, 0 )
+            curWpn2Text:setFillColor( 0, 0, 0 )
 
-            curCharText.x = menuBackground.x - 300   ; curCharText.y = menuBackground.y - 200
-            curWpn1Text.x = menuBackground.x - 300   ; curWpn1Text.y = menuBackground.y 
-            curWpn2Text.x = menuBackground.x - 300   ; curWpn2Text.y = menuBackground.y + 100
+            curCharText.x = menuBackground.x - 350   ; curCharText.y = menuBackground.y - 230
+            curWpn1Text.x = menuBackground.x - 350   ; curWpn1Text.y = menuBackground.y 
+            curWpn2Text.x = menuBackground.x - 350   ; curWpn2Text.y = menuBackground.y + 125
         ---- Text End ----
 
-        btnCharNext.x = menuBackground.x - 110       ; btnCharNext.y = menuBackground.y - 200
-        btnCharLast.x = menuBackground.x - 200       ; btnCharLast.y = menuBackground.y - 200
-        btnWpn1Next.x = menuBackground.x - 110       ; btnWpn1Next.y = menuBackground.y 
-        btnWpn1Last.x = menuBackground.x - 200       ; btnWpn1Last.y = menuBackground.y 
-        btnWpn2Next.x = menuBackground.x - 110       ; btnWpn2Next.y = menuBackground.y + 100
-        btnWpn2Last.x = menuBackground.x - 200       ; btnWpn2Last.y = menuBackground.y + 100
+        btnCharNext.x = menuBackground.x - 70       ; btnCharNext.y = curCharText.y
+        btnCharLast.x = menuBackground.x - 170       ; btnCharLast.y = curCharText.y
+        btnWpn1Next.x = menuBackground.x - 70       ; btnWpn1Next.y = curWpn1Text.y 
+        btnWpn1Last.x = menuBackground.x - 170       ; btnWpn1Last.y = curWpn1Text.y 
+        btnWpn2Next.x = menuBackground.x - 70       ; btnWpn2Next.y = curWpn2Text.y
+        btnWpn2Last.x = menuBackground.x - 170       ; btnWpn2Last.y = curWpn2Text.y
 
-        buttonExit.x = display.contentWidth-220   ; buttonExit.y = 170
+        buttonExit.x = display.contentWidth - 185   ; buttonExit.y = 70
 
         charSelMenu:insert(menuBackground)
 

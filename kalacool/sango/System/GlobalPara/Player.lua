@@ -1,10 +1,18 @@
 --[[
 ---------------------------------------------------------------
-	This is parameter about everything in Player Object
+	Here is the parameter about everything in Player Object
 ---------------------------------------------------------------
 --]]
 
 	_Player = {}
+
+	---------------- [ Player Setting ] ----------------
+		_Player.player = {}
+
+		_Player.player.Life 		= 10
+		_Player.player.Power		= 3000	-- which means ammo
+	----
+	---------------- [ shadow ] ----------------
 
 	---------------- [ Doggy ] ----------------
 		_Player.Doggy = {}

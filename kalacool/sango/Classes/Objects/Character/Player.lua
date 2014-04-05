@@ -22,9 +22,6 @@ local Atan2 = math.atan2
  
 function new(config)
     --create Player display objectc
-	
-	--local Heart = heartClass.new(3)
-	
 
     local Player = CharacterClass.new()
 	Player.image=display.newGroup()
@@ -34,8 +31,8 @@ function new(config)
 	Player.alive=true
 	Player.noDead=true
 	Player.image.power = 4
-	Player.powerTank = powerClass.new(1000)
-	Player.heart=heartClass.new(5)
+	Player.powerTank = powerClass.new(_Player.player.Power)
+	Player.heart=heartClass.new(_Player.player.Life)
 	Player.switch=switchClass.new(Player)
 	Player.SF=SFclass.new(Player)
 	Player.image.lastCheckPoint=config	
@@ -149,9 +146,7 @@ function new(config)
 				if(Player.Magazine.isonAir == true)then
 					Player.Magazine.onGround()
 				end
-
 			end
-
 		end
 
 		if( event.other.damage=="fatal" and Player.isInvincible==true) then
@@ -160,13 +155,7 @@ function new(config)
 				--event.contact.isEnabled=false
 			end
 		end
-
-
-
-
 	end
-
-
 
 	function Player.image:collision(event )
 	
@@ -202,43 +191,26 @@ function new(config)
 						else	
 							Player.image:setLinearVelocity( 200, -300 )
 						end
-
 					end
-					
 				end
 
 				if(Player.heart.num<=0)then
 					timer.performWithDelay( 0, Player.dead,1 )
 				end
-					
-					
-
 			end
-			
-	    	
-			
 			---žåˆ°´å‘½©éè¡¨é¢----
-			
-
-
 		elseif ( event.phase == "ended" ) then
 
 			---³é›¢‹å¨ç‰©é«”è¡¨---
 			if(event.other.damage=="safe" and event.selfElement == 1) then
-
-				
 				-- Player.body:setSequence( "jump" )
 				-- Player.body:play()
 
 				-- if(Player.Magazine.isonAir == false)then
 				-- 	Player.Magazine.onAir()
 				-- end
-				
-
 			end
-
 		end
-
 	end
 
 	function Player:objectState(event)
@@ -267,15 +239,11 @@ function new(config)
 	        
 	        if((vy>30 or vy<-30) )then
 
-	        	
-
 	        	if(Player.body.sequence ~= "jump" )then
 					Player.body:setSequence( "jump" )
 					Player.body:play()
 				end
 	        	
-				
-
 				if(Player.Magazine.isonAir == false)then
 					Player.Magazine.onAir()
 				end
@@ -283,22 +251,12 @@ function new(config)
 	        else
 
 	        end
-
 	    end
-
-	    
-
-
-	    
     end
-
-
-
 
 --------ç¢°æ end---
 	function Player.noSticky( )
 		Player.isSticky=false
-			
 
 		if(Player.stickTimer~=nil)then
 			timer.cancel( Player.stickTimer )
@@ -308,20 +266,15 @@ function new(config)
 		if(Player.stickTimer==nil)then
 			Player.stickTimer=timer.performWithDelay( 100, Player.setpreCollision ,1 )
 		end
-
 	end
 
-
-
 --------‹æ start---
-
 	function Player.control( event )
 		
 		-- local coolX= -camera.x+Player.fingerX-Player.image.x
 			-- local coolY= -camera.y+Player.fingerY-Player.image.y
 			-- local ratio = math.sqrt((coolX)^2+(coolY)^2)
-			-- local angle= (Atan2( coolY,coolX)*180/Pi)
-			
+			-- local angle= (Atan2( coolY,coolX)*180/Pi)		
 
 			if(event.joyAngle~=false )then
 
@@ -336,9 +289,7 @@ function new(config)
 				end
 
 				local angle=  event.joyAngle-90
-			
-			
-
+		
 				if(Player.image.xScale == 1)then
 					Player.handGroup.rotation=  angle+180
 				elseif(Player.image.xScale == -1)then
@@ -351,7 +302,6 @@ function new(config)
 					Player.image.xScale = 1
 				end
 				
-
 				if(Player.shootable==true and Player.powerTank.value>0 and Player.alive==true )then
 					Player.gun:setSequence( "shoot" )
 					Player.gun:play()
@@ -362,16 +312,9 @@ function new(config)
 						Player.shootable=true
 					end
 					timer.performWithDelay( Player.Weapon.para.rate, coolover, 1)
-
-					
+	
 					local bulletgroup=Player.bullet.new(Player.image.x + Player.handGroup.x , Player.image.y + Player.handGroup.y, 1000*event.joyX, 1000*event.joyY)
 
-					
-
-
-					
-
-					
 					camera:insert(bulletgroup)			
 				    local vx, vy = Player.image:getLinearVelocity()								
 					local limit=Player.Weapon.recoil+100
@@ -379,7 +322,6 @@ function new(config)
 
 					if(Player.isFloat ~= true)then
 					
-			
 						if(vx-standard*event.joyX>limit)then
 										
 							Player.image:setLinearVelocity( limit, -standard*1.3*event.joyY )
@@ -389,14 +331,11 @@ function new(config)
 						else 
 							
 							Player.image:setLinearVelocity( vx-standard*event.joyX, -standard*1.3*event.joyY )
-						end
-									
+						end			
 					end
 				end
-			
 			end
 	end
-
 
 	Player.joystick = joystickClass.newJoystick{
 		outerImage = "",						-- Outer Image - Circular - Leave Empty For Default Vector
@@ -451,22 +390,14 @@ function new(config)
 		-- 	Player.isShooting = false
 		-- end
 		return true
-
 	end
-		
 --------‹æ end---
 
-	
-
-
 -------å¾©æ´» æ­»äº¡ start---
-
 	function Player:respawn( event )
 		--Player.show(Player.image.lastCheckPoint)
 		scene:dispatchEvent( {name='playerRespawn'} )
-
 		Player.default()
-		
 	end
 
 	function Player:dead( event )
@@ -495,7 +426,6 @@ function new(config)
 				Player.image.alpha = 0.2
 			end
 
-
 			if(event.count==time)then
 				Player.image.alpha = 1
 				Player.isInvincible=false
@@ -516,7 +446,6 @@ function new(config)
 		Player.isInvincible=true
 
 	end
-
 -------å¾©æ´» æ­»äº¡ end---
 
 	-- Send message to All monster to trace player's path
@@ -543,10 +472,6 @@ function new(config)
         
   --   end
 
-   
-   
-
-	
 	--scene:addEventListener( 'removeAllEvent', Player )
 	scene:addEventListener( 'objectState', Player )
 	-- scene:addEventListener( 'screenTouch', Player )
@@ -556,8 +481,6 @@ function new(config)
 	Player.listeners[table.maxn(Player.listeners)+1] = {event='objectState' , listener = Player}
 	Player.listeners[table.maxn(Player.listeners)+1] = {event='screenTouch' , listener = Player}
 	--Player.listeners[2] = {event='onSwitchTouch',listener=Player}
-
-	
  
     --add to Instances table
     return Player

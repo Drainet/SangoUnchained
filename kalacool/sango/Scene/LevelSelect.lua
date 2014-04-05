@@ -76,9 +76,9 @@ function scene:createScene( event )
             buttonLV[i] = widget.newButton
                 {
                     id = "1-" .. i,
-                    defaultFile = "kalacool/sango/image/UI/Menu/lvBlue.png",
+                    defaultFile = "kalacool/sango/image/UI/Menu/lvGray.png",
                     label = "1-" .. i,
-                    labelColor = {default = {255, 255, 255, 255}},
+                    labelColor = {default = {0, 0, 0, 255}},
                     font = "arial",
                     fontSize = 28,
                     emboss = true,
@@ -162,17 +162,17 @@ function scene:createScene( event )
     buttonBack = widget.newButton
         {
             id = "Back",
-            defaultFile = "kalacool/sango/image/UI/Menu/buttonBlue.png",
-            overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonGray.png",
+            -- overFile = "kalacool/sango/image/UI/Menu/buttonOrange.png",
             label = "Back",
-            labelColor = {default = {255, 255, 255, 255}},
+            labelColor = {default = {0, 0, 0, 255}},
             font = "arial",
-            fontSize = 28,
+            fontSize = 45,
             emboss = true,
             onPress = buttonHandler,
         }
 
-    buttonBack.x =display.contentWidth/2 ; buttonBack.y = display.contentHeight/2 + 250
+    buttonBack.x =display.contentWidth/2  ; buttonBack.y = display.contentHeight/2 + 250
     group:insert( buttonBack )
 
 
@@ -192,7 +192,7 @@ function scene:createScene( event )
                 font = "arial",
             }
 
-            buttonCharSelBtn.x = 40 ; buttonCharSelBtn.y = display.contentHeight-100
+            buttonCharSelBtn.x = display.contentWidth - 255 ; buttonCharSelBtn.y = display.contentHeight/2 + 250
 
         group:insert( buttonCharSelBtn )
     ------------------- charSelBtn End ---------------
