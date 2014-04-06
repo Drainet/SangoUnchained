@@ -212,6 +212,9 @@ level.layers["Image"].objects = {}
  level.layers["StaticWorld"].objects["object87"] = WorldSet.newhor_floor({x=10,y=1080})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object87"].image)
  level.layers["StaticWorld"].objects["object87"].image:rotate(90)
+
+MonsterSpawnWavesClass.addMonster({ID=301,x=500,y=1080,wave=1,xR=7000})
+
  level.layers["StaticWorld"].objects["object88"] = WorldSet.newhor_floor({x=300,y=1430})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object88"].image)
  level.layers["StaticWorld"].objects["object89"] = WorldSet.newhor_floor({x=900,y=1430})
@@ -384,6 +387,8 @@ level.layers["Image"].objects = {}
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object172"].image)
  level.layers["StaticWorld"].objects["object173"] = WorldSet.newhor_floor({x=51000,y=1420})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object173"].image)
+ level.layers["InteractiveWorld"].objects["object175"] = MechanismSet.newMonsterSpawnZone({x=800,y=1098,wave=1})
+ level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object175"].image)
     -- scene:dispatchEvent({name='nextWave',nextWave = 1})
     level:insert(MonsterImageGroup)
     level:insert(level.layers["StaticWorld"])

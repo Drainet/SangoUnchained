@@ -1,7 +1,5 @@
 --Classes/Objects/World/StaticWorld/Thorn.lua
 
-
-
 module(..., package.seeall)
 
 local scene = scene

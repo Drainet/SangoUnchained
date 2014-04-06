@@ -31,7 +31,7 @@ function scene:createScene( event )
 
     local physics = require("physics")
     physics.start()
-    --physics.setDrawMode( "hybrid" )
+    -- physics.setDrawMode( "hybrid" )
  
     local myLevel = levelDirector.CreateLevel(physics)
 

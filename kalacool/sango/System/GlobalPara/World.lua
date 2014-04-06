@@ -33,6 +33,16 @@
 	---------------- Interactive World Start ----------------
 		_World.InteractiveWorld = {}
 
+		----------------[ chasingTrap ] ----------------
+			_World.InteractiveWorld.chasingTrap = {}
+
+			_World.InteractiveWorld.chasingTrap.ImagePath 	= "kalacool/sango/image/world/interactiveWorld/chasingTrap.png"	
+			_World.InteractiveWorld.chasingTrap.Damage 	= "fatal"		--  "safe" = no damage, "fatal" = have damage			
+			_World.InteractiveWorld.chasingTrap.Physic			= {}
+				_World.InteractiveWorld.chasingTrap.Physic.Type	= "kinematic"
+				_World.InteractiveWorld.chasingTrap.Physic.Option	= { density=1, friction=0.3, bounce=0}
+			_World.InteractiveWorld.chasingTrap.Velocity = 200
+		----
 		----------------[ Drum ] ----------------
 			_World.InteractiveWorld.Drum = {}
 

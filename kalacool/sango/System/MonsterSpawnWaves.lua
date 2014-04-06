@@ -27,11 +27,13 @@ function NextWaveHandler(ImageGroup)
     function Content:nextWave(event)
         local function noText()
             Text.text = "" 
-            for i = 1, Wave[event.nextWave] do
-                imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
-                table.remove(Monster,1)
+            if Wave[event.nextWave] ~= nil then
+                for i = 1, Wave[event.nextWave] do
+                    imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
+                    table.remove(Monster,1)
+                end
+                scene:dispatchEvent( {name='onPlayerShow',target = dog} )
             end
-            scene:dispatchEvent( {name='onPlayerShow',target = dog} )
         end
 
         -- local function Go()

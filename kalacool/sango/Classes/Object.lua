@@ -32,13 +32,8 @@ function new()
 	function Object.dispose()
 		--hide this object
 		for i = 1,table.maxn( Object.listeners) do
-			
-			scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )
-			
+			scene:removeEventListener( Object.listeners[i].event, Object.listeners[i].listener )	
 		end
-
-		
-
 		for i = 1,table.maxn( Object.timers) do
 			if(Object.timers[i]~=nil)then
 		 		timer.cancel( Object.timers[i] )
@@ -51,9 +46,7 @@ function new()
 
 		display.remove( Object.image )
 		Object.image = nil
-
 	end
-
 
 	function Object.freeze()
 		--hide this object
@@ -63,54 +56,38 @@ function new()
 			
 		end
 
-		
-
-
 		for i = 1,table.maxn( Object.timers) do
 			--print(Object.listeners[i].event)
 			if(Object.timers[i]~=nil)then
 		 		timer.pause( Object.timers[i] )
 			end
 		end
-
 	end
 
 	function Object.unfreeze()
 		--hide this object
 		for i = 1,table.maxn( Object.listeners) do
-			
 			 scene:addEventListener( Object.listeners[i].event, Object.listeners[i].listener )
-			 
 		end
 
-		
-
 		for i = 1,table.maxn( Object.timers) do
-			
 			if(Object.timers[i]~=nil)then
 				
 		 		timer.resume( Object.timers[i] )
 			end
 		end
-
 	end
 
 	function Object:removeAllEvent(event)
-        
         Object.dispose()
-
     end
 
     function Object:pauseAllEvent(event)
-        
         Object.freeze()
-
     end
 
     function Object:resumeAllEvent(event)
-        
         Object.unfreeze()
-
     end
 
     scene:addEventListener( 'removeAllEvent', Object )
@@ -120,8 +97,6 @@ function new()
 	-- Object.listeners[table.maxn(Object.listeners)+1] = {event='removeAllEvent' , listener = Object}
 	-- Object.listeners[table.maxn(Object.listeners)+1] = {event='pauseAllEvent' , listener = Object}
 	-- Object.listeners[table.maxn(Object.listeners)+1] = {event='resumeAllEvent' , listener = Object}
-	
-
     
 	return Object
 end
