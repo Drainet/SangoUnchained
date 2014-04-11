@@ -16,5 +16,15 @@ function new(config)
     Box.show(config)
     physics.addBody( Box.image, _World.DynamicWorld.Box.Physic.Type, _World.DynamicWorld.Box.Physic.Option )
 
+    function Box.image:collision(event )
+    	if ( event.phase == "began" ) then
+			if( event.other.damage=="fatal" ) then
+				Box.dispose()
+			end
+		end
+	end
+
+	Box.image:addEventListener( "collision")
+
     return Box
 end

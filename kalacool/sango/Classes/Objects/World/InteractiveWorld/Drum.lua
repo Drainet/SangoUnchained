@@ -35,7 +35,7 @@ function new(config)
                     local circle = display.newCircle( Drum.image.x, Drum.image.y, 300 )  
                     circle.removed = false
                     circle.type = "explosive"
-                    circle.damage = "fatal"
+                    circle.damage = "safe"
                     circle.damageValue = 3
                     circle.power = 10
                     function circle.removeSensor()

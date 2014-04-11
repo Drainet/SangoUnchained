@@ -15,6 +15,16 @@ function new(config)
     physics.addBody( CompanionCube.image, _World.DynamicWorld.CompanionCube.Physic.Type, _World.DynamicWorld.CompanionCube.Physic.Option )
     CompanionCube.image.isFixedRotation = _World.DynamicWorld.CompanionCube.isFixedRotation
     
+    function CompanionCube.image:collision(event )
+    	if ( event.phase == "began" ) then
+			if( event.other.damage=="fatal" ) then
+				CompanionCube.dispose()
+			end
+		end
+	end
+
+	CompanionCube.image:addEventListener( "collision")
+
 
     return CompanionCube
 end
