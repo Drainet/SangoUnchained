@@ -37,7 +37,7 @@ function new(config)
 
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet 		= true
-        Doggy.image.gravityScale = 0
+        --Doggy.image.gravityScale = 0
 		Doggy.alive 				= true
 
 		Doggy.heart.full()
