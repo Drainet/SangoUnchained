@@ -3,6 +3,7 @@ local scene = scene
 CharacterClass = require('kalacool.sango.Classes.Objects.Character')
 require "kalacool.sango.animation.Animation"
 require "kalacool.sango.Set.Weapon"
+local storyboard = require( "storyboard" )
 system.activate( "multitouch" )
 
 local joystickClass = require( "kalacool.sango.HUD.joystick" )
@@ -397,7 +398,8 @@ function new(config)
 	function Player:respawn( event )
 		--Player.show(Player.image.lastCheckPoint)
 		scene:dispatchEvent( {name='playerRespawn'} )
-		Player.default()
+		storyboard.gotoScene( "kalacool.sango.Scene.reloading", "fade", 200  )
+		-- Player.default()
 	end
 
 	function Player:dead( event )

@@ -10,6 +10,13 @@ eventCentral = eventCentralClass.new()
 function scene:createScene( event )
     local group = self.view
 
+end
+
+-- Called immediately after scene has moved onscreen:
+function scene:enterScene( event )
+    local group = self.view
+    storyboard.removeScene( storyboard.getPrevious() )
+    
     eventCentral.start()
     camera = display.newGroup()
     HUD = display.newGroup()
@@ -82,14 +89,6 @@ function scene:createScene( event )
         end
     end
     Runtime:addEventListener( "enterFrame", onEveryFrame )
-
-end
-
--- Called immediately after scene has moved onscreen:
-function scene:enterScene( event )
-    local group = self.view
-    storyboard.removeScene( storyboard.getPrevious() )
-
 end
 
 -- Called when scene is about to move offscreen:
