@@ -435,7 +435,8 @@ function new(config)
 	    local phase = event.phase
 
 		if "began" == phase then
-			display.getCurrentStage():setFocus( Player.touchAreaA)
+			display.getCurrentStage():setFocus( Player.touchAreaA, event.id)
+
 			--display.getCurrentStage():setFocus( display.getCurrentStage() )
 			
 
@@ -457,17 +458,17 @@ function new(config)
 
 
 		if "ended" == phase then
-			display.getCurrentStage():setFocus( nil )
+			--display.getCurrentStage():setFocus( nil )
 			Player.isShooting = false
 		end
-	    return true
+	    --return true
 	end 
 
 	function Player.touchAreaB:touch( event )
 	    local phase = event.phase
 
 		if "began" == phase then
-			display.getCurrentStage():setFocus( Player.touchAreaB)
+			display.getCurrentStage():setFocus( Player.touchAreaB, event.id)
 			--display.getCurrentStage():setFocus( display.getCurrentStage() )
 			
 
@@ -487,11 +488,11 @@ function new(config)
 
 
 		if "ended" == phase then
-			display.getCurrentStage():setFocus( nil )
+			--display.getCurrentStage():setFocus( nil )
 			Player.isFly = false
 			
 		end
-	    return true
+	    --return true
 	end 
 
 	function Player:screenTouch( event )

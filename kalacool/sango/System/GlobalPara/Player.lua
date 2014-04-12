@@ -17,7 +17,7 @@
 	---------------- [ Doggy ] ----------------
 		_Player.Doggy = {}
 
-		_Player.Doggy.Speed = 200
+		_Player.Doggy.Speed = 300
 
 		_Player.Doggy.ImageSheetPath 		= "kalacool/sango/image/character/coodog.png"
 		_Player.Doggy.ImageSheetOption 		= { width=120, height=113, numFrames=12 }
