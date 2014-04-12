@@ -53,7 +53,7 @@
 		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/monster/FireBall/fireball.png"
 		_Enemy.Monster_fireball.Physic			= {}
 			_Enemy.Monster_fireball.Physic.Type		= "dynamic"
-			_Enemy.Monster_fireball.Physic.Option	= {density = 5,filter = {categoryBits = 4, maskBits = 226 }}
+			_Enemy.Monster_fireball.Physic.Option	= {density = 5,filter = {categoryBits = 4, maskBits = 482 }}
 		_Enemy.Monster_fireball.isFixedRotation	= true
 		_Enemy.Monster_fireball.damageValue		= 1
 		_Enemy.Monster_fireball.gravityScale	= 0
@@ -75,7 +75,7 @@
         	}
 		_Enemy.Monster_smashball.Physic			= {}
 			_Enemy.Monster_smashball.Physic.Type		= "dynamic"
-			_Enemy.Monster_smashball.Physic.Option	= {density = 5,filter = {categoryBits = 4, maskBits = 226 }}
+			_Enemy.Monster_smashball.Physic.Option	= {density = 5,filter = {categoryBits = 4, maskBits = 482 }}
 		_Enemy.Monster_smashball.isFixedRotation	= true
 		_Enemy.Monster_smashball.damageValue		= 1
 		_Enemy.Monster_smashball.gravityScale	= 0
@@ -91,7 +91,7 @@
 		_Enemy.Monster_Slime.ImagePath			= "kalacool/sango/image/monster/Slime/slime.png"
 		_Enemy.Monster_Slime.Physic				= {}
 			_Enemy.Monster_Slime.Type				= "dynamic"
-			_Enemy.Monster_Slime.Option				= {density = 10, friction = 0.7,filter = { categoryBits = 4, maskBits = 227}}
+			_Enemy.Monster_Slime.Option				= {density = 10, friction = 0.7,filter = { categoryBits = 4, maskBits = 482}}
 		_Enemy.Monster_Slime.isFixedRotation	= true
 		_Enemy.Monster_Slime.damageValue		= 1
 	----
@@ -108,7 +108,7 @@
 		_Enemy.Monster_GiantSlime.ImagePath			= "kalacool/sango/image/monster/Slime/giantSlime.png"
 		_Enemy.Monster_GiantSlime.Physic				= {}
 			_Enemy.Monster_GiantSlime.Type				= "dynamic"
-			_Enemy.Monster_GiantSlime.Option				= {density = 999, friction = 0.7,filter = { categoryBits = 4, maskBits = 227}}
+			_Enemy.Monster_GiantSlime.Option				= {density = 999, friction = 0.7,filter = { categoryBits = 4, maskBits = 483}}
 		_Enemy.Monster_GiantSlime.isFixedRotation	= true
 		_Enemy.Monster_GiantSlime.damageValue		= 1
 	----
