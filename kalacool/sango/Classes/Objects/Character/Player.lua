@@ -39,11 +39,11 @@ function new(config)
 	Player.image.lastCheckPoint=config	
 	Player.image.heart = Player.heart
 	Player.touchAreaA = display.newRect( 320, 360,640 , 720 )
-	Player.touchAreaA.alpha = 0.2
+	Player.touchAreaA.alpha = 0.01
 	Player.HUD:insert(Player.touchAreaA)
 
 	Player.touchAreaB = display.newRect( 960, 360,640 , 720 )
-	Player.touchAreaB.alpha = 0.2
+	Player.touchAreaB.alpha = 0.01
 	Player.HUD:insert(Player.touchAreaB)
 	local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
@@ -75,7 +75,7 @@ function new(config)
 		end
 	end
 	function Player.unSuperfloat()
-		print(Player.image.gravityScale)
+		-- print(Player.image.gravityScale)
 		if(Player.alive==true)then
 			-- Player.image.gravityScale = 1
 			Player.isFloat = false
@@ -225,7 +225,7 @@ function new(config)
 
 	function Player:objectState(event)
 		--Player.image.gravityScale = 0
-
+		-- print(Player.isShooting)
 		if (Player.isFly == true and  Player.alive==true) then
 			local vx, vy = Player.image:getLinearVelocity()	
 			Player.image:setLinearVelocity( vx, -400 )
@@ -437,13 +437,15 @@ function new(config)
 		if "began" == phase then
 			display.getCurrentStage():setFocus( Player.touchAreaA, event.id)
 
+
 			--display.getCurrentStage():setFocus( display.getCurrentStage() )
 			
 
 			Player.noSticky( )
 			
 			--if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
-			
+			-- print("touch")
+			-- print(Player.isShooting)
 			Player.isShooting = true	
 			Player.fingerX = event.x
 			Player.fingerY = event.y
@@ -533,8 +535,9 @@ function new(config)
 -------復活 死亡 start---
 	function Player:respawn( event )
 		--Player.show(Player.image.lastCheckPoint)
-		scene:dispatchEvent( {name='playerRespawn'} )
+		-- scene:dispatchEvent( {name='playerRespawn'} )
 		storyboard.gotoScene( "kalacool.sango.Scene.reloading", "fade", 200  )
+		storyboard.removeAll()
 		-- Player.default()
 	end
 
