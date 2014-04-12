@@ -26,7 +26,7 @@
     	}   
 		_Enemy.Monster_Cannon.Physic 			= {}
 			_Enemy.Monster_Cannon.Physic.Type		= "static"
-			_Enemy.Monster_Cannon.Physic.Option		= {density = 3,filter = { categoryBits = 4, maskBits = 195 }}
+			_Enemy.Monster_Cannon.Physic.Option		= {density = 3,filter = { categoryBits = 1 }}
 		_Enemy.Monster_Cannon.bullet 						= {}
 			_Enemy.Monster_Cannon.bullet.ImageSheetPath 	= "kalacool/sango/image/monster/Cannon/cannon_bullet_animation.png"
 			_Enemy.Monster_Cannon.bullet.ImageSheetOption 	= { width=51, height=49, numFrames=8 }
