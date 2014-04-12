@@ -228,7 +228,7 @@ function new(config)
 
 		if (Player.isFly == true and  Player.alive==true) then
 			local vx, vy = Player.image:getLinearVelocity()	
-			Player.image:setLinearVelocity( vx, -400 )
+			Player.image:setLinearVelocity( vx, -_Player.Doggy.FlySpeed )
 		end
 		if(Player.isShooting == true)then
 			local coolX= -camera.x+Player.fingerX-Player.image.x
