@@ -50,7 +50,7 @@
 			_World.InteractiveWorld.Drum.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.InteractiveWorld.Drum.Physic			= {}
 				_World.InteractiveWorld.Drum.Physic.Type		= "dynamic"
-				_World.InteractiveWorld.Drum.Physic.Option	= { density = 5,friction=1, bounce=0}
+				_World.InteractiveWorld.Drum.Physic.Option	= { density = 5,friction=1, bounce=0, filter = { categoryBits = 4, maskBits = 241}}
 		----
 		----------------[ FireBall ] ----------------
 			_World.InteractiveWorld.FireBall = {}

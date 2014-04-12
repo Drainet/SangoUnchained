@@ -33,7 +33,7 @@ function new(config)
 			,{ density=10.0, friction=0, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}
 
             ,{ isSensor = true,radius = 70,filter=Doggy.Filter}
-            ,{ density=1.0, friction=0 , bounce=0,shape=Doggy.wall, filter= { categoryBits = 64, maskBits = 4 } })
+            ,{ density=1.0, friction=0 , bounce=0,shape=Doggy.wall, filter= { categoryBits = 256, maskBits = 4 } })
 
 		Doggy.image.isFixedRotation = true
 		Doggy.image.isBullet 		= true
