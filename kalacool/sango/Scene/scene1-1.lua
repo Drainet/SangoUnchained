@@ -24,8 +24,7 @@ function scene:enterScene( event )
    -- require( "tilebg" )
   --  local bg = tileBG()
 
-    local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
-    local pauseMenu = pauseMenuClass.new()
+    
 
     -- local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
     -- local starSystem = starSystemClass.new({fs=3,ct=1000,ss=3,ct=1000,ts=3,ct=1000})
@@ -61,7 +60,7 @@ function scene:enterScene( event )
     camera:insert(myLevel)
     camera:insert(dog.image)
     -- HUD:insert(starSystem)
-    HUD:insert(pauseMenu )
+    
     HUD:insert(dog.HUD )
     group:insert( background )
     group:insert( camera )
