@@ -228,7 +228,7 @@ function new(config)
 		-- print(Player.isShooting)
 		if (Player.isFly == true and  Player.alive==true) then
 			local vx, vy = Player.image:getLinearVelocity()	
-			Player.image:setLinearVelocity( vx, -400 )
+			Player.image:setLinearVelocity( vx, -_Player.Doggy.FlySpeed )
 		end
 		if(Player.isShooting == true)then
 			local coolX= -camera.x+Player.fingerX-Player.image.x
@@ -312,8 +312,13 @@ function new(config)
 	        
 	        if((vy>30 or vy<-30) )then
 
-	        	if(Player.body.sequence ~= "jump" )then
+	        	if(Player.body.sequence ~= "jump" and vy>30)then
 					Player.body:setSequence( "jump" )
+					Player.body:play()
+				end
+
+				if(Player.body.sequence ~= "float" and vy<-30)then
+					Player.body:setSequence( "float" )
 					Player.body:play()
 				end
 	        	
@@ -456,6 +461,10 @@ function new(config)
 		if "moved" == phase then
 			Player.fingerX = event.x
 			Player.fingerY = event.y
+			if(event.x>Player.touchAreaA.x+Player.touchAreaA.width/2)then
+				Player.fingerX = Player.touchAreaA.x+Player.touchAreaA.width/2
+			end
+			
 		end
 
 
