@@ -34,7 +34,7 @@ function new(config)
 	Player.powerTank = powerClass.new(_Player.player.Power)
 	Player.heart=heartClass.new(_Player.player.Life)
 	Player.switch=switchClass.new(Player)
-	Player.SF=SFclass.new(Player)
+	--Player.SF=SFclass.new(Player)
 	Player.image.lastCheckPoint=config	
 	Player.image.heart = Player.heart
 	Player.touchAreaA = display.newRect( 320, 360,640 , 720 )
@@ -44,10 +44,12 @@ function new(config)
 	Player.touchAreaB = display.newRect( 960, 360,640 , 720 )
 	Player.touchAreaB.alpha = 0.2
 	Player.HUD:insert(Player.touchAreaB)
-
+	local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
+    local pauseMenu = pauseMenuClass.new()
+    Player.HUD:insert(pauseMenu)
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
-	Player.HUD:insert(Player.SF)
+	--Player.HUD:insert(Player.SF)
 	
 	
 	Player.HUD:insert(Player.powerTank.image)
@@ -222,6 +224,11 @@ function new(config)
 
 	function Player:objectState(event)
 		--Player.image.gravityScale = 0
+
+		if (Player.isFly == true and  Player.alive==true) then
+			local vx, vy = Player.image:getLinearVelocity()	
+			Player.image:setLinearVelocity( vx, -400 )
+		end
 		if(Player.isShooting == true)then
 			local coolX= -camera.x+Player.fingerX-Player.image.x
 			local coolY= -camera.y+Player.fingerY-Player.image.y
@@ -262,21 +269,21 @@ function new(config)
 				local limit=_Player.Doggy.Speed+100
 				local standard=_Player.Doggy.Speed
 
+				Player.image:setLinearVelocity( _Player.Doggy.Speed, vy )
 
-
-				if(Player.isFloat ~= true)then
+				-- if(Player.isFloat ~= true)then
 				
-					if(vx-standard*coolX/ratio>limit)then
+				-- 	if(vx-standard*coolX/ratio>limit)then
 									
-						Player.image:setLinearVelocity( limit, -standard*3.5*coolY/ratio )
+				-- 		Player.image:setLinearVelocity( limit, -standard*3.5*coolY/ratio )
 
-					elseif(vx-standard*coolX/ratio<-limit)then
-						Player.image:setLinearVelocity( -limit, -standard*3.5*coolY/ratio )
-					else 
-						--standard*1.8*coolY/ratio
-						Player.image:setLinearVelocity( vx-standard*coolX/ratio, -standard*3.5*coolY/ratio )
-					end			
-				end
+				-- 	elseif(vx-standard*coolX/ratio<-limit)then
+				-- 		Player.image:setLinearVelocity( -limit, -standard*3.5*coolY/ratio )
+				-- 	else 
+				-- 		--standard*1.8*coolY/ratio
+				-- 		Player.image:setLinearVelocity( vx-standard*coolX/ratio, -standard*3.5*coolY/ratio )
+				-- 	end			
+				-- end
 			end
 		end
 		
@@ -427,7 +434,7 @@ function new(config)
 	    local phase = event.phase
 
 		if "began" == phase then
-			--display.getCurrentStage():setFocus( Player.touchAreaA)
+			display.getCurrentStage():setFocus( Player.touchAreaA)
 			--display.getCurrentStage():setFocus( display.getCurrentStage() )
 			
 
@@ -459,29 +466,28 @@ function new(config)
 	    local phase = event.phase
 
 		if "began" == phase then
-			--display.getCurrentStage():setFocus( event.target.target , event.target.id )
+			display.getCurrentStage():setFocus( Player.touchAreaB)
 			--display.getCurrentStage():setFocus( display.getCurrentStage() )
 			
 
 			Player.noSticky( )
+
 			
 			--if(Player.Magazine.shootable==true and Player.Magazine.ammo>0 and Player.alive==true )then
-			
-				
-			
-			Player.image.y = event.y-camera.y
+			Player.isFly = true
 				--Player.image:applyLinearImpulse( -6500*(coolX)/ratio, -6500*(coolY)/ratio,Player.image.x,Player.image.y )
 
 			
 		end
 		if "moved" == phase then
 			
-			Player.image.y = event.y-camera.y
+			--Player.image.y = event.y-camera.y
 		end
 
 
 		if "ended" == phase then
 			display.getCurrentStage():setFocus( nil )
+			Player.isFly = false
 			
 		end
 	    return true
@@ -605,7 +611,7 @@ function new(config)
 	scene:addEventListener( 'objectState', Player )
 	-- scene:addEventListener( 'screenTouch', Player )
 	Player.touchAreaA:addEventListener('touch',Player.touchAreaA)
-	--Player.touchAreaB:addEventListener('touch',Player.touchAreaB)
+	Player.touchAreaB:addEventListener('touch',Player.touchAreaB)
 
 	--Player.runtimeListeners[table.maxn(Player.runtimeListeners)+1] = {event="touch",listener=Player.shoot}
 	--Player.listeners[table.maxn(Player.listeners)+1] = {event='removeAllEvent' , listener = Player}
