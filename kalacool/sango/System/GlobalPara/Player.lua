@@ -17,6 +17,8 @@
 	---------------- [ Doggy ] ----------------
 		_Player.Doggy = {}
 
+		_Player.Doggy.Speed = 200
+
 		_Player.Doggy.ImageSheetPath 		= "kalacool/sango/image/character/coodog.png"
 		_Player.Doggy.ImageSheetOption 		= { width=120, height=113, numFrames=12 }
 		_Player.Doggy.ImageSheetSequence 	= 
@@ -30,6 +32,7 @@
 			_Player.Doggy.hand.ImagePath	= "kalacool/sango/image/character/coodoghand.png"
 			_Player.Doggy.hand.fistX		= 13
 			_Player.Doggy.hand.fistY		= 21
+
 	----
 	---------------- [ shadow ] ----------------
 		_Player.shadow = {}
