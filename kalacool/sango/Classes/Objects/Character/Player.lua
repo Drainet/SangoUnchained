@@ -228,7 +228,9 @@ function new(config)
 		-- print(Player.isShooting)
 		if (Player.isFly == true and  Player.alive==true) then
 			local vx, vy = Player.image:getLinearVelocity()	
-			Player.image:setLinearVelocity( vx, -_Player.Doggy.FlySpeed )
+			if (vy-_Player.Doggy.FlySpeed > -_Player.Doggy.MaxFlySpeed) then
+				Player.image:setLinearVelocity( vx, vy-_Player.Doggy.FlySpeed )
+			end
 		end
 		if(Player.isShooting == true)then
 			local coolX= -camera.x+Player.fingerX-Player.image.x
@@ -313,13 +315,13 @@ function new(config)
 	        if((vy>30 or vy<-30) )then
 
 	        	if(Player.body.sequence ~= "jump" and vy>30)then
-					Player.body:setSequence( "jump" )
-					Player.body:play()
+					-- Player.body:setSequence( "jump" )
+					-- Player.body:play()
 				end
 
 				if(Player.body.sequence ~= "float" and vy<-30)then
-					Player.body:setSequence( "float" )
-					Player.body:play()
+					-- Player.body:setSequence( "float" )
+					-- Player.body:play()
 				end
 	        	
 				if(Player.Magazine.isonAir == false)then
@@ -481,7 +483,8 @@ function new(config)
 		if "began" == phase then
 			display.getCurrentStage():setFocus( Player.touchAreaB, event.id)
 			--display.getCurrentStage():setFocus( display.getCurrentStage() )
-			
+			Player.body:setSequence( "float" )
+			Player.body:play()
 
 			Player.noSticky( )
 
@@ -493,7 +496,6 @@ function new(config)
 			
 		end
 		if "moved" == phase then
-			
 			--Player.image.y = event.y-camera.y
 		end
 
@@ -501,6 +503,8 @@ function new(config)
 		if "ended" == phase then
 			--display.getCurrentStage():setFocus( nil )
 			Player.isFly = false
+			Player.body:setSequence( "jump" )
+			Player.body:play()
 			
 		end
 	    --return true

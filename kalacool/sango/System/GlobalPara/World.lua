@@ -25,7 +25,7 @@
 			_World.DynamicWorld.CompanionCube.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.DynamicWorld.CompanionCube.Physic			= {}
 				_World.DynamicWorld.CompanionCube.Physic.Type	= "dynamic"
-				_World.DynamicWorld.CompanionCube.Physic.Option	= { density=30, friction=0.7, bounce=0.5}
+				_World.DynamicWorld.CompanionCube.Physic.Option	= { density=6.5, friction=0.7, bounce=0.5}
 			_World.DynamicWorld.CompanionCube.isFixedRotation= true 
 		----
 	---------------- Dynamic World End ----------------
@@ -41,7 +41,7 @@
 			_World.InteractiveWorld.chasingTrap.Physic			= {}
 				_World.InteractiveWorld.chasingTrap.Physic.Type	= "kinematic"
 				_World.InteractiveWorld.chasingTrap.Physic.Option	= { density=1, friction=0.3, bounce=0}
-			_World.InteractiveWorld.chasingTrap.Velocity = 200
+			_World.InteractiveWorld.chasingTrap.Velocity = 250
 		----
 		----------------[ Drum ] ----------------
 			_World.InteractiveWorld.Drum = {}
@@ -85,7 +85,7 @@
 			_World.InteractiveWorld.SpinningTire.Physic			= {}
 				_World.InteractiveWorld.SpinningTire.Physic.Type		= "kinematic"
 				_World.InteractiveWorld.SpinningTire.Physic.Option	= { density=0.1, friction=0.9, bounce=0}
-			_World.InteractiveWorld.SpinningTire.AngularVelocity	= 60
+			_World.InteractiveWorld.SpinningTire.AngularVelocity	= 200
 		----
 		----------------[ WoodenDoor ] ----------------
 			_World.InteractiveWorld.WoodenDoor = {}
