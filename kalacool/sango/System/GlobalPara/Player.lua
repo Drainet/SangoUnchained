@@ -18,7 +18,8 @@
 		_Player.Doggy = {}
 
 		_Player.Doggy.Speed = 300
-		_Player.Doggy.FlySpeed = 400
+		_Player.Doggy.FlySpeed = 65  -- vertical speed
+		_Player.Doggy.MaxFlySpeed = 600  -- Max vertical speed
 
 		_Player.Doggy.ImageSheetPath 		= "kalacool/sango/image/character/coodog.png"
 		_Player.Doggy.ImageSheetOption 		= { width=120, height=113, numFrames=12 }
