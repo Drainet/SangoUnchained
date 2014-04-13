@@ -4,13 +4,15 @@ require "kalacool.sango.System.globalVariable"
 require "kalacool.sango.System.GlobalPara.World"
 require "kalacool.sango.System.GlobalPara.Enemy"
 require "kalacool.sango.System.GlobalPara.Player"
-
+DataSetClass = require "kalacool.sango.System.DataCollect"
 JSONFileSet = require "kalacool.sango.JSON.JSONFileSet"
+
 
 display.setStatusBar( display.HiddenStatusBar ) 
 
 local storyboard = require "storyboard"
 scene = storyboard.newScene()
+
 
 local options = 
 	{
@@ -23,6 +25,9 @@ local options =
 	}
 storyboard.gotoScene( "kalacool.sango.Scene.Menu", options)
 
+-------- Data Collect Start ---------
+DataCollect = DataSetClass.new()
+-------- Data Collect End ---------
 
 --------------- Performance Start ---------------
 	performanceText = display.newText("", 0, 0, native.systemFont, 30)

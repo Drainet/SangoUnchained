@@ -15,6 +15,8 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
+
+
     storyboard.removeScene( storyboard.getPrevious() )
 
     eventCentral.start()
@@ -66,7 +68,10 @@ function scene:enterScene( event )
     group:insert( camera )
     group:insert( HUD )
 
-
+  --- create a new Data Collector ---
+    DataCollect:addSceneCollect({senario=1,level=1})
+  ----  Data Collector END  ----
+  
     function onEveryFrame()  
         movex = myLevel.x - dog.image.x
         movey = myLevel.y - dog.image.y
