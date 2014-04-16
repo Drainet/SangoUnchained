@@ -7,12 +7,10 @@ require "kalacool.sango.System.GlobalPara.Player"
 DataSetClass = require "kalacool.sango.System.DataCollect"
 JSONFileSet = require "kalacool.sango.JSON.JSONFileSet"
 
-
 display.setStatusBar( display.HiddenStatusBar ) 
 
 local storyboard = require "storyboard"
 scene = storyboard.newScene()
-
 
 local options = 
 	{
@@ -24,6 +22,35 @@ local options =
 			}
 	}
 storyboard.gotoScene( "kalacool.sango.Scene.Menu", options)
+
+------------------ Android Back Button Start ------------------
+local function onKeyEvent( event )
+
+   local phase = event.phase
+   local keyName = event.keyName
+   print( event.phase, event.keyName )
+
+   if ( "back" == keyName and phase == "up" ) then
+		local function onComplete( event )
+			if "clicked" == event.action then
+				local i = event.index
+				if 1 == i then
+					native.cancelAlert( alert )
+				elseif 2 == i then
+					scene:dispatchEvent({name='sendData'})
+					native.requestExit()
+				end
+			end
+		end
+		local alert = native.showAlert( "EXIT", "離開遊戲?", { "否", "是" }, onComplete )
+		-- group:insert(alert);
+		return true
+   end
+   return true  --SEE NOTE BELOW
+end
+--add the key callback
+Runtime:addEventListener( "key", onKeyEvent )
+------------------ Android Back Button End ------------------
 
 -------- Data Collect Start ---------
 DataCollect = DataSetClass.new()

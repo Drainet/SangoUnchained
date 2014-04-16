@@ -1,4 +1,5 @@
 local storyboard = require( "storyboard" )
+storyboard.name = "Menu"
 local widget = require( "widget" )
 local scene = storyboard.newScene()
 -- Called when the scene's view does not exist:

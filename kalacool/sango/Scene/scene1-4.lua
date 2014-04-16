@@ -20,9 +20,7 @@ function scene:enterScene( event )
 
     eventCentral.start()
     camera = display.newGroup()
-    HUD = display.newGroup()
-
-    
+    HUD = display.newGroup()  
 
     -- local starSystemClass = require "kalacool.sango.System.ThreeStarSystem"
     -- local starSystem = starSystemClass.new({fs=1,ss=2,ts=3, wp1=1,wp2=2,ct=100 })
@@ -61,6 +59,10 @@ function scene:enterScene( event )
     group:insert(background)
     group:insert( camera )
     group:insert( HUD )
+
+    --- create a new Data Collector ---
+    DataCollect:addSceneCollect({senario=1,level=1})
+    ----  Data Collector END  ----  
 
     function onEveryFrame()    
         movex = myLevel.x - dog.image.x

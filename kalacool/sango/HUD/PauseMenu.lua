@@ -4,7 +4,6 @@ module(..., package.seeall)
 -- eventCentral = eventCentralClass.new()
 
 function new()
-    
     local widget = require( "widget" )
     local storyboard = require( "storyboard" )
 	

@@ -1,4 +1,5 @@
 local storyboard = require( "storyboard" )
+storyboard.name = "LevelSelect"
 local widget = require( "widget" )
 local scene = storyboard.newScene()
 local levelConfigClass = require "kalacool.sango.System.GetAndSetLV"
@@ -16,6 +17,7 @@ local levelConfig={}
 function scene:createScene( event )
     local group = self.view
     storyboard.removeAll()
+
 ----------------- Background Start -------------
     local background = display.newImage( "kalacool/sango/image/UI/Menu/menu_background.png", true )
     background.x = display.contentWidth/2       ; background.y = display.contentHeight/2
