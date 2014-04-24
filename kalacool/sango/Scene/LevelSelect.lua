@@ -186,17 +186,17 @@ function scene:createScene( event )
     --------------
 
     ------------------- charSelBtn Start ---------------
-        local buttonCharSelBtn = widget.newButton
-            {
-                id = "charSelBtn",
-                defaultFile = "kalacool/sango/image/UI/chSel/charSelBtn.png",
-                onPress = buttonHandler,
-                font = "arial",
-            }
+        -- local buttonCharSelBtn = widget.newButton
+        --     {
+        --         id = "charSelBtn",
+        --         defaultFile = "kalacool/sango/image/UI/chSel/charSelBtn.png",
+        --         onPress = buttonHandler,
+        --         font = "arial",
+        --     }
 
-            buttonCharSelBtn.x = display.contentWidth - 255 ; buttonCharSelBtn.y = display.contentHeight/2 + 250
+        --     buttonCharSelBtn.x = display.contentWidth - 255 ; buttonCharSelBtn.y = display.contentHeight/2 + 250
 
-        group:insert( buttonCharSelBtn )
+        -- group:insert( buttonCharSelBtn )
     ------------------- charSelBtn End ---------------
 
 ----------------- LevelSelect Buttion End --------------------------

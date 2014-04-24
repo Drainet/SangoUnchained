@@ -12,10 +12,10 @@ if JSONFileSet.playerTable == nil then
 	playerJson = {}
 	playerJson.character = "Doggy"
 	playerJson.characterID = 1
-	playerJson.weapon1 = "DAO-12"
-	playerJson.weapon1ID = 1
-	playerJson.weapon2 = "Kar-98"
-	playerJson.weapon2ID = 2
+	playerJson.weapon1 = "MP7"
+	playerJson.weapon1ID = 4
+	playerJson.weapon2 = "DAO-12"
+	playerJson.weapon2ID = 1
 	playerJson.money = 0
 	playerJson.diamond = 0
 	playerJson.firstPerk = ""
