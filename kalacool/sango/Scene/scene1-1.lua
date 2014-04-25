@@ -61,6 +61,7 @@ function scene:enterScene( event )
 
     camera:insert(myLevel)
     camera:insert(dog.image)
+    
     -- HUD:insert(starSystem)
     
     HUD:insert(dog.HUD )

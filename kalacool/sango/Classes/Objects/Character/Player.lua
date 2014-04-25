@@ -12,6 +12,7 @@ local heartClass = require "kalacool.sango.HUD.Heart"
 local powerClass = require "kalacool.sango.HUD.power"
 local switchClass = require "kalacool.sango.HUD.Switch"
 local SFclass = require "kalacool.sango.HUD.SF"
+local ObjectClass = require('kalacool.sango.Classes.Object')
 
 local Pi    = math.pi
 local Sqr   = math.sqrt
@@ -23,7 +24,7 @@ local Atan2 = math.atan2
  
 function new(config)
     --create Player display objectc
-
+    
     local Player = CharacterClass.new()
 	Player.image=display.newGroup()
 	Player.HUD=display.newGroup()
@@ -51,10 +52,16 @@ function new(config)
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
 	--Player.HUD:insert(Player.SF)
-	
+
+	Player.blockWall = ObjectClass.new()
+
+	Player.blockWall.image = display.newRect(0, 0,50 , 200 )
+	Player.blockWall.image.alpha = 0.01
+	physics.addBody( Player.blockWall.image,"static",{ density=10.0, friction=0.01, bounce=0,filter= { categoryBits =512, maskBits = 2 }} )
+	camera:insert(Player.blockWall.image)
 	
 	Player.HUD:insert(Player.powerTank.image)
-	Player.Filter =  { categoryBits = 2, maskBits = 189 }
+	Player.Filter =  { categoryBits = 2, maskBits = 701 }
 	Player.onBody = 15
 	Player.shootable= true
 	Player.isSticky=true		
@@ -226,6 +233,13 @@ function new(config)
 	function Player:objectState(event)
 		--Player.image.gravityScale = 0
 		-- print(Player.isShooting)
+		if(Player.blockWall.image.x < Player.image.x-70)then
+			Player.blockWall.image.x = Player.image.x-70
+		end
+		Player.blockWall.image.y = Player.image.y
+		-- tempX = Player.image.x
+		-- tempX<Player.image.x and 
+
 		if (Player.isFly == true and  Player.alive==true) then
 			local vx, vy = Player.image:getLinearVelocity()	
 			if (vy-_Player.Doggy.FlySpeed > -_Player.Doggy.MaxFlySpeed) then
