@@ -50,7 +50,7 @@ function new()
 ------------------- buttonHandler End ---------------
 
 ------------------- niceText Start ---------------
-    niceText = display.newText("GOOD JOB !!", 0, 0, native.systemFont, 180)
+    niceText = display.newText("WIN !!", 0, 0, native.systemFont, 180)
     niceText.x = display.contentWidth/2; niceText.y = display.contentHeight/2 - 300
     niceText:setFillColor( 110, 20, 0 )
 

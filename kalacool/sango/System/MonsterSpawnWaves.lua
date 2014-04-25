@@ -46,7 +46,7 @@ function NextWaveHandler(ImageGroup)
         --     timers[2] = timer.performWithDelay( 800, Go )
         -- end
 
-        Text.text = "Wave " .. event.nextWave
+        -- Text.text = "Wave " .. event.nextWave
         timers[1] = timer.performWithDelay( 1000, noText )
     end
 

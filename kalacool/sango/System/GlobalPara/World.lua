@@ -70,8 +70,9 @@
 			_World.InteractiveWorld.FloatingFloor = {}
 
 			_World.InteractiveWorld.FloatingFloor.ImagePath = "kalacool/sango/image/world/interactiveWorld/floatingFloor.png"			
-			_World.InteractiveWorld.FloatingFloor.Width		= 240
-			_World.InteractiveWorld.FloatingFloor.Height	= 20		
+			_World.InteractiveWorld.FloatingFloor.Width		= 20
+			_World.InteractiveWorld.FloatingFloor.Height	= 240		
+			_World.InteractiveWorld.FloatingFloor.Speed		= 200	
 			_World.InteractiveWorld.FloatingFloor.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.InteractiveWorld.FloatingFloor.Physic			= {}
 				_World.InteractiveWorld.FloatingFloor.Physic.Type	= "kinematic"

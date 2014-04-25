@@ -69,8 +69,7 @@ DataCollect = DataSetClass.new()
 
 		performanceText.text =  "Memory: ".. string.format("%.3f", collectgarbage("count")) .. " KB\n" ..
 								"Max: ".. string.format("%.3f", maxMemory) .. "KB \n" ..
-								"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB\n"
-								.. "time: " .. string.format("%.3f", system.getTimer() )  .."123"						
+								"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB\n"						
 	end
 
 	Runtime:addEventListener("enterFrame", Performance)

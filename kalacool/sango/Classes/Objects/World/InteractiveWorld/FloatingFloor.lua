@@ -16,18 +16,22 @@ function new(config)
     FloatingFloor.show(config)
     physics.addBody( FloatingFloor.image,  _World.InteractiveWorld.FloatingFloor.Physic.Type, _World.InteractiveWorld.FloatingFloor.Physic.Option )
     FloatingFloor.count=0
+    local speed = _World.InteractiveWorld.FloatingFloor.Speed
+    print(speed)
+    if (config.goUp == 1) then
+        speed = -speed
+    end
 
     local maxCount = 100
     function FloatingFloor:floatingFloorMoving(event)
         if( FloatingFloor.count == maxCount) then
             FloatingFloor.count = 0 
         end
-
         FloatingFloor.count = FloatingFloor.count + 1   
         if FloatingFloor.count == 1 then
-            FloatingFloor.image:setLinearVelocity(200,0)
+            FloatingFloor.image:setLinearVelocity(0,speed)
         elseif FloatingFloor.count == maxCount/2 + 1 then
-            FloatingFloor.image:setLinearVelocity(-200,0)
+            FloatingFloor.image:setLinearVelocity(0,-speed)
         end
     end
 
