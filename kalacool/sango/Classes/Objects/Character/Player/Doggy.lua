@@ -30,7 +30,7 @@ function new(config)
 		--Doggy.setgun("rifle")
 		physics.addBody( Doggy.image
 			,{ density=10.0, friction=0.01, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
-			,{ density=10.0, friction=0.01, bounce=0,shape=Doggy.Shape,filter=Doggy.Filter}
+			,{ density=10.0, friction=0.01, bounce=0,shape = Doggy.Shape,filter=Doggy.Filter}
 
             ,{ isSensor = true,radius = 70,filter=Doggy.Filter}
             ,{ density=1.0, friction=0 , bounce=0,shape=Doggy.wall, filter= { categoryBits = 256, maskBits = 4 } })
@@ -81,10 +81,10 @@ function new(config)
     -- Doggy.image:insert(dodo)
     --Doggy.Filter = { categoryBits = 2, maskBits = 37 }
 
-	local shapew = 30
+	local shapew = 10
 	local shapeh = 56
 
-	Doggy.Shape = { -shapew, -shapeh+30, shapew, -shapeh+30, shapew,53, -shapew,53 }
+	Doggy.Shape = { -shapew, -shapeh+30, shapew, -shapeh+30,shapew+30,0, shapew,53, -shapew,53,-shapew-30 , 0}
 	Doggy.foot	= { -shapew+2, 53, shapew-2,53, shapew-2, shapeh, -shapew+2, shapeh }
     Doggy.wall  = { shapew -20, -1000, shapew,-1000, shapew, 1000, shapew - 20, 1000 }
 	--physics.setDrawMode( "hybrid" )
