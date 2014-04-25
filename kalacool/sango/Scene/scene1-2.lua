@@ -63,7 +63,7 @@ function scene:enterScene( event )
     group:insert( HUD )
 
     --- create a new Data Collector ---
-    DataCollect:addSceneCollect({senario=1,level=1})
+    DataCollect:addSceneCollect({senario=1,level=2})
     ----  Data Collector END  ----
 
     function onEveryFrame()

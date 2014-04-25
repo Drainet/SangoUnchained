@@ -142,6 +142,7 @@ function new()
 	end
 
 	function Content.NewGame()    	
+        scene:dispatchEvent({name='closeLevel'})
 		storyboard.gotoScene( "kalacool.sango.Scene.LevelSelect", "fade", 200  )
         storyboard.removeAll()
 	end
@@ -251,7 +252,8 @@ function new()
         ----------------- FreeView End   ----------------------
     end
 
-    function Content.MainMenu()      
+    function Content.MainMenu()     
+        scene:dispatchEvent({name='closeLevel'}) 
         storyboard.gotoScene( "kalacool.sango.Scene.Menu", "fade", 200  )
         storyboard.removeAll()
     end
