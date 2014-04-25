@@ -78,6 +78,7 @@ function new()
     end
 
     function eventCental.stop()
+        scene:dispatchEvent({name='sendData'})
         Runtime:removeEventListener("enterFrame", allEnterFrame)
         Runtime:removeEventListener("touch", allRuntimeTouch)
         scene:dispatchEvent({name='removeAllEvent'})

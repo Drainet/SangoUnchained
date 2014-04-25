@@ -37,7 +37,7 @@ local function onKeyEvent( event )
 				if 1 == i then
 					native.cancelAlert( alert )
 				elseif 2 == i then
-					scene:dispatchEvent({name='sendData'})
+					-- scene:dispatchEvent({name='sendData'})
 					native.requestExit()
 				end
 			end
@@ -69,7 +69,8 @@ DataCollect = DataSetClass.new()
 
 		performanceText.text =  "Memory: ".. string.format("%.3f", collectgarbage("count")) .. " KB\n" ..
 								"Max: ".. string.format("%.3f", maxMemory) .. "KB \n" ..
-								"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB "
+								"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB\n"
+								.. "time: " .. string.format("%.3f", system.getTimer() )  .."123"						
 	end
 
 	Runtime:addEventListener("enterFrame", Performance)
