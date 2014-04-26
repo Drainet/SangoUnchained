@@ -9,20 +9,26 @@ local InteractiveWorldClass = require('kalacool.sango.Classes.Objects.World.Inte
 function new(config)
 
     local FloatingFloor = InteractiveWorldClass.new()
+    local speed
+    local maxCount
     FloatingFloor.setImage(_World.InteractiveWorld.FloatingFloor.ImagePath)
-    FloatingFloor.image.width = _World.InteractiveWorld.FloatingFloor.Width
-    FloatingFloor.image.height = _World.InteractiveWorld.FloatingFloor.Height
     FloatingFloor.image.damage = _World.InteractiveWorld.FloatingFloor.Damage
     FloatingFloor.show(config)
     physics.addBody( FloatingFloor.image,  _World.InteractiveWorld.FloatingFloor.Physic.Type, _World.InteractiveWorld.FloatingFloor.Physic.Option )
     FloatingFloor.count=0
-    local speed = _World.InteractiveWorld.FloatingFloor.Speed
-    print(speed)
+    if (config.speed == nil) then
+        speed = _World.InteractiveWorld.FloatingFloor.Speed
+    else
+        speed = config.speed
+    end
+    if (config.maxCount==nil) then
+        maxCount = 100
+    else
+        maxCount = config.maxCount
+    end
     if (config.goUp == 1) then
         speed = -speed
     end
-
-    local maxCount = 100
     function FloatingFloor:floatingFloorMoving(event)
         if( FloatingFloor.count == maxCount) then
             FloatingFloor.count = 0 

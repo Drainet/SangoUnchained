@@ -7,6 +7,7 @@ monsterKnifemo = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster
 monsterGiantSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_giantSlime")
 
 chasingTrap = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.chasingTrap")
+flappybird = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.flappybird")
 
 
 
@@ -31,6 +32,9 @@ function EnemySet.newMonster(config)
 		return monster
 	elseif config.ID == 301 then
     	local monster = chasingTrap.new(config)
+		return monster
+	elseif config.ID == 302 then
+    	local monster = flappybird.new(config)
 		return monster
 
 	end
