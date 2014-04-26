@@ -22,10 +22,20 @@ function new(monster , target)
         monster.image.gravityScale = 0
         -- if (AI:isPlayerInPatrolRange() and AI:isPlayerVisible()  and (math.abs(monster.image.y - monster.config.y) <500) ) then
         if (AI:isPlayerInPatrolRange() ) then
-           
+            
             if (AI:isPlayerInAttackRange()) then  -- Attack
                 -- AI:attack()
-                 AI:trace()
+                angle =  math.acos( math.abs(monster.image.y - target.image.y) /  AI:getDistance() )
+                dir = AI:monsterDir(target.image)
+                
+
+                function attackDelay()
+                   monster:attack(angle,dir.x,dir.y)
+                end
+                AI.timers[2] = timer.performWithDelay(500 , attackDelay)
+                monster.image:setLinearVelocity(0, 0);
+                AI.timerID =  timer.performWithDelay(2000 , AI.run)
+                AI.timers[1] = AI.timerID
             else  -- Trace player
                 AI:trace()
             end
@@ -63,6 +73,8 @@ function new(monster , target)
     --     monster:move(0,0)
     --     AI.timers[2] = timer.performWithDelay( 1200, charge )
     -- end
+
+
 
     function AI:trace()
         if math.abs(target.image.y - monster.image.y) > 30 then

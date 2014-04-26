@@ -71,12 +71,12 @@ function scene:enterScene( event )
         movex = myLevel.x - dog.image.x
         movey = myLevel.y - dog.image.y
 
-        if(1000 + movex > cameraMaxRange.left) then
+        if(840 + movex > cameraMaxRange.left) then
             camera.x = cameraMaxRange.left
-        elseif(1000 + movex < cameraMaxRange.right) then
+        elseif(840 + movex < cameraMaxRange.right) then
             camera.x = cameraMaxRange.right
         else
-            camera.x = 1000 + movex
+            camera.x = 840 + movex
         end
         
         if(320 + movey > cameraMaxRange.up) then

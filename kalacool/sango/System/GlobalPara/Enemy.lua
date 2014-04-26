@@ -37,7 +37,7 @@
         	}
 			_Enemy.Monster_Cannon.bullet.Physic 			= {}
 				_Enemy.Monster_Cannon.bullet.Physic.Type 		= "dynamic"
-				_Enemy.Monster_Cannon.bullet.Physic.Option 		= {density = 1 , filter = { categoryBits = 4 , maskBits = 259} }
+				_Enemy.Monster_Cannon.bullet.Physic.Option 		= {density = 1 , filter = { categoryBits = 4 , maskBits = 418} }
 			_Enemy.Monster_Cannon.bullet.gravityScale 		= 0
 			_Enemy.Monster_Cannon.bullet.damage 			= "fatal"
 			_Enemy.Monster_Cannon.bullet.damageValue 		= 1
@@ -64,8 +64,8 @@
 
 		_Enemy.Monster_smashball.HP 			= 30
 		_Enemy.Monster_smashball.moveSpeed 		= 500
-		_Enemy.Monster_smashball.attackRange 	= 400
-		_Enemy.Monster_smashball.visibleDistance = 2000
+		_Enemy.Monster_smashball.attackRange 	= 600
+		_Enemy.Monster_smashball.visibleDistance = 5000
 		_Enemy.Monster_smashball.ImageSheetPath		= "kalacool/sango/image/monster/smashBall/smashball.png"
 		_Enemy.Monster_smashball.ImageSheetOption 	= { width=80, height=80, numFrames=2 }
 			_Enemy.Monster_smashball.ImageSheetSequence =

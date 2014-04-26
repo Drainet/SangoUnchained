@@ -43,11 +43,11 @@ function new(config)
 	--Player.SF=SFclass.new(Player)
 	Player.image.lastCheckPoint=config	
 	Player.image.heart = Player.heart
-	Player.touchAreaA = display.newRect( 320, 360,640 , 720 )
+	Player.touchAreaA = display.newRect( 420, 360,840 , 720 )
 	Player.touchAreaA.alpha = 0.01
 	Player.HUD:insert(Player.touchAreaA)
 
-	Player.touchAreaB = display.newRect( 960, 360,640 , 720 )
+	Player.touchAreaB = display.newRect( 1060, 360,420 , 720 )
 	Player.touchAreaB.alpha = 0.01
 	Player.HUD:insert(Player.touchAreaB)
 	local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
@@ -237,8 +237,8 @@ function new(config)
 	function Player:objectState(event)
 		--Player.image.gravityScale = 0
 		-- print(Player.isShooting)
-		if(Player.blockWall.image.x < Player.image.x-70)then
-			Player.blockWall.image.x = Player.image.x-70
+		if(Player.blockWall.image.x < Player.image.x-100)then
+			Player.blockWall.image.x = Player.image.x-100
 		end
 		Player.blockWall.image.y = Player.image.y
 		-- tempX = Player.image.x
