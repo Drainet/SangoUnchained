@@ -33,7 +33,11 @@ function new(config)
 	Player.alive=true
 	Player.noDead=true
 	Player.image.power = 4
-	Player.powerTank = powerClass.new(_Player.player.Power)
+	------
+	Player.powerTank = {}
+	Player.powerTank.value = 100
+	------
+	--Player.powerTank = powerClass.new(_Player.player.Power)
 	Player.heart=heartClass.new(_Player.player.Life)
 	Player.switch=switchClass.new(Player)
 	--Player.SF=SFclass.new(Player)
@@ -60,7 +64,7 @@ function new(config)
 	physics.addBody( Player.blockWall.image,"static",{ density=10.0, friction=0.01, bounce=0,filter= { categoryBits =512, maskBits = 2 }} )
 	camera:insert(Player.blockWall.image)
 	
-	Player.HUD:insert(Player.powerTank.image)
+	--Player.HUD:insert(Player.powerTank.image)
 	Player.Filter =  { categoryBits = 2, maskBits = 701 }
 	Player.onBody = 15
 	Player.shootable= true
@@ -276,7 +280,7 @@ function new(config)
 			if(Player.shootable==true and Player.powerTank.value>0 and Player.alive==true )then
 				Player.gun:setSequence( "shoot" )
 				Player.gun:play()
-				Player.powerTank.reduce(Player.Weapon.para.cost)
+				--Player.powerTank.reduce(Player.Weapon.para.cost)
 				Player.Magazine.pop()
 				Player.shootable=false
 				function coolover( )

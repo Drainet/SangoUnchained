@@ -33,8 +33,8 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 			
 			-- and Magazine.reloadable == true
 			Magazine.ammo=Magazine.ammo+1
-			Magazine[Magazine.ammo]=display.newImage(Magazine.shellImage,40*Magazine.ammo ,45)
-			Magazine.image:insert(Magazine[Magazine.ammo])
+			--Magazine[Magazine.ammo]=display.newImage(Magazine.shellImage,40*Magazine.ammo ,45)
+			--Magazine.image:insert(Magazine[Magazine.ammo])
 		end
 
 		if(Magazine.ammo>=Magazine.ammoMax ) then

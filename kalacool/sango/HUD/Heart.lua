@@ -10,7 +10,7 @@ function new(HP)
 	Heart.image = display.newGroup( )
 	Heart.num = 0
 	Heart.max = HP
-
+	local heartY = 50
 
 
 	function Heart.heal()
@@ -19,7 +19,7 @@ function new(HP)
 
 			Heart.num = Heart.num + 1
 			display.remove(Heart[Heart.num])
-			Heart[Heart.num] = display.newImage("kalacool/sango/image/UI/heart.png",60*(Heart.num)-20,130)
+			Heart[Heart.num] = display.newImage("kalacool/sango/image/UI/heart.png",60*(Heart.num)-20,heartY)
 			Heart.image:insert(Heart[Heart.num])
 
 		end
@@ -44,7 +44,7 @@ function new(HP)
 
 
 			display.remove(Heart[Heart.num])
-			Heart[Heart.num]=display.newImage("kalacool/sango/image/UI/blackheart.png",60*(Heart.num)-20,130)
+			Heart[Heart.num]=display.newImage("kalacool/sango/image/UI/blackheart.png",60*(Heart.num)-20,heartY)
         	Heart.image:insert(Heart[Heart.num])
 			Heart.num = Heart.num - 1
 

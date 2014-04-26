@@ -9,7 +9,7 @@
 	---------------- [ Player Setting ] ----------------
 		_Player.player = {}
 
-		_Player.player.Life 		= 10
+		_Player.player.Life 		= 5
 		_Player.player.Power		= 3000	-- which means ammo
 	----
 	---------------- [ shadow ] ----------------
