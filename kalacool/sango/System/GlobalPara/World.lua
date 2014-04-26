@@ -43,23 +43,13 @@
 				_World.InteractiveWorld.chasingTrap.Physic.Option	= { density=1, friction=0.3, bounce=0}
 			_World.InteractiveWorld.chasingTrap.Velocity = 230
 		----
-		----------------[ flappybird ] ----------------
-			_World.InteractiveWorld.flappybird = {}
-
-			_World.InteractiveWorld.flappybird.ImagePath 	= "kalacool/sango/image/world/interactiveWorld/flappybird.png"	
-			_World.InteractiveWorld.flappybird.Damage 	= "fatal"		--  "safe" = no damage, "fatal" = have damage			
-			_World.InteractiveWorld.flappybird.Physic			= {}
-				_World.InteractiveWorld.flappybird.Physic.Type	= "kinematic"
-				_World.InteractiveWorld.flappybird.Physic.Option	= { density=1, friction=0.3, bounce=0, shape = { 158,-324,299,-166,341,-6,390,48,389,102,347,206,298,260,65,312}}
-			_World.InteractiveWorld.flappybird.Velocity = 230
-		----
 		----------------[ Drum ] ----------------
 			_World.InteractiveWorld.Drum = {}
 
 			_World.InteractiveWorld.Drum.ImagePath 	= "kalacool/sango/image/world/interactiveWorld/Drum.png"			
 			_World.InteractiveWorld.Drum.Damage 		= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.InteractiveWorld.Drum.Physic			= {}
-				_World.InteractiveWorld.Drum.Physic.Type		= "dynamic"
+				_World.InteractiveWorld.Drum.Physic.Type		= "static"
 				_World.InteractiveWorld.Drum.Physic.Option	= { density = 5,friction=1, bounce=0, filter = { categoryBits = 4, maskBits = 241}}
 		----
 		----------------[ FireBall ] ----------------

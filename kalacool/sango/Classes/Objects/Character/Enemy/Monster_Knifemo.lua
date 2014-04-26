@@ -5,7 +5,7 @@ Monster = require ("kalacool.sango.Classes.Objects.Character.Enemy")
 
 function new(config)
 
-local knifemo = Monster.new()
+    local knifemo = Monster.new()
    
     knifemo.Robot = require("kalacool.sango.Classes.Objects.Character.Enemy.MonsterAI.Knifemo_AI")
     -- set monster's patrol range

@@ -81,7 +81,6 @@ function new()
                 Enemy:hurt(event.other.power)
                 if(Enemy.name) then
                    Enemy.LifeBar:hurt(Enemy.HP)
-                   print(Enemy.HP)
                 end
                 if(Enemy.HP <=1) then
                     if(Enemy.alive == true) then

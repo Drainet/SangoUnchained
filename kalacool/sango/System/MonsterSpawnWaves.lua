@@ -47,7 +47,7 @@ function NextWaveHandler(ImageGroup)
         -- end
 
         -- Text.text = "Wave " .. event.nextWave
-        timers[1] = timer.performWithDelay( 1000, noText )
+        timers[1] = timer.performWithDelay( 500, noText )
     end
 
     scene:addEventListener( 'addMonsterWaveAmount', Content )

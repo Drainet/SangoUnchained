@@ -5,9 +5,9 @@ monsterCannon = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_
 monsterSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Slime")
 monsterKnifemo = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_Knifemo")
 monsterGiantSlime = require("kalacool.sango.Classes.Objects.Character.Enemy.Monster_giantSlime")
+flappybird = require ("kalacool.sango.Classes.Objects.Character.Enemy.Monster_flappybird")
 
 chasingTrap = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.chasingTrap")
-flappybird = require ("kalacool.sango.Classes.Objects.World.InteractiveWorld.flappybird")
 
 
 
