@@ -53,7 +53,7 @@ function new(config)
                                 if distance <=500 then
                                     distance = 500 - distance
                                     local ratio = distance / 500
-                                    event.other:setLinearVelocity(ratio* xVelocity*3000, ratio*yVelocity *3000)
+                                    -- event.other:setLinearVelocity(ratio* xVelocity*3000, ratio*yVelocity *3000)
                                 end
 
                                 if circle.removed ==  false then
@@ -64,7 +64,7 @@ function new(config)
                     end 
                     circle.myName = "circle" 
                     circle:setFillColor(0,0,0,0)
-                    physics.addBody( circle, "dynamic" ,{ isSensor = true,radius =300,filter = { categoryBits = 32,maskBits = 39}}) 
+                    physics.addBody( circle, "dynamic" ,{ isSensor = true,radius =300,filter = { categoryBits = 32,maskBits = 135}}) 
                     circle.collision = onLocalCollision  
                     circle:addEventListener( "collision", circle )
                     camera:insert(circle)    

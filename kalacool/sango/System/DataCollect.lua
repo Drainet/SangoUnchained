@@ -90,15 +90,14 @@ function new()
 		end
 		-- Access Google over SSL:
 		-- network.request( "https://encrypted.google.com", "GET", networkListener )
-		message = "http://drainet-dev.appspot.com/webanalytics?Entity=jason".. 
-						"&deviceID=" .. Collect.deviceID .. "[str]" --.. "&totalUseTime=" .. Collect.totalUseTime
+		message = "http://drainet-dev.appspot.com/devicedatainput?".. 
+						"deviceID[str]=" .. Collect.deviceID --.. "&totalUseTime=" .. Collect.totalUseTime
 		-- for i=1, Collect.sceneNum do
-			message = message .. "&lv=1-" .. Collect.sceneData[Collect.sceneNum][2].. "[str]&lvTime=" .. math.ceil(system.getTimer() - Collect.sceneData[Collect.sceneNum][3]) ..
+			message = message .. "&lv[str]=1-" .. Collect.sceneData[Collect.sceneNum][2].. "&lvTime=" .. math.ceil(system.getTimer() - Collect.sceneData[Collect.sceneNum][3]) ..
 						"&dead=" .. Collect.sceneData[Collect.sceneNum][4] ..
-						"&weapon1=" .. Collect.sceneData[Collect.sceneNum][5].. "[str]&weapon2=" .. Collect.sceneData[Collect.sceneNum][6] ..
-						"[str]&lvMemoryKB=" .. Collect.sceneData[Collect.sceneNum][7] ..
-						"[str]&Date=" .. Collect.sceneData[Collect.sceneNum][8] .. "[str]"
-		-- end
+						"&weapon1[str]=" .. Collect.sceneData[Collect.sceneNum][5].. "&weapon2[str]=" .. Collect.sceneData[Collect.sceneNum][6] ..
+						"&lvMemoryKB[str]=" .. Collect.sceneData[Collect.sceneNum][7] ..
+						"&Date[str]=" .. Collect.sceneData[Collect.sceneNum][8]
 		-- print(message)
 		network.request( message, "GET", networkListener )
 	end
