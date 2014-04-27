@@ -30,12 +30,17 @@ function new(config)
 	PowerDoor.image.type = "receiver"
 	physics.addBody(PowerDoor.image , "static" , {Filter = PowerDoor.Filter})
 
+	function PowerDoor.removePhysics()
+		physics.removeBody( PowerDoor.image )
+	end
+
 	function PowerDoor:active()
 		PowerDoor.isActive = true
 		PowerDoor.body:setSequence( "explosion" )
         PowerDoor.body:play()
        --	PowerDoor.body:stop( )
-		PowerDoor.timerID = timer.performWithDelay( PowerDoor.explosioinTime, PowerDoor.dispose )
+		PowerDoor.timers[1] = timer.performWithDelay( PowerDoor.explosioinTime, PowerDoor.dispose )
+		PowerDoor.timers[2] = timer.performWithDelay( PowerDoor.explosioinTime/2, PowerDoor.removePhysics )
 	end
 	
 	return PowerDoor

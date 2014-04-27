@@ -12,10 +12,10 @@ local scene = scene
         cameraMaxRange.left     = 500   
         cameraMaxRange.right    = -51400
         cameraMaxRange.up       = -720   
-        cameraMaxRange.down     = -719
+        cameraMaxRange.down     = -720
         -- cameraMaxRange.down     = -5000
 
-        totalLevel = 10 
+        totalLevel = 10
     -- end
 
     -- function globalVariable.removeCameraMaxRange()

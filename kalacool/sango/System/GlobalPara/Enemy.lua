@@ -128,8 +128,8 @@
 		_Enemy.Monster_flappybird.Damage 	= "fatal"		--  "safe" = no damage, "fatal" = have damage			
 		_Enemy.Monster_flappybird.Physic			= {}
 			_Enemy.Monster_flappybird.Physic.Type	= "kinematic"
-			_Enemy.Monster_flappybird.Physic.Option	= { density=0.5, friction=0.3, bounce=0,shape = {80,-343,158,-326,274,-167,389,48,390,99,343,204,290,257,-40,338}, filter = { categoryBits = 128}}
-		_Enemy.Monster_flappybird.Velocity = 320
+			_Enemy.Monster_flappybird.Physic.Option	= { density=0.5, friction=0.3, bounce=0,shape = {80,-343,158,-326,274,-167,389,48,390,99,343,204,290,257,-40,338}, filter = { categoryBits = 1}}
+		_Enemy.Monster_flappybird.Velocity = 310
 	----
 
 	---------------- Enemy End ----------------

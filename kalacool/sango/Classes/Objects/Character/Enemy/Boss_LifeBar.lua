@@ -16,6 +16,9 @@ local Bar = ObjectClass.new()
     Bar.image:insert(Bar.barBG)
     Bar.image:insert( Bar.barLife )
     Bar.image:insert(Bar.BossName)  
+    --- Transparent ---
+    Bar.barBG.alpha = 0.7
+    Bar.barLife.alpha = 0.7
     --- Bar attribute ---
     Bar.MaxHP =config.HP
     Bar.width = 640

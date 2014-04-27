@@ -27,7 +27,7 @@ function new(config)
 	PowerGenerator.image:insert(PowerGenerator.body)
 	PowerGenerator.image.type = "trigger"
 
-	physics.addBody(PowerGenerator.image , "static" , {Filter = PowerGenerator.Filter})
+	physics.addBody(PowerGenerator.image , "static" , {filter = { categoryBits = 128}})
 	PowerGenerator.image.isSensor = true
 
 	function PowerGenerator:active()

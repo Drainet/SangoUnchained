@@ -32,6 +32,7 @@ function new(config)
         flappybird.HP   = _Enemy.Monster_flappybird.HP
         flappybird.name  = _Enemy.Monster_flappybird.name
         flappybird.wave      = config.wave
+        flappybird.key      = config.key
         flappybird.LifeBar = LifeBar.new(flappybird)
     -- attribute end
 
@@ -49,7 +50,9 @@ function new(config)
             if (event.other.type == "explosive") then
                 body:setSequence( "hurt" )
                 flappybird:hurt(event.other.power)
-                flappybird.image:setLinearVelocity(_Enemy.Monster_flappybird.Velocity*0.55,0)
+                local vx, vy = dog.image:getLinearVelocity() 
+                -- flappybird.image:setLinearVelocity(_Enemy.Monster_flappybird.Velocity*0.55,0)
+                flappybird.image:setLinearVelocity(vx*0.3 +100)
                 flappybird.timers[2] = timer.performWithDelay(2000, flappybird.normalSpeed)
                 if(flappybird.name) then
                    flappybird.LifeBar:hurt(flappybird.HP)
@@ -77,6 +80,7 @@ function new(config)
         flappybird.dispose()
         scene:dispatchEvent({name='gotMoney',money = 100})
         scene:dispatchEvent({name='monsterDeadInWave',wave = flappybird.wave})
+        scene:dispatchEvent( {name='getActiveSignal', key = flappybird.key})
     end
 
     flappybird.collision = flappybird.onCollision

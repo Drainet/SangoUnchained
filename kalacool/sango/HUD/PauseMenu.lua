@@ -175,10 +175,10 @@ function new()
                             camera.x = camera.x + xDistance
                         end
                         
-                        if(camera.y + yDistance > cameraMaxRange.up) then
-                            camera.y = cameraMaxRange.up
-                        elseif(camera.y + yDistance < cameraMaxRange.down) then
-                            camera.y = cameraMaxRange.down
+                        if(camera.y + yDistance > cameraMaxRange.up + 500) then
+                            camera.y = cameraMaxRange.up + 500
+                        elseif(camera.y + yDistance < cameraMaxRange.down - 500) then
+                            camera.y = cameraMaxRange.down - 500
                         else
                             camera.y = camera.y + yDistance
                         end     

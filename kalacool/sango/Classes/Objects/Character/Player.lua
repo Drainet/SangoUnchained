@@ -75,6 +75,7 @@ function new(config)
 	Player.image.shootFaster = false
 	Player.image.magazineRate = 1
 	Player.image.shootFasterBuffTime =0
+
 	--- Dog buff effect  END ---
 	function Player.superfloat()
 		if(Player.alive==true)then
@@ -261,10 +262,6 @@ function new(config)
 			local ratio = math.sqrt((coolX)^2+(coolY)^2)
 			local angle = (Atan2( coolY,coolX)*180/Pi)		
 
-			
-
-			
-	
 			if(Player.image.xScale == 1)then
 				Player.handGroup.rotation=  angle+180
 			elseif(Player.image.xScale == -1)then
@@ -333,6 +330,9 @@ function new(config)
 			local vx, vy = Player.image:getLinearVelocity()
 			if(vx<0)then
 				Player.image:setLinearVelocity(0,vy)
+			end
+			if(vy > 2 and vy < 30)then
+				Player.image:setLinearVelocity(vx,31)
 			end
 	        
 	        if((vy>30 or vy<-30) )then
