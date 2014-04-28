@@ -42,6 +42,7 @@ function new(monster , target)
         -- elseif ( not AI:isMonsterInPatrolRange()) then --Monster not in Patrol Range , back to patrol range
         --     AI:backHome()
         else  --stay
+            monster.image:setLinearVelocity( 0, 0 )
             AI:hangingAround()
         end
     end

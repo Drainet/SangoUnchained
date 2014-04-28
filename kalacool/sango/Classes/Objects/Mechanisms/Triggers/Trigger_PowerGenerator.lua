@@ -47,7 +47,7 @@ function new(config)
     end
 
 	function PowerGenerator.onCollsion(self , event)
-		if (event.phase == "began") then
+		if (event.phase == "began" and PowerGenerator.isActive == false) then
             if (event.other.type == "bullet" or event.other.type == "explosive") then
                 PowerGenerator:hurt(event.other.power)
                 if(PowerGenerator.HP < 1) then

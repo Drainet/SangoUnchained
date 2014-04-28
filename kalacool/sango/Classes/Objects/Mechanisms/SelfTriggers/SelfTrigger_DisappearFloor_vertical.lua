@@ -44,13 +44,18 @@ function new(config)
 		dog.image.isAwake = true
 		DisappearFloor.timerID = timer.performWithDelay( 1500 , DisappearFloor.active)
 	end
+	function DisappearFloor.removePhysics()
+		physics.removeBody( DisappearFloor.image )
+	end
+
 	function DisappearFloor.image:collision(event)
 		if( (DisappearFloor.image.x > event.other.x-40) and ( DisappearFloor.image.isSensor ~= false )  and  (DisappearFloor.isActive ~= true)) then
 			if ( event.phase == "began") then
 				DisappearFloor.isActive = true
 				DisappearFloor.image.isSensor = false
 				DisappearFloor.body:play()
-				DisappearFloor.timerID = timer.performWithDelay( DisappearFloor.remainTime , DisappearFloor.clear )
+				DisappearFloor.timers[1] = timer.performWithDelay( DisappearFloor.remainTime , DisappearFloor.clear )
+				DisappearFloor.timers[1] = timer.performWithDelay( DisappearFloor.remainTime/2 , DisappearFloor.removePhysics )
 			end
 		end
 	end

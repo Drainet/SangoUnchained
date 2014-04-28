@@ -74,7 +74,7 @@
 			_World.InteractiveWorld.FloatingFloor.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.InteractiveWorld.FloatingFloor.Physic			= {}
 				_World.InteractiveWorld.FloatingFloor.Physic.Type	= "kinematic"
-				_World.InteractiveWorld.FloatingFloor.Physic.Option	= { density=10, friction=99, bounce=0}
+				_World.InteractiveWorld.FloatingFloor.Physic.Option	= { density=10, friction=0, bounce=0}
 		----
 		----------------[ SpinningTire ] ----------------
 			_World.InteractiveWorld.SpinningTire = {}

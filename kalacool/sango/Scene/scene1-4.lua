@@ -31,7 +31,7 @@ function scene:enterScene( event )
     -- local moneySystemClass = require "kalacool.sango.System.MoneySystem"
     -- local moneySystem = moneySystemClass.new()
 
-    local levelDirector = require "kalacool.sango.level.bobo"
+    local levelDirector = require "kalacool.sango.level.lv1-4"
 
     local physics = require("physics")
     physics.start()
@@ -49,7 +49,7 @@ function scene:enterScene( event )
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
     local background = BackgroundSet.setBackgroundLayer(myLevel,dog,
-        {{imgPath = "kalacool/sango/image/test/castle.jpg",x = 40,y = 10}})
+        {{imgPath = "kalacool/sango/image/gameBackground/lab.png",x = 40,y = 300}})
 
     camera:insert(myLevel)
     camera:insert(dog.image)

@@ -36,7 +36,7 @@ function new(x,y,vx,vy)
     oneshot.power = 2
     oneshot:setStrokeColor(0,0,0)
     
-    physics.addBody( oneshot,{ density=10.0, friction=0, bounce=0,   filter=Filter} )
+    physics.addBody( oneshot,{ density=2, friction=0, bounce=0,   filter=Filter} )
     --"kinematic",
     oneshot.isBullet = true
     oneshot.gravityScale = 0

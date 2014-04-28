@@ -29,8 +29,13 @@ function NextWaveHandler(ImageGroup)
             Text.text = "" 
             if Wave[event.nextWave] ~= nil then
                 for i = 1, Wave[event.nextWave] do
-                    imageGroup:insert(EnemySet.newMonster(Monster[1]).image)
-                    table.remove(Monster,1)
+                    for j = 1, table.maxn(Monster) do
+                        if (Monster[j].wave == event.nextWave) then
+                            imageGroup:insert(EnemySet.newMonster(Monster[j]).image)
+                            table.remove(Monster,j)
+                            break
+                        end
+                    end
                 end
                 scene:dispatchEvent( {name='onPlayerShow',target = dog} )
             end

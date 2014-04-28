@@ -13,7 +13,7 @@
 		_Enemy.Monster_Cannon.moveSpeed			= 0
 		_Enemy.Monster_Cannon.attackSpeed		= 2000
 		_Enemy.Monster_Cannon.bulletSpeed		= 600
-		_Enemy.Monster_Cannon.visibleDistance	= 1280
+		_Enemy.Monster_Cannon.visibleDistance	= 500
 		_Enemy.Monster_Cannon.head 				= {}
 			_Enemy.Monster_Cannon.head.ImagePath	= "kalacool/sango/image/monster/Cannon/cannon_head.png"
 			_Enemy.Monster_Cannon.head.RX			= -2
@@ -46,8 +46,8 @@
 	----------------[ Monster_fireball ] ----------------
 		_Enemy.Monster_fireball = {}
 
-		_Enemy.Monster_fireball.HP 				= 10
-		_Enemy.Monster_fireball.moveSpeed 		= 500
+		_Enemy.Monster_fireball.HP 				= 8
+		_Enemy.Monster_fireball.moveSpeed 		= 650
 		_Enemy.Monster_fireball.attackRange 	= 250
 		_Enemy.Monster_fireball.visibleDistance = 2000
 		_Enemy.Monster_fireball.ImagePath		= "kalacool/sango/image/monster/FireBall/fireball.png"
@@ -62,8 +62,8 @@
 	----------------[ Monster_smashball ] ----------------
 		_Enemy.Monster_smashball = {}
 
-		_Enemy.Monster_smashball.HP 			= 30
-		_Enemy.Monster_smashball.moveSpeed 		= 500
+		_Enemy.Monster_smashball.HP 			= 15
+		_Enemy.Monster_smashball.moveSpeed 		= 650
 		_Enemy.Monster_smashball.attackRange 	= 600
 		_Enemy.Monster_smashball.visibleDistance = 5000
 		_Enemy.Monster_smashball.ImageSheetPath		= "kalacool/sango/image/monster/smashBall/smashball.png"
