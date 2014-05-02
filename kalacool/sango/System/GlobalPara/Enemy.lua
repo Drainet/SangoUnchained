@@ -84,14 +84,14 @@
 	----------------[ Monster_Slime ] ----------------
 		_Enemy.Monster_Slime = {}
 
-		_Enemy.Monster_Slime.HP 				= 10
+		_Enemy.Monster_Slime.HP 				= 8
 		_Enemy.Monster_Slime.moveSpeed			= 500
 		_Enemy.Monster_Slime.attackRange 		= 500
 		_Enemy.Monster_Slime.visibleDistance 	= 1500
 		_Enemy.Monster_Slime.ImagePath			= "kalacool/sango/image/monster/Slime/slime.png"
 		_Enemy.Monster_Slime.Physic				= {}
 			_Enemy.Monster_Slime.Type				= "dynamic"
-			_Enemy.Monster_Slime.Option				= {density = 10, friction = 0.7,filter = { categoryBits = 4, maskBits = 482}}
+			_Enemy.Monster_Slime.Option				= {density = 5, friction = 0.7,filter = { categoryBits = 4, maskBits = 487}}
 		_Enemy.Monster_Slime.isFixedRotation	= true
 		_Enemy.Monster_Slime.damageValue		= 1
 	----

@@ -18,29 +18,29 @@ function new(monster , target , option)
 
         if(rad == 0 or rad == 2 or rad == 3)then
             if(dog.image.x<monster.image.x)then
-                monster.image:setLinearVelocity(-400,0)
-                monster.body.xScale=2
-                if(monster.body.sequence ~= "move")then
-                    monster.body:setSequence( "move" )
-                    monster.body:play()
-                end
-                if(dog.image.y<monster.image.y)then
-                    monster.image:setLinearVelocity(-400,-400)
+                -- monster.image:setLinearVelocity(-400,0)
+                -- monster.body.xScale=2
+                -- if(monster.body.sequence ~= "move")then
+                --     monster.body:setSequence( "move" )
+                --     monster.body:play()
+                -- end
+                -- if(dog.image.y<monster.image.y)then
+                --     monster.image:setLinearVelocity(-400,-400)
                     
-                    if(monster.body.sequence ~= "jump")then
-                        monster.body:setSequence( "jump" )
-                        monster.body:play()
-                    end
-                end
+                --     if(monster.body.sequence ~= "jump")then
+                --         monster.body:setSequence( "jump" )
+                --         monster.body:play()
+                --     end
+                -- end
             elseif(dog.image.x>monster.image.x)then
-                monster.image:setLinearVelocity(400,0)
+                monster.image:setLinearVelocity(500,0)
                 monster.body.xScale=-2
                 if(monster.body.sequence ~= "move")then
                     monster.body:setSequence( "move" )
                     monster.body:play()
                 end
                 if(dog.image.y<monster.image.y)then
-                    monster.image:setLinearVelocity(400,-400)
+                    monster.image:setLinearVelocity(500,-500)
                     
                     if(monster.body.sequence ~= "jump")then
                         monster.body:setSequence( "jump" )
@@ -58,11 +58,12 @@ function new(monster , target , option)
             
             if(dog.image.x<monster.image.x)then
                 
-                monster.body.xScale=2
-                monster.body:setSequence( "shoot" )
-                monster.body:play()
-                AI:attack(-1)
-            elseif(dog.image.x>monster.image.x)then
+                -- monster.body.xScale=2
+                -- monster.body:setSequence( "shoot" )
+                -- monster.body:play()
+                -- AI.timerID =  timer.performWithDelay(8000 , AI:attack(-1))
+                -- AI.timers[3] = AI.timerID
+            elseif(dog.image.x-monster.image.x<200)then
                 
                 monster.body.xScale=-2
                 monster.body:setSequence( "shoot" )
@@ -92,31 +93,31 @@ function new(monster , target , option)
 
     end
     function AI.backHome()
-        local dir = AI:monsterDir(AI.monster.config)
-        monster:move(dir.x ,-0.8)
-        if (AI.timerID == nil) then
-            AI.timerID =  timer.performWithDelay(1500 , AI.backHome ,2)
-            AI.timerID2 = timer.performWithDelay(4500, AI.run )
-            AI.timers[1] = AI.timerID
-            AI.timers[2] = AI.timerID2
-        end
+        -- local dir = AI:monsterDir(AI.monster.config)
+        -- monster:move(dir.x ,-0.8)
+        -- if (AI.timerID == nil) then
+        --     AI.timerID =  timer.performWithDelay(1500 , AI.backHome ,2)
+        --     AI.timerID2 = timer.performWithDelay(4500, AI.run )
+        --     AI.timers[1] = AI.timerID
+        --     AI.timers[2] = AI.timerID2
+        -- end
     end
     function AI:attack(dir)
 
         AI.bullet = AI:new_bullet()
         AI.bullet.image.x = AI.monster.image.x
         AI.bullet.image.y = AI.monster.image.y
-        AI.bullet.image:setLinearVelocity(dir*500,0)
+        AI.bullet.image:setLinearVelocity(dir*450,0)
 
         AI.bullet = AI:new_bullet()
         AI.bullet.image.x = AI.monster.image.x
         AI.bullet.image.y = AI.monster.image.y
-        AI.bullet.image:setLinearVelocity(dir*500,100)
+        AI.bullet.image:setLinearVelocity(dir*450,100)
 
         AI.bullet = AI:new_bullet()
         AI.bullet.image.x = AI.monster.image.x
         AI.bullet.image.y = AI.monster.image.y
-        AI.bullet.image:setLinearVelocity(dir*500,-100)
+        AI.bullet.image:setLinearVelocity(dir*450,-100)
         
 
         --AI.head.rotation = math.deg( angle ) 

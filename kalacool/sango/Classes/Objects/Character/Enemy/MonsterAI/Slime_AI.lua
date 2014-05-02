@@ -27,14 +27,13 @@ function new(monster , target , option)
                 -- end
                 
             end
-            AI.timerID =  timer.performWithDelay(1000 , AI.run)
+            AI.timerID =  timer.performWithDelay(2000 , AI.run)
             AI.timers[1] = AI.timerID
         --- monster not in partol range ,then go back    
         else 
             -- AI.backHome()
             AI.timerID =  timer.performWithDelay(500 , AI.run)
             AI.timers[1] = AI.timerID
-            print(AI)
         end
 
 

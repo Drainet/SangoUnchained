@@ -35,7 +35,7 @@ function scene:enterScene( event )
 
     local physics = require("physics")
     physics.start()
-    --physics.setDrawMode( "hybrid" )
+    -- physics.setDrawMode( "hybrid" )
  
     local myLevel = levelDirector.CreateLevel(physics)
 
@@ -44,7 +44,8 @@ function scene:enterScene( event )
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
 
-    dog=PlayerSet.new(characterConfig.char,{x=300,y=1000})
+    -- dog=PlayerSet.new(characterConfig.char,{x=800,y=1000})
+    dog=PlayerSet.new(characterConfig.char,{x=6700,y=1200})
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"

@@ -2,7 +2,7 @@ module(..., package.seeall)
 
 
 Monster = require ("kalacool.sango.Classes.Objects.Character.Enemy")
-LifeBar = require ("kalacool.sango.Classes.Objects.Character.Enemy.Boss_LifeBar" )
+
 function new(config)
 
 local slime = Monster.new()
