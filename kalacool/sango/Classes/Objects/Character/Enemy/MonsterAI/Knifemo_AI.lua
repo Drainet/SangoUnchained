@@ -6,6 +6,7 @@ ObjectClass = require('kalacool.sango.Classes.Object')
 
 function new(monster , target , option)
     local AI = monster_AI:new()
+    local daze = 0
     -- set AI attribute
     AI.target = target
     AI.monster = monster
@@ -14,65 +15,112 @@ function new(monster , target , option)
     function AI.run()
         AI.timerID = nil
         --- monster self in parol range
-        local rad = math.random(0,5)
 
-        if(rad == 0 or rad == 2 or rad == 3)then
-            if(dog.image.x<monster.image.x)then
-                -- monster.image:setLinearVelocity(-400,0)
-                -- monster.body.xScale=2
-                -- if(monster.body.sequence ~= "move")then
-                --     monster.body:setSequence( "move" )
-                --     monster.body:play()
-                -- end
-                -- if(dog.image.y<monster.image.y)then
-                --     monster.image:setLinearVelocity(-400,-400)
-                    
-                --     if(monster.body.sequence ~= "jump")then
-                --         monster.body:setSequence( "jump" )
-                --         monster.body:play()
-                --     end
-                -- end
-            elseif(dog.image.x>monster.image.x)then
-                monster.image:setLinearVelocity(500,0)
-                monster.body.xScale=-2
-                if(monster.body.sequence ~= "move")then
-                    monster.body:setSequence( "move" )
+        --------- new AI start
+        if(dog.image.x-monster.image.x>500)then -- chase player
+
+            monster.image:setLinearVelocity(430,0)
+            monster.body.xScale=-2
+            if(monster.body.sequence ~= "move")then
+                monster.body:setSequence( "move" )
+                monster.body:play()
+            end
+            if(monster.image.y-dog.image.y>10)then
+                monster.image:setLinearVelocity(500,-520)
+                if(monster.body.sequence ~= "jump")then
+                    monster.body:setSequence( "jump" )
                     monster.body:play()
                 end
-                if(dog.image.y<monster.image.y)then
-                    monster.image:setLinearVelocity(500,-500)
-                    
-                    if(monster.body.sequence ~= "jump")then
-                        monster.body:setSequence( "jump" )
-                        monster.body:play()
-                    end
+            elseif(monster.image.y-dog.image.y<10)then
+                monster.image:setLinearVelocity(450,470)
+                if(monster.body.sequence ~= "jump")then
+                    monster.body:setSequence( "jump" )
+                    monster.body:play()
                 end
             end
-            
-            
-        elseif(rad == 1)then
-            monster.image:setLinearVelocity(0,0)
+            daze = 0
+        elseif(dog.image.x-monster.image.x<300)then
+            monster.image:setLinearVelocity(-50,0)
             monster.body:setSequence( "normal" )
             monster.body:play()
-        elseif(rad == 4 or rad == 5)then
-            
-            if(dog.image.x<monster.image.x)then
-                
-                -- monster.body.xScale=2
-                -- monster.body:setSequence( "shoot" )
-                -- monster.body:play()
-                -- AI.timerID =  timer.performWithDelay(8000 , AI:attack(-1))
-                -- AI.timers[3] = AI.timerID
-            elseif(dog.image.x-monster.image.x<200)then
-                
-                monster.body.xScale=-2
-                monster.body:setSequence( "shoot" )
-                monster.body:play()
-                AI:attack(1)
-            end
+        elseif(daze>2)then
+            monster.image:setLinearVelocity(400,0)
+            monster.body:setSequence( "normal" )
+            monster.body:play()
+            daze = 0
+        else
+            monster.body.xScale=-2
+            monster.image:setLinearVelocity(0,0)
+            monster.body:setSequence( "shoot" )
+            monster.body:play()
+            AI:attack(1,700)
+            daze = daze + 1
         end
-        AI.timerID =  timer.performWithDelay(500 , AI.run)
+        AI.timerID =  timer.performWithDelay(800 , AI.run)
         AI.timers[1] = AI.timerID
+    
+        --------- new AI end
+
+        --------- old AI start
+            -- local rad = math.random(0,5)
+
+            -- if(rad == 0 or rad == 2 or rad == 3)then
+            --     if(dog.image.x<monster.image.x)then
+            --         -- monster.image:setLinearVelocity(-400,0)
+            --         -- monster.body.xScale=2
+            --         -- if(monster.body.sequence ~= "move")then
+            --         --     monster.body:setSequence( "move" )
+            --         --     monster.body:play()
+            --         -- end
+            --         -- if(dog.image.y<monster.image.y)then
+            --         --     monster.image:setLinearVelocity(-400,-400)
+                        
+            --         --     if(monster.body.sequence ~= "jump")then
+            --         --         monster.body:setSequence( "jump" )
+            --         --         monster.body:play()
+            --         --     end
+            --         -- end
+            --     elseif(dog.image.x>monster.image.x)then
+            --         monster.image:setLinearVelocity(500,0)
+            --         monster.body.xScale=-2
+            --         if(monster.body.sequence ~= "move")then
+            --             monster.body:setSequence( "move" )
+            --             monster.body:play()
+            --         end
+            --         if(dog.image.y<monster.image.y)then
+            --             monster.image:setLinearVelocity(500,-500)
+                        
+            --             if(monster.body.sequence ~= "jump")then
+            --                 monster.body:setSequence( "jump" )
+            --                 monster.body:play()
+            --             end
+            --         end
+            --     end
+                
+                
+            -- elseif(rad == 1)then
+            --     monster.image:setLinearVelocity(0,0)
+            --     monster.body:setSequence( "normal" )
+            --     monster.body:play()
+            -- elseif(rad == 4 or rad == 5)then
+                
+            --     if(dog.image.x<monster.image.x)then
+                    
+            --         -- monster.body.xScale=2
+            --         -- monster.body:setSequence( "shoot" )
+            --         -- monster.body:play()
+            --         -- AI.timerID =  timer.performWithDelay(8000 , AI:attack(-1))
+            --         -- AI.timers[3] = AI.timerID
+            --     elseif(dog.image.x-monster.image.x<200)then
+                    
+            --         monster.body.xScale=-2
+            --         monster.body:setSequence( "shoot" )
+            --         monster.body:play()
+            --         AI:attack(1)
+            --     end
+            -- end
+        --------- old AI end
+
         -- if ( AI:isMonsterInPatrolRange() ) then
            
         --     if (AI:isPlayerVisible() ) then -- can see player
@@ -102,26 +150,26 @@ function new(monster , target , option)
         --     AI.timers[2] = AI.timerID2
         -- end
     end
-    function AI:attack(dir)
+    function AI:attack(dir,time)
+        monster.image:setLinearVelocity(0, 0);
+        function attackDelay()
+            AI.bullet = AI:new_bullet()
+            AI.bullet.image.x = AI.monster.image.x
+            AI.bullet.image.y = AI.monster.image.y
+            AI.bullet.image:setLinearVelocity(dir*350,0)
 
-        AI.bullet = AI:new_bullet()
-        AI.bullet.image.x = AI.monster.image.x
-        AI.bullet.image.y = AI.monster.image.y
-        AI.bullet.image:setLinearVelocity(dir*450,0)
+            AI.bullet = AI:new_bullet()
+            AI.bullet.image.x = AI.monster.image.x
+            AI.bullet.image.y = AI.monster.image.y
+            AI.bullet.image:setLinearVelocity(dir*350,100)
 
-        AI.bullet = AI:new_bullet()
-        AI.bullet.image.x = AI.monster.image.x
-        AI.bullet.image.y = AI.monster.image.y
-        AI.bullet.image:setLinearVelocity(dir*450,100)
-
-        AI.bullet = AI:new_bullet()
-        AI.bullet.image.x = AI.monster.image.x
-        AI.bullet.image.y = AI.monster.image.y
-        AI.bullet.image:setLinearVelocity(dir*450,-100)
-        
-
+            AI.bullet = AI:new_bullet()
+            AI.bullet.image.x = AI.monster.image.x
+            AI.bullet.image.y = AI.monster.image.y
+            AI.bullet.image:setLinearVelocity(dir*350,-100)
+        end
+        AI.timers[2] = timer.performWithDelay(time , attackDelay)
         --AI.head.rotation = math.deg( angle ) 
-
 end
 
 

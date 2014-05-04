@@ -50,7 +50,7 @@ function new(x,y,vx,vy)
         oneshot.power = 3
         oneshot:setStrokeColor(0,0,0)
         --local Shape= { 88,4, 88,-4, 96,-4, 96,4 }
-        physics.addBody( oneshot,{ density=150.0, friction=0, bounce=0.3,  filter=Filter} )
+        physics.addBody( oneshot,{ density=30.0, friction=0, bounce=0.3,  filter=Filter} )
         --"kinematic",
         oneshot.isBullet = true
         oneshot.gravityScale = 0
@@ -106,7 +106,7 @@ function new(x,y,vx,vy)
 	
 	end
 	
-	bullet.timers[1] = timer.performWithDelay( 500,bullet.timeout,1 )
+	bullet.timers[1] = timer.performWithDelay( 400,bullet.timeout,1 )
 	
 	
 	

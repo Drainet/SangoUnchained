@@ -45,7 +45,7 @@ function scene:enterScene( event )
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
 
     -- dog=PlayerSet.new(characterConfig.char,{x=800,y=1000})
-    dog=PlayerSet.new(characterConfig.char,{x=6700,y=1200})
+    dog=PlayerSet.new(characterConfig.char,{x=6700,y=1200})  -- test boss location
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"

@@ -14,7 +14,7 @@ function new(config)
     knifemo.originPosition = config
     knifemo.config = config
     -- set monster's attribute
-    knifemo.HP                = 500
+    knifemo.HP                = 3000
     
     -- set monster's body
     knifemo.name = "KnifeMo"
@@ -47,7 +47,7 @@ function new(config)
     -- add physics attribute
     -- local Filter = { categoryBits = 4, maskBits = 99 }   -- collision with {Player}
     local  Shape = {-50,-70,50,-70,50,90,-50,90}
-    physics.addBody(knifemo.image,"dynamic",{ density=10.0, friction=0, bounce=0,shape=Shape, filter = { categoryBits = 4, maskBits = 483}})
+    physics.addBody(knifemo.image,"dynamic",{ density=80, friction=0, bounce=0,shape=Shape, filter = { categoryBits = 4, maskBits = 483}})
     knifemo.image.isFixedRotation = true    -- Monster no Rotate
     knifemo.image.damageValue     = 1
     --physics.setDrawMode( "hybrid" )
