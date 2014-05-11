@@ -4,6 +4,7 @@ require "kalacool.sango.System.globalVariable"
 require "kalacool.sango.System.GlobalPara.World"
 require "kalacool.sango.System.GlobalPara.Enemy"
 require "kalacool.sango.System.GlobalPara.Player"
+AudioSystemClass = require "kalacool.sango.System.AudioSystem"
 DataSetClass = require "kalacool.sango.System.DataCollect"
 JSONFileSet = require "kalacool.sango.JSON.JSONFileSet"
 
@@ -51,6 +52,10 @@ end
 --add the key callback
 Runtime:addEventListener( "key", onKeyEvent )
 ------------------ Android Back Button End ------------------
+
+-------- Audio System Start ---------
+AS = AudioSystemClass.new()
+-------- Audio System End ---------
 
 -------- Data Collect Start ---------
 DataCollect = DataSetClass.new()

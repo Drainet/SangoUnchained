@@ -9,20 +9,20 @@ eventCentral = eventCentralClass.new()
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
     local group = self.view
-
+    AS.Stop_Music()
 end
 
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
-
+    AS.Load_level()
+    AS.Play_FullOn()
 
     storyboard.removeScene( storyboard.getPrevious() )
 
     eventCentral.start()
     camera = display.newGroup()
     HUD = display.newGroup()
-
    -- require( "tilebg" )
   --  local bg = tileBG()
 
@@ -100,6 +100,7 @@ end
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
     local group = self.view
+    AS.Stop_Music()
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
     physics.stop()
     eventCentral.stop()
@@ -108,7 +109,6 @@ end
 -- Called prior to the removal of scene's "view" (display group)
 function scene:destroyScene( event )
     local group = self.view
-
 end
 
 -- "createScene" event is dispatched if scene's view does not exist

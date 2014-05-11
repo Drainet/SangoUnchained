@@ -10,6 +10,7 @@ function new(config)
 	PowerDoor.image.isActive = false
 	PowerDoor.key = config.key
 	PowerDoor.explosioinTime = 1000
+	PowerDoor.image.damage = "safe"
 	-- Set PowerDoor image
 	local sheet = graphics.newImageSheet( "kalacool/sango/image/Mechanism/Receiver_PowerDoor.png", { width=40, height=150, numFrames=7 } )
     local sequenceData = {

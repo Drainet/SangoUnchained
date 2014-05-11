@@ -106,6 +106,7 @@ end
 function scene:enterScene( event )
     local group = self.view
     local params = event.params
+    AS.Play_TheComplex()
     if params == nil then
         storyboard.removeScene( storyboard.getPrevious() )
     end

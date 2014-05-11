@@ -10,12 +10,14 @@ eventCentral = eventCentralClass.new()
 -- Called when the scene's view does not exist:
 function scene:createScene( event )
     local group = self.view
-
+    AS.Stop_Music()
 end
 
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
+    AS.Load_level()
+    AS.Play_FullOn()
     storyboard.removeScene( storyboard.getPrevious() )
 
     eventCentral.start()
@@ -44,8 +46,8 @@ function scene:enterScene( event )
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
 
-    -- dog=PlayerSet.new(characterConfig.char,{x=800,y=1000})
-    dog=PlayerSet.new(characterConfig.char,{x=6700,y=1200})  -- test boss location
+    dog=PlayerSet.new(characterConfig.char,{x=800,y=1000})
+    -- dog=PlayerSet.new(characterConfig.char,{x=6700,y=1200})  -- test boss location
     dog:setPlayerShow()
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
@@ -92,6 +94,7 @@ end
 -- Called when scene is about to move offscreen:
 function scene:exitScene( event )
     local group = self.view
+    AS.Stop_Music()
     Runtime:removeEventListener( "enterFrame", onEveryFrame )
     physics.stop()
     eventCentral.stop()

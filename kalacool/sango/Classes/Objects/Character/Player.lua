@@ -504,6 +504,7 @@ function new(config)
 	    local phase = event.phase
 
 		if "began" == phase then
+			AS.Play_jetpack_active()
 			display.getCurrentStage():setFocus( Player.touchAreaB, event.id)
 			--display.getCurrentStage():setFocus( display.getCurrentStage() )
 			--Player.body:setSequence( "float" )

@@ -16,15 +16,10 @@ local Atan2 = math.atan2
 
 
 function new(x,y,vx,vy)
+	AS.Play_shotgun_fire()
     local Filter = { categoryBits = 64, maskBits = 182 }
 
-
-
-
 --INSTANCE FUNCTIONS
-
-
-	
 
     local bullet=ObjectClass.new()
     bullet.image = display.newGroup( )
@@ -39,7 +34,6 @@ function new(x,y,vx,vy)
 
         local dangle = angle+ math.random(-10,10)
 		
-
         oneshot.x = 50*Cos(dangle*Pi/180)+x+math.random(-5,5)
         oneshot.y = 50*Sin(dangle*Pi/180)+y+math.random(-5,5)
 		oneshot.angle=dangle

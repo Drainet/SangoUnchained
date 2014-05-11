@@ -24,6 +24,7 @@ function new(config)
     function Drum:collision(event)
         if ((event.other.type == "bullet" or event.other.type == "explosive") and Drum.dead == false and event.phase == "began") then
             Drum.image:boom()
+            AS.Play_exploding()
         end
 	end
 

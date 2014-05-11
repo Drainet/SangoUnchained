@@ -50,14 +50,14 @@ local cannon = Monster.new()
     -- cannon.image:insert(dodo)
     cannon.image.isFixedRotation = true
 function cannon:attack(angle,dirX,dirY)
+    AS.Play_monster_laser()
+    cannon.bullet = cannon:new_bullet()
+    cannon.bullet.image.x = cannon.image.x
+    cannon.bullet.image.y = cannon.image.y
+    cannon.bullet.image:setLinearVelocity(cannon.bulletSpeed*math.sin(angle)*dirX , cannon.bulletSpeed*math.cos(angle)*dirY)
+    cannon.body:play()
 
-        cannon.bullet = cannon:new_bullet()
-        cannon.bullet.image.x = cannon.image.x
-        cannon.bullet.image.y = cannon.image.y
-        cannon.bullet.image:setLinearVelocity(cannon.bulletSpeed*math.sin(angle)*dirX , cannon.bulletSpeed*math.cos(angle)*dirY)
-        cannon.body:play()
-
-        --cannon.head.rotation = math.deg( angle ) 
+    --cannon.head.rotation = math.deg( angle ) 
 
 end
 

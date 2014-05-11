@@ -20,6 +20,8 @@ function new(config)
 
     function WoodenDoor.preCollision(self, event)
         if ( event.other.type == "player" ) then
+            AS.Stop_Music()
+            AS.Play_door_close()
             -- scene:dispatchEvent({name='removePauseButton'})
             scene:dispatchEvent({name='levelComplete'})
             display.getCurrentStage():setFocus( nil )

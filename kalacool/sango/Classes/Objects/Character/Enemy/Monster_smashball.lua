@@ -61,14 +61,14 @@ function smashball:normal()
 end
 
 function smashball:attack(angle,dirX,dirY)
+    AS.Play_monster_laser()
+    smashball.bullet = smashball:new_bullet()
+    smashball.bullet.image.x = smashball.image.x
+    smashball.bullet.image.y = smashball.image.y
+    smashball.bullet.image:setLinearVelocity(600*math.sin(angle)*dirX , 600*math.cos(angle)*dirY)
+    smashball.body:play()
 
-        smashball.bullet = smashball:new_bullet()
-        smashball.bullet.image.x = smashball.image.x
-        smashball.bullet.image.y = smashball.image.y
-        smashball.bullet.image:setLinearVelocity(600*math.sin(angle)*dirX , 600*math.cos(angle)*dirY)
-        smashball.body:play()
-
-        --smashball.head.rotation = math.deg( angle ) 
+    --smashball.head.rotation = math.deg( angle ) 
 
 end
 

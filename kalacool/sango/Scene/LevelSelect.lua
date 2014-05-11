@@ -206,6 +206,7 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
     local group = self.view
+    AS.Play_TheComplex()
     storyboard.removeScene( storyboard.getPrevious() )
 end
 
