@@ -14,7 +14,8 @@ function new(config)
     knifemo.originPosition = config
     knifemo.config = config
     -- set monster's attribute
-    knifemo.HP                = 3000
+    knifemo.HP                = 50
+    knifemo.rest              = false
     
     -- set monster's body
     knifemo.name = "KnifeMo"
@@ -69,8 +70,30 @@ function new(config)
         --     end
         -- end
     end
+
+    function knifemo.restEnd(self, event)
+        knifemo.rest = false
+    end
+
+    function knifemo.onCollision(self, event)
+        if (event.phase == "began") then
+            if(event.other.damage=="safe")then 
+                knifemo.AI.onTheGround = true
+            end
+            if (event.other.special == "shotgun" ) then
+                knifemo.rest = true
+                knifemo.timers[table.maxn(knifemo.timers)+1] = timer.performWithDelay( 1500, knifemo.restEnd,1 )
+            end
+        end
+    end
+
     scene:addEventListener( 'objectState', knifemo )
+    knifemo.collision = knifemo.onCollision
+    knifemo.image:addEventListener("collision", knifemo)
+
     knifemo.listeners[table.maxn(knifemo.listeners)+1] = {event='objectState' , listener = knifemo}
+    knifemo.listeners[table.maxn(knifemo.listeners)+1] = {event="collision", listener = knifemo}
+
 return knifemo
 end
 

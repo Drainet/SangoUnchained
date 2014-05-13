@@ -41,6 +41,7 @@ function new(x,y,vx,vy)
 
         oneshot.name="oneshot"
         oneshot.type="bullet"
+        oneshot.special="shotgun"
         oneshot.power = 3
         oneshot:setStrokeColor(0,0,0)
         --local Shape= { 88,4, 88,-4, 96,-4, 96,4 }
@@ -85,11 +86,8 @@ function new(x,y,vx,vy)
 
 
 			end
-
 		end
-
 		oneshot:addEventListener( "collision")
-
     end
 
 
@@ -100,7 +98,7 @@ function new(x,y,vx,vy)
 	
 	end
 	
-	bullet.timers[1] = timer.performWithDelay( 400,bullet.timeout,1 )
+	bullet.timers[1] = timer.performWithDelay( 200,bullet.timeout,1 )
 	
 	
 	

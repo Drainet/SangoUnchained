@@ -2,9 +2,6 @@ module(..., package.seeall)
 ObjectClass = require('kalacool.sango.Classes.Object')
 
 
-
-
-
 function new(num,rate,reloadCool,reloadSpeed,image)
     
 	local Magazine = ObjectClass.new()
@@ -90,8 +87,9 @@ function new(num,rate,reloadCool,reloadSpeed,image)
 			Magazine.ammo=Magazine.ammo-1
 			
 			Magazine.shootable=false
+			-- Magazine.timers[1] = timer.performWithDelay( Magazine.rate *dog.image.magazineRate, Magazine.coolDown,1 )
 			Magazine.timers[1] = timer.performWithDelay( Magazine.rate *dog.image.magazineRate, Magazine.coolDown,1 )
-			
+
 			Magazine:cancelReload()
 			Magazine.reloadCoolTimer=timer.performWithDelay( Magazine.reloadCool, Magazine.reloadCoolDown,1 )
 			Magazine.timers[2] = Magazine.reloadCoolTimer
