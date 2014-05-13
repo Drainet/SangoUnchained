@@ -573,7 +573,16 @@ function new(config)
 	function Player:respawn( event )
 		--Player.show(Player.image.lastCheckPoint)
 		-- scene:dispatchEvent( {name='playerRespawn'} )
-		storyboard.gotoScene( "kalacool.sango.Scene.reloading", "fade", 200  )
+		local options =
+		{
+			effect = "fade",
+			time = 200,
+			params =
+			{
+				playerRespawnPlace = Player.image.lastCheckPoint
+			}
+		}
+		storyboard.gotoScene( "kalacool.sango.Scene.reloading", options )
 		storyboard.removeAll()
 		-- Player.default()
 	end

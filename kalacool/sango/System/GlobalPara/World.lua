@@ -104,7 +104,7 @@
 			_World.StaticWorld.checkDoor = {}
 
 			_World.StaticWorld.checkDoor.ImagePath 	= "kalacool/sango/image/world/staticWorld/portal.png"	
-			_World.StaticWorld.checkDoor.ImageSheet = { width=180, height=250, numFrames=4}	
+			_World.StaticWorld.checkDoor.ImageSheet = { width=100, height=160, numFrames=4}	
 			_World.StaticWorld.checkDoor.Damage 	= "safe"		--  "safe" = no damage, "fatal" = have damage			
 			_World.StaticWorld.checkDoor.Physic			= {}
 				_World.StaticWorld.checkDoor.Physic.Type	= "static"

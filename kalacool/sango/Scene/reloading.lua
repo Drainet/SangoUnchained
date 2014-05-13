@@ -17,7 +17,16 @@ end
 -- Called immediately after scene has moved onscreen:
 function scene:enterScene( event )
 	local group = self.view
-	storyboard.gotoScene( storyboard.getPrevious(), "fade", 200  )
+	local options =
+		{
+			effect = "fade",
+			time = 200,
+			params =
+			{
+				playerRespawnPlace = event.params.playerRespawnPlace
+			}
+		}
+	storyboard.gotoScene( storyboard.getPrevious(), options )
 	
 end
 

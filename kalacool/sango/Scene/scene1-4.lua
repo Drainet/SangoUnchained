@@ -46,9 +46,16 @@ function scene:enterScene( event )
     local GetAndSetStatus = require "kalacool.sango.System.GetAndSetStatus"
     local characterConfig = GetAndSetStatus.getCurCharacterConfig()
 
-    -- dog=PlayerSet.new(characterConfig.char,{x=800,y=1000})
-    dog=PlayerSet.new(characterConfig.char,{x=6700,y=1200})  -- test boss location
+---- Player respawn location Start ----
+    if (event.params ~= nil) then
+        dog=PlayerSet.new(characterConfig.char,event.params.playerRespawnPlace)
+    else
+        dog=PlayerSet.new(characterConfig.char,{x=800,y=1000})
+    end
+    -- dog=PlayerSet.new(characterConfig.char,{x=6100,y=1200})  -- test boss location
     dog:setPlayerShow()
+---- Player respawn location End----
+
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
     local background = BackgroundSet.setBackgroundLayer(myLevel,dog,

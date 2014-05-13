@@ -14,7 +14,7 @@ function new(config)
     knifemo.originPosition = config
     knifemo.config = config
     -- set monster's attribute
-    knifemo.HP                = 50
+    knifemo.HP                = 2000
     knifemo.rest              = false
     
     -- set monster's body
@@ -79,6 +79,22 @@ function new(config)
         if (event.phase == "began") then
             if(event.other.damage=="safe")then 
                 knifemo.AI.onTheGround = true
+            end
+            if (event.other.type == "bullet" or event.other.type == "explosive" or event.otherElement == 3) then
+                knifemo:hurt(event.other.power)
+                if(knifemo.name) then
+                   knifemo.LifeBar:hurt(knifemo.HP)
+                end
+                if(knifemo.HP <=1) then
+                    if(knifemo.alive == true) then
+                        --- kill monster delay ---
+                        timer.performWithDelay( 10,knifemo.dead,1) 
+                        knifemo.alive = false
+                        if(knifemo.name) then
+                           knifemo.LifeBar.dispose()
+                        end
+                    end
+                end
             end
             if (event.other.special == "shotgun" ) then
                 knifemo.rest = true
