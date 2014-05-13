@@ -21,27 +21,49 @@ function new(monster , target , option)
             monster.image:setLinearVelocity(-200,50)
             monster.body:setSequence( "normal" )
             monster.body:play()
-        elseif(daze>4 and dog.image.x-monster.image.x>150 and dog.image.x-monster.image.x<600)then -- ready to shoot and in range ( not close to player and not too far )
+        elseif(daze>6 and dog.image.x-monster.image.x>150 and dog.image.x-monster.image.x<500)then -- ready to shoot and in range ( not close to player and not too far )
             monster.body.xScale=-2
             monster.image:setLinearVelocity(0,0)
             monster.body:setSequence( "shoot" )
             monster.body:play()
             AI:attack(1,700)
             daze = 0
-        elseif(daze>4 and dog.image.x-monster.image.x<151)then -- ready to shoot and in range ( not close to player and not too far )
+        elseif(daze>6 and dog.image.x-monster.image.x<151)then -- ready to shoot and in range ( not close to player and not too far )
             monster.body.xScale=-2
             monster.image:setLinearVelocity(300,0)
             monster.body:setSequence( "jump" )
             monster.body:play()
             daze = 0
-        elseif(daze<2)then -- after shooting (cooldown)
+        elseif(daze<3)then -- after shooting (cooldown)
             monster.image:setLinearVelocity(0,0)
             monster.body:setSequence( "normal" )
             monster.body:play()
             daze = daze + 1
-        elseif(dog.image.x-monster.image.x>150)then -- chase player
+        elseif(dog.image.x-monster.image.x>600)then -- chase player  (very far)
 
-            monster.image:setLinearVelocity(650,0)
+            monster.image:setLinearVelocity(2000,0)
+            monster.body.xScale=-2
+            if(monster.body.sequence ~= "move")then
+                monster.body:setSequence( "move" )
+                monster.body:play()
+            end
+            if(monster.image.y-dog.image.y>10)then
+                monster.image:setLinearVelocity(850,-820)
+                if(monster.body.sequence ~= "jump")then
+                    monster.body:setSequence( "jump" )
+                    monster.body:play()
+                end
+            elseif(monster.image.y-dog.image.y<10)then
+                monster.image:setLinearVelocity(800,770)
+                if(monster.body.sequence ~= "jump")then
+                    monster.body:setSequence( "jump" )
+                    monster.body:play()
+                end
+            end
+            daze = daze + 1
+        elseif(dog.image.x-monster.image.x>150)then -- chase player (not far)
+
+            monster.image:setLinearVelocity(850,0)
             monster.body.xScale=-2
             if(monster.body.sequence ~= "move")then
                 monster.body:setSequence( "move" )
@@ -67,7 +89,7 @@ function new(monster , target , option)
             monster.body:play()
             daze = daze + 1
         end
-        AI.timerID =  timer.performWithDelay(500 , AI.run)
+        AI.timerID =  timer.performWithDelay(400 , AI.run)
         AI.timers[1] = AI.timerID
     
         --------- new AI end

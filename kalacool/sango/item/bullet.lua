@@ -98,7 +98,7 @@ function new(x,y,vx,vy)
 	
 	end
 	
-	bullet.timers[1] = timer.performWithDelay( 200,bullet.timeout,1 )
+	bullet.timers[1] = timer.performWithDelay( 250,bullet.timeout,1 )
 	
 	
 	
