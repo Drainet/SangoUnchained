@@ -19,7 +19,7 @@ function new(monster , target , option)
         --------- new AI start
         if(monster.rest==true)then -- shot by shotgun
             monster.image:setLinearVelocity(-200,50)
-            monster.body:setSequence( "normal" )
+            monster.body:setSequence( "hurt" )
             monster.body:play()
         elseif(daze>6 and dog.image.x-monster.image.x>150 and dog.image.x-monster.image.x<500)then -- ready to shoot and in range ( not close to player and not too far )
             monster.body.xScale=-2
@@ -186,6 +186,8 @@ function new(monster , target , option)
     function AI:attack(dir,time)
         monster.image:setLinearVelocity(0, 0);
         function attackDelay()
+             AS.Play_monster_laser()
+
             AI.bullet = AI:new_bullet()
             AI.bullet.image.x = AI.monster.image.x
             AI.bullet.image.y = AI.monster.image.y
@@ -194,12 +196,12 @@ function new(monster , target , option)
             AI.bullet = AI:new_bullet()
             AI.bullet.image.x = AI.monster.image.x
             AI.bullet.image.y = AI.monster.image.y
-            AI.bullet.image:setLinearVelocity(dir*350,100)
+            AI.bullet.image:setLinearVelocity(dir*350,250)
 
             AI.bullet = AI:new_bullet()
             AI.bullet.image.x = AI.monster.image.x
             AI.bullet.image.y = AI.monster.image.y
-            AI.bullet.image:setLinearVelocity(dir*350,-100)
+            AI.bullet.image:setLinearVelocity(dir*350,-250)
         end
         AI.timers[2] = timer.performWithDelay(time , attackDelay)
         --AI.head.rotation = math.deg( angle ) 

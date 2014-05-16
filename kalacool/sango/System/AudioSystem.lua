@@ -8,6 +8,8 @@ function new(config)
 	function AUDIO.Load_level()
 		shotgun_fire = audio.loadSound( "kalacool/sango/audio/shotgun_fire.mp3" )
 		mp5_fire = audio.loadSound( "kalacool/sango/audio/mp5_fire.mp3" )
+		mp5_fire2 = audio.loadSound( "kalacool/sango/audio/mp5_fire2.mp3" )
+		mp5_fire3 = audio.loadSound( "kalacool/sango/audio/mp5_fire3.mp3" )
 		door_close = audio.loadSound( "kalacool/sango/audio/door_close.mp3" )
 		Win_TaDa = audio.loadSound( "kalacool/sango/audio/Win_TaDa.mp3" )
 		jetpack_active = audio.loadSound( "kalacool/sango/audio/jetpack_active.mp3" )
@@ -27,6 +29,16 @@ function new(config)
 		local WepaonChannel = audio.play( mp5_fire )
 	end
 
+	-- AS.Play_mp5_fire2()
+	function AUDIO.Play_mp5_fire2()
+		local WepaonChannel = audio.play( mp5_fire2 )
+	end
+
+	-- AS.Play_mp5_fire3()
+	function AUDIO.Play_mp5_fire3()
+		local WepaonChannel = audio.play( mp5_fire3 )
+	end
+
 	-- AS.door_close()
 	function AUDIO.Play_door_close()
 		local WorldChannel = audio.play( door_close )
@@ -34,7 +46,7 @@ function new(config)
 
 	-- AS.Play_Win_TaDa()
 	function AUDIO.Play_Win_TaDa()
-		local UIChannel = audio.play( Win_TaDa )
+		local MusicChannel = audio.play( Win_TaDa )
 	end
 
 	-- AS.Play_jetpack_active()

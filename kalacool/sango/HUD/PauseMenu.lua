@@ -36,6 +36,7 @@ function new()
         }
 
         buttonPause.x =display.contentWidth-40; buttonPause.y = 40
+        buttonPause.alpha = 0.84
 
     
 ------------------- pauseButton End ---------------
@@ -96,7 +97,7 @@ function new()
             {
                 id = "MainMenu",
                 defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
-                label = "Main Menu",
+                label = "Exit",
                 font = "arial",
                 labelColor = {default = {255, 255, 255, 255}},
                 fontSize = 28,
@@ -115,6 +116,11 @@ function new()
             pauseMenu:insert(buttonNewGame)
             pauseMenu:insert(buttonFreeView)
             pauseMenu:insert(buttonMainMenu)
+
+            ---------- hide button
+            buttonFreeView.isVisible = false
+
+            ----------
 
         return pauseMenu
 

@@ -12,8 +12,16 @@ local Cos   = math.cos
 local Ceil  = math.ceil
 local Atan2 = math.atan2
 
+local temple = 1
+
 function new(x,y,vx,vy)
-    AS.Play_mp5_fire()
+    if (temple==1)then
+        AS.Play_mp5_fire()
+        temple=2
+    elseif (temple==2)then
+        AS.Play_mp5_fire2()
+        temple=1
+    end
     Filter = { categoryBits = 64, maskBits = 182 }
     local bullet=display.newGroup()
 	local angle= (Atan2( vy,vx)*180/Pi)

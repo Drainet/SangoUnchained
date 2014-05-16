@@ -62,20 +62,20 @@ DataCollect = DataSetClass.new()
 -------- Data Collect End ---------
 
 --------------- Performance Start ---------------
-	performanceText = display.newText("", 0, 0, native.systemFont, 30)
-	local maxMemory = 0
-	local function Performance()
-		performanceText:setFillColor( 255, 0, 0 )
-		performanceText.x, performanceText.y = display.contentWidth/2 -400, display.contentHeight - 50
+	-- performanceText = display.newText("", 0, 0, native.systemFont, 30)
+	-- local maxMemory = 0
+	-- local function Performance()
+	-- 	performanceText:setFillColor( 255, 0, 0 )
+	-- 	performanceText.x, performanceText.y = display.contentWidth/2 -400, display.contentHeight - 50
 
-		if maxMemory < collectgarbage("count") then
-			maxMemory = collectgarbage("count")
-		end
+	-- 	if maxMemory < collectgarbage("count") then
+	-- 		maxMemory = collectgarbage("count")
+	-- 	end
 
-		performanceText.text =  "Memory: ".. string.format("%.3f", collectgarbage("count")) .. " KB\n" ..
-								"Max: ".. string.format("%.3f", maxMemory) .. "KB \n" ..
-								"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB\n"						
-	end
+	-- 	performanceText.text =  "Memory: ".. string.format("%.3f", collectgarbage("count")) .. " KB\n" ..
+	-- 							"Max: ".. string.format("%.3f", maxMemory) .. "KB \n" ..
+	-- 							"Texture: " .. string.format("%.3f", system.getInfo("textureMemoryUsed")/(1024*1024)) .. " MB\n"						
+	-- end
 
-	Runtime:addEventListener("enterFrame", Performance)
+	-- Runtime:addEventListener("enterFrame", Performance)
 --------------- Performance End ---------------

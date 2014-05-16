@@ -27,7 +27,8 @@ function new(config)
         { name="normal", start=1,count=3, time=600,loopDirection = "bounce" },
         { name="move", start=4,count=3, time=600,loopDirection = "bounce" },
         { name="jump", start=7,count=4, time=200,loopDirection = "bounce"},
-        { name="shoot", start=11,count=2, time=400,loopDirection = "bounce"}
+        { name="shoot", start=11,count=2, time=400,loopDirection = "bounce"},
+        { name="hurt", start=13,count=1, time=400,loopDirection = "bounce"}
 
     }
     

@@ -66,27 +66,27 @@ function new()
     buttonBackToLvSel = widget.newButton
         {
             id = "backToLvSel",
-            defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonGray.png",
             label = "Leave",
+            labelColor = {default = {0, 0, 0, 1}},
             font = "arial",
-            fontSize = 28,
-            emboss = true,
+            fontSize = 45,
             onPress = buttonHandler,
         }
 
     buttonNextLevel = widget.newButton
         {
             id = "buttonNextLevel",
-            defaultFile = "kalacool/sango/image/UI/pauseMenu/buttonBlue.png",
+            defaultFile = "kalacool/sango/image/UI/Menu/buttonGray.png",
             label = "Next",
+            labelColor = {default = {0, 0, 0, 1}},
             font = "arial",
-            fontSize = 28,
-            emboss = true,
+            fontSize = 45,
             onPress = buttonHandler,
         }
 
-    buttonBackToLvSel.x =display.contentWidth/2 - 200 ; buttonBackToLvSel.y = display.contentHeight/2 + 300
-    buttonNextLevel.x =display.contentWidth/2 + 200     ; buttonNextLevel.y = display.contentHeight/2 + 300
+    buttonBackToLvSel.x =display.contentWidth/2 - 200 ; buttonBackToLvSel.y = display.contentHeight/2 + 200
+    buttonNextLevel.x =display.contentWidth/2 + 200     ; buttonNextLevel.y = display.contentHeight/2 + 200
 
     ---- If this is the final Level
     ----tonumber( (storyboard.getCurrentSceneName()):sub(string.find(storyboard.getCurrentSceneName(), "-")+1) ) is this leve number, if you are playing "1-4",then it means "4"
