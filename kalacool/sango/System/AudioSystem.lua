@@ -17,6 +17,7 @@ function new(config)
 		monster_laser = audio.loadSound( "kalacool/sango/audio/monster_laser.mp3" )
 		hurt = audio.loadSound( "kalacool/sango/audio/hurt.mp3" )
 		sword_attack = audio.loadSound( "kalacool/sango/audio/sword_attack.mp3" )
+		switch = audio.loadSound( "kalacool/sango/audio/switch.mp3" )
 	end
 
 	------------------ level audio -----------------------
@@ -54,6 +55,11 @@ function new(config)
 	-- AS.Play_exploding()
 	function AUDIO.Play_exploding()
 		local WorldChannel = audio.play( exploding )
+	end
+
+	-- AS.Play_switch()
+	function AUDIO.Play_switch()
+		local UIChannel = audio.play( switch )
 	end
 
 	-- AS.Play_Win_TaDa()
