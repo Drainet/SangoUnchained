@@ -191,6 +191,7 @@ function new(config)
 			-- 	--timer.resume( Player.Magazine.reloadTimer )
 			-- end
 			if(event.selfElement == 3 and event.other.type == "enemy")then
+				AS.Play_sword_attack()
 				Player.knife.isVisible = true
 				Player.knife:play()
 				
@@ -204,7 +205,7 @@ function new(config)
 				else
 					
 					for i=1,event.other.damageValue do
-
+						AS.Play_hurt()
 						Player.heart.hurt()
 						Player.invincible(8)
 						Player.noSticky( )
