@@ -26,7 +26,7 @@
     	}   
 		_Enemy.Monster_Cannon.Physic 			= {}
 			_Enemy.Monster_Cannon.Physic.Type		= "static"
-			_Enemy.Monster_Cannon.Physic.Option		= {density = 3,filter = { categoryBits = 1 }}
+			_Enemy.Monster_Cannon.Physic.Option		= {density = 3,filter = { categoryBits = 1 }} -- if set 4, player will stuck
 		_Enemy.Monster_Cannon.bullet 						= {}
 			_Enemy.Monster_Cannon.bullet.ImageSheetPath 	= "kalacool/sango/image/monster/Cannon/cannon_bullet_animation.png"
 			_Enemy.Monster_Cannon.bullet.ImageSheetOption 	= { width=51, height=49, numFrames=8 }
@@ -37,7 +37,7 @@
         	}
 			_Enemy.Monster_Cannon.bullet.Physic 			= {}
 				_Enemy.Monster_Cannon.bullet.Physic.Type 		= "dynamic"
-				_Enemy.Monster_Cannon.bullet.Physic.Option 		= {density = 1 , filter = { categoryBits = 4 , maskBits = 418} }
+				_Enemy.Monster_Cannon.bullet.Physic.Option 		= {density = 1 , filter = { categoryBits = 4 , maskBits = 66} }
 			_Enemy.Monster_Cannon.bullet.gravityScale 		= 0
 			_Enemy.Monster_Cannon.bullet.damage 			= "fatal"
 			_Enemy.Monster_Cannon.bullet.damageValue 		= 1

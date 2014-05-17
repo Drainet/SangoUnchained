@@ -29,9 +29,8 @@ local function onKeyEvent( event )
 
    local phase = event.phase
    local keyName = event.keyName
-   print( event.phase, event.keyName )
 
-   if ( "back" == keyName and phase == "up" ) then
+  	if ( "back" == keyName and phase == "up" ) then
 		local function onComplete( event )
 			if "clicked" == event.action then
 				local i = event.index
@@ -46,7 +45,23 @@ local function onKeyEvent( event )
 		local alert = native.showAlert( "EXIT", "離開遊戲?", { "否", "是" }, onComplete )
 		-- group:insert(alert);
 		return true
-   end
+   	end
+
+    if ( keyName == "volumeUp" and phase == "down" ) then
+      	local masterVolume = audio.getVolume()
+      	if ( masterVolume < 1.0 ) then
+         	masterVolume = masterVolume + 0.1
+         	audio.setVolume( masterVolume )
+      	end
+      	return false
+    elseif ( keyName == "volumeDown" and phase == "down" ) then
+      	local masterVolume = audio.getVolume()
+      	if ( masterVolume > 0.0 ) then
+         	masterVolume = masterVolume - 0.1
+         	audio.setVolume( masterVolume )
+      	end
+      	return false
+   	end
    return true  --SEE NOTE BELOW
 end
 --add the key callback

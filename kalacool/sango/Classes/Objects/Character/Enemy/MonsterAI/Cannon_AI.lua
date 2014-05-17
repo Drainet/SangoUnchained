@@ -11,7 +11,7 @@ function new(monster , target , option)
     AI.monster = monster
 
     function AI.run()
-        if ( AI:isPlayerVisible() ) then
+        if ( AI:isPlayerVisible() and target.image.x - monster.image.x > 0) then
             angle =  math.acos( math.abs(monster.image.y - target.image.y) /  AI:getDistance() )
             dir = AI:monsterDir(target.image)
             monster:attack(angle,dir.x,dir.y)

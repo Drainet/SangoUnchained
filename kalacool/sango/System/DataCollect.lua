@@ -97,7 +97,7 @@ function new()
 						"&dead=" .. Collect.sceneData[Collect.sceneNum][4] ..
 						"&weapon1[str]=" .. Collect.sceneData[Collect.sceneNum][5].. "&weapon2[str]=" .. Collect.sceneData[Collect.sceneNum][6] ..
 						"&lvMemoryKB[str]=" .. Collect.sceneData[Collect.sceneNum][7] ..
-						"&Date[str]=" .. Collect.sceneData[Collect.sceneNum][8]
+						"&Date=" .. Collect.sceneData[Collect.sceneNum][8]
 		-- print(message)
 		network.request( message, "GET", networkListener )
 	end
