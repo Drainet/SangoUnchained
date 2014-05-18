@@ -53,7 +53,7 @@ function new(config)
 	Player.HUD:insert(Player.touchAreaB)
 	local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
-    Player.overheat = heatClass.new(200)
+    Player.overheat = heatClass.new()
     Player.HUD:insert(pauseMenu)
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
@@ -112,6 +112,8 @@ function new(config)
 		Player.image.Magazine = Player.Weapon.magazine
 		Player.Magazine.isonAir= Player.pack[Player.switch.state].isonAir
 		Player.HUD:insert(Player.Weapon.magazine.image)
+
+		Player.overheat.setcost( Player.Weapon.para.cost)
 		local temp = Player.Magazine.ammoMax
 
 		if(Player.pack[Player.switch.state].nowNum ~= nil)then
