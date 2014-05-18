@@ -2,18 +2,16 @@
 
 module(..., package.seeall)
 
-local scene = scene
-local StaticWorldClass = require('kalacool.sango.Classes.Objects.World.StaticWorld')
-
 --INSTANCE FUNCTIONS
 function new(config)
 
-    local boundRec = StaticWorldClass.new()
-    boundRec.image = display.newRect( 0, 0, 6700, 20 )
-    boundRec.image.damage = "fatal"
+    local boundRec = display.newRect( 0, config.y, 50000, 150)
+    boundRec.anchorX = 0
+	boundRec.anchorY = 0
+    boundRec.damage = "safe"
 
-    boundRec.show(config)
-    physics.addBody( boundRec.image , "static", { density = 1.0, friction = 0.1, bounce = 0.2 } )
+    -- boundRec.show(config)
+    physics.addBody( boundRec , "static", { density=1, friction=0.9, bounce=0 ,filter = { categoryBits = 128}} )
     
 
 

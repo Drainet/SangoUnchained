@@ -118,7 +118,7 @@ function new()
             pauseMenu:insert(buttonMainMenu)
 
             ---------- hide button
-            buttonFreeView.isVisible = false
+            -- buttonFreeView.isVisible = false
 
             ----------
 
