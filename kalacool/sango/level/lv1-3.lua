@@ -194,7 +194,10 @@ MonsterSpawnWavesClass.addMonster({ID=3,x=19138,y=784,wave=9})
 MonsterSpawnWavesClass.addMonster({ID=2,x=14778,y=834,wave=9,xL=12000,xR=22000})
 MonsterSpawnWavesClass.addMonster({ID=2,x=14802,y=1036,wave=9,xL=12000,xR=22000})
 MonsterSpawnWavesClass.addMonster({ID=2,x=14802,y=1246,wave=9,xL=12000,xR=22000})
+    level:insert(level.layers["Image"])
+
     level:insert(MonsterImageGroup)
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])
@@ -204,8 +207,6 @@ MonsterSpawnWavesClass.addMonster({ID=2,x=14802,y=1246,wave=9,xL=12000,xR=22000}
     level:insert(level.layers["Monster"])
 
     level:insert(level.layers["Supplement"])
-
-    level:insert(level.layers["Image"])
 
     return level
 

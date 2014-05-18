@@ -170,7 +170,9 @@ MonsterSpawnWavesClass.addMonster({ID=301,x=4410,y=1060,wave=2,xR=6500})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object228"].image)
  level.layers["StaticWorld"].objects["object229"] = WorldSet.newS_hor_floor({x=2790,y=1380})
  level.layers["StaticWorld"]:insert(level.layers["StaticWorld"].objects["object229"].image)
+    level:insert(level.layers["Image"])
     level:insert(MonsterImageGroup)
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])
@@ -180,8 +182,6 @@ MonsterSpawnWavesClass.addMonster({ID=301,x=4410,y=1060,wave=2,xR=6500})
     level:insert(level.layers["Monster"])
 
     level:insert(level.layers["Supplement"])
-
-    level:insert(level.layers["Image"])
 
     return level
 

@@ -1234,7 +1234,10 @@ MonsterSpawnWavesClass.addMonster({ID=99,x=6110,y=1270,wave=3})
  level.layers["Image"]:insert(level.layers["Image"].objects["object504"])
  level.layers["Image"].objects["object505"] = display.newImage("kalacool/sango/image/sign/lv1-4/sign_slowBoss.png",7308,1054)
  level.layers["Image"]:insert(level.layers["Image"].objects["object505"])
+    level:insert(level.layers["Image"])
+
     level:insert(MonsterImageGroup)
+
     level:insert(level.layers["StaticWorld"])
 
     level:insert(level.layers["DynamicWorld"])
@@ -1244,8 +1247,6 @@ MonsterSpawnWavesClass.addMonster({ID=99,x=6110,y=1270,wave=3})
     level:insert(level.layers["Monster"])
 
     level:insert(level.layers["Supplement"])
-
-    level:insert(level.layers["Image"])
 
     return level
 

@@ -393,6 +393,7 @@ MonsterSpawnWavesClass.addMonster({ID=301,x=5590,y=1080,wave=2,xR=12000})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object325"].image)
  level.layers["InteractiveWorld"].objects["object326"] = MechanismSet.newDestructibleBlockObs({x=11550,y=1490})
  level.layers["InteractiveWorld"]:insert(level.layers["InteractiveWorld"].objects["object326"].image)
+    level:insert(level.layers["Image"])
     level:insert(MonsterImageGroup)
     level:insert(level.layers["StaticWorld"])
 
@@ -403,8 +404,6 @@ MonsterSpawnWavesClass.addMonster({ID=301,x=5590,y=1080,wave=2,xR=12000})
     level:insert(level.layers["Monster"])
 
     level:insert(level.layers["Supplement"])
-
-    level:insert(level.layers["Image"])
 
     return level
 

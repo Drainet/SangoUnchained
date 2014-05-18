@@ -43,7 +43,7 @@ function new(config)
         PowerGenerator:sendActiveSignal()
 		PowerGenerator:active()
 		PowerGenerator.isActive = true
-
+		physics.removeBody(PowerGenerator.image)
     end
 
 	function PowerGenerator.onCollsion(self , event)

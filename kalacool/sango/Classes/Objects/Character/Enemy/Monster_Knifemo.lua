@@ -99,7 +99,7 @@ function new(config)
             end
             if (event.other.special == "shotgun" ) then
                 knifemo.rest = true
-                knifemo.timers[table.maxn(knifemo.timers)+1] = timer.performWithDelay( 1200, knifemo.restEnd,1 )
+                knifemo.timers[table.maxn(knifemo.timers)+1] = timer.performWithDelay( 1400, knifemo.restEnd,1 )
             end
         end
     end
