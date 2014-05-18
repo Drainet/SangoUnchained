@@ -10,8 +10,8 @@ function new()
 
 	overheat.image = display.newGroup( )
 
-	overheat.rect = display.newRect( 50, 150, 200, 30 )
-	overheat.back = display.newRect( 50, 150, 200, 30 )
+	overheat.rect = display.newImage( "kalacool/sango/image/UI/overheat.png", 50, 150 )
+	overheat.back = display.newImage( "kalacool/sango/image/UI/overheat.png", 50, 150 )
 	overheat.back:setFillColor( 0.5 )
 	overheat.rect:setFillColor( 255,0,0 )
 	overheat.rect.anchorX = 0
@@ -19,6 +19,12 @@ function new()
 	overheat.max = 200
 	overheat.value = 0
 	overheat.cost = 0
+
+	local mask = graphics.newMask( "kalacool/sango/image/UI/hmask.png" )
+	overheat.rect:setMask( mask )
+
+	
+
 	
 	overheat.image:insert( overheat.back )
 	overheat.image:insert( overheat.rect )
@@ -26,14 +32,15 @@ function new()
 	overheat.lock = false
 
 	function overheat.show()
-		overheat.rect.width = overheat.value
+		--overheat.rect.width = overheat.value
+		overheat.rect.maskX = overheat.value-200
 	end
 	overheat.show()
 	function overheat.upgrade()
 		if(overheat.value>0)then
 			overheat.value = overheat.value-1
 			overheat.show()
-			if(overheat.value<overheat.max-10)then
+			if(overheat.value<overheat.max-15)then
 				overheat.lock = false
 			end
 		
