@@ -53,7 +53,7 @@ function scene:enterScene( event )
 
     local BackgroundSet = require "kalacool.sango.Background.BackgroundSet"
     local background = BackgroundSet.setBackgroundLayer(myLevel,dog,
-        {{imgPath = "kalacool/sango/image/gameBackground/flappy.png",x = 40,y = 510}})
+        {{imgPath = "kalacool/sango/image/gameBackground/flappy.png",x = 40,y = 590}})
 
     camera:insert(myLevel)
     camera:insert(dog.image)

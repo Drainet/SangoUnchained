@@ -36,7 +36,7 @@ function new()
         }
 
         buttonPause.x =display.contentWidth-40; buttonPause.y = 40
-        buttonPause.alpha = 0.84
+        buttonPause.alpha = 0.5
 
     
 ------------------- pauseButton End ---------------

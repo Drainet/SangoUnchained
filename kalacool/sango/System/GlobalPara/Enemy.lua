@@ -11,9 +11,9 @@
 
 		_Enemy.Monster_Cannon.HP 				= 10	
 		_Enemy.Monster_Cannon.moveSpeed			= 0
-		_Enemy.Monster_Cannon.attackSpeed		= 2000
-		_Enemy.Monster_Cannon.bulletSpeed		= 600
-		_Enemy.Monster_Cannon.visibleDistance	= 500
+		_Enemy.Monster_Cannon.attackSpeed		= 1700
+		_Enemy.Monster_Cannon.bulletSpeed		= 400
+		_Enemy.Monster_Cannon.visibleDistance	= 700
 		_Enemy.Monster_Cannon.head 				= {}
 			_Enemy.Monster_Cannon.head.ImagePath	= "kalacool/sango/image/monster/Cannon/cannon_head.png"
 			_Enemy.Monster_Cannon.head.RX			= -2

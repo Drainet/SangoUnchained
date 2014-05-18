@@ -121,15 +121,10 @@ function new()
         scene:dispatchEvent({name='monsterDeadInWave',wave = Enemy.wave})
     end
     
-   
     --- New monster AI ---
-    function Enemy:newAI()
-        
+    function Enemy:newAI()    
          Enemy.AI = Enemy.Robot.new(Enemy, Enemy.target)
-
     end
-     
-
     Enemy.collision = Enemy.onCollision
     Enemy.image:addEventListener("collision", Enemy)
     scene:addEventListener( 'onPlayerShow', Enemy )

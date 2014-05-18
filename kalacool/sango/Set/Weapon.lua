@@ -20,7 +20,7 @@ function Weapon.newShotgun()
     local sprite =  display.newSprite(gunsheet, gunsequenceData)
 	
 	gun.sprite = sprite
-	gun.para = {cost = 0 , rate = 1200}
+	gun.para = {cost =0 , rate = 1200}
 	gun.magazine=magazineClass.new(7,300,500,100,"kalacool/sango/image/UI/shell.png")
 	gun.bullet=require "kalacool.sango.item.bullet"
 	gun.recoil=400
