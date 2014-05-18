@@ -9,6 +9,7 @@ system.activate( "multitouch" )
 local joystickClass = require( "kalacool.sango.HUD.joystick" )
 
 local heartClass = require "kalacool.sango.HUD.Heart"
+local heatClass = require "kalacool.sango.HUD.overheat"
 local powerClass = require "kalacool.sango.HUD.power"
 local switchClass = require "kalacool.sango.HUD.Switch"
 local SFclass = require "kalacool.sango.HUD.SF"
@@ -52,9 +53,12 @@ function new(config)
 	Player.HUD:insert(Player.touchAreaB)
 	local pauseMenuClass = require "kalacool.sango.HUD.PauseMenu"
     local pauseMenu = pauseMenuClass.new()
+    Player.overheat = heatClass.new(200)
     Player.HUD:insert(pauseMenu)
 	Player.HUD:insert(Player.heart.image)
 	Player.HUD:insert(Player.switch)
+	Player.HUD:insert(Player.overheat.image)
+
 	--Player.HUD:insert(Player.SF)
 
 	Player.blockWall = ObjectClass.new()
@@ -144,40 +148,40 @@ function new(config)
     	Player.stickTimer=nil
     end
 
-    function Player.image:preCollision(event )
+ --    function Player.image:preCollision(event )
 
-    	---≥Âø´ûÂà∞Á≤óÁÂÆâÂÖ®©ÈË°®Èù¢----
-    	-- if( Player.isSticky == true and event.other.damage=="safe" and event.other.surface=="rough" and event.selfElement == 1) then
-    	-- 	--and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)
-    	-- 	--print( self.y+self.height/2)
-    	-- 	--print( event.other.y-event.other.height/2)
-    	-- 	local vx, vy = event.other:getLinearVelocity()
-    	-- 	self:setLinearVelocity( vx, vy )
+ --    	---≥Âø´ûÂà∞Á≤óÁÂÆâÂÖ®©ÈË°®Èù¢----
+ --    	-- if( Player.isSticky == true and event.other.damage=="safe" and event.other.surface=="rough" and event.selfElement == 1) then
+ --    	-- 	--and (self.y+self.height/2-20)<(event.other.y-event.other.height/2)
+ --    	-- 	--print( self.y+self.height/2)
+ --    	-- 	--print( event.other.y-event.other.height/2)
+ --    	-- 	local vx, vy = event.other:getLinearVelocity()
+ --    	-- 	self:setLinearVelocity( vx, vy )
 
-    	-- end
+ --    	-- end
 
-    	if(event.contact~=nil)then
+ --    	if(event.contact~=nil)then
 
-	    	if(event.other.damage=="safe" and event.selfElement == 1 and event.contact.isEnabled==true) then
+	--     	if(event.other.damage=="safe" and event.selfElement == 1 and event.contact.isEnabled==true) then
 
-	    		Player.onBody = 0
-	    		if(Player.body.sequence ~= "normal"  and Player.isFloat == false )then
-					Player.body:setSequence( "normal" )
-					Player.body:play()
-				end
-				if(Player.Magazine.isonAir == true)then
-					Player.Magazine.onGround()
-				end
-			end
-		end
+	--     		Player.onBody = 0
+	--     		if(Player.body.sequence ~= "normal"  and Player.isFloat == false )then
+	-- 				Player.body:setSequence( "normal" )
+	-- 				Player.body:play()
+	-- 			end
+	-- 			if(Player.Magazine.isonAir == true)then
+	-- 				Player.Magazine.onGround()
+	-- 			end
+	-- 		end
+	-- 	end
 
-		if( event.other.damage=="fatal" and Player.isInvincible==true) then
+	-- 	if( event.other.damage=="fatal" and Player.isInvincible==true) then
 
-			if(event.contact~=nil)then
-				--event.contact.isEnabled=false
-			end
-		end
-	end
+	-- 		if(event.contact~=nil)then
+	-- 			--event.contact.isEnabled=false
+	-- 		end
+	-- 	end
+	-- end
 
 	function Player.image:collision(event )
 	
@@ -190,6 +194,19 @@ function new(config)
 
 			-- 	--timer.resume( Player.Magazine.reloadTimer )
 			-- end
+			if(event.other.damage=="safe" and event.selfElement == 1 and event.contact.isEnabled==true) then
+
+	    		Player.onBody = 0
+	    		if(Player.body.sequence ~= "normal"  and Player.isFloat == false )then
+					Player.body:setSequence( "normal" )
+					Player.body:play()
+				end
+				if(Player.Magazine.isonAir == true)then
+					Player.Magazine.onGround()
+				end
+			end
+
+
 			if(event.selfElement == 3 and event.other.type == "enemy")then
 				Player.knife.isVisible = true
 				Player.knife:play()
@@ -256,6 +273,8 @@ function new(config)
 					Player.body:play()
 			end
 		end
+
+		Player.overheat.upgrade()
 		if(Player.isShooting == true)then
 			local coolX= -camera.x+Player.fingerX-Player.image.x
 			local coolY= -camera.y+Player.fingerY-Player.image.y
@@ -274,7 +293,8 @@ function new(config)
 				Player.image.xScale = 1
 			end
 			
-			if(Player.shootable==true and Player.powerTank.value>0 and Player.alive==true )then
+			if(Player.shootable==true and Player.powerTank.value>0 and Player.alive==true and Player.overheat.lock~=true )then
+				Player.overheat.addheat()
 				Player.gun:setSequence( "shoot" )
 				Player.gun:play()
 				--Player.powerTank.reduce(Player.Weapon.para.cost)
@@ -307,6 +327,7 @@ function new(config)
 				-- 		Player.image:setLinearVelocity( vx-standard*coolX/ratio, -standard*3.5*coolY/ratio )
 				-- 	end			
 				-- end
+			
 			end
 		end
 		

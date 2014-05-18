@@ -29,7 +29,7 @@ function new(config)
 		Doggy.setgun( Doggy.pack[Doggy.switch.state].name )
 		--Doggy.setgun("rifle")
 		physics.addBody( Doggy.image
-			,{ density=10.0, friction=0.01, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
+			,{  isSensor = true,density=10.0, friction=0.01, bounce=0,shape=Doggy.foot,filter=Doggy.Filter} 
 			,{ density=10.0, friction=0.01, bounce=0,shape = Doggy.Shape,filter=Doggy.Filter}
 
             ,{ isSensor = true,radius = 70,filter=Doggy.Filter}
@@ -93,7 +93,7 @@ function new(config)
     --body.y=Doggy.y
 
     Doggy.image:addEventListener( "collision")
-    Doggy.image:addEventListener( "preCollision")
+    --Doggy.image:addEventListener( "preCollision")
    	--Doggy.image:addEventListener( "postCollision")
    	Doggy.default()
 
