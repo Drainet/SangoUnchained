@@ -17,7 +17,7 @@ function new(Player)
 	
 	function switch:touch( event )
 	    if event.phase == "began" then
-
+	    	AS.Play_switch()
 	    	
 	    	Player.pack[switch.state].nowNum=Player.Weapon.magazine.ammo
 	    	

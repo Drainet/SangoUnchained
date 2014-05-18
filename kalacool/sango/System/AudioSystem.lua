@@ -15,6 +15,9 @@ function new(config)
 		jetpack_active = audio.loadSound( "kalacool/sango/audio/jetpack_active.mp3" )
 		exploding = audio.loadSound( "kalacool/sango/audio/exploding.mp3" )
 		monster_laser = audio.loadSound( "kalacool/sango/audio/monster_laser.mp3" )
+		hurt = audio.loadSound( "kalacool/sango/audio/hurt.mp3" )
+		sword_attack = audio.loadSound( "kalacool/sango/audio/sword_attack.mp3" )
+		switch = audio.loadSound( "kalacool/sango/audio/switch.mp3" )
 	end
 
 	------------------ level audio -----------------------
@@ -39,14 +42,29 @@ function new(config)
 		local WepaonChannel = audio.play( mp5_fire3 )
 	end
 
+	-- AS.Play_sword_attack()
+	function AUDIO.Play_sword_attack()
+		local WepaonChannel = audio.play( sword_attack )
+	end
+
 	-- AS.door_close()
 	function AUDIO.Play_door_close()
 		local WorldChannel = audio.play( door_close )
 	end
 
+	-- AS.Play_exploding()
+	function AUDIO.Play_exploding()
+		local WorldChannel = audio.play( exploding )
+	end
+
+	-- AS.Play_switch()
+	function AUDIO.Play_switch()
+		local UIChannel = audio.play( switch )
+	end
+
 	-- AS.Play_Win_TaDa()
 	function AUDIO.Play_Win_TaDa()
-		local MusicChannel = audio.play( Win_TaDa )
+		local UIChannel = audio.play( Win_TaDa )
 	end
 
 	-- AS.Play_jetpack_active()
@@ -54,16 +72,15 @@ function new(config)
 		local PlayerChannel = audio.play( jetpack_active )
 	end
 
-	-- AS.Play_exploding()
-	function AUDIO.Play_exploding()
-		local PlayerChannel = audio.play( exploding )
+	-- AS.Play_hurt()
+	function AUDIO.Play_hurt()
+		local PlayerChannel = audio.play( hurt )
 	end
 
 	-- AS.Play_monster_laser()
 	function AUDIO.Play_monster_laser()
-		local PlayerChannel = audio.play( monster_laser )
+		local MonsterChannel = audio.play( monster_laser )
 	end
-
 	------------------ Music -----------------------
 
 	-- AS.Play_TheComplex()
