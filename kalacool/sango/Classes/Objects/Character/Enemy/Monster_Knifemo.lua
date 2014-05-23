@@ -28,7 +28,7 @@ function new(config)
         { name="move", start=4,count=3, time=600,loopDirection = "bounce" },
         { name="jump", start=7,count=4, time=200,loopDirection = "bounce"},
         { name="shoot", start=11,count=2, time=400,loopDirection = "bounce"},
-        { name="hurt", start=13,count=1, time=400,loopDirection = "bounce"}
+        { name="hurt", start=13,count=2, time=200,loopDirection = "bounce"}
 
     }
     
@@ -81,7 +81,7 @@ function new(config)
             if(event.other.damage=="safe")then 
                 knifemo.AI.onTheGround = true
             end
-            if (event.other.type == "bullet" or event.other.type == "explosive" or event.otherElement == 3) then
+            if ((event.other.type == "bullet" or event.other.type == "explosive" or event.otherElement == 3 )and knifemo.rest == false) then
                 knifemo:hurt(event.other.power)
                 if(knifemo.name) then
                    knifemo.LifeBar:hurt(knifemo.HP)
@@ -98,8 +98,11 @@ function new(config)
                 end
             end
             if (event.other.special == "shotgun" ) then
+                knifemo.image:setLinearVelocity(-80,50)
+                knifemo.body:setSequence( "hurt" )
+                knifemo.body:play()
                 knifemo.rest = true
-                knifemo.timers[table.maxn(knifemo.timers)+1] = timer.performWithDelay( 1400, knifemo.restEnd,1 )
+                knifemo.timers[table.maxn(knifemo.timers)+1] = timer.performWithDelay( 2300, knifemo.restEnd,1 )
             end
         end
     end

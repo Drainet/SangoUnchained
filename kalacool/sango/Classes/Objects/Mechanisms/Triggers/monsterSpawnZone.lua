@@ -18,7 +18,7 @@ function new(config)
 	monsterSpawnZone.currentWave = config.wave
 	monsterSpawnZone.isActive = false
 
-	physics.addBody(monsterSpawnZone.image , "static" , {Filter = monsterSpawnZone.Filter})
+	physics.addBody(monsterSpawnZone.image , "static" , {filter = monsterSpawnZone.Filter})
 	monsterSpawnZone.image.isSensor = true
 
 	function monsterSpawnZone.onCollsion(self , event)

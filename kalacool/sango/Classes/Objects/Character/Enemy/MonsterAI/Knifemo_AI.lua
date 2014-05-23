@@ -6,7 +6,7 @@ ObjectClass = require('kalacool.sango.Classes.Object')
 
 function new(monster , target , option)
     local AI = monster_AI:new()
-    local daze = 0
+    local attackStyle = 1
     -- set AI attribute
     AI.target = target
     AI.monster = monster
@@ -17,142 +17,173 @@ function new(monster , target , option)
         --- monster self in parol range
 
         --------- new AI start
-        if(monster.rest==true)then -- shot by shotgun
-            monster.image:setLinearVelocity(-200,50)
-            monster.body:setSequence( "hurt" )
-            monster.body:play()
-        elseif(daze>6 and dog.image.x-monster.image.x>150 and dog.image.x-monster.image.x<500)then -- ready to shoot and in range ( not close to player and not too far )
-            monster.body.xScale=-2
-            monster.image:setLinearVelocity(0,0)
-            monster.body:setSequence( "shoot" )
-            monster.body:play()
-            AI:attack(1,700)
-            daze = 0
-        elseif(daze>6 and dog.image.x-monster.image.x<151)then -- ready to shoot and in range ( not close to player and not too far )
-            monster.body.xScale=-2
-            monster.image:setLinearVelocity(300,0)
-            monster.body:setSequence( "jump" )
-            monster.body:play()
-            daze = 0
-        elseif(daze<3)then -- after shooting (cooldown)
-            monster.image:setLinearVelocity(0,0)
-            monster.body:setSequence( "normal" )
-            monster.body:play()
-            daze = daze + 1
-        elseif(dog.image.x-monster.image.x>600)then -- chase player  (very far)
+        if(monster.rest==true)then -- shot by shotgun, hurt true
+            if AI.timerID == nil then
+                AI.timerID =  timer.performWithDelay(500 , AI.run) -- cooldown attack
+                AI.timers[1] = AI.timerID
+            end
+        else -- hurt false
+            if(dog.image.x-monster.image.x>600)then -- far? true
+                monster.image:setLinearVelocity(2000,0)
+                monster.body.xScale=-2
+                if(monster.body.sequence ~= "move")then
+                    monster.body:setSequence( "move" )
+                    monster.body:play()
+                end
+                if(monster.image.y-dog.image.y>10)then
+                    monster.image:setLinearVelocity(850,-820)
+                    if(monster.body.sequence ~= "jump")then
+                        monster.body:setSequence( "jump" )
+                        monster.body:play()
+                    end
+                elseif(monster.image.y-dog.image.y<10)then
+                    monster.image:setLinearVelocity(800,770)
+                    if(monster.body.sequence ~= "jump")then
+                        monster.body:setSequence( "jump" )
+                        monster.body:play()
+                    end
+                end
 
-            monster.image:setLinearVelocity(2000,0)
-            monster.body.xScale=-2
-            if(monster.body.sequence ~= "move")then
-                monster.body:setSequence( "move" )
-                monster.body:play()
-            end
-            if(monster.image.y-dog.image.y>10)then
-                monster.image:setLinearVelocity(850,-820)
-                if(monster.body.sequence ~= "jump")then
-                    monster.body:setSequence( "jump" )
+                if AI.timerID == nil then
+                    AI.timerID =  timer.performWithDelay(200 , AI.run)
+                    AI.timers[1] = AI.timerID
+                end
+            else -- far? false, chase a little bit and choose attack style
+                monster.image:setLinearVelocity(350,0)
+                monster.body.xScale=-2
+                if(monster.body.sequence ~= "move")then
+                    monster.body:setSequence( "move" )
                     monster.body:play()
                 end
-            elseif(monster.image.y-dog.image.y<10)then
-                monster.image:setLinearVelocity(800,770)
-                if(monster.body.sequence ~= "jump")then
-                    monster.body:setSequence( "jump" )
-                    monster.body:play()
-                end
-            end
-            daze = daze + 1
-        elseif(dog.image.x-monster.image.x>150)then -- chase player (not far)
+                if(monster.image.y-dog.image.y>50)then
+                    monster.image:setLinearVelocity(300,-320)
+                    if(monster.body.sequence ~= "jump")then
+                        monster.body:setSequence( "jump" )
+                        monster.body:play()
+                    end
+                elseif(monster.image.y-dog.image.y<10)then
+                    monster.image:setLinearVelocity(300,420)
+                    if(monster.body.sequence ~= "jump")then
+                        monster.body:setSequence( "jump" )
+                        monster.body:play()
+                    end
+                end 
 
-            monster.image:setLinearVelocity(850,0)
-            monster.body.xScale=-2
-            if(monster.body.sequence ~= "move")then
-                monster.body:setSequence( "move" )
-                monster.body:play()
-            end
-            if(monster.image.y-dog.image.y>10)then
-                monster.image:setLinearVelocity(550,-520)
-                if(monster.body.sequence ~= "jump")then
+                if(attackStyle==1)then  -- attack style 1, shoot
+                    monster.body.xScale=-2
+                    monster.image:setLinearVelocity(0,0)
+                    monster.body:setSequence( "shoot" )
+                    monster.body:play()
+                    AI:attack(1,700)
+                    attackStyle=2
+                    if AI.timerID == nil then
+                        AI.timerID =  timer.performWithDelay(2500 , AI.run) -- cooldown attack
+                        AI.timers[1] = AI.timerID
+                    end
+                elseif(attackStyle==2) then -- attack style 2, smash
+                    monster.body.xScale=-2
+                    monster.image:setLinearVelocity(300,0)
                     monster.body:setSequence( "jump" )
                     monster.body:play()
-                end
-            elseif(monster.image.y-dog.image.y<10)then
-                monster.image:setLinearVelocity(500,470)
-                if(monster.body.sequence ~= "jump")then
-                    monster.body:setSequence( "jump" )
-                    monster.body:play()
-                end
+                    if(monster.image.y-dog.image.y>10)then
+                        monster.image:setLinearVelocity(450,-420)
+                    elseif(monster.image.y-dog.image.y<10)then
+                        monster.image:setLinearVelocity(400,370)
+                    end 
+                    attackStyle=1
+                    if AI.timerID == nil then
+                        AI.timerID =  timer.performWithDelay(2500 , AI.run) -- cooldown attack
+                        AI.timers[1] = AI.timerID
+                    end
+                end 
+            end -- far? end
+            if AI.timerID == nil then
+                AI.timerID =  timer.performWithDelay(400 , AI.run) 
+                AI.timers[1] = AI.timerID
             end
-            daze = daze + 1
-        else -- very close to player 
-            monster.image:setLinearVelocity(0,0)
-            monster.body:setSequence( "normal" )
-            monster.body:play()
-            daze = daze + 1
         end
-        AI.timerID =  timer.performWithDelay(400 , AI.run)
-        AI.timers[1] = AI.timerID
     
         --------- new AI end
 
-        --------- old AI start
-            -- local rad = math.random(0,5)
 
-            -- if(rad == 0 or rad == 2 or rad == 3)then
-            --     if(dog.image.x<monster.image.x)then
-            --         -- monster.image:setLinearVelocity(-400,0)
-            --         -- monster.body.xScale=2
-            --         -- if(monster.body.sequence ~= "move")then
-            --         --     monster.body:setSequence( "move" )
-            --         --     monster.body:play()
-            --         -- end
-            --         -- if(dog.image.y<monster.image.y)then
-            --         --     monster.image:setLinearVelocity(-400,-400)
-                        
-            --         --     if(monster.body.sequence ~= "jump")then
-            --         --         monster.body:setSequence( "jump" )
-            --         --         monster.body:play()
-            --         --     end
-            --         -- end
-            --     elseif(dog.image.x>monster.image.x)then
-            --         monster.image:setLinearVelocity(500,0)
-            --         monster.body.xScale=-2
-            --         if(monster.body.sequence ~= "move")then
-            --             monster.body:setSequence( "move" )
-            --             monster.body:play()
-            --         end
-            --         if(dog.image.y<monster.image.y)then
-            --             monster.image:setLinearVelocity(500,-500)
-                        
-            --             if(monster.body.sequence ~= "jump")then
-            --                 monster.body:setSequence( "jump" )
-            --                 monster.body:play()
-            --             end
-            --         end
-            --     end
-                
-                
-            -- elseif(rad == 1)then
-            --     monster.image:setLinearVelocity(0,0)
-            --     monster.body:setSequence( "normal" )
-            --     monster.body:play()
-            -- elseif(rad == 4 or rad == 5)then
-                
-            --     if(dog.image.x<monster.image.x)then
-                    
-            --         -- monster.body.xScale=2
-            --         -- monster.body:setSequence( "shoot" )
-            --         -- monster.body:play()
-            --         -- AI.timerID =  timer.performWithDelay(8000 , AI:attack(-1))
-            --         -- AI.timers[3] = AI.timerID
-            --     elseif(dog.image.x-monster.image.x<200)then
-                    
-            --         monster.body.xScale=-2
-            --         monster.body:setSequence( "shoot" )
-            --         monster.body:play()
-            --         AI:attack(1)
-            --     end
-            -- end
-        --------- old AI end
+        --------- AI start
+        -- if(monster.rest==true)then -- shot by shotgun
+        --     monster.image:setLinearVelocity(-200,50)
+        --     monster.body:setSequence( "hurt" )
+        --     monster.body:play()
+        -- elseif(daze>6 and dog.image.x-monster.image.x>150 and dog.image.x-monster.image.x<500)then -- ready to shoot and in range ( not close to player and not too far )
+        --     monster.body.xScale=-2
+        --     monster.image:setLinearVelocity(0,0)
+        --     monster.body:setSequence( "shoot" )
+        --     monster.body:play()
+        --     AI:attack(1,700)
+        --     daze = 0
+        -- elseif(daze>6 and dog.image.x-monster.image.x<151)then -- ready to shoot and in range ( not close to player and not too far )
+        --     monster.body.xScale=-2
+        --     monster.image:setLinearVelocity(300,0)
+        --     monster.body:setSequence( "jump" )
+        --     monster.body:play()
+        --     daze = 0
+        -- elseif(daze<3)then -- after shooting (cooldown)
+        --     monster.image:setLinearVelocity(0,0)
+        --     monster.body:setSequence( "normal" )
+        --     monster.body:play()
+        -- elseif(dog.image.x-monster.image.x>600)then -- chase player  (very far)
+
+        --     monster.image:setLinearVelocity(2000,0)
+        --     monster.body.xScale=-2
+        --     if(monster.body.sequence ~= "move")then
+        --         monster.body:setSequence( "move" )
+        --         monster.body:play()
+        --     end
+        --     if(monster.image.y-dog.image.y>10)then
+        --         monster.image:setLinearVelocity(850,-820)
+        --         if(monster.body.sequence ~= "jump")then
+        --             monster.body:setSequence( "jump" )
+        --             monster.body:play()
+        --         end
+        --     elseif(monster.image.y-dog.image.y<10)then
+        --         monster.image:setLinearVelocity(800,770)
+        --         if(monster.body.sequence ~= "jump")then
+        --             monster.body:setSequence( "jump" )
+        --             monster.body:play()
+        --         end
+        --     end
+        --     daze = daze + 1
+        -- elseif(dog.image.x-monster.image.x>150)then -- chase player (not far)
+
+        --     monster.image:setLinearVelocity(850,0)
+        --     monster.body.xScale=-2
+        --     if(monster.body.sequence ~= "move")then
+        --         monster.body:setSequence( "move" )
+        --         monster.body:play()
+        --     end
+        --     if(monster.image.y-dog.image.y>10)then
+        --         monster.image:setLinearVelocity(550,-520)
+        --         if(monster.body.sequence ~= "jump")then
+        --             monster.body:setSequence( "jump" )
+        --             monster.body:play()
+        --         end
+        --     elseif(monster.image.y-dog.image.y<10)then
+        --         monster.image:setLinearVelocity(500,470)
+        --         if(monster.body.sequence ~= "jump")then
+        --             monster.body:setSequence( "jump" )
+        --             monster.body:play()
+        --         end
+        --     end
+        --     daze = daze + 1
+        -- else -- very close to player 
+        --     monster.image:setLinearVelocity(0,0)
+        --     monster.body:setSequence( "normal" )
+        --     monster.body:play()
+        --     daze = daze + 1
+        -- end
+        -- AI.timerID =  timer.performWithDelay(400 , AI.run)
+        -- AI.timers[1] = AI.timerID
+    
+        --------- AI end
+
+        
 
         -- if ( AI:isMonsterInPatrolRange() ) then
            
@@ -227,7 +258,7 @@ function AI:new_bullet()
 
         -- set Bullet Attribute
         -- local Filter = { categoryBits = 4 , maskBits = 67}
-        physics.addBody(bullet.image, "dynamic", {density = 1 , filter = { categoryBits = 4 , maskBits = 67} }) 
+        physics.addBody(bullet.image, "dynamic", {density = 1 , filter = { categoryBits = 4 , maskBits = 3} }) 
         bullet.image.isFixedRotation    = true
         bullet.image.gravityScale       = 0
         bullet.image.damage             = "fatal"
