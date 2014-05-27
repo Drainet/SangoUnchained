@@ -10,7 +10,7 @@ function new()
 	overheat.back = display.newImage( "kalacool/sango/image/UI/overheat.png", 1030, 50 )
 	overheat.rect:scale( 0.6, 0.6 )
 	overheat.back:scale( 0.6, 0.6 )
-	overheat.rect.alpha = 0.8
+	overheat.rect.alpha = 0.9
 	overheat.back.alpha = 0.8
 	overheat.rect:setFillColor( 1,0,0 )
 	overheat.rect.anchorX = 0
